@@ -1,0 +1,2 @@
+hd06 /var/log/ebrary/isis/usage
+hd07 /var/log/ebrary/isis/usage

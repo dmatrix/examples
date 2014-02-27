@@ -1,0 +1,43 @@
+San Fancisco,25
+San Fancisco,5
+San Fancisco,52
+San Jose,45
+San Jose,65
+San Jose,54
+Los Angeles,35
+Los Angeles,30
+Los Angeles,53
+San Francisco,34
+Sacramento,37
+Fremont,8
+Fremont,3
+Fremont,83
+Oakland,4
+Oakland,54
+Oakland,5
+Palo Alto,40
+Palo Alto,49
+Palo Alto,41
+Palo Alto,14
+Sacramento,16
+Sacramento,56
+Sacramento,46
+Sacramento,63
+San Mateo,38
+San Mateo,8
+San Mateo,3
+San Mateo,83
+San Mateo,48
+Mountain View,9
+Mountain View,49
+Mountain View,4
+Mountain View,94
+San Jose,19
+San Jose,89
+San Jose,79
+San Jose,94
+Berkeley,35
+Berkeley,75
+Berkeley,53
+Berkeley,135
+Oakland,35

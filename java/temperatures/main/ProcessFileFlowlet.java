@@ -1,7 +1,7 @@
 /**
  * 
  */
-package main;
+package temperatures.main;
 
 import com.continuuity.api.flow.flowlet.Flowlet;
 import com.continuuity.api.flow.flowlet.FlowletContext;

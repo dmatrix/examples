@@ -1,7 +1,7 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 import com.continuuity.api.procedure.Procedure;
 import com.continuuity.api.procedure.ProcedureContext;

@@ -28,6 +28,7 @@ public class TemperaturesApp implements Application {
 		.setName("TemperaturesApp")
 		.setDescription("Reads a set of files with city temperatures and store for batch processing")
 		.withStreams().add(new Stream("datadirectory"))
+		.add(new Stream("tempsData"))
 		.withDataSets().add(new KeyValueTable("rawfiletable"))
 		.add(new KeyValueTable("processedfiletable"))
 		.withFlows().add(new RawFileFlow())

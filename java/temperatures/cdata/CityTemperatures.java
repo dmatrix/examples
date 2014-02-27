@@ -20,8 +20,10 @@ public class CityTemperatures implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Map <String, TreeSet<Integer>> mCityMap;
+	private String mKey;
 	
-	public CityTemperatures() { 
+	public CityTemperatures(String pKey) { 
+		mKey = pKey;
 		mCityMap = new HashMap<String, TreeSet<Integer>>();
 	}
 	
@@ -41,4 +43,5 @@ public class CityTemperatures implements Serializable{
 		return mCityMap.get(pCity);
 		
 	}
+	public String getKey() { return mKey; }
 }

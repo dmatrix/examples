@@ -18,7 +18,8 @@ import temperatures.cdata.CityTemperatures;
 public class TemperatureReaderUtil {
 	
 	public static CityTemperatures getCityTemperatures(String pFile) throws IOException {
-		CityTemperatures cityTemps = new CityTemperatures();
+		File f = new File (pFile);
+		CityTemperatures cityTemps = new CityTemperatures(f.getName());
 		FileReader fileReader = new FileReader(new File(pFile));
 		BufferedReader br = new BufferedReader(fileReader);
 

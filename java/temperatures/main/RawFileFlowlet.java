@@ -7,12 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-
-
-
-
-
-
 import temperatures.cdata.CityTemperatures;
 import temperatures.util.FileUtils;
 import temperatures.util.SerializeUtil;
@@ -23,6 +17,7 @@ import com.continuuity.api.annotation.UseDataSet;
 import com.continuuity.api.common.Bytes;
 import com.continuuity.api.data.dataset.KeyValueTable;
 import com.continuuity.api.flow.flowlet.AbstractFlowlet;
+import com.continuuity.api.flow.flowlet.OutputEmitter;
 import com.continuuity.api.flow.flowlet.StreamEvent;
 
 /**
@@ -50,8 +45,8 @@ public class RawFileFlowlet extends AbstractFlowlet {
 		// TODO Auto-generated constructor stub
 	}
 	
+	OutputEmitter<byte[]> output;
     @ProcessInput
-	
 	public void processInput(StreamEvent event) {
     	String dirname;
 		byte [] dir = Bytes.toBytes(event.getBody());
@@ -66,8 +61,14 @@ public class RawFileFlowlet extends AbstractFlowlet {
 				CityTemperatures cityTemperatures = TemperatureReaderUtil.getCityTemperatures(dirname + File.separatorChar + f);
 				if (cityTemperatures != null) {
 					byte[] data = SerializeUtil.serialize(cityTemperatures);
-					byte[] key = Bytes.toBytes(RAW_PREFIX + f);
+					byte[] key = Bytes.toBytes(f);
+					// write to the table
 					rawFileTable.write(key, data);
+					//write to the connecting stream; this will generate an event for the
+					//consuming flowlet to absorb the event, process, transform, and store it
+					// into the table for procedures to consume and respond to external queiries
+					//
+					output.emit(data);
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

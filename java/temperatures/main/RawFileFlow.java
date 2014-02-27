@@ -27,7 +27,9 @@ public class RawFileFlow implements Flow {
 		.setName("RawFileFlow")
 		.setDescription("A flow that collects numbers")
 		.withFlowlets().add("rawfileflowset", new RawFileFlowlet())
+		.add("rawTempdataflowset", new RawTempDataFlowlet())
 		.connect().fromStream("datadirectory").to("rawfileflowset")
+		.from("tempsData").to("rawTempdataflowset")
 		.build();
 	}
 }

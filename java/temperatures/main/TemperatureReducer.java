@@ -27,7 +27,7 @@ public class TemperatureReducer extends Reducer<Text, Text, byte[], CityTemperat
 	KeyValueTable processedFileTable;
 	
 	public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-		CityTemperatures reducedCityTemps = new CityTemperatures();
+		CityTemperatures reducedCityTemps = new CityTemperatures(key.toString());
 		try {
 			for (Text cityTemps: values) {
 				CityTemperatures ct = (CityTemperatures) SerializeUtil.deserialize(cityTemps.getBytes());

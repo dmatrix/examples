@@ -1,7 +1,7 @@
 /**
  * 
  */
-package data;
+package temperatures.cdata;
 
 import java.io.Serializable;
 import java.util.HashMap;

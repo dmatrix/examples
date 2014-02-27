@@ -1,7 +1,7 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 import com.continuuity.api.flow.Flow;
 import com.continuuity.api.flow.FlowSpecification;

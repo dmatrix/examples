@@ -1,17 +1,17 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 
+import temperatures.cdata.CityTemperatures;
+
 import com.continuuity.api.mapreduce.MapReduce;
 import com.continuuity.api.mapreduce.MapReduceContext;
 import com.continuuity.api.mapreduce.MapReduceSpecification;
-
-import data.CityTemperatures;
 
 /**
  * @author jules

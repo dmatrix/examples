@@ -1,15 +1,22 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import util.FileUtils;
-import util.SerializeUtil;
-import util.TemperatureReaderUtil;
+
+
+
+
+
+
+import temperatures.cdata.CityTemperatures;
+import temperatures.util.FileUtils;
+import temperatures.util.SerializeUtil;
+import temperatures.util.TemperatureReaderUtil;
 
 import com.continuuity.api.annotation.ProcessInput;
 import com.continuuity.api.annotation.UseDataSet;
@@ -17,8 +24,6 @@ import com.continuuity.api.common.Bytes;
 import com.continuuity.api.data.dataset.KeyValueTable;
 import com.continuuity.api.flow.flowlet.AbstractFlowlet;
 import com.continuuity.api.flow.flowlet.StreamEvent;
-
-import data.CityTemperatures;
 
 /**
  * @author jules

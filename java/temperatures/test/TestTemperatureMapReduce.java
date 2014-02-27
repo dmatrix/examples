@@ -1,12 +1,11 @@
 /**
  * 
  */
-package test;
+package temperatures.test;
 
 import java.util.concurrent.TimeUnit;
 
-import temperatures.TemperaturesApp;
-
+import com.continuuity.api.Application;
 import com.continuuity.test.ApplicationManager;
 import com.continuuity.test.MapReduceManager;
 import com.continuuity.test.ReactorTestBase;
@@ -30,7 +29,7 @@ public class TestTemperatureMapReduce extends ReactorTestBase {
 	}
 	
 	public void testApp() throws Exception {
-		ApplicationManager applicationManager = deployApplication(TemperaturesApp.class);
+		ApplicationManager applicationManager = deployApplication((Class<? extends Application>) temperatures.main.TemperaturesApp.class);
 		
 		try {
 		      MapReduceManager mrManager = applicationManager.startMapReduce("TemperatureMapReducer");

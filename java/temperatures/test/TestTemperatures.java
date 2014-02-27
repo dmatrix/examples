@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test;
+package temperatures.test;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,11 +12,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
-import util.FileUtils;
-import util.SerializeUtil;
-import util.TemperatureReaderUtil;
-import data.CityTemperatures;
-
+import temperatures.cdata.CityTemperatures;
+import temperatures.util.*;
 /**
  * @author jules
  *
@@ -46,7 +43,7 @@ public class TestTemperatures {
 				System.exit (1);
 			}
 		}
-		Map<String, CityTemperatures> cityTempMap = new HashMap<String, CityTemperatures>();
+		Map<String, temperatures.cdata.CityTemperatures> cityTempMap = new HashMap<String, CityTemperatures>();
 		List<String>files = FileUtils.listOfFiles(dirName);
 		for (String f: files) {
 			try {

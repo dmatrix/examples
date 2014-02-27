@@ -1,7 +1,7 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 import java.io.IOException;
 import java.util.Set;
@@ -10,12 +10,12 @@ import java.util.TreeSet;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-import util.SerializeUtil;
+import temperatures.cdata.CityTemperatures;
+import temperatures.util.SerializeUtil;
 
 import com.continuuity.api.annotation.UseDataSet;
 import com.continuuity.api.data.dataset.KeyValueTable;
 
-import data.CityTemperatures;
 
 /**
  * @author jules

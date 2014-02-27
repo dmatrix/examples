@@ -1,7 +1,7 @@
 /**
  * 
  */
-package temperatures;
+package temperatures.main;
 
 import com.continuuity.api.Application;
 import com.continuuity.api.ApplicationSpecification;
@@ -32,8 +32,7 @@ public class TemperaturesApp implements Application {
 		.add(new KeyValueTable("processedfiletable"))
 		.withFlows().add(new RawFileFlow())
 		.noProcedure()
-		.withMapReduce()
-		.add(new TemperatureMapReducer())
+		.noMapReduce()
 		.noWorkflow()
 		.build();
 	}

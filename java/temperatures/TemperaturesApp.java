@@ -45,7 +45,8 @@ public class TemperaturesApp implements Application {
 			.add(new KeyValueTable(PROCESSED_TABLE_NAME))
 		.withFlows()
 			.add(new RawFileFlow())
-		.noProcedure()
+		.withProcedures()
+			.add(new TemperatureProcedure())
 		.noMapReduce()
 		.noWorkflow()
 		.build();

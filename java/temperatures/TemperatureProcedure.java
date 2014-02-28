@@ -55,7 +55,7 @@ public class TemperatureProcedure extends AbstractProcedure {
 					if (temp != null) {
 						int min = temp.first();
 						int max = temp.last();
-						String reply = String.format("[Day=%s; City=%s; Max=%d; Min=%d", day, city, min, max);
+						String reply = String.format("[Day=%s; City=%s; Max=%d; Min=%d", day, city, max, min);
 						ProcedureResponse.Writer writer =
 							      responder.stream(new ProcedureResponse(Code.SUCCESS));
 							    writer.write(ByteBuffer.wrap(reply.getBytes())).close();
@@ -72,8 +72,7 @@ public class TemperatureProcedure extends AbstractProcedure {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 	    }
-	    
+	    return;
 	}
 }

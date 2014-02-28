@@ -1,5 +1,5 @@
 <?xml version="1.0" ?> 
 <project name="TemperaturesApp" default="jar">
-    <property name="example.package" value="temperatures.main"/>
+    <property name="example.package" value="temperatures"/>
     <import file="./ant-common.xml"/>
 </project>

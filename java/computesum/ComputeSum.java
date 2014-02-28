@@ -25,7 +25,6 @@ public class ComputeSum implements Application {
 	/* (non-Javadoc)
 	 * @see com.continuuity.api.Application#configure()
 	 */
-	@Override
 	public ApplicationSpecification configure() {
 		// TODO Auto-generated method stub
 		return ApplicationSpecification.Builder.with()

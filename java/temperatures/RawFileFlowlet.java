@@ -22,7 +22,6 @@ import com.continuuity.api.flow.flowlet.StreamEvent;
  */
 public class RawFileFlowlet extends AbstractFlowlet {
 
-	public final static String RAW_PREFIX = "raw-";
 	/**
 	 * Use annotation to indicate that what underlying building blocks
 	 * this flowlet must access

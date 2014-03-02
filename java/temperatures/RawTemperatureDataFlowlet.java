@@ -16,12 +16,21 @@ import com.continuuity.api.flow.flowlet.AbstractFlowlet;
 /**
  * @author jules
  *
+ * RawTemperatureDataFlowlet, like the other flowlet, represents one of the nodes in our DAG. Instead of reading
+ * data from a file, it reads data from an event stream attached or connected to it. (Note, how we connected this
+ * flowlet in the RawFileFlow class. 
+ * 
+ * Again, for massive scalability and large number of incoming datasets, this flowlet could configured to create multiple instances,
+ * each processing a event. Reactor ensures that no dataset is ever lost, meaning that all events in the Event queue are persisted.
+ * 
  */
 public class RawTemperatureDataFlowlet extends AbstractFlowlet {
 
 	/**
 	 * Use annotation to indicate that what underlying building blocks
-	 * this flowlet must access
+	 * this flowlet must access. Note, how we specified the connection from the previous flowlet, RawFileFlowlet, to
+	 * emit data on to an event queue stream called "temperatureData." Here, we merely indicate to the Runtime engine
+	 * that this flowlet is the receiver or consumer of that event.
 	 */
 	@UseDataSet(TemperaturesApp.PROCESSED_TABLE_NAME)
 	KeyValueTable processedFileTable;
@@ -39,6 +48,7 @@ public class RawTemperatureDataFlowlet extends AbstractFlowlet {
 				reducedCityTemps.add(city, min);
 				reducedCityTemps.add(city, max);
 			}
+			// store the transformed data with min, max temperature for the data for that city:state.
 			processedFileTable.write(Bytes.toBytes(ct.getKey()), SerializeUtil.serialize(reducedCityTemps));
 			processedFileTable.close();
 		} catch (IOException e) {

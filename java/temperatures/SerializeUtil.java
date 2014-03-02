@@ -11,6 +11,8 @@ import java.io.ObjectOutputStream;
 
 /**
  * @author jules
+ ** 
+ * SerializeUtil, as the name suggests, is a convenience utility class that serializes a data structure.
  *
  */
 public class SerializeUtil {

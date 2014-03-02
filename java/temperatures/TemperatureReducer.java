@@ -15,7 +15,7 @@ import com.continuuity.api.data.dataset.KeyValueTable;
 
 
 /**
- * @author jules
+ * @author jules damji
  *
  */
 public class TemperatureReducer extends Reducer<Text, Text, byte[], CityTemperatures> {

@@ -17,14 +17,23 @@ import com.continuuity.api.flow.flowlet.OutputEmitter;
 import com.continuuity.api.flow.flowlet.StreamEvent;
 
 /**
- * @author jules
+ * @author jules damji
+ * 
+ * RawFileFlowlet represents one of the nodes in our DAG, in which data is read from one of the files,
+ * transformed into a raw data set, and then passed on to the connected flowlet for further transformation.
+ * 
+ * For scalability and large number of directories, this flowlet could configured to create multiple instances
+ * to that each directory processes its own set of files, since each directory has a unique path, and within the
+ * directory unique files, with its cities recorded temperatures.
  *
  */
 public class RawFileFlowlet extends AbstractFlowlet {
 
 	/**
 	 * Use annotation to indicate that what underlying building blocks
-	 * this flowlet must access
+	 * this flowlet must access. For example, here we access a KeyValueTable DataSet for storing
+	 * our raw recorded temperatures. Other runtime indicators are that this flowlet will emit
+	 * data as byte[] to the emitter "outputdata," which is connected to another flowlet.
 	 */
 	@UseDataSet(TemperaturesApp.RAW_TABLE_NAME)
 	KeyValueTable rawFileTable;

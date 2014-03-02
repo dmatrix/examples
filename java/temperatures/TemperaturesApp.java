@@ -8,13 +8,13 @@ import com.continuuity.api.ApplicationSpecification;
 import com.continuuity.api.data.dataset.KeyValueTable;
 import com.continuuity.api.data.stream.Stream;
 /**
- * @author jules
+ * @author jules damji
  *
  */
 public class TemperaturesApp implements Application {
 	/**
 	 * The main application that glues all the Reactor components together. Built as a jar file,
-	 * the jar file is deployed via the gateweay into the application fabric that instantiates, 
+	 * the jar file is deployed via the gateway into the application fabric that instantiates, 
 	 * allocates resources, manages its execution, and delegates its distribution.
 	 */
 	  public static final String RAW_TABLE_NAME = "rawfiletable";

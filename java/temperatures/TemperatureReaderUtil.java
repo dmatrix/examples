@@ -10,8 +10,12 @@ import java.io.IOException;
 import java.util.StringTokenizer;
 
 /**
- * @author jules
+ * @author jules damji
  *
+ * TemperatureReaderUtil is a utility class that reads recoreded temperatures from the file.
+ * The format of the file is simple. Each line contains a city name and a recorded temperature,
+ * separated by a ','. Note, the file may contain multiple entries for the city temperatures recorded
+ * through out the day.
  */
 public class TemperatureReaderUtil {
 	
@@ -22,7 +26,6 @@ public class TemperatureReaderUtil {
 		BufferedReader br = new BufferedReader(fileReader);
 
 		 String line = null;
-		 // if no more lines the readLine() returns null
 		 while ((line = br.readLine()) != null) {
 			 StringTokenizer st = new StringTokenizer(line, ",");
 			 if (st.countTokens() == 2) {

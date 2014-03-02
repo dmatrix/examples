@@ -12,7 +12,7 @@ import com.continuuity.api.mapreduce.MapReduceContext;
 import com.continuuity.api.mapreduce.MapReduceSpecification;
 
 /**
- * @author jules
+ * @author jules damji
  *
  */
 public class TemperatureMapReducer implements MapReduce {

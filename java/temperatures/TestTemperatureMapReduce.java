@@ -11,7 +11,7 @@ import com.continuuity.test.MapReduceManager;
 import com.continuuity.test.ReactorTestBase;
 
 /**
- * @author jules
+ * @author jules damji
  *
  */
 public class TestTemperatureMapReduce extends ReactorTestBase {

@@ -18,20 +18,22 @@ import com.continuuity.api.procedure.ProcedureResponse;
 import com.continuuity.api.procedure.ProcedureResponse.Code;
 
 /**
- * @author jules
+ * @author jules damji
  *
+ * TemperatureProcedure class represents one of the core building block in the Reactor Continuuity paradigm. That is,
+ * they facilitate and satisfy external queries to the our transformed and stored data sets.
  */
 public class TemperatureProcedure extends AbstractProcedure {
 	
 	/**
-	 * Use my processed table DataSet, and handle request
+	 * Use processed table DataSet, and handle request
 	 */
 	@UseDataSet(TemperaturesApp.PROCESSED_TABLE_NAME)
 	KeyValueTable processedFileTable;
 	/**
-	 * Handler method 
-	 * @param request
-	 * @param responder
+	 * Handler method that will satisfy the request.
+	 * @param request Instance from which request parameters can be extracted
+	 * @param responder Instance to which response from a queried data set can be conveyed.
 	 */
 	@Handle("getTemperature")
 	public void getTemperature(ProcedureRequest request, ProcedureResponder responder) {
@@ -46,7 +48,7 @@ public class TemperatureProcedure extends AbstractProcedure {
 			e.printStackTrace();
 	      }
 	    } else {
-	    	byte[] dayKey = Bytes.toBytes(day);
+	    	byte[] dayKey = Bytes.toBytes(day.toLowerCase().trim());
 	    	byte[] data = processedFileTable.read(dayKey);
 			try {
 				CityTemperatures ct = (CityTemperatures) SerializeUtil.deserialize(data);

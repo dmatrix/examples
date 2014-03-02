@@ -8,7 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author jules
+ * @author jules damji
+ * 
+ * FileUtils, as the name suggests, is a convenience utility class that returns a list of files given a directory name.
+ * Other file related may be added to extend its utility. Note, the class must be idempotent; not state is mentioned, since
+ * most callers will invoke its static methods, without knowledge of its internal preserved state.
  *
  */
 public class FileUtils {

@@ -21,14 +21,6 @@ public class TemperaturesApp implements Application {
 	  public static final String PROCESSED_TABLE_NAME = "processedfiletable";
 	  public static final String DATA_DIRECTORY_STREAM = "datadirectory";
 
-	public TemperaturesApp() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	 public static void main(String[] args) {
-		    // Main method should be defined for Application to get deployed with Eclipse IDE plugin. DO NOT REMOVE IT
-		  }
-
 	/* (non-Javadoc)
 	 * @see com.continuuity.api.Application#configure()
 	 */

@@ -20,20 +20,22 @@ import com.continuuity.api.flow.flowlet.StreamEvent;
  * @author jules damji
  * 
  * RawFileFlowlet represents one of the nodes in our DAG, in which data is read from one of the files,
- * transformed into a raw data set, and then passed on to the connected flowlet for further transformation.
+ * transformed into a raw data set, stored into a key/value table, and then passed on to the connected flowlet 
+ * for further transformation.
  * 
- * For scalability and large number of directories, this flowlet could configured to create multiple instances
- * to that each directory processes its own set of files, since each directory has a unique path, and within the
- * directory unique files, with its cities recorded temperatures.
+ * For a large number of directories, this flowlet could be configured to create multiple instances to handle the load.
  *
  */
 public class RawFileFlowlet extends AbstractFlowlet {
 
 	/**
-	 * Use annotation to indicate that what underlying building blocks
-	 * this flowlet must access. For example, here we access a KeyValueTable DataSet for storing
-	 * our raw recorded temperatures. Other runtime indicators are that this flowlet will emit
+	 * I use annotations to indicate what underlying building blocks this flowlet must access. For example, 
+	 * here I access a KeyValueTable Dataset for storing our raw recorded temperatures. Another runtime 
+	 * annotation indicator is @Output, indicating that this flowlet will emit
 	 * data as byte[] to the emitter "outputdata," which is connected to another flowlet.
+	 * UseDataSet - indicates this flowlet will access the KeyValueTable defined in the main appplication file.
+	 * Output     - indicates this flowlet will emit or write data to an output stream.
+	 * ProcessInput - indicates the method that will handle the Stream Events on the Stream connected to this flowlet
 	 */
 	@UseDataSet(TemperaturesApp.RAW_TABLE_NAME)
 	KeyValueTable rawFileTable;
@@ -55,11 +57,11 @@ public class RawFileFlowlet extends AbstractFlowlet {
 				if (cityTemperatures != null) {
 					byte[] data = SerializeUtil.serialize(cityTemperatures);
 					byte[] key = Bytes.toBytes(f);
-					// write to the table
+					// write to the key/value table
 					rawFileTable.write(key, data);
 					//write to the connecting stream; this will generate an event for the
 					//consuming flowlet to absorb the event, process, transform, and store it
-					// into the table for procedures to consume and respond to external queiries
+					// into the table for procedures to consume and respond to external queries
 					//
 					outputdata.emit(data);
 				}

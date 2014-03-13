@@ -34,7 +34,11 @@ public class RawTemperatureDataFlowlet extends AbstractFlowlet {
 	 */
 	@UseDataSet(TemperaturesApp.PROCESSED_TABLE_NAME)
 	KeyValueTable processedFileTable;
-	
+	//Note: How I indicated with the @Output annotation in the RawFileFlowlet as a source of input to this flowlet,
+	// associated an Outputemitter with it. In short, anything RawFileFlowlet writes to the emitter is consumed or read
+	// by this method (as an implied stream event, except I defined the exact parameter type byte[]), so no need for
+	// StreamEvent argument. 
+	// Also, note that the method name is not confined to processInput.
     @ProcessInput("temperatureData")
 	public void processInput(byte[] data) {
     	try {
@@ -48,7 +52,7 @@ public class RawTemperatureDataFlowlet extends AbstractFlowlet {
 				reducedCityTemps.add(city, min);
 				reducedCityTemps.add(city, max);
 			}
-			// store the transformed data with min, max temperature for the data for that city:state.
+			// store the transformed data with min, max temperature for the data for the city:state.
 			processedFileTable.write(Bytes.toBytes(ct.getKey()), SerializeUtil.serialize(reducedCityTemps));
 			processedFileTable.close();
 		} catch (IOException e) {

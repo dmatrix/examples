@@ -21,7 +21,7 @@ import com.continuuity.api.procedure.ProcedureResponse.Code;
  * @author jules damji
  *
  * TemperatureProcedure class represents one of the core building block in the Reactor Continuuity paradigm. That is,
- * they facilitate and satisfy external queries to the our transformed and stored data sets.
+ * they facilitate and satisfy external queries to the transformed and stored data sets.
  */
 public class TemperatureProcedure extends AbstractProcedure {
 	
@@ -75,6 +75,5 @@ public class TemperatureProcedure extends AbstractProcedure {
 				e.printStackTrace();
 			}
 	    }
-	    return;
 	}
 }

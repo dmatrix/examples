@@ -1,11 +1,13 @@
 /**
  * 
  */
-package temperatures;
+package tempmr;
 
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+
+import temperatures.CityTemperatures;
 
 import com.continuuity.api.mapreduce.MapReduce;
 import com.continuuity.api.mapreduce.MapReduceContext;

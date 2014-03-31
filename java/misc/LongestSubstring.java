@@ -16,7 +16,6 @@ public class LongestSubstring {
 	}
 	
 	public String findLongestSubString() {
-		
 		char[] chars = mString.toCharArray();
 		StringBuffer bf = new StringBuffer();
 		for (int i=1; i<chars.length; i++) {

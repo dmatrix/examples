@@ -21,7 +21,7 @@ public class HaystackAndNeedles {
 	 * @throws Exception
 	 */
 	public static void findNeedles(String mHaystack, String[] mNeedles) throws Exception {
-		// hold all unique words in a hash map. Keep a count of each occurance of the
+		// hold all unique words in a hash map. Keep a count of each occurrence of the
 		// needle in the haystack.
 		Map<String, Integer> needlesCount = new HashMap<String, Integer>();
 		// check for null arguments
@@ -34,7 +34,7 @@ public class HaystackAndNeedles {
 		}
 		//split the Haystack string into words
 		//and create a hash map. A lot faster to access map than to iterate
-		// through an array of strings.
+		//through an array of strings.
 		String[] words = mHaystack.split("\\s+");
 		for (String word: words) {
 			Integer count = needlesCount.get(word);

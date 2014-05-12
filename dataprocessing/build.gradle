@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    mavenRepo name: 'conjars', url: 'http://conjars.org/repo/'
+}
+
+ext.cascadingVersion = '2.5.+'
+ext.hadoopVersion = '2.3.0'
+
+dependencies {
+    compile(group: 'cascading', name: 'cascading-core', version: cascadingVersion)
+    compile(group: 'cascading', name: 'cascading-hadoop2-mr1', version: cascadingVersion)
+    compile( group: 'org.apache.hadoop', name: 'hadoop-mapreduce-client-core', version: hadoopVersion )
+}
+
+jar {
+    description = "Assembles a Hadoop ready jar file"
+    doFirst {
+        into( 'lib' ) {
+            from configurations.compile
+        }
+    }
+    manifest {
+        attributes( "Main-Class": "Main" )
+    }
+}

@@ -20,7 +20,7 @@ public class Main {
     public static void main(String[] args) {
 
     	// input (taps) and output (sinks)
-        String inputPath 		= args[0];
+        String inputPath	= args[0];
         String outputPath 	= args[1];
         // sources and sinks
         Tap inTap 	= new Hfs(new TextLine(), inputPath);

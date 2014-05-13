@@ -16,32 +16,38 @@ import cascading.tap.hadoop.Hfs;
 import cascading.tuple.Fields;
 import java.util.Properties;
 
-
-public class
-        Main {
+public class Main {
     public static void main(String[] args) {
 
-        String inputPath = args[0];
-        String outputPath = args[1];
-        Tap inTap = new Hfs(new TextLine(), inputPath);
-        Tap outTap = new Hfs(new TextDelimited(true, "\t"), outputPath, SinkMode.REPLACE);
-
-        RegexParser parser = new RegexParser(new Fields("ip", "time", "request", "response", "size"), "^([^ ]*) \\S+ \\S+ \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) ([^ ]*).*$", new int[]{1, 2, 3, 4, 5});
-       Pipe processPipe = new Each("processPipe", new Fields("line"), parser, Fields.RESULTS);
-       processPipe = new GroupBy(processPipe, new Fields("ip"));
-       processPipe = new Every(processPipe, Fields.GROUP, new Count(new Fields("IPcount")), Fields.ALL);
-       Pipe sortedCountByIpPipe = new GroupBy(processPipe, new Fields("IPcount"), true);
-       sortedCountByIpPipe = new Each(sortedCountByIpPipe, new Fields("IPcount"), new Limit(10));
-       FlowDef flowDef = FlowDef.flowDef()
-        .addSource(processPipe, inTap)
-        .addTailSink(sortedCountByIpPipe, outTap)
-        .setName("DataProcessing");
-
+    	// input (taps) and output (sinks)
+        String inputPath 		= args[0];
+        String outputPath 	= args[1];
+        // sources and sinks
+        Tap inTap 	= new Hfs(new TextLine(), inputPath);
+        Tap outTap  = new Hfs(new TextDelimited(true, "\t"), outputPath, SinkMode.REPLACE);
+        // Parse the line of input and break them into five fields
+        RegexParser parser = new RegexParser(new Fields("ip", "time", "request", "response", "size"), 
+        		"^([^ ]*) \\S+ \\S+ \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) ([^ ]*).*$", new int[]{1, 2, 3, 4, 5});
+        // Create a pipe for processing each line at a time
+        Pipe processPipe = new Each("processPipe", new Fields("line"), parser, Fields.RESULTS);
+        // Group the stream within the pipe by the field "ip"
+        processPipe = new GroupBy(processPipe, new Fields("ip"));
+        // Aggregate each "ip" group using the Cascading built in Count function
+        processPipe = new Every(processPipe, Fields.GROUP, new Count(new Fields("IPcount")), Fields.ALL);
+        // After agreegation counter for each "ip," sort the counts
+        Pipe sortedCountByIpPipe = new GroupBy(processPipe, new Fields("IPcount"), true);
+        // Limit them to the first 10, in the desceding order
+        sortedCountByIpPipe = new Each(sortedCountByIpPipe, new Fields("IPcount"), new Limit(10));
+        // Join the pipe together in the flow, creating inputs and outputs (taps)
+        FlowDef flowDef = FlowDef.flowDef()
+    		   .addSource(processPipe, inTap)
+    		   .addTailSink(sortedCountByIpPipe, outTap)
+    		   .setName("DataProcessing");
         Properties properties = AppProps.appProps()
-        .setName("DataProcessing")
-        .buildProperties();
+        		.setName("DataProcessing")
+        		.buildProperties();
         Flow parsedLogFlow = new HadoopFlowConnector(properties).connect(flowDef);
-
+        //Finally, execute the flow.
         parsedLogFlow.complete();
     }
 }

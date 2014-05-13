@@ -34,7 +34,7 @@ public class Main {
         processPipe = new GroupBy(processPipe, new Fields("ip"));
         // Aggregate each "ip" group using the Cascading built in Count function
         processPipe = new Every(processPipe, Fields.GROUP, new Count(new Fields("IPcount")), Fields.ALL);
-        // After agreegation counter for each "ip," sort the counts
+        // After aggregation, count for each "ip," sort the counts
         Pipe sortedCountByIpPipe = new GroupBy(processPipe, new Fields("IPcount"), true);
         // Limit them to the first 10, in the desceding order
         sortedCountByIpPipe = new Each(sortedCountByIpPipe, new Fields("IPcount"), new Limit(10));

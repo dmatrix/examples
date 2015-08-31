@@ -1,8 +1,9 @@
 Mesos Command Sampler :interrobang:
 =====================
 
-This particular Mesos Framework is the equivalent of Hellow World. It's derived and modeled after RENDER. Much of the codeis
-borrowed and simplfied as an excercise for a novice to get his hands dirty and play around with the Framework Java API.
+This particular Mesos Framework is the equivalent of Hellow World—something code for a novice to get started with underlying interfaces for the schdueler. 
+It's derived and modeled (and shamelessly plagarized, I do admint)  after RENDLER. Much of the codei is borrowed and simplfied as an excercise for a 
+novice to get his hands dirty and play around with the Framework Java API.
 
 See also http://github/mesosphere/RENDLER for a more complicated Framework as the second example.
 See the [accompanying slides](http://mesosphere.github.io/oscon-mesos-2014/#/) for more context.

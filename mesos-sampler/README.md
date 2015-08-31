@@ -1,8 +1,8 @@
-Mesos Command Sampler :interrobang:
+Mesos Command Sampler :
 =====================
 
-This particular Mesos Framework is the equivalent of Hellow World—something code for a novice to get started with underlying interfaces for the schdueler. 
-It's derived and modeled (and shamelessly plagarized, I do admint)  after RENDLER. Much of the codei is borrowed and simplfied as an excercise for a 
+This particular Mesos Framework is the equivalent of a Hello World—some example code snippte for a novice to get started with underlying interfaces for the Schdueler. 
+It's derived and modeled (and shamelessly plagarized from, I do admint) after RENDLER. Much of the code is borrowed and simplfied as an excercise for a 
 novice to get his hands dirty and play around with the Framework Java API.
 
 See also http://github/mesosphere/RENDLER for a more complicated Framework as the second example.

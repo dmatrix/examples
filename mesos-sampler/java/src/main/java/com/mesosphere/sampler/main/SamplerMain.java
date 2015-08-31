@@ -26,19 +26,26 @@ public class SamplerMain {
 
   private static void usage() {
     String name = SamplerScheduler.class.getName();
-    System.err.println("Usage: " + name + " 127.0.1.1:5050 <tasks>");
+    System.err.println("Usage: " + name + " 127.0.1.1:5050 [-c '{command}'] <num_of_tasks>");
   }
   public static void main(String[] args) throws Exception {
-    if (args.length < 1 || args.length > 3) {
-      usage();
-      System.exit(1);
-    }
+	    String cmd;
+	    if (args.length < 1 || args.length > 3) {
+	      usage();
+	      System.exit(1);
+	    }
+	   for (String arg: args) {
+		   if (arg.equals("-c")) {
+			   cmd = args[2];
+		   }
+	   }
     // get usr directory where this command is excuted and construct a path:
     // part of the message to the master
     // via the protocol buffer
     String path = System.getProperty("user.dir")
         + "/target/sampler-1.0-SNAPSHOT-jar-with-dependencies.jar";
 
+    // maps to a protocol buffer
     CommandInfo.URI uri = CommandInfo.URI.newBuilder().setValue(path).setExtract(false).build();
 
     // The executor that will run on the node and create a Task for execution.
@@ -62,7 +69,7 @@ public class SamplerMain {
       System.out.println("Enabling checkpoint for the framework");
       frameworkBuilder.setCheckpoint(true);
     }
-
+   //TODO rewrite the constructor to take two arguments if command is specified
     Scheduler scheduler = new SamplerScheduler(executorSampler, Integer.parseInt(args[1]));
 
     // this driver will talk to the Mesos master

@@ -3,7 +3,9 @@ package com.mesosphere.sampler.scheduler;
 /*
  *  @author: Jules S. Damji
  *  This scheduler implements Mesos Scheduler Interface. These are callback functions that will be invoked
- *  for events propogating up from slaves via mesos masters up to the Framework Scheduler.
+ *  for events propogating up from slaves via Mesos master up to the Framework Scheduler. 
+ *  
+ *  (Much of the skeletal code is borrowed from http://github.com/mesosphere/RENDLER
  *  
  *  This code is reentrant.
  *  
@@ -33,12 +35,17 @@ public class SamplerScheduler implements Scheduler {
   private final int totalTasks;
   private int launchedTasks = 0;
   private int finishedTasks = 0;
+  private String cmd;
 
   public SamplerScheduler(ExecutorInfo executorSampler, int totalTasks) {
     this.executorSampler = executorSampler;
     this.totalTasks = totalTasks;
   }
-
+  public SamplerScheduler(ExecutorInfo executorSampler, String cmd, int totalTasks) {
+	    this.executorSampler = executorSampler;
+	    this.totalTasks = totalTasks;
+	    this.cmd = cmd;
+	  }
   @Override
   // This call back will be invoked by our driver when it receives a REGISTERED
   // EVENT

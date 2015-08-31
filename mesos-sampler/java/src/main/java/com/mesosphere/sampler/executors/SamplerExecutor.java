@@ -4,6 +4,8 @@ package com.mesosphere.sampler.executors;
  * @author Jules S. Damji
  * This Executor will create Task on the node on which it's created. It will register itself with the Mesos Master, 
  * will send an Event back to the Framework Scheduler
+ * 
+ *  (Much of the skeletal code is borrowed from http://github.com/mesosphere/RENDLER)
  */
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -60,20 +62,20 @@ public class SamplerExecutor implements Executor {
     fileName = new StringBuffer("/tmp/").append(nodeName).append("-")
         .append(pTaskInfo.getTaskId().getValue()).toString();
     StringBuffer cmdBuffer = new StringBuffer();
-    // cmdBuffer.append("ls /proc | grep ^[0-9]");
+    // cmdBuffer.append("ls /proc | grep ^[0-9] | sort -n");
     cmdBuffer.append("/usr/bin/id");
     String cmd = cmdBuffer.toString();
 
     try {
-      int exitValue = runProcess(cmd);
-      // If successful, send the framework message
-      if (exitValue == 0) {
-        String myStatus = "sampler:" + fileName;
-        pDriver.sendFrameworkMessage(myStatus.getBytes());
-      }
-    } catch (Exception e) {
-      System.out.println("Exception executing : " + e);
-    }
+	      int exitValue = runProcess(cmd);
+	      // If successful, send the framework message
+	      if (exitValue == 0) {
+		        String myStatus = "sampler:" + fileName;
+		        pDriver.sendFrameworkMessage(myStatus.getBytes());
+		      }
+	    } catch (Exception e) {
+	      System.out.println("Exception executing : " + e);
+	    }
 
     // Set the task with status finished
     status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
@@ -91,11 +93,11 @@ public class SamplerExecutor implements Executor {
    *          the input stream containing the data
    */
   private void printLines(String name, InputStream ins) throws Exception {
-    String line = null;
-    BufferedReader in = new BufferedReader(new InputStreamReader(ins));
-    while ((line = in.readLine()) != null) {
-      System.out.println(name + " " + line);
-    }
+	    String line = null;
+	    BufferedReader in = new BufferedReader(new InputStreamReader(ins));
+	    while ((line = in.readLine()) != null) {
+	    	System.out.println(name + " " + line);
+	    }
   }
 
   /**

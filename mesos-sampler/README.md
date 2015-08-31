@@ -1,7 +1,7 @@
 Mesos Command Sampler :
 =====================
 
-This particular Mesos Framework is the equivalent of a Hello World—some example code snippte for a novice to get started with underlying interfaces for the Schdueler. 
+This particular Mesos Framework is the equivalent of a Hello World—some example code snippet for a novice to get started with underlying interfaces for the Schdueler. 
 It's derived and modeled (and shamelessly plagarized from, I do admint) after RENDLER. Much of the code is borrowed and simplfied as an excercise for a 
 novice to get his hands dirty and play around with the Framework Java API.
 

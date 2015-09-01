@@ -1,4 +1,4 @@
-Mesos Command Sampler :
+Mesos Command Sampler : The Hello World Example for Mesos Framework
 =====================
 
 This particular Mesos Framework is the equivalent of a Hello World—some example code snippet for a novice to get started with underlying interfaces for the Schdueler. 
@@ -35,9 +35,11 @@ $ vagrant up
 Now that the VM is running, you can view the Mesos Web UI here:
 [http://10.141.141.10:5050](http://10.141.141.10:5050)
 
-You can see that 1 slave is registered and you've got some idle CPUs and Memory. So let's start the Rendler!
+You can see that 1 slave is registered and you've got some idle CPUs and Memory. So let's start the Command Sampler!
 
 ### Run Command Sampler Framework in the `mesos-demo` VM
+
+Go to the java directory.
 
 ### Shutting down the `mesos-demo` VM
 

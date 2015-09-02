@@ -27,11 +27,13 @@ public class SamplerExecutor implements Executor {
 
   String fileName;
   String nodeName;
+  String command;
 
   @Override
   public void registered(ExecutorDriver driver, ExecutorInfo executorInfo,
       FrameworkInfo frameworkInfo, SlaveInfo slaveInfo) {
     nodeName = slaveInfo.getHostname();
+    command = executorInfo.getData().toStringUtf8();
     // Executor running on a node.
     System.out.println("Registered executor on " + nodeName);
   }
@@ -61,21 +63,21 @@ public class SamplerExecutor implements Executor {
     // Run UNIX command
     fileName = new StringBuffer("/tmp/").append(nodeName).append("-")
         .append(pTaskInfo.getTaskId().getValue()).toString();
-    StringBuffer cmdBuffer = new StringBuffer();
-    // cmdBuffer.append("ls /proc | grep ^[0-9] | sort -n");
-    cmdBuffer.append("/usr/bin/id");
-    String cmd = cmdBuffer.toString();
-
+    /**
+     * StringBuffer cmdBuffer = new StringBuffer(); cmdBuffer.append(
+     * "echo 'Hello World. Welcome to the Mesos' World of Schedulers'"); String
+     * cmd = cmdBuffer.toString();
+     */
     try {
-	      int exitValue = runProcess(cmd);
-	      // If successful, send the framework message
-	      if (exitValue == 0) {
-		        String myStatus = "sampler:" + fileName;
-		        pDriver.sendFrameworkMessage(myStatus.getBytes());
-		      }
-	    } catch (Exception e) {
-	      System.out.println("Exception executing : " + e);
-	    }
+      int exitValue = runProcess(command);
+      // If successful, send the framework message
+      if (exitValue == 0) {
+        String myStatus = "sampler:" + fileName;
+        pDriver.sendFrameworkMessage(myStatus.getBytes());
+      }
+    } catch (Exception e) {
+      System.out.println("Exception executing : " + e);
+    }
 
     // Set the task with status finished
     status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
@@ -93,11 +95,11 @@ public class SamplerExecutor implements Executor {
    *          the input stream containing the data
    */
   private void printLines(String name, InputStream ins) throws Exception {
-	    String line = null;
-	    BufferedReader in = new BufferedReader(new InputStreamReader(ins));
-	    while ((line = in.readLine()) != null) {
-	    	System.out.println(name + " " + line);
-	    }
+    String line = null;
+    BufferedReader in = new BufferedReader(new InputStreamReader(ins));
+    while ((line = in.readLine()) != null) {
+      System.out.println(name + " " + line);
+    }
   }
 
   /**

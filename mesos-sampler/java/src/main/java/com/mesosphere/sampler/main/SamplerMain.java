@@ -26,19 +26,26 @@ public class SamplerMain {
 
   private static void usage() {
     String name = SamplerScheduler.class.getName();
-    System.err.println("Usage: " + name + " 127.0.1.1:5050 [-c '{command}'] <num_of_tasks>");
+    System.err.println("Usage: " + name + " 127.0.1.1:5050 [-c '{command}'] -n <num_of_tasks>");
   }
   public static void main(String[] args) throws Exception {
-	    String cmd;
-	    if (args.length < 1 || args.length > 3) {
-	      usage();
-	      System.exit(1);
-	    }
-	   for (String arg: args) {
-		   if (arg.equals("-c")) {
-			   cmd = args[2];
-		   }
-	   }
+    String command = "echo 'Hello World. Welcome to the Mesos' World of Schedulers'";
+    int numTasks = 5;
+
+    if (args.length < 1 || args.length > 4) {
+      usage();
+      System.out.println(args.length);
+      System.exit(1);
+    }
+    // parse command lines arguments
+    for (int i = 1; i < args.length; i++) {
+      if (args[i].startsWith("-c")) {
+        command = new String(args[i + 1]);
+      } else if (args[i].startsWith("-n")) {
+        numTasks = Integer.parseInt(args[i + 1]);
+      }
+    }
+
     // get usr directory where this command is excuted and construct a path:
     // part of the message to the master
     // via the protocol buffer
@@ -54,11 +61,11 @@ public class SamplerMain {
         .build();
 
     // Create only one Executor for the command. One may create multiple
-    // executors.
+    // executors for different tasks.
     ExecutorInfo executorSampler = ExecutorInfo.newBuilder()
         .setExecutorId(ExecutorID.newBuilder().setValue("SamplerExecutor"))
         .setCommand(commandInfoSampler).setName("Sampler Command Executor (Java)")
-        .setSource("java").build();
+        .setData(ByteString.copyFromUtf8(command)).setSource("java").build();
 
     FrameworkInfo.Builder frameworkBuilder = FrameworkInfo.newBuilder().setFailoverTimeout(120000)
         .setUser("") // Have Mesos fill in
@@ -69,8 +76,9 @@ public class SamplerMain {
       System.out.println("Enabling checkpoint for the framework");
       frameworkBuilder.setCheckpoint(true);
     }
-   //TODO rewrite the constructor to take two arguments if command is specified
-    Scheduler scheduler = new SamplerScheduler(executorSampler, Integer.parseInt(args[1]));
+    // if command specified use that command rather then default
+    // "echo 'Hello World...'"
+    Scheduler scheduler = new SamplerScheduler(executorSampler, command, numTasks);
 
     // this driver will talk to the Mesos master
     MesosSchedulerDriver driver = null;

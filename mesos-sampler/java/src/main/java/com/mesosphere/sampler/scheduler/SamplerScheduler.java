@@ -42,10 +42,11 @@ public class SamplerScheduler implements Scheduler {
     this.totalTasks = totalTasks;
   }
   public SamplerScheduler(ExecutorInfo executorSampler, String cmd, int totalTasks) {
-	    this.executorSampler = executorSampler;
-	    this.totalTasks = totalTasks;
-	    this.cmd = cmd;
-	  }
+    this.executorSampler = executorSampler;
+    this.totalTasks = totalTasks;
+    this.cmd = cmd;
+  }
+
   @Override
   // This call back will be invoked by our driver when it receives a REGISTERED
   // EVENT
@@ -88,7 +89,7 @@ public class SamplerScheduler implements Scheduler {
         TaskID taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks++)).build();
 
         System.out.println("Launching task " + taskId.getValue());
-        // Task builder for Sampler and set the resources
+        // Task builder for Sampler and set the resource
         TaskInfo task = TaskInfo
             .newBuilder()
             .setName("task " + taskId.getValue())

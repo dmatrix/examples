@@ -67,8 +67,9 @@ public class SamplerMain {
         .setCommand(commandInfoSampler).setName("Sampler Command Executor (Java)")
         .setData(ByteString.copyFromUtf8(command)).setSource("java").build();
 
-    FrameworkInfo.Builder frameworkBuilder = FrameworkInfo.newBuilder().setFailoverTimeout(120000)
-        .setUser("") // Have Mesos fill in
+    FrameworkInfo.Builder frameworkBuilder = FrameworkInfo.newBuilder()
+    		.setFailoverTimeout(120000)
+    		.setUser("") // Have Mesos fill in
         // the current user.
         .setName("Sampler Command Framework (Java)");
 

@@ -1,16 +1,14 @@
-package com.mesosphere.sampler.scheduler;
+package com.mesosphere.dnscrawler.scheduler;
 
 /*
  *  @author: Jules S. Damji
- *  This scheduler implements Mesos Scheduler Interface. These are callback functions that will be invoked
- *  for events propogating up from slaves via Mesos master up to the Framework Scheduler. 
- *  
- *  (Much of the skeletal code is borrowed from http://github.com/mesosphere/RENDLER)
+ *
  *  
  *  This code is reentrant.
  *  
  */
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.mesos.Protos.ExecutorID;
@@ -29,16 +27,18 @@ import org.apache.mesos.Protos.Value;
 import org.apache.mesos.Scheduler;
 import org.apache.mesos.SchedulerDriver;
 
-public class SamplerScheduler implements Scheduler {
+public class DNSMXCrawlerScheduler implements Scheduler {
 
-  private final ExecutorInfo executorSampler;
-  private final int totalTasks;
   private int launchedTasks = 0;
   private int finishedTasks = 0;
+  private int maxTasks = 1;
+  private final ExecutorInfo executorDNS;
+  private List<String> domainTasks;
 
-  public SamplerScheduler(ExecutorInfo executorSampler, int totalTasks) {
-    this.executorSampler = executorSampler;
-    this.totalTasks = totalTasks;
+  public DNSMXCrawlerScheduler(ExecutorInfo dnsMXExecutor, List<String> domainTasks) {
+    this.executorDNS = dnsMXExecutor;
+    this.domainTasks = domainTasks;
+    this.maxTasks = domainTasks.size();
   }
 
   @Override
@@ -69,20 +69,20 @@ public class SamplerScheduler implements Scheduler {
   public void disconnected(SchedulerDriver driver) {
   }
 
-  @SuppressWarnings("deprecation")
   @Override
   // Handle Offer events! Vital for Executors to launch task and the resource it
   // will need.
   //
   public void resourceOffers(SchedulerDriver driver, List<Offer> offers) {
-    for (Offer offer : offers) {
-      List<TaskInfo> tasks = new ArrayList<TaskInfo>();
-      // accept offers only if tasks have not completed
-      //
-      if (launchedTasks < totalTasks) {
-        TaskID taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks++)).build();
-
-        System.out.println("Launching task " + taskId.getValue());
+    List<TaskInfo> tasks = new ArrayList<TaskInfo>();
+    Collection<OfferID> taskOffers = new ArrayList<OfferID>();
+    if (launchedTasks <= maxTasks) {
+      for (Offer offer : offers) {
+        String domain = domainTasks.get(launchedTasks++);
+        taskOffers.add(offer.getId());
+        TaskID taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks)).build();
+        System.out.println(String.format("Launching task for domain %s and id %s", domain,
+            taskId.getValue()));
         // Task builder for Sampler and set the resource
         TaskInfo task = TaskInfo
             .newBuilder()
@@ -95,13 +95,13 @@ public class SamplerScheduler implements Scheduler {
             .addResources(
                 Resource.newBuilder().setName("mem").setType(Value.Type.SCALAR)
                     .setScalar(Value.Scalar.newBuilder().setValue(128)))
-            .setExecutor(ExecutorInfo.newBuilder(executorSampler)).build();
+            .setExecutor(ExecutorInfo.newBuilder(executorDNS)).build();
 
-        taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks++)).build();
+        taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks)).build();
 
         tasks.add(task);
       }
-      driver.launchTasks(offer.getId(), tasks);
+      driver.launchTasks(taskOffers, tasks);
     }
   }
 
@@ -120,9 +120,9 @@ public class SamplerScheduler implements Scheduler {
           + " has completed with state " + status.getState());
       finishedTasks++;
       System.out.println("Finished tasks: " + finishedTasks);
-      if (finishedTasks == totalTasks) {
+      if (finishedTasks == maxTasks) {
         // done stop the driver
-        System.out.println("All Executor Tasks Finished: " + finishedTasks);
+        System.out.println("All Executor Tasks Finished for all domains: " + finishedTasks);
         System.out.println("Stopping the Framework Driver: We are done!");
         driver.stop();
       }
@@ -137,11 +137,7 @@ public class SamplerScheduler implements Scheduler {
   // and deal with as you like.
   public void frameworkMessage(SchedulerDriver driver, ExecutorID executorId, SlaveID slaveId,
       byte[] data) {
-    String messageStr = new String(data);
-    if (messageStr.startsWith("executed")) {
-      System.out.println(String.format("Command Sampler Task '%s' on node: %s", messageStr,
-          slaveId.getValue()));
-    }
+
   }
 
   @Override

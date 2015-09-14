@@ -49,11 +49,23 @@ public class DNSMXExecutor implements Executor {
   @Override
   public void launchTask(ExecutorDriver pDriver, TaskInfo pTaskInfo) {
     // Start task with status running
-
-    TaskStatus status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
-        .setState(TaskState.TASK_RUNNING).build();
+    TaskStatus status = TaskStatus.newBuilder()
+            .setTaskId(pTaskInfo.getTaskId())
+            .setState(TaskState.TASK_RUNNING).build();
     // send the Event Up the chain
     pDriver.sendStatusUpdate(status);
+    // get the MX records
+    String domain = pTaskInfo.getData().toStringUtf8();
+    DNSMXLookup mx = new DNSMXLookup(domain);
+    String[] mxHosts = mx.getMXHosts();
+    if (mxHosts != null && mxHosts.length > 0) {
+      for (String mxHost : mxHosts) {
+        System.out.println(String.format("domain %s: MX hosts %s", domain, mxHost));
+      }
+    } else {
+      System.out.println(String.format("domain %s: MX hosts failed to retrieve or does not exists",
+          domain));
+    }
     // Set the task with status finished
     status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
         .setState(TaskState.TASK_FINISHED).build();

@@ -2,7 +2,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>mesosphere</groupId>
+    <groupId>com.mesosphere.dnscrawler</groupId>
     <artifactId>dnscrawler</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -38,6 +38,26 @@
                     </descriptorRefs>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <configuration>
+                            <groupId>org.xbill.DNS</groupId>
+                            <artifactId>dnsjava</artifactId>
+                            <version>2.1.7</version>
+                            <packaging>jar</packaging>
+                            <file>/Users/jdamji/libs/dnsjava-2.1.7.jar</file>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -50,6 +70,11 @@
             <name>Mesosphere Repo</name>
             <url>http://downloads.mesosphere.io/maven</url>
         </repository>
+        <repository>
+            <id>my-local-repo</id>
+            <name>My Local  Repo</name>
+            <url>file:///Users/jdamji/lib</url>
+        </repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -57,6 +82,17 @@
             <artifactId>mesos</artifactId>
             <version>0.21.1</version>
         </dependency>
+	    <dependency>
+            <groupId>org.xbill.DNS</groupId>
+            <artifactId>dnsjava</artifactId>
+            <version>2.1.7</version>
+            <!-- <scope>system</scope>
+            <systemPath>/Users/jdamji/libs/dnsjava-2.1.7.jar</systemPath> -->
+	    </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
     </dependencies>
-
 </project>

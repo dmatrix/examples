@@ -1,9 +1,5 @@
 package com.mesosphere.dnscrawler.main;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.mesosphere.dnscrawler.scheduler.DNSMXCrawlerScheduler;
 import org.apache.mesos.MesosSchedulerDriver;
 import org.apache.mesos.Protos;
 import org.apache.mesos.Protos.CommandInfo;
@@ -12,14 +8,15 @@ import org.apache.mesos.Protos.FrameworkInfo;
 import org.apache.mesos.Protos.Status;
 import org.apache.mesos.Scheduler;
 
-import com.mesosphere.dnscrawler.scheduler.DNSMXCrawlerScheduler;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DNSMXCrawlerMain {
 
   private static void usage() {
 
     String name = DNSMXCrawlerMain.class.getName();
-    System.err.println("Usage: " + name + " 127.0.1.1:5050 domain1.... domainn");
+    System.err.println("Usage: " + name + " 127.0.1.1:5050 domain1.... domainN");
   }
 
   private static CommandInfo.URI getURI() {

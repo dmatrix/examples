@@ -27,6 +27,8 @@ import org.apache.mesos.Protos.Value;
 import org.apache.mesos.Scheduler;
 import org.apache.mesos.SchedulerDriver;
 
+import com.google.protobuf.ByteString;
+
 public class DNSMXCrawlerScheduler implements Scheduler {
 
   private int launchedTasks = 0;
@@ -89,6 +91,7 @@ public class DNSMXCrawlerScheduler implements Scheduler {
             .setName("task " + taskId.getValue())
             .setTaskId(taskId)
             .setSlaveId(offer.getSlaveId())
+            .setData(ByteString.copyFromUtf8(domain))
             .addResources(
                 Resource.newBuilder().setName("cpus").setType(Value.Type.SCALAR)
                     .setScalar(Value.Scalar.newBuilder().setValue(1)))

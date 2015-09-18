@@ -1,5 +1,4 @@
 package com.mesosphere.dnscrawler.scheduler;
-
 /*
  *  @author: Jules S. Damji
  *
@@ -7,9 +6,7 @@ package com.mesosphere.dnscrawler.scheduler;
  *  This code is reentrant.
  *  
  */
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import org.apache.mesos.Protos.ExecutorID;
 import org.apache.mesos.Protos.ExecutorInfo;
@@ -33,14 +30,17 @@ public class DNSMXCrawlerScheduler implements Scheduler {
 
   private int launchedTasks = 0;
   private int finishedTasks = 0;
-  private int maxTasks = 1;
-  private final ExecutorInfo executorDNS;
+  private ExecutorInfo executorDNS;
+  private ExecutorInfo executorTLS;
   private List<String> domainTasks;
+  private List<String> mxHostsQ;
 
-  public DNSMXCrawlerScheduler(ExecutorInfo dnsMXExecutor, List<String> domainTasks) {
+  public DNSMXCrawlerScheduler(ExecutorInfo dnsMXExecutor, ExecutorInfo executorTLS,
+      List<String> domainTasks) {
     this.executorDNS = dnsMXExecutor;
+    this.executorTLS = executorTLS;
     this.domainTasks = domainTasks;
-    this.maxTasks = domainTasks.size();
+    this.mxHostsQ = Collections.synchronizedList(new ArrayList<String>());
   }
 
   @Override
@@ -76,16 +76,16 @@ public class DNSMXCrawlerScheduler implements Scheduler {
   // will need.
   //
   public void resourceOffers(SchedulerDriver driver, List<Offer> offers) {
-    List<TaskInfo> tasks = new ArrayList<TaskInfo>();
-    Collection<OfferID> taskOffers = new ArrayList<OfferID>();
-    if (launchedTasks <= maxTasks) {
-      for (Offer offer : offers) {
-        String domain = domainTasks.get(launchedTasks++);
+    for (Offer offer : offers) {
+      List<TaskInfo> tasks = new ArrayList<TaskInfo>();
+      Collection<OfferID> taskOffers = new ArrayList<OfferID>();
+      if (domainTasks.size() != 0) {
+        String domain = domainTasks.remove(0);
         taskOffers.add(offer.getId());
-        TaskID taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks)).build();
+        TaskID taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks++)).build();
         System.out.println(String.format("Launching task for domain %s and id %s", domain,
             taskId.getValue()));
-        // Task builder for Sampler and set the resource
+        // Task builder for DNSCrawler to fetch all MX records for each domain
         TaskInfo task = TaskInfo
             .newBuilder()
             .setName("task " + taskId.getValue())
@@ -99,23 +99,42 @@ public class DNSMXCrawlerScheduler implements Scheduler {
                 Resource.newBuilder().setName("mem").setType(Value.Type.SCALAR)
                     .setScalar(Value.Scalar.newBuilder().setValue(128)))
             .setExecutor(ExecutorInfo.newBuilder(executorDNS)).build();
-
-        taskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks)).build();
-
         tasks.add(task);
+        // create as Task for the TLS checker executor
+      } else if (mxHostsQ.size() != 0) {
+        String mxHost = mxHostsQ.remove(0);
+        taskOffers.add(offer.getId());
+        TaskID tlsTaskId = TaskID.newBuilder().setValue(Integer.toString(launchedTasks * 2))
+            .build();
+        TaskInfo mxTask = TaskInfo
+            .newBuilder()
+            .setName("task " + mxHost + " " + tlsTaskId.getValue())
+            .setTaskId(tlsTaskId)
+            .setSlaveId(offer.getSlaveId())
+            .setData(ByteString.copyFromUtf8(mxHost))
+            .addResources(
+                Resource.newBuilder().setName("cpus").setType(Value.Type.SCALAR)
+                    .setScalar(Value.Scalar.newBuilder().setValue(1)))
+            .addResources(
+                Resource.newBuilder().setName("mem").setType(Value.Type.SCALAR)
+                    .setScalar(Value.Scalar.newBuilder().setValue(128)))
+            .setExecutor(ExecutorInfo.newBuilder(executorTLS)).build();
+        System.out.println(String.format("Launching TLS task %s for MX host %s",
+            tlsTaskId.getValue(), mxHost));
+        System.out.println(String.format("Current MX hosts in the Queue=%d", mxHostsQ.size()));
+        tasks.add(mxTask);
       }
-      driver.launchTasks(taskOffers, tasks);
+      if (tasks.size() > 0)
+        driver.launchTasks(taskOffers, tasks);
     }
   }
-
   @Override
   public void offerRescinded(SchedulerDriver driver, OfferID offerId) {
   }
 
   @Override
   // Check for completion of tasks. This call back is invoked when status Event
-  // is received. Here
-  // you want update approviate account keeping.
+  // is received. Here you want do the relevant account keeping.
   //
   public void statusUpdate(SchedulerDriver driver, TaskStatus status) {
     if (status.getState() == TaskState.TASK_FINISHED || status.getState() == TaskState.TASK_LOST) {
@@ -123,7 +142,7 @@ public class DNSMXCrawlerScheduler implements Scheduler {
           + " has completed with state " + status.getState());
       finishedTasks++;
       System.out.println("Finished tasks: " + finishedTasks);
-      if (finishedTasks == maxTasks) {
+      if (mxHostsQ.size() == 0) {
         // done stop the driver
         System.out.println("All Executor Tasks Finished for all domains: " + finishedTasks);
         System.out.println("Stopping the Framework Driver: We are done!");
@@ -140,7 +159,8 @@ public class DNSMXCrawlerScheduler implements Scheduler {
   // and deal with as you like.
   public void frameworkMessage(SchedulerDriver driver, ExecutorID executorId, SlaveID slaveId,
       byte[] data) {
-
+    String mxHost = new String(data);
+    mxHostsQ.add(mxHost);
   }
 
   @Override
@@ -150,6 +170,7 @@ public class DNSMXCrawlerScheduler implements Scheduler {
   @Override
   public void executorLost(SchedulerDriver driver, ExecutorID executorId, SlaveID slaveId,
       int status) {
+    System.out.println("Executor lost: " + executorId.toString());
   }
 
   @Override

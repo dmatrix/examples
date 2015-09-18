@@ -6,6 +6,7 @@ package com.mesosphere.dnscrawler.executors;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.SerializationUtils;
 import org.apache.mesos.Executor;
 import org.apache.mesos.ExecutorDriver;
 import org.apache.mesos.MesosExecutorDriver;
@@ -34,8 +35,9 @@ public class DNSMXExecutor implements Executor {
   public void registered(ExecutorDriver driver, ExecutorInfo executorInfo,
       FrameworkInfo frameworkInfo, SlaveInfo slaveInfo) {
     nodeName = slaveInfo.getHostname();
+    String executorName = getClass().getName();
     // Executor running on a node.
-    System.out.println("Registered executor on " + nodeName);
+    System.out.println(String.format("Registered executor %s on node %s", executorName, nodeName));
   }
 
   @Override
@@ -49,9 +51,8 @@ public class DNSMXExecutor implements Executor {
   @Override
   public void launchTask(ExecutorDriver pDriver, TaskInfo pTaskInfo) {
     // Start task with status running
-    TaskStatus status = TaskStatus.newBuilder()
-            .setTaskId(pTaskInfo.getTaskId())
-            .setState(TaskState.TASK_RUNNING).build();
+    TaskStatus status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
+        .setState(TaskState.TASK_RUNNING).build();
     // send the Event Up the chain
     pDriver.sendStatusUpdate(status);
     // get the MX records
@@ -60,17 +61,24 @@ public class DNSMXExecutor implements Executor {
     String[] mxHosts = mx.getMXHosts();
     if (mxHosts != null && mxHosts.length > 0) {
       for (String mxHost : mxHosts) {
-        System.out.println(String.format("domain %s: MX hosts %s", domain, mxHost));
+        System.out.println(String.format("Domain %s: MX hosts %s", domain, mxHost));
+        // send message to the Framework to Launch Task for the mxTLSChecker
+        // and send each MX host to the scheduler, so that the scheduler can now
+        // create tasks for TLS checks
+        StringBuffer b = new StringBuffer(domain);
+        b.append("|");
+        b.append(mxHost);
+        pDriver.sendFrameworkMessage(mxHost.getBytes());
       }
     } else {
-      System.out.println(String.format("domain %s: MX hosts failed to retrieve or does not exists",
+      System.out.println(String.format("Domain %s: MX hosts failed to retrieve or does not exists",
           domain));
+      // Set the task with status finished since we don't have any MX hosts to
+      // check for TLS
     }
-    // Set the task with status finished
     status = TaskStatus.newBuilder().setTaskId(pTaskInfo.getTaskId())
         .setState(TaskState.TASK_FINISHED).build();
     pDriver.sendStatusUpdate(status);
-
   }
 
   @Override
@@ -87,6 +95,7 @@ public class DNSMXExecutor implements Executor {
 
   @Override
   public void error(ExecutorDriver driver, String message) {
+    System.out.println("Error: " + getClass().getName() + ": " + message);
   }
 
   public static void main(String[] args) throws Exception {

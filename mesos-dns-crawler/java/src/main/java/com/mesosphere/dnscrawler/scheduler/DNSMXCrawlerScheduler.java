@@ -108,8 +108,8 @@ public class DNSMXCrawlerScheduler implements Scheduler {
             .build();
         TaskInfo mxTask = TaskInfo
             .newBuilder()
-            .setName("task " + mxHost + " " + tlsTaskId.getValue())
             .setTaskId(tlsTaskId)
+            .setName("task " + mxHost + " " + tlsTaskId.getValue())
             .setSlaveId(offer.getSlaveId())
             .setData(ByteString.copyFromUtf8(mxHost))
             .addResources(

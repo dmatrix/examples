@@ -2,8 +2,10 @@ Mesos Command Sampler : The Hello World Example for Mesos Framework
 =====================
 
 This particular Mesos Framework is the equivalent of a Hello World—some example code snippet for a novice to get started with underlying interfaces for the Schdueler. 
-It's derived and modeled (and shamelessly plagarized from, I do admint) after RENDLER. Much of the code is borrowed and simplfied as an excercise for a 
-novice to get his hands dirty and play around with the Framework Java API.
+It's derived and modeled (after RENDLER. Much of the code is borrowed and simplfied as an excercise for a 
+novice to get his hands dirty and play around with the Mesos Framework Java API. More importantly, each platform, every language, and every framework
+has its "Hello World" equivalent, this one is for Mesos just as WorCount is to MapReduce.
+
 
 See also [RENDLER](http://github/mesosphere/RENDLER) for a more complete and complicated Framework as the second example.
 Also, view the [accompanying slides](http://mesosphere.github.io/oscon-mesos-2014/#/) for more context.

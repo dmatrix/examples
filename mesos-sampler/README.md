@@ -1,6 +1,8 @@
 Mesos Command Sampler : The Hello World Example for Mesos Framework
 =====================
 
+![Apache Mesos](./images/mesos.png)
+
 This particular Mesos Framework is the equivalent of a Hello World—some example code snippet for a novice to get started with underlying interfaces for the Schdueler. 
 It's derived and modeled (after RENDLER). Much of the code is borrowed and simplfied as an excercise for a 
 novice to get his hands dirty and play around with the Mesos Framework Java API. More importantly, each platform, every language, and every framework
@@ -17,7 +19,7 @@ Command Sampler consists of three main components:
 
 The diagram shows the interaction of these classes with Mesos master as the indireciton layer between the Scheduler and Executors.
 
-![Command Sampler](./images/mesos.png)
+![Command Sampler](./images/mesos_1.png)
 
 ## Quick Start with Vagrant
 

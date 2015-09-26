@@ -10,12 +10,12 @@ Back when I wrote a C++ crawler that partitioned domains into batches of 10K dom
 
 Today, it would seem like a classic MapReduce Job. Create a bunch of Mappers for fetching the MX records and send the list to reducers to check TLS. Or even have the mappers do both fetch MX and check TLS. I could to this seamlesly with Apache Spark, and with some effort using MapReduce APIs. Even better I could quickly implement a  Mesos framework scheduler with executors that do the tasks for me.
 
+##Solution
 As a first phase, I wrote a quick proof of concept to see how easy it would be to write a distributed application using Mesos Framework API. So the first phase is just a proof of concept. The second phase will attempt to emulate what I did at VeriSign. 
 
 If I am ambitious, I might as well write a Python crawler as single unit of execution that reads buckets from distributed file system, such as HDFS, or distributed storage, such as S3, containerize it as a Docker application, and deploy it via Marathon, omitting the need to write a Mesos framework scheduler. 
 
 But first let's have a go at the proof of concept as a Mesos Framework. It's a good excercise to learn, try, do and share.
-
 
 DNS Crawler  consists of four main classes or components:
 

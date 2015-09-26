@@ -46,7 +46,7 @@ You can see that 1 slave is registered and you've got some idle CPUs and Memory.
 
 ### Run Command Sampler Framework in the `mesos-demo` VM
 
-Go to the java directory.
+Go to the java directory and follow the instructions in how to compile and launch the Command Sampler.
 
 ### Shutting down the `mesos-demo` VM
 

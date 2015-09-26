@@ -156,15 +156,17 @@ public class DNSMXCrawlerScheduler implements Scheduler {
 
   @Override
   // The Executors can send Messages back to Scheduler. Handle in this callback
-  // and deal with as you like.
+  // and deal with it. Here we want to insert into the Queue for the next executor task, TLS check
   public void frameworkMessage(SchedulerDriver driver, ExecutorID executorId, SlaveID slaveId,
       byte[] data) {
-    String mxHost = new String(data);
-    mxHostsQ.add(mxHost);
+        String mxHost = new String(data);
+        // add to the TLS Executor tasks' queue
+        mxHostsQ.add(mxHost);
   }
 
   @Override
   public void slaveLost(SchedulerDriver driver, SlaveID slaveId) {
+      System.out.print(String.format("Slave host name %s lost", slaveId.getValue()));
   }
 
   @Override

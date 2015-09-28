@@ -18,10 +18,14 @@ class DnsRecords:
             records = self.get_mx_records(name)
         elif type == 'CNAME':
             records = self.get_cname_records(name)
+        elif type == 'A':
+            records = self.get_addr_records(name)
+        elif type == 'SOA':
+            records = self.get_soa_records(name)
         elif type == 'SVR':
             records = self.get_service_records(name)
             #
-            #didnt match any supported record type
+            #didn't match any supported record type
             # return an empty list
         else:
             records=[]
@@ -39,7 +43,43 @@ class DnsRecords:
             return mx
 
     def get_cname_records(self, name):
-        return []
+        cnames = []
+        try:
+            answers = dns.resolver.query(name, 'CNAME')
+            for rdata in cnames:
+                cnames.append(rdata.target.to_text())
+        except:
+            pass
+        finally:
+            return cnames
+
+    def get_addr_records(self, name):
+        addrs = []
+        try:
+            answers = dns.resolver.query(name, 'A')
+            for rdata in answers:
+                addrs.append(rdata.address)
+        except:
+            pass
+        finally:
+            return addrs
+
+    def get_soa_records(self, name):
+        soa = {}
+        try:
+            answers = dns.resolver.query(name, 'SOA')
+            for rdata in answers:
+                soa['serial'] = rdata.serial
+                soa['rname'] = rdata.rname.to_text()
+                soa['refresh'] = rdata.refresh
+                soa['retry'] = rdata.retry
+                soa['expire'] = rdata.expire
+                soa['minimum'] = rdata.minimum
+                soa['master'] = rdata.mname.to_text()
+        except:
+            pass
+        finally:
+            return soa
 
     def get_service_records(self, name):
         return []

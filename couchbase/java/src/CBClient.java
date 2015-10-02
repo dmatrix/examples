@@ -25,5 +25,13 @@ public class CBClient {
         //now let's try to retrieve it.
         JsonDocument julesDoc = bucket.get("jules");
         System.out.println(String.format("Json Document retrieved: %s", julesDoc));
+        bucket.close();
+        // now fetch from the beer-bucket
+        bucket = cluster.openBucket("beer-sample");
+        JsonDocument beerDoc = bucket.get("21st_amendment_brewery_cafe");
+        System.out.println(String.format("Json Document retrieved: %s", beerDoc));
+        bucket.close();
+        cluster.disconnect();
+
     }
 }

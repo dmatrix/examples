@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="couchbase-core-io-1.2.0-javadoc">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-core-io-1.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-java-client-2.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/rxjava-1.0.14.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-core-io-1.2.0-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-java-client-2.2.0-javadoc.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/rxjava-1.0.14-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-core-io-1.2.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/couchbase-java-client-2.2.0-sources.jar!/" />
+      <root url="jar://$USER_HOME$/Couchbase-Java-Client-2.2.0/rxjava-1.0.14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

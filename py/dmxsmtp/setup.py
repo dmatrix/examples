@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 from setuptools import setup
+
 setup(name='dmxsmtp',
       version='0.1',
       description='General Purpose Python SMTP package',
@@ -6,5 +9,5 @@ setup(name='dmxsmtp',
       author='Jules S. Damji',
       author_email='dmatrix@comcast.net',
       license='',
-      packages=['dmxutils'],
+      packages=['dmxsmtputils'],
       zip_safe=False)

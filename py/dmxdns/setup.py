@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 from setuptools import setup
+
 setup(name='dmxdns',
       version='0.1',
       description='Some General Purpose Python DNS Package',

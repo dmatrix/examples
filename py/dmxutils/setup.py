@@ -1,4 +1,5 @@
 from setuptools import setup
+
 setup(name='dmxutils',
       version='0.1',
       description='Some General Purpose Python Utilities',

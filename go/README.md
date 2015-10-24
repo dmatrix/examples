@@ -1,5 +1,5 @@
 ##A Gopher Joins the Kingdom of Languages, with Ums, Ahs, Uhh...
-A set [learning exercises for GO](http://tour.golang.org/) is an excellent way to interactively and quickly learn GO. It reminds me, delightfully and ruefully of Python and Scala, mixed with C, but with trimmed syntax nuances, absence of tabs as token separator, and enhanced readbility.
+A set of [learning exercises for GO](http://tour.golang.org/)(or any language for that matter) is an excellent way to interactively and quickly learn GO. It reminds me, delightfully of Python and Scala, mixed with C, but with trimmed syntax nuances, absence of tabs as token separator, and enhanced readbility and simplicity.
 
 Despite some critics, GO has garned a rapid following, particularly among developers who write embedded system software, agents, and distrubuted systems. Its built-in concurrancy patterns lends itself well to writing concurrent programs. Robert Pike, creator of the language and UNIX's legendary co-founder now at Google, notes eloquently that [concurrency != parallelism.](https://www.youtube.com/watch?v=cN_DpYBzKso) He's particulary emphatic about the GO's Concurrent Pattenrs.
 
@@ -11,8 +11,7 @@ You can watch his lectures on [Youtube.](https://www.youtube.com/watch?v=cF1zJYk
 
 And if you're thinking of writing distributed systems, where concurrency is inherent in your tasks, think about GO. Think about its Concurrency Patterns, and think about its efficiency and brevity of language.
 
-Yes, it's not JVM based langauge—it compiles to native code. 
+Yes, it's not JVM based langauge—it compiles to native code. Yes, sometimes you may grunt Umm, Ahh, Uhh!? 
 
 Just like any new programming language, an interactive and quick way to start is by doing it. So get started, and [GO!] (https://blog.golang.org/playground)
 
-Jules S. Damji

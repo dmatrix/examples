@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 //declare type struct in this file. Consider this as a class to which we will define some methods
@@ -24,6 +25,22 @@ func (v *Vertex) Abs() float64 {
 func (x MyInt) cube() int {
 	return int(x * x * x)
 }
+//define at struct for Error
+type MyError struct {
+	When time.Time
+	What string
+}
+//define a method for this type.
+func (e *MyError) Error() string {
+	return fmt.Sprintf("at %v, %s", e.When, e.What)
+}
+// a function that returns error, which is defined already
+func run() error {
+	return &MyError{
+		time.Now(),
+		"it didn't work",
+	}
+}
 
 //let's see how they work
 func main() {
@@ -35,5 +52,9 @@ func main() {
 	x := MyInt(5)
 
 	fmt.Println(x.cube())
+
+	if err := run(); err != nil {
+		fmt.Println(err)
+	}
 
 }

@@ -38,15 +38,19 @@ func main() {
 	fmt.Printf("%v\n", Names)
 	// another way to do this without using the map
 	// slightly less efficient since it iterates twice over the loop
+	// find the length of the longest word in the slice, and that will be the 
+	// capacity of the final array.
 	var maxLen int
+	//iterate over the names, and find the maxLend
 	for _, name := range names {
 		if l := len(name); l > maxLen {
 			maxLen = l
 		}
 	}
-	// create a slice string[][]
+	// create a slice string[][] with capacity maxLen
 	output := make([][]string, maxLen)
 	for _, name := range names {
+		//index into the array and append any names with the same string length
 		output[len(name)-1] = append(output[len(name)-1], name)
 	}
 	fmt.Printf("%v", output)

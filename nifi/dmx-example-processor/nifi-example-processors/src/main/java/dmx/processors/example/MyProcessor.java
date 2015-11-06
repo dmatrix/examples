@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package dmx.processors.example;
+package main.java.dmx.processors.example;
 
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
+import org.apache.nifi.components.Validator;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.*;
 import org.apache.nifi.annotation.behavior.ReadsAttribute;
@@ -29,7 +30,6 @@ import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.processor.exception.ProcessException;
-import org.apache.nifi.processor.util.StandardValidators;
 
 import java.util.*;
 
@@ -44,7 +44,7 @@ public class MyProcessor extends AbstractProcessor {
             .Builder().name("My Property")
             .description("Example Property")
             .required(true)
-            .addValidator(StandardValidators.NON_EMPTY_VALIDATOR)
+            .addValidator(Validator.VALID)
             .build();
 
     public static final Relationship MY_RELATIONSHIP = new Relationship.Builder()
@@ -87,9 +87,9 @@ public class MyProcessor extends AbstractProcessor {
 		FlowFile flowFile = session.get();
 		if ( flowFile == null ) {
 			return;
-		}
-
-        // TODO implement
+		} else {
+            // TODO implement
+        }
 
     }
 

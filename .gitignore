@@ -1,6 +1,7 @@
 # Build and Release Folders
 bin/
 couchbase/java/.idea/
+PyDmatrix/
 # Other files and folders
 .settings/
 .classpath

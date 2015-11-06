@@ -20,8 +20,10 @@ public class CBClient {
 		Bucket beerBucket = cluster.openBucket("beer-sample");
 
 		// let's create a json document
-		JsonObject user = JsonObject.empty().put("firstname", "Jules")
-				.put("lastname", "Damji").put("job", "Develoepr Advocate")
+		JsonObject user = JsonObject.empty()
+                .put("firstname", "Jules")
+				.put("lastname", "Damji")
+                .put("job", "Developer Advocate")
 				.put("age", 102);
 
 		// now we can do a simple insert in the default bucket

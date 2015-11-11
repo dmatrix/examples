@@ -5,24 +5,23 @@ import time
 import sys
 #
 # initate the Pubnub instance
-# subsistute your publish_key and subscribe_key here
+# subsistute your publish_key and subscribe_key here, if you want more security. But demo should work
 #
 pubnub = Pubnub(publish_key="demo", subscribe_key="demo")
 
 #
-# define some callbacks 
+# define some callbacks
 #
 def sub_callback(message, channel):
-	print (message)
+	print (channel + ":" + message)
 
-def error(message):
+def on_error(message):
 	print ("ERROR: " + str(message))
 
-def connect(message):
-	print ("CONNECTED")
+def on_connect_json(message):
+	print ("JSON CONNECTED")
 	messages = [
-				"Hello World from PubNub's Python SDK", 
-				"Not bad for a quick examples", 
+				"Hello World from PubNub's Python SDK",
 				"Some Geo location data:",
 				"{ 'vehicle_id: 10, 'lat': -37.123, 'lng':120.456}",
 				"{ 'vehicle_id: 11, 'lat': -38.123, 'lng':121.456}",
@@ -37,18 +36,31 @@ def connect(message):
 				"TTYL..." 
 				]
 	for msg in messages:
-		pubnub.publish(channel="my_channel", message=msg)
-		time.sleep(1)
+		pubnub.publish(channel="json_channel", message=msg)
 
-def reconnect(message):
+def on_connect_txt(message):
+	print ("TEXT CONNECTED")
+	messages = [ "Hello World from PubNub's Python SDK"]
+	#
+	# iterate over the list of messages and publish each one on each channel
+	# have to figure out how to publish to multiple channels, Perhaps use a group
+	#
+	for msg in messages:
+		pubnub.publish(channel="msg_channel", message=msg)
+			
+#
+# callback when connected to the PubHub network
+#
+def on_reconnect(message):
 	print ("RECONNECTED")
-
-def disconnect(message):
+#
+# callback whtn disconnected from the PubHub network
+def on_disconnect(message):
 	print ("DISCONNECTED")
 #
 # subscribe to a channel and invoke the appropriate callback when a message arrives on that 
 # channel
 #
-pubnub.subscribe(channels="my_channel", callback=sub_callback, error=sub_callback,
-					connect=connect, reconnect=reconnect, disconnect=disconnect)
-
+pubnub.subscribe(channels="json_channel", callback=sub_callback, error=on_error,
+					connect=on_connect_json, reconnect=on_reconnect, disconnect=on_disconnect)
+pubnub.start()

@@ -39,5 +39,10 @@ if __name__ == "__main__":
 	#
 	# print out the first 10 words lens
 	#
-	print rddWordLen.take(10)
+	print rddWordLen.take(25)
+	# sort the list on the driver side and print 25 elements
+	sortedWords = rddWordLen.collect()
+	sortedWords.sort()
+	#print it.
+	print sortedWords
 

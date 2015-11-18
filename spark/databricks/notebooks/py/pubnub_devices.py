@@ -1,26 +1,34 @@
 
 #!/usr/bin/env python
-# import the right stuff
+#
 #
 import json
+import sys
+import time
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 
 def print_json(j):
-	json.dumps(j)
+	print json.dumps(j)
 
+def process(rdd):
+	print("========= %s =========" % time.ctime())
+	rdd.map(lambda j: json.dumps(j))
+
+if __name__ == "__main__":
+  if len(sys.argv) != 2:
+    print("Usage: pub_dev_words.py directory")
+    sys.exit(-1)
+#
+# get the data diretory
+#
+data_dir = sys.argv[1]
 # Specify local mode and two cores
 #
 sc = SparkContext("local[2]", "pubnub_devices")
-# specifiy the interval of I second batches
-ssc = StreamingContext(sc, 1)
-#
-# Create DStream of RDDS that will connect to the port 9999
-#
-devicesRDD = ssc.socketTextStream("localhost", 9999)
-devicesJSONRDD = devicesRDD.map(lambda j: print_json(j))
 
-#start the reciever thread
-ssc.start()
-#waith for the socket to close
-ssc.awaitTermination()
+devicesRDD = sc.textFile(data_dir)
+devices = devicesRDD.collect()
+for d in devices:
+	print_json(d)
+

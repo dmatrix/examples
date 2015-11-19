@@ -11,15 +11,15 @@ import random
 import os
 
 """
-This short example illustrates the simplicity of using PubNub as a Publish-Subscribe cloud service. 
+This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk. 
 As an example, it simulates as though multiple devices are registering themselves or announcing their
-availability by publishing a channel. 
+availability by publishing a channel.  
 
-Also, as an extension it can write to a socket where a Spark Streaming context is connected to process
+Also, as an extension it can write to a socket or a directory where a Spark Streaming context monitoring for live
 live data streams of JSON objects from each device.
 
-Here we sumiluate within a single example, but in reality ech JSON data object could be be published
-separately from its embedded PubNub API. 
+Here I sumiluate with a single example, but in reality each JSON data object could be published
+separately from device using PubNub's publish-subscribe API. 
 
 It downloads a list of words form the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 followin format:
@@ -30,7 +30,7 @@ followin format:
   "scale\: 
   "Celius", 
   "temp": 22, 
-  "device_name": "tis"
+  "device_name": "sensor-mac-word"
  }
 author: Jules S. Damji 
 """

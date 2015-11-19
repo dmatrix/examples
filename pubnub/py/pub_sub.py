@@ -1,5 +1,5 @@
 
-#!/usr/env python
+#!/usr/bin/env python
 from pubnub import Pubnub
 import time
 import sys
@@ -23,10 +23,10 @@ def on_connect_json(message):
 	messages = [
 				"Hello World from PubNub's Python SDK",
 				"Some Geo location data:",
-				"{ 'vehicle_id: 10, 'lat': -37.123, 'lng':120.456}",
-				"{ 'vehicle_id: 11, 'lat': -38.123, 'lng':121.456}",
-				"{ 'vehicle_id: 12, 'lat': -39.123, 'lng':122.456}",
-				"{ 'vehicle_id: 13, 'lat': -40.123, 'lng':123.456}",
+				"{'vehicle_id: 10, 'lat': -37.123, 'lng':120.456}",
+				"{'vehicle_id: 11, 'lat': -38.123, 'lng':121.456}",
+				"{'vehicle_id: 12, 'lat': -39.123, 'lng':122.456}",
+				"{'vehicle_id: 13, 'lat': -40.123, 'lng':123.456}",
 				"Here are some stock quotes:",
 				"{'stock': 'APPL', time': '2:07:04pm', 'price': '510.83', 'delta': '69.02', 'perc': '13.51', 'vol': 2930}",
 				"{'stock': 'IBM', time': '2:07:04pm', 'price': '610.83', 'delta': '79.02', 'perc': '15.51', 'vol': 293000}",

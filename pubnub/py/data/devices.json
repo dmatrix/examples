@@ -1,120 +1,360 @@
-{"device-id": 1, "device-name": "a", "lat": 18, "long": 54, "scale": "Celius", "temp": 10}
-{"device-id": 2, "device-name": "able", "lat": 91, "long": 56, "scale": "Celius", "temp": 21}
-{"device-id": 3, "device-name": "about", "lat": 2, "long": 87, "scale": "Celius", "temp": 11}
-{"device-id": 4, "device-name": "across", "lat": 58, "long": 49, "scale": "Celius", "temp": 30}
-{"device-id": 5, "device-name": "after", "lat": 19, "long": 8, "scale": "Celius", "temp": 23}
-{"device-id": 6, "device-name": "all", "lat": 77, "long": 53, "scale": "Celius", "temp": 10}
-{"device-id": 7, "device-name": "almost", "lat": 48, "long": 24, "scale": "Celius", "temp": 14}
-{"device-id": 8, "device-name": "also", "lat": 57, "long": 80, "scale": "Celius", "temp": 19}
-{"device-id": 9, "device-name": "am", "lat": 17, "long": 74, "scale": "Celius", "temp": 11}
-{"device-id": 10, "device-name": "among", "lat": 77, "long": 97, "scale": "Celius", "temp": 33}
-{"device-id": 11, "device-name": "an", "lat": 78, "long": 68, "scale": "Celius", "temp": 31}
-{"device-id": 12, "device-name": "and", "lat": 95, "long": 53, "scale": "Celius", "temp": 18}
-{"device-id": 13, "device-name": "any", "lat": 85, "long": 72, "scale": "Celius", "temp": 33}
-{"device-id": 14, "device-name": "are", "lat": 86, "long": 23, "scale": "Celius", "temp": 14}
-{"device-id": 15, "device-name": "as", "lat": 65, "long": 0, "scale": "Celius", "temp": 22}
-{"device-id": 16, "device-name": "at", "lat": 75, "long": 41, "scale": "Celius", "temp": 11}
-{"device-id": 17, "device-name": "be", "lat": 41, "long": 72, "scale": "Celius", "temp": 25}
-{"device-id": 18, "device-name": "because", "lat": 12, "long": 45, "scale": "Celius", "temp": 27}
-{"device-id": 19, "device-name": "been", "lat": 93, "long": 35, "scale": "Celius", "temp": 24}
-{"device-id": 20, "device-name": "but", "lat": 86, "long": 96, "scale": "Celius", "temp": 27}
-{"device-id": 21, "device-name": "by", "lat": 2, "long": 20, "scale": "Celius", "temp": 14}
-{"device-id": 22, "device-name": "can", "lat": 14, "long": 36, "scale": "Celius", "temp": 25}
-{"device-id": 23, "device-name": "cannot", "lat": 97, "long": 98, "scale": "Celius", "temp": 29}
-{"device-id": 24, "device-name": "could", "lat": 64, "long": 97, "scale": "Celius", "temp": 20}
-{"device-id": 25, "device-name": "dear", "lat": 67, "long": 67, "scale": "Celius", "temp": 11}
-{"device-id": 26, "device-name": "did", "lat": 37, "long": 46, "scale": "Celius", "temp": 28}
-{"device-id": 27, "device-name": "do", "lat": 53, "long": 86, "scale": "Celius", "temp": 16}
-{"device-id": 28, "device-name": "does", "lat": 81, "long": 8, "scale": "Celius", "temp": 19}
-{"device-id": 29, "device-name": "either", "lat": 92, "long": 34, "scale": "Celius", "temp": 34}
-{"device-id": 30, "device-name": "else", "lat": 15, "long": 25, "scale": "Celius", "temp": 22}
-{"device-id": 31, "device-name": "ever", "lat": 44, "long": 57, "scale": "Celius", "temp": 21}
-{"device-id": 32, "device-name": "every", "lat": 63, "long": 24, "scale": "Celius", "temp": 23}
-{"device-id": 33, "device-name": "for", "lat": 52, "long": 20, "scale": "Celius", "temp": 30}
-{"device-id": 34, "device-name": "from", "lat": 30, "long": 88, "scale": "Celius", "temp": 27}
-{"device-id": 35, "device-name": "get", "lat": 7, "long": 50, "scale": "Celius", "temp": 13}
-{"device-id": 36, "device-name": "got", "lat": 92, "long": 1, "scale": "Celius", "temp": 16}
-{"device-id": 37, "device-name": "had", "lat": 24, "long": 28, "scale": "Celius", "temp": 15}
-{"device-id": 38, "device-name": "has", "lat": 65, "long": 46, "scale": "Celius", "temp": 31}
-{"device-id": 39, "device-name": "have", "lat": 17, "long": 65, "scale": "Celius", "temp": 34}
-{"device-id": 40, "device-name": "he", "lat": 2, "long": 22, "scale": "Celius", "temp": 24}
-{"device-id": 41, "device-name": "her", "lat": 11, "long": 26, "scale": "Celius", "temp": 23}
-{"device-id": 42, "device-name": "hers", "lat": 38, "long": 33, "scale": "Celius", "temp": 15}
-{"device-id": 43, "device-name": "him", "lat": 76, "long": 60, "scale": "Celius", "temp": 20}
-{"device-id": 44, "device-name": "his", "lat": 74, "long": 65, "scale": "Celius", "temp": 25}
-{"device-id": 45, "device-name": "how", "lat": 37, "long": 60, "scale": "Celius", "temp": 34}
-{"device-id": 46, "device-name": "however", "lat": 82, "long": 99, "scale": "Celius", "temp": 18}
-{"device-id": 47, "device-name": "i", "lat": 65, "long": 45, "scale": "Celius", "temp": 19}
-{"device-id": 48, "device-name": "if", "lat": 0, "long": 41, "scale": "Celius", "temp": 10}
-{"device-id": 49, "device-name": "in", "lat": 87, "long": 52, "scale": "Celius", "temp": 27}
-{"device-id": 50, "device-name": "into", "lat": 40, "long": 73, "scale": "Celius", "temp": 14}
-{"device-id": 51, "device-name": "is", "lat": 17, "long": 48, "scale": "Celius", "temp": 20}
-{"device-id": 52, "device-name": "it", "lat": 54, "long": 0, "scale": "Celius", "temp": 25}
-{"device-id": 53, "device-name": "its", "lat": 54, "long": 52, "scale": "Celius", "temp": 10}
-{"device-id": 54, "device-name": "just", "lat": 96, "long": 46, "scale": "Celius", "temp": 13}
-{"device-id": 55, "device-name": "least", "lat": 3, "long": 18, "scale": "Celius", "temp": 32}
-{"device-id": 56, "device-name": "let", "lat": 66, "long": 21, "scale": "Celius", "temp": 29}
-{"device-id": 57, "device-name": "like", "lat": 7, "long": 13, "scale": "Celius", "temp": 24}
-{"device-id": 58, "device-name": "likely", "lat": 7, "long": 99, "scale": "Celius", "temp": 18}
-{"device-id": 59, "device-name": "may", "lat": 63, "long": 2, "scale": "Celius", "temp": 29}
-{"device-id": 60, "device-name": "me", "lat": 61, "long": 54, "scale": "Celius", "temp": 25}
-{"device-id": 61, "device-name": "might", "lat": 82, "long": 77, "scale": "Celius", "temp": 32}
-{"device-id": 62, "device-name": "most", "lat": 62, "long": 92, "scale": "Celius", "temp": 34}
-{"device-id": 63, "device-name": "must", "lat": 35, "long": 24, "scale": "Celius", "temp": 21}
-{"device-id": 64, "device-name": "my", "lat": 19, "long": 84, "scale": "Celius", "temp": 22}
-{"device-id": 65, "device-name": "neither", "lat": 51, "long": 94, "scale": "Celius", "temp": 20}
-{"device-id": 66, "device-name": "no", "lat": 63, "long": 71, "scale": "Celius", "temp": 27}
-{"device-id": 67, "device-name": "nor", "lat": 79, "long": 66, "scale": "Celius", "temp": 15}
-{"device-id": 68, "device-name": "not", "lat": 74, "long": 73, "scale": "Celius", "temp": 19}
-{"device-id": 69, "device-name": "of", "lat": 46, "long": 32, "scale": "Celius", "temp": 21}
-{"device-id": 70, "device-name": "off", "lat": 42, "long": 70, "scale": "Celius", "temp": 20}
-{"device-id": 71, "device-name": "often", "lat": 9, "long": 15, "scale": "Celius", "temp": 17}
-{"device-id": 72, "device-name": "on", "lat": 80, "long": 55, "scale": "Celius", "temp": 32}
-{"device-id": 73, "device-name": "only", "lat": 78, "long": 13, "scale": "Celius", "temp": 14}
-{"device-id": 74, "device-name": "or", "lat": 40, "long": 86, "scale": "Celius", "temp": 22}
-{"device-id": 75, "device-name": "other", "lat": 74, "long": 85, "scale": "Celius", "temp": 11}
-{"device-id": 76, "device-name": "our", "lat": 20, "long": 87, "scale": "Celius", "temp": 32}
-{"device-id": 77, "device-name": "own", "lat": 71, "long": 18, "scale": "Celius", "temp": 32}
-{"device-id": 78, "device-name": "rather", "lat": 14, "long": 28, "scale": "Celius", "temp": 22}
-{"device-id": 79, "device-name": "said", "lat": 97, "long": 46, "scale": "Celius", "temp": 12}
-{"device-id": 80, "device-name": "say", "lat": 96, "long": 10, "scale": "Celius", "temp": 31}
-{"device-id": 81, "device-name": "says", "lat": 69, "long": 57, "scale": "Celius", "temp": 25}
-{"device-id": 82, "device-name": "she", "lat": 6, "long": 82, "scale": "Celius", "temp": 28}
-{"device-id": 83, "device-name": "should", "lat": 32, "long": 64, "scale": "Celius", "temp": 24}
-{"device-id": 84, "device-name": "since", "lat": 27, "long": 84, "scale": "Celius", "temp": 19}
-{"device-id": 85, "device-name": "so", "lat": 95, "long": 19, "scale": "Celius", "temp": 13}
-{"device-id": 86, "device-name": "some", "lat": 65, "long": 77, "scale": "Celius", "temp": 16}
-{"device-id": 87, "device-name": "than", "lat": 84, "long": 74, "scale": "Celius", "temp": 18}
-{"device-id": 88, "device-name": "that", "lat": 70, "long": 73, "scale": "Celius", "temp": 27}
-{"device-id": 89, "device-name": "the", "lat": 5, "long": 70, "scale": "Celius", "temp": 29}
-{"device-id": 90, "device-name": "their", "lat": 39, "long": 98, "scale": "Celius", "temp": 24}
-{"device-id": 91, "device-name": "them", "lat": 71, "long": 79, "scale": "Celius", "temp": 10}
-{"device-id": 92, "device-name": "then", "lat": 28, "long": 75, "scale": "Celius", "temp": 17}
-{"device-id": 93, "device-name": "there", "lat": 83, "long": 35, "scale": "Celius", "temp": 25}
-{"device-id": 94, "device-name": "these", "lat": 2, "long": 90, "scale": "Celius", "temp": 19}
-{"device-id": 95, "device-name": "they", "lat": 81, "long": 51, "scale": "Celius", "temp": 28}
-{"device-id": 96, "device-name": "this", "lat": 61, "long": 57, "scale": "Celius", "temp": 33}
-{"device-id": 97, "device-name": "tis", "lat": 28, "long": 80, "scale": "Celius", "temp": 33}
-{"device-id": 98, "device-name": "to", "lat": 80, "long": 57, "scale": "Celius", "temp": 10}
-{"device-id": 99, "device-name": "too", "lat": 62, "long": 59, "scale": "Celius", "temp": 12}
-{"device-id": 100, "device-name": "twas", "lat": 71, "long": 23, "scale": "Celius", "temp": 20}
-{"device-id": 101, "device-name": "us", "lat": 30, "long": 31, "scale": "Celius", "temp": 24}
-{"device-id": 102, "device-name": "wants", "lat": 19, "long": 31, "scale": "Celius", "temp": 15}
-{"device-id": 103, "device-name": "was", "lat": 97, "long": 64, "scale": "Celius", "temp": 21}
-{"device-id": 104, "device-name": "we", "lat": 81, "long": 92, "scale": "Celius", "temp": 22}
-{"device-id": 105, "device-name": "were", "lat": 25, "long": 98, "scale": "Celius", "temp": 31}
-{"device-id": 106, "device-name": "what", "lat": 76, "long": 45, "scale": "Celius", "temp": 32}
-{"device-id": 107, "device-name": "when", "lat": 50, "long": 86, "scale": "Celius", "temp": 20}
-{"device-id": 108, "device-name": "where", "lat": 62, "long": 24, "scale": "Celius", "temp": 23}
-{"device-id": 109, "device-name": "which", "lat": 98, "long": 68, "scale": "Celius", "temp": 27}
-{"device-id": 110, "device-name": "while", "lat": 82, "long": 98, "scale": "Celius", "temp": 21}
-{"device-id": 111, "device-name": "who", "lat": 16, "long": 90, "scale": "Celius", "temp": 11}
-{"device-id": 112, "device-name": "whom", "lat": 77, "long": 49, "scale": "Celius", "temp": 12}
-{"device-id": 113, "device-name": "why", "lat": 63, "long": 83, "scale": "Celius", "temp": 13}
-{"device-id": 114, "device-name": "will", "lat": 88, "long": 8, "scale": "Celius", "temp": 19}
-{"device-id": 115, "device-name": "with", "lat": 59, "long": 15, "scale": "Celius", "temp": 33}
-{"device-id": 116, "device-name": "would", "lat": 68, "long": 79, "scale": "Celius", "temp": 29}
-{"device-id": 117, "device-name": "yet", "lat": 34, "long": 48, "scale": "Celius", "temp": 10}
-{"device-id": 118, "device-name": "you", "lat": 22, "long": 63, "scale": "Celius", "temp": 12}
-{"device-id": 119, "device-name": "your", "lat": 33, "long": 92, "scale": "Celius", "temp": 25}
-{"device-id": 120, "device-name": "jules", "lat": 63, "long": 40, "scale": "Celius", "temp": 17}
+{"device-id": 1, "device-name": "a", "lat": 29, "long": 32, "scale": "Celius", "temp": 25, "timestamp": 1447892406.943767}
+{"device-id": 2, "device-name": "able", "lat": 20, "long": 42, "scale": "Celius", "temp": 20, "timestamp": 1447892406.998706}
+{"device-id": 3, "device-name": "about", "lat": 45, "long": 49, "scale": "Celius", "temp": 17, "timestamp": 1447892407.026725}
+{"device-id": 4, "device-name": "across", "lat": 43, "long": 3, "scale": "Celius", "temp": 13, "timestamp": 1447892407.05211}
+{"device-id": 5, "device-name": "after", "lat": 88, "long": 26, "scale": "Celius", "temp": 13, "timestamp": 1447892407.084677}
+{"device-id": 6, "device-name": "all", "lat": 46, "long": 0, "scale": "Celius", "temp": 18, "timestamp": 1447892407.108082}
+{"device-id": 7, "device-name": "almost", "lat": 64, "long": 50, "scale": "Celius", "temp": 30, "timestamp": 1447892407.13945}
+{"device-id": 8, "device-name": "also", "lat": 3, "long": 94, "scale": "Celius", "temp": 24, "timestamp": 1447892407.167143}
+{"device-id": 9, "device-name": "am", "lat": 56, "long": 38, "scale": "Celius", "temp": 18, "timestamp": 1447892407.201042}
+{"device-id": 10, "device-name": "among", "lat": 52, "long": 0, "scale": "Celius", "temp": 27, "timestamp": 1447892407.228557}
+{"device-id": 11, "device-name": "an", "lat": 88, "long": 29, "scale": "Celius", "temp": 32, "timestamp": 1447892407.274372}
+{"device-id": 12, "device-name": "and", "lat": 29, "long": 63, "scale": "Celius", "temp": 25, "timestamp": 1447892407.301106}
+{"device-id": 13, "device-name": "any", "lat": 36, "long": 53, "scale": "Celius", "temp": 24, "timestamp": 1447892407.328258}
+{"device-id": 14, "device-name": "are", "lat": 83, "long": 92, "scale": "Celius", "temp": 21, "timestamp": 1447892407.364362}
+{"device-id": 15, "device-name": "as", "lat": 63, "long": 32, "scale": "Celius", "temp": 33, "timestamp": 1447892407.398077}
+{"device-id": 16, "device-name": "at", "lat": 65, "long": 71, "scale": "Celius", "temp": 22, "timestamp": 1447892407.42956}
+{"device-id": 17, "device-name": "be", "lat": 97, "long": 24, "scale": "Celius", "temp": 32, "timestamp": 1447892407.473364}
+{"device-id": 18, "device-name": "because", "lat": 62, "long": 25, "scale": "Celius", "temp": 21, "timestamp": 1447892407.507199}
+{"device-id": 19, "device-name": "been", "lat": 41, "long": 68, "scale": "Celius", "temp": 30, "timestamp": 1447892407.531217}
+{"device-id": 20, "device-name": "but", "lat": 26, "long": 95, "scale": "Celius", "temp": 32, "timestamp": 1447892407.554175}
+{"device-id": 21, "device-name": "by", "lat": 0, "long": 16, "scale": "Celius", "temp": 21, "timestamp": 1447892407.577113}
+{"device-id": 22, "device-name": "can", "lat": 87, "long": 94, "scale": "Celius", "temp": 30, "timestamp": 1447892407.606151}
+{"device-id": 23, "device-name": "cannot", "lat": 71, "long": 42, "scale": "Celius", "temp": 22, "timestamp": 1447892407.635228}
+{"device-id": 24, "device-name": "could", "lat": 85, "long": 70, "scale": "Celius", "temp": 15, "timestamp": 1447892407.6713}
+{"device-id": 25, "device-name": "dear", "lat": 50, "long": 70, "scale": "Celius", "temp": 19, "timestamp": 1447892407.701715}
+{"device-id": 26, "device-name": "did", "lat": 58, "long": 6, "scale": "Celius", "temp": 14, "timestamp": 1447892407.729314}
+{"device-id": 27, "device-name": "do", "lat": 73, "long": 93, "scale": "Celius", "temp": 24, "timestamp": 1447892407.757969}
+{"device-id": 28, "device-name": "does", "lat": 78, "long": 77, "scale": "Celius", "temp": 20, "timestamp": 1447892407.779464}
+{"device-id": 29, "device-name": "either", "lat": 67, "long": 10, "scale": "Celius", "temp": 11, "timestamp": 1447892407.812377}
+{"device-id": 30, "device-name": "else", "lat": 30, "long": 4, "scale": "Celius", "temp": 18, "timestamp": 1447892407.839378}
+{"device-id": 31, "device-name": "ever", "lat": 26, "long": 24, "scale": "Celius", "temp": 25, "timestamp": 1447892407.863138}
+{"device-id": 32, "device-name": "every", "lat": 90, "long": 45, "scale": "Celius", "temp": 15, "timestamp": 1447892407.888475}
+{"device-id": 33, "device-name": "for", "lat": 50, "long": 30, "scale": "Celius", "temp": 23, "timestamp": 1447892407.91062}
+{"device-id": 34, "device-name": "from", "lat": 77, "long": 92, "scale": "Celius", "temp": 24, "timestamp": 1447892407.952021}
+{"device-id": 35, "device-name": "get", "lat": 1, "long": 40, "scale": "Celius", "temp": 23, "timestamp": 1447892407.98125}
+{"device-id": 36, "device-name": "got", "lat": 93, "long": 62, "scale": "Celius", "temp": 20, "timestamp": 1447892408.007328}
+{"device-id": 37, "device-name": "had", "lat": 78, "long": 19, "scale": "Celius", "temp": 28, "timestamp": 1447892408.027054}
+{"device-id": 38, "device-name": "has", "lat": 50, "long": 97, "scale": "Celius", "temp": 33, "timestamp": 1447892408.054271}
+{"device-id": 39, "device-name": "have", "lat": 99, "long": 58, "scale": "Celius", "temp": 14, "timestamp": 1447892408.079983}
+{"device-id": 40, "device-name": "he", "lat": 20, "long": 69, "scale": "Celius", "temp": 30, "timestamp": 1447892408.112831}
+{"device-id": 41, "device-name": "her", "lat": 86, "long": 97, "scale": "Celius", "temp": 33, "timestamp": 1447892408.13676}
+{"device-id": 42, "device-name": "hers", "lat": 62, "long": 1, "scale": "Celius", "temp": 10, "timestamp": 1447892408.163186}
+{"device-id": 43, "device-name": "him", "lat": 4, "long": 18, "scale": "Celius", "temp": 10, "timestamp": 1447892408.191817}
+{"device-id": 44, "device-name": "his", "lat": 29, "long": 65, "scale": "Celius", "temp": 28, "timestamp": 1447892408.22309}
+{"device-id": 45, "device-name": "how", "lat": 24, "long": 53, "scale": "Celius", "temp": 14, "timestamp": 1447892408.250444}
+{"device-id": 46, "device-name": "however", "lat": 21, "long": 25, "scale": "Celius", "temp": 13, "timestamp": 1447892408.277724}
+{"device-id": 47, "device-name": "i", "lat": 47, "long": 94, "scale": "Celius", "temp": 11, "timestamp": 1447892408.307685}
+{"device-id": 48, "device-name": "if", "lat": 39, "long": 46, "scale": "Celius", "temp": 25, "timestamp": 1447892408.337019}
+{"device-id": 49, "device-name": "in", "lat": 18, "long": 29, "scale": "Celius", "temp": 27, "timestamp": 1447892408.374032}
+{"device-id": 50, "device-name": "into", "lat": 12, "long": 26, "scale": "Celius", "temp": 14, "timestamp": 1447892408.408452}
+{"device-id": 51, "device-name": "is", "lat": 22, "long": 82, "scale": "Celius", "temp": 23, "timestamp": 1447892408.433938}
+{"device-id": 52, "device-name": "it", "lat": 41, "long": 17, "scale": "Celius", "temp": 28, "timestamp": 1447892408.46087}
+{"device-id": 53, "device-name": "its", "lat": 17, "long": 77, "scale": "Celius", "temp": 28, "timestamp": 1447892408.488905}
+{"device-id": 54, "device-name": "just", "lat": 46, "long": 66, "scale": "Celius", "temp": 22, "timestamp": 1447892408.580901}
+{"device-id": 55, "device-name": "least", "lat": 62, "long": 51, "scale": "Celius", "temp": 34, "timestamp": 1447892408.608848}
+{"device-id": 56, "device-name": "let", "lat": 94, "long": 1, "scale": "Celius", "temp": 25, "timestamp": 1447892408.633168}
+{"device-id": 57, "device-name": "like", "lat": 92, "long": 72, "scale": "Celius", "temp": 30, "timestamp": 1447892408.65975}
+{"device-id": 58, "device-name": "likely", "lat": 45, "long": 5, "scale": "Celius", "temp": 21, "timestamp": 1447892408.683497}
+{"device-id": 59, "device-name": "may", "lat": 88, "long": 68, "scale": "Celius", "temp": 30, "timestamp": 1447892408.714972}
+{"device-id": 60, "device-name": "me", "lat": 97, "long": 39, "scale": "Celius", "temp": 28, "timestamp": 1447892408.738985}
+{"device-id": 61, "device-name": "might", "lat": 42, "long": 28, "scale": "Celius", "temp": 29, "timestamp": 1447892408.762129}
+{"device-id": 62, "device-name": "most", "lat": 89, "long": 40, "scale": "Celius", "temp": 13, "timestamp": 1447892408.787964}
+{"device-id": 63, "device-name": "must", "lat": 61, "long": 37, "scale": "Celius", "temp": 17, "timestamp": 1447892408.808654}
+{"device-id": 64, "device-name": "my", "lat": 10, "long": 25, "scale": "Celius", "temp": 31, "timestamp": 1447892408.827568}
+{"device-id": 65, "device-name": "neither", "lat": 92, "long": 81, "scale": "Celius", "temp": 19, "timestamp": 1447892408.866833}
+{"device-id": 66, "device-name": "no", "lat": 57, "long": 21, "scale": "Celius", "temp": 17, "timestamp": 1447892408.896762}
+{"device-id": 67, "device-name": "nor", "lat": 6, "long": 84, "scale": "Celius", "temp": 32, "timestamp": 1447892408.930202}
+{"device-id": 68, "device-name": "not", "lat": 12, "long": 59, "scale": "Celius", "temp": 32, "timestamp": 1447892408.959903}
+{"device-id": 69, "device-name": "of", "lat": 41, "long": 15, "scale": "Celius", "temp": 21, "timestamp": 1447892408.992792}
+{"device-id": 70, "device-name": "off", "lat": 43, "long": 79, "scale": "Celius", "temp": 10, "timestamp": 1447892409.015053}
+{"device-id": 71, "device-name": "often", "lat": 92, "long": 43, "scale": "Celius", "temp": 27, "timestamp": 1447892409.036108}
+{"device-id": 72, "device-name": "on", "lat": 77, "long": 9, "scale": "Celius", "temp": 24, "timestamp": 1447892409.059524}
+{"device-id": 73, "device-name": "only", "lat": 93, "long": 66, "scale": "Celius", "temp": 32, "timestamp": 1447892409.085697}
+{"device-id": 74, "device-name": "or", "lat": 41, "long": 81, "scale": "Celius", "temp": 20, "timestamp": 1447892409.107785}
+{"device-id": 75, "device-name": "other", "lat": 51, "long": 56, "scale": "Celius", "temp": 15, "timestamp": 1447892409.128619}
+{"device-id": 76, "device-name": "our", "lat": 10, "long": 19, "scale": "Celius", "temp": 15, "timestamp": 1447892409.150304}
+{"device-id": 77, "device-name": "own", "lat": 37, "long": 56, "scale": "Celius", "temp": 25, "timestamp": 1447892409.174848}
+{"device-id": 78, "device-name": "rather", "lat": 63, "long": 76, "scale": "Celius", "temp": 22, "timestamp": 1447892409.197855}
+{"device-id": 79, "device-name": "said", "lat": 94, "long": 9, "scale": "Celius", "temp": 13, "timestamp": 1447892409.219724}
+{"device-id": 80, "device-name": "say", "lat": 64, "long": 78, "scale": "Celius", "temp": 33, "timestamp": 1447892409.24643}
+{"device-id": 81, "device-name": "says", "lat": 47, "long": 3, "scale": "Celius", "temp": 19, "timestamp": 1447892409.265865}
+{"device-id": 82, "device-name": "she", "lat": 28, "long": 20, "scale": "Celius", "temp": 27, "timestamp": 1447892409.293979}
+{"device-id": 83, "device-name": "should", "lat": 28, "long": 29, "scale": "Celius", "temp": 15, "timestamp": 1447892409.318255}
+{"device-id": 84, "device-name": "since", "lat": 80, "long": 11, "scale": "Celius", "temp": 30, "timestamp": 1447892409.344956}
+{"device-id": 85, "device-name": "so", "lat": 22, "long": 19, "scale": "Celius", "temp": 25, "timestamp": 1447892409.365029}
+{"device-id": 86, "device-name": "some", "lat": 94, "long": 73, "scale": "Celius", "temp": 27, "timestamp": 1447892409.387527}
+{"device-id": 87, "device-name": "than", "lat": 49, "long": 42, "scale": "Celius", "temp": 13, "timestamp": 1447892409.454642}
+{"device-id": 88, "device-name": "that", "lat": 96, "long": 88, "scale": "Celius", "temp": 34, "timestamp": 1447892409.503061}
+{"device-id": 89, "device-name": "the", "lat": 86, "long": 3, "scale": "Celius", "temp": 23, "timestamp": 1447892409.543045}
+{"device-id": 90, "device-name": "their", "lat": 92, "long": 46, "scale": "Celius", "temp": 22, "timestamp": 1447892409.604199}
+{"device-id": 91, "device-name": "them", "lat": 51, "long": 21, "scale": "Celius", "temp": 13, "timestamp": 1447892409.695623}
+{"device-id": 92, "device-name": "then", "lat": 67, "long": 34, "scale": "Celius", "temp": 24, "timestamp": 1447892409.749771}
+{"device-id": 93, "device-name": "there", "lat": 7, "long": 88, "scale": "Celius", "temp": 14, "timestamp": 1447892409.820065}
+{"device-id": 94, "device-name": "these", "lat": 22, "long": 44, "scale": "Celius", "temp": 14, "timestamp": 1447892409.852281}
+{"device-id": 95, "device-name": "they", "lat": 2, "long": 76, "scale": "Celius", "temp": 27, "timestamp": 1447892409.881537}
+{"device-id": 96, "device-name": "this", "lat": 72, "long": 70, "scale": "Celius", "temp": 27, "timestamp": 1447892409.914164}
+{"device-id": 97, "device-name": "tis", "lat": 23, "long": 38, "scale": "Celius", "temp": 21, "timestamp": 1447892409.943636}
+{"device-id": 98, "device-name": "to", "lat": 16, "long": 1, "scale": "Celius", "temp": 27, "timestamp": 1447892409.976524}
+{"device-id": 99, "device-name": "too", "lat": 11, "long": 82, "scale": "Celius", "temp": 20, "timestamp": 1447892410.004334}
+{"device-id": 100, "device-name": "twas", "lat": 91, "long": 1, "scale": "Celius", "temp": 21, "timestamp": 1447892410.031204}
+{"device-id": 101, "device-name": "us", "lat": 62, "long": 32, "scale": "Celius", "temp": 10, "timestamp": 1447892410.053021}
+{"device-id": 102, "device-name": "wants", "lat": 84, "long": 89, "scale": "Celius", "temp": 34, "timestamp": 1447892410.071627}
+{"device-id": 103, "device-name": "was", "lat": 53, "long": 11, "scale": "Celius", "temp": 32, "timestamp": 1447892410.093806}
+{"device-id": 104, "device-name": "we", "lat": 88, "long": 27, "scale": "Celius", "temp": 33, "timestamp": 1447892410.113611}
+{"device-id": 105, "device-name": "were", "lat": 27, "long": 35, "scale": "Celius", "temp": 19, "timestamp": 1447892410.139541}
+{"device-id": 106, "device-name": "what", "lat": 16, "long": 3, "scale": "Celius", "temp": 21, "timestamp": 1447892410.168022}
+{"device-id": 107, "device-name": "when", "lat": 11, "long": 47, "scale": "Celius", "temp": 10, "timestamp": 1447892410.187529}
+{"device-id": 108, "device-name": "where", "lat": 3, "long": 75, "scale": "Celius", "temp": 26, "timestamp": 1447892410.211173}
+{"device-id": 109, "device-name": "which", "lat": 38, "long": 96, "scale": "Celius", "temp": 14, "timestamp": 1447892410.23481}
+{"device-id": 110, "device-name": "while", "lat": 43, "long": 53, "scale": "Celius", "temp": 25, "timestamp": 1447892410.261105}
+{"device-id": 111, "device-name": "who", "lat": 15, "long": 61, "scale": "Celius", "temp": 18, "timestamp": 1447892410.282584}
+{"device-id": 112, "device-name": "whom", "lat": 8, "long": 99, "scale": "Celius", "temp": 34, "timestamp": 1447892410.308266}
+{"device-id": 113, "device-name": "why", "lat": 20, "long": 81, "scale": "Celius", "temp": 30, "timestamp": 1447892410.334685}
+{"device-id": 114, "device-name": "will", "lat": 94, "long": 79, "scale": "Celius", "temp": 20, "timestamp": 1447892410.362978}
+{"device-id": 115, "device-name": "with", "lat": 69, "long": 57, "scale": "Celius", "temp": 17, "timestamp": 1447892410.382035}
+{"device-id": 116, "device-name": "would", "lat": 67, "long": 7, "scale": "Celius", "temp": 29, "timestamp": 1447892410.408089}
+{"device-id": 117, "device-name": "yet", "lat": 42, "long": 15, "scale": "Celius", "temp": 31, "timestamp": 1447892410.435751}
+{"device-id": 118, "device-name": "you", "lat": 46, "long": 32, "scale": "Celius", "temp": 10, "timestamp": 1447892410.460221}
+{"device-id": 119, "device-name": "your", "lat": 19, "long": 90, "scale": "Celius", "temp": 14, "timestamp": 1447892410.482599}
+{"device-id": 120, "device-name": "jules", "lat": 4, "long": 76, "scale": "Celius", "temp": 25, "timestamp": 1447892410.507361}
+{"device-id": 1, "device-name": "a", "lat": 85, "long": 29, "scale": "Celius", "temp": 23, "timestamp": 1447892411.947546}
+{"device-id": 2, "device-name": "able", "lat": 55, "long": 12, "scale": "Celius", "temp": 20, "timestamp": 1447892411.969197}
+{"device-id": 3, "device-name": "about", "lat": 61, "long": 51, "scale": "Celius", "temp": 28, "timestamp": 1447892411.991152}
+{"device-id": 4, "device-name": "across", "lat": 2, "long": 13, "scale": "Celius", "temp": 18, "timestamp": 1447892412.015854}
+{"device-id": 5, "device-name": "after", "lat": 86, "long": 51, "scale": "Celius", "temp": 19, "timestamp": 1447892412.036409}
+{"device-id": 6, "device-name": "all", "lat": 83, "long": 68, "scale": "Celius", "temp": 26, "timestamp": 1447892412.05576}
+{"device-id": 7, "device-name": "almost", "lat": 9, "long": 67, "scale": "Celius", "temp": 14, "timestamp": 1447892412.079426}
+{"device-id": 8, "device-name": "also", "lat": 24, "long": 58, "scale": "Celius", "temp": 19, "timestamp": 1447892412.104474}
+{"device-id": 9, "device-name": "am", "lat": 47, "long": 38, "scale": "Celius", "temp": 16, "timestamp": 1447892412.127452}
+{"device-id": 10, "device-name": "among", "lat": 28, "long": 25, "scale": "Celius", "temp": 16, "timestamp": 1447892412.153973}
+{"device-id": 11, "device-name": "an", "lat": 94, "long": 79, "scale": "Celius", "temp": 28, "timestamp": 1447892412.177162}
+{"device-id": 12, "device-name": "and", "lat": 63, "long": 36, "scale": "Celius", "temp": 17, "timestamp": 1447892412.198912}
+{"device-id": 13, "device-name": "any", "lat": 8, "long": 17, "scale": "Celius", "temp": 21, "timestamp": 1447892412.218443}
+{"device-id": 14, "device-name": "are", "lat": 84, "long": 93, "scale": "Celius", "temp": 32, "timestamp": 1447892412.240272}
+{"device-id": 15, "device-name": "as", "lat": 34, "long": 50, "scale": "Celius", "temp": 30, "timestamp": 1447892412.262227}
+{"device-id": 16, "device-name": "at", "lat": 55, "long": 2, "scale": "Celius", "temp": 11, "timestamp": 1447892412.280714}
+{"device-id": 17, "device-name": "be", "lat": 64, "long": 36, "scale": "Celius", "temp": 24, "timestamp": 1447892412.300077}
+{"device-id": 18, "device-name": "because", "lat": 27, "long": 5, "scale": "Celius", "temp": 30, "timestamp": 1447892412.31878}
+{"device-id": 19, "device-name": "been", "lat": 40, "long": 57, "scale": "Celius", "temp": 12, "timestamp": 1447892412.342294}
+{"device-id": 20, "device-name": "but", "lat": 6, "long": 18, "scale": "Celius", "temp": 10, "timestamp": 1447892412.362522}
+{"device-id": 21, "device-name": "by", "lat": 27, "long": 62, "scale": "Celius", "temp": 33, "timestamp": 1447892412.383981}
+{"device-id": 22, "device-name": "can", "lat": 60, "long": 31, "scale": "Celius", "temp": 33, "timestamp": 1447892412.404595}
+{"device-id": 23, "device-name": "cannot", "lat": 34, "long": 15, "scale": "Celius", "temp": 30, "timestamp": 1447892412.435877}
+{"device-id": 24, "device-name": "could", "lat": 85, "long": 76, "scale": "Celius", "temp": 24, "timestamp": 1447892412.468857}
+{"device-id": 25, "device-name": "dear", "lat": 10, "long": 38, "scale": "Celius", "temp": 17, "timestamp": 1447892412.502258}
+{"device-id": 26, "device-name": "did", "lat": 87, "long": 0, "scale": "Celius", "temp": 34, "timestamp": 1447892412.533579}
+{"device-id": 27, "device-name": "do", "lat": 2, "long": 46, "scale": "Celius", "temp": 26, "timestamp": 1447892412.561689}
+{"device-id": 28, "device-name": "does", "lat": 28, "long": 81, "scale": "Celius", "temp": 29, "timestamp": 1447892412.581139}
+{"device-id": 29, "device-name": "either", "lat": 36, "long": 28, "scale": "Celius", "temp": 26, "timestamp": 1447892412.600822}
+{"device-id": 30, "device-name": "else", "lat": 1, "long": 39, "scale": "Celius", "temp": 18, "timestamp": 1447892412.621995}
+{"device-id": 31, "device-name": "ever", "lat": 67, "long": 24, "scale": "Celius", "temp": 31, "timestamp": 1447892412.643393}
+{"device-id": 32, "device-name": "every", "lat": 75, "long": 95, "scale": "Celius", "temp": 30, "timestamp": 1447892412.665112}
+{"device-id": 33, "device-name": "for", "lat": 70, "long": 29, "scale": "Celius", "temp": 29, "timestamp": 1447892412.688567}
+{"device-id": 34, "device-name": "from", "lat": 61, "long": 12, "scale": "Celius", "temp": 15, "timestamp": 1447892412.707124}
+{"device-id": 35, "device-name": "get", "lat": 31, "long": 8, "scale": "Celius", "temp": 21, "timestamp": 1447892412.724353}
+{"device-id": 36, "device-name": "got", "lat": 53, "long": 75, "scale": "Celius", "temp": 30, "timestamp": 1447892412.741252}
+{"device-id": 37, "device-name": "had", "lat": 7, "long": 69, "scale": "Celius", "temp": 22, "timestamp": 1447892412.760136}
+{"device-id": 38, "device-name": "has", "lat": 38, "long": 11, "scale": "Celius", "temp": 24, "timestamp": 1447892412.78151}
+{"device-id": 39, "device-name": "have", "lat": 22, "long": 81, "scale": "Celius", "temp": 22, "timestamp": 1447892412.800381}
+{"device-id": 40, "device-name": "he", "lat": 11, "long": 1, "scale": "Celius", "temp": 10, "timestamp": 1447892412.820937}
+{"device-id": 41, "device-name": "her", "lat": 12, "long": 41, "scale": "Celius", "temp": 24, "timestamp": 1447892412.839481}
+{"device-id": 42, "device-name": "hers", "lat": 91, "long": 11, "scale": "Celius", "temp": 19, "timestamp": 1447892412.859228}
+{"device-id": 43, "device-name": "him", "lat": 23, "long": 98, "scale": "Celius", "temp": 22, "timestamp": 1447892412.88642}
+{"device-id": 44, "device-name": "his", "lat": 74, "long": 31, "scale": "Celius", "temp": 20, "timestamp": 1447892412.904167}
+{"device-id": 45, "device-name": "how", "lat": 53, "long": 70, "scale": "Celius", "temp": 17, "timestamp": 1447892412.927684}
+{"device-id": 46, "device-name": "however", "lat": 53, "long": 17, "scale": "Celius", "temp": 13, "timestamp": 1447892412.948168}
+{"device-id": 47, "device-name": "i", "lat": 79, "long": 1, "scale": "Celius", "temp": 21, "timestamp": 1447892412.966949}
+{"device-id": 48, "device-name": "if", "lat": 85, "long": 79, "scale": "Celius", "temp": 21, "timestamp": 1447892412.988433}
+{"device-id": 49, "device-name": "in", "lat": 80, "long": 87, "scale": "Celius", "temp": 30, "timestamp": 1447892413.008266}
+{"device-id": 50, "device-name": "into", "lat": 22, "long": 95, "scale": "Celius", "temp": 31, "timestamp": 1447892413.032391}
+{"device-id": 51, "device-name": "is", "lat": 69, "long": 46, "scale": "Celius", "temp": 25, "timestamp": 1447892413.055695}
+{"device-id": 52, "device-name": "it", "lat": 12, "long": 46, "scale": "Celius", "temp": 26, "timestamp": 1447892413.079086}
+{"device-id": 53, "device-name": "its", "lat": 84, "long": 28, "scale": "Celius", "temp": 10, "timestamp": 1447892413.102351}
+{"device-id": 54, "device-name": "just", "lat": 51, "long": 64, "scale": "Celius", "temp": 28, "timestamp": 1447892413.128235}
+{"device-id": 55, "device-name": "least", "lat": 17, "long": 59, "scale": "Celius", "temp": 17, "timestamp": 1447892413.149734}
+{"device-id": 56, "device-name": "let", "lat": 20, "long": 80, "scale": "Celius", "temp": 15, "timestamp": 1447892413.182262}
+{"device-id": 57, "device-name": "like", "lat": 32, "long": 32, "scale": "Celius", "temp": 21, "timestamp": 1447892413.206817}
+{"device-id": 58, "device-name": "likely", "lat": 43, "long": 19, "scale": "Celius", "temp": 20, "timestamp": 1447892413.237855}
+{"device-id": 59, "device-name": "may", "lat": 43, "long": 83, "scale": "Celius", "temp": 20, "timestamp": 1447892413.266648}
+{"device-id": 60, "device-name": "me", "lat": 36, "long": 17, "scale": "Celius", "temp": 18, "timestamp": 1447892413.288546}
+{"device-id": 61, "device-name": "might", "lat": 94, "long": 58, "scale": "Celius", "temp": 25, "timestamp": 1447892413.312353}
+{"device-id": 62, "device-name": "most", "lat": 97, "long": 47, "scale": "Celius", "temp": 26, "timestamp": 1447892413.335266}
+{"device-id": 63, "device-name": "must", "lat": 69, "long": 58, "scale": "Celius", "temp": 24, "timestamp": 1447892413.354027}
+{"device-id": 64, "device-name": "my", "lat": 99, "long": 70, "scale": "Celius", "temp": 31, "timestamp": 1447892413.376814}
+{"device-id": 65, "device-name": "neither", "lat": 89, "long": 24, "scale": "Celius", "temp": 16, "timestamp": 1447892413.397704}
+{"device-id": 66, "device-name": "no", "lat": 46, "long": 18, "scale": "Celius", "temp": 30, "timestamp": 1447892413.419452}
+{"device-id": 67, "device-name": "nor", "lat": 72, "long": 69, "scale": "Celius", "temp": 18, "timestamp": 1447892413.442754}
+{"device-id": 68, "device-name": "not", "lat": 93, "long": 79, "scale": "Celius", "temp": 10, "timestamp": 1447892413.46425}
+{"device-id": 69, "device-name": "of", "lat": 11, "long": 87, "scale": "Celius", "temp": 16, "timestamp": 1447892413.488023}
+{"device-id": 70, "device-name": "off", "lat": 35, "long": 22, "scale": "Celius", "temp": 14, "timestamp": 1447892413.544389}
+{"device-id": 71, "device-name": "often", "lat": 76, "long": 13, "scale": "Celius", "temp": 23, "timestamp": 1447892413.566919}
+{"device-id": 72, "device-name": "on", "lat": 45, "long": 72, "scale": "Celius", "temp": 29, "timestamp": 1447892413.593318}
+{"device-id": 73, "device-name": "only", "lat": 80, "long": 41, "scale": "Celius", "temp": 24, "timestamp": 1447892413.617248}
+{"device-id": 74, "device-name": "or", "lat": 75, "long": 3, "scale": "Celius", "temp": 15, "timestamp": 1447892413.640144}
+{"device-id": 75, "device-name": "other", "lat": 92, "long": 79, "scale": "Celius", "temp": 24, "timestamp": 1447892413.671002}
+{"device-id": 76, "device-name": "our", "lat": 43, "long": 61, "scale": "Celius", "temp": 25, "timestamp": 1447892413.701589}
+{"device-id": 77, "device-name": "own", "lat": 95, "long": 5, "scale": "Celius", "temp": 10, "timestamp": 1447892413.72289}
+{"device-id": 78, "device-name": "rather", "lat": 3, "long": 76, "scale": "Celius", "temp": 21, "timestamp": 1447892413.753042}
+{"device-id": 79, "device-name": "said", "lat": 39, "long": 54, "scale": "Celius", "temp": 12, "timestamp": 1447892413.776841}
+{"device-id": 80, "device-name": "say", "lat": 16, "long": 38, "scale": "Celius", "temp": 11, "timestamp": 1447892413.7978}
+{"device-id": 81, "device-name": "says", "lat": 9, "long": 17, "scale": "Celius", "temp": 34, "timestamp": 1447892413.821157}
+{"device-id": 82, "device-name": "she", "lat": 62, "long": 80, "scale": "Celius", "temp": 32, "timestamp": 1447892413.84851}
+{"device-id": 83, "device-name": "should", "lat": 57, "long": 34, "scale": "Celius", "temp": 17, "timestamp": 1447892413.874206}
+{"device-id": 84, "device-name": "since", "lat": 78, "long": 92, "scale": "Celius", "temp": 12, "timestamp": 1447892413.901954}
+{"device-id": 85, "device-name": "so", "lat": 60, "long": 4, "scale": "Celius", "temp": 30, "timestamp": 1447892413.92597}
+{"device-id": 86, "device-name": "some", "lat": 50, "long": 77, "scale": "Celius", "temp": 12, "timestamp": 1447892413.967354}
+{"device-id": 87, "device-name": "than", "lat": 38, "long": 72, "scale": "Celius", "temp": 14, "timestamp": 1447892414.011369}
+{"device-id": 88, "device-name": "that", "lat": 53, "long": 18, "scale": "Celius", "temp": 16, "timestamp": 1447892414.037545}
+{"device-id": 89, "device-name": "the", "lat": 82, "long": 70, "scale": "Celius", "temp": 32, "timestamp": 1447892414.060104}
+{"device-id": 90, "device-name": "their", "lat": 48, "long": 68, "scale": "Celius", "temp": 24, "timestamp": 1447892414.090036}
+{"device-id": 91, "device-name": "them", "lat": 98, "long": 18, "scale": "Celius", "temp": 13, "timestamp": 1447892414.124046}
+{"device-id": 92, "device-name": "then", "lat": 3, "long": 17, "scale": "Celius", "temp": 31, "timestamp": 1447892414.169265}
+{"device-id": 93, "device-name": "there", "lat": 20, "long": 58, "scale": "Celius", "temp": 20, "timestamp": 1447892414.19553}
+{"device-id": 94, "device-name": "these", "lat": 27, "long": 10, "scale": "Celius", "temp": 12, "timestamp": 1447892414.219217}
+{"device-id": 95, "device-name": "they", "lat": 19, "long": 58, "scale": "Celius", "temp": 22, "timestamp": 1447892414.244198}
+{"device-id": 96, "device-name": "this", "lat": 70, "long": 26, "scale": "Celius", "temp": 18, "timestamp": 1447892414.272934}
+{"device-id": 97, "device-name": "tis", "lat": 94, "long": 35, "scale": "Celius", "temp": 10, "timestamp": 1447892414.299547}
+{"device-id": 98, "device-name": "to", "lat": 41, "long": 13, "scale": "Celius", "temp": 23, "timestamp": 1447892414.326063}
+{"device-id": 99, "device-name": "too", "lat": 35, "long": 19, "scale": "Celius", "temp": 21, "timestamp": 1447892414.348369}
+{"device-id": 100, "device-name": "twas", "lat": 8, "long": 18, "scale": "Celius", "temp": 17, "timestamp": 1447892414.377638}
+{"device-id": 101, "device-name": "us", "lat": 32, "long": 49, "scale": "Celius", "temp": 23, "timestamp": 1447892414.406578}
+{"device-id": 102, "device-name": "wants", "lat": 46, "long": 51, "scale": "Celius", "temp": 18, "timestamp": 1447892414.429864}
+{"device-id": 103, "device-name": "was", "lat": 12, "long": 79, "scale": "Celius", "temp": 29, "timestamp": 1447892414.456589}
+{"device-id": 104, "device-name": "we", "lat": 50, "long": 62, "scale": "Celius", "temp": 14, "timestamp": 1447892414.478332}
+{"device-id": 105, "device-name": "were", "lat": 98, "long": 58, "scale": "Celius", "temp": 17, "timestamp": 1447892414.501008}
+{"device-id": 106, "device-name": "what", "lat": 55, "long": 73, "scale": "Celius", "temp": 27, "timestamp": 1447892414.530206}
+{"device-id": 107, "device-name": "when", "lat": 33, "long": 32, "scale": "Celius", "temp": 27, "timestamp": 1447892414.558228}
+{"device-id": 108, "device-name": "where", "lat": 32, "long": 99, "scale": "Celius", "temp": 19, "timestamp": 1447892414.578048}
+{"device-id": 109, "device-name": "which", "lat": 30, "long": 72, "scale": "Celius", "temp": 10, "timestamp": 1447892414.597201}
+{"device-id": 110, "device-name": "while", "lat": 23, "long": 24, "scale": "Celius", "temp": 24, "timestamp": 1447892414.620607}
+{"device-id": 111, "device-name": "who", "lat": 67, "long": 19, "scale": "Celius", "temp": 25, "timestamp": 1447892414.639998}
+{"device-id": 112, "device-name": "whom", "lat": 28, "long": 37, "scale": "Celius", "temp": 33, "timestamp": 1447892414.666695}
+{"device-id": 113, "device-name": "why", "lat": 98, "long": 45, "scale": "Celius", "temp": 32, "timestamp": 1447892414.694752}
+{"device-id": 114, "device-name": "will", "lat": 5, "long": 12, "scale": "Celius", "temp": 29, "timestamp": 1447892414.730858}
+{"device-id": 115, "device-name": "with", "lat": 95, "long": 73, "scale": "Celius", "temp": 31, "timestamp": 1447892414.755297}
+{"device-id": 116, "device-name": "would", "lat": 55, "long": 53, "scale": "Celius", "temp": 16, "timestamp": 1447892414.78139}
+{"device-id": 117, "device-name": "yet", "lat": 82, "long": 40, "scale": "Celius", "temp": 25, "timestamp": 1447892414.813202}
+{"device-id": 118, "device-name": "you", "lat": 83, "long": 74, "scale": "Celius", "temp": 17, "timestamp": 1447892414.839737}
+{"device-id": 119, "device-name": "your", "lat": 60, "long": 8, "scale": "Celius", "temp": 11, "timestamp": 1447892414.858401}
+{"device-id": 120, "device-name": "jules", "lat": 91, "long": 22, "scale": "Celius", "temp": 33, "timestamp": 1447892414.881011}
+{"device-id": 1, "device-name": "a", "lat": 35, "long": 43, "scale": "Celius", "temp": 16, "timestamp": 1447892416.948485}
+{"device-id": 2, "device-name": "able", "lat": 87, "long": 8, "scale": "Celius", "temp": 24, "timestamp": 1447892416.969693}
+{"device-id": 3, "device-name": "about", "lat": 70, "long": 97, "scale": "Celius", "temp": 18, "timestamp": 1447892416.992939}
+{"device-id": 4, "device-name": "across", "lat": 53, "long": 70, "scale": "Celius", "temp": 33, "timestamp": 1447892417.018916}
+{"device-id": 5, "device-name": "after", "lat": 74, "long": 6, "scale": "Celius", "temp": 26, "timestamp": 1447892417.039085}
+{"device-id": 6, "device-name": "all", "lat": 75, "long": 40, "scale": "Celius", "temp": 24, "timestamp": 1447892417.06575}
+{"device-id": 7, "device-name": "almost", "lat": 45, "long": 69, "scale": "Celius", "temp": 28, "timestamp": 1447892417.092939}
+{"device-id": 8, "device-name": "also", "lat": 22, "long": 57, "scale": "Celius", "temp": 33, "timestamp": 1447892417.113822}
+{"device-id": 9, "device-name": "am", "lat": 52, "long": 19, "scale": "Celius", "temp": 11, "timestamp": 1447892417.137506}
+{"device-id": 10, "device-name": "among", "lat": 12, "long": 36, "scale": "Celius", "temp": 12, "timestamp": 1447892417.161761}
+{"device-id": 11, "device-name": "an", "lat": 94, "long": 43, "scale": "Celius", "temp": 20, "timestamp": 1447892417.193052}
+{"device-id": 12, "device-name": "and", "lat": 74, "long": 55, "scale": "Celius", "temp": 26, "timestamp": 1447892417.216055}
+{"device-id": 13, "device-name": "any", "lat": 54, "long": 43, "scale": "Celius", "temp": 33, "timestamp": 1447892417.244549}
+{"device-id": 14, "device-name": "are", "lat": 63, "long": 83, "scale": "Celius", "temp": 22, "timestamp": 1447892417.266578}
+{"device-id": 15, "device-name": "as", "lat": 18, "long": 56, "scale": "Celius", "temp": 18, "timestamp": 1447892417.292368}
+{"device-id": 16, "device-name": "at", "lat": 20, "long": 93, "scale": "Celius", "temp": 15, "timestamp": 1447892417.321017}
+{"device-id": 17, "device-name": "be", "lat": 93, "long": 70, "scale": "Celius", "temp": 11, "timestamp": 1447892417.345435}
+{"device-id": 18, "device-name": "because", "lat": 55, "long": 7, "scale": "Celius", "temp": 16, "timestamp": 1447892417.367962}
+{"device-id": 19, "device-name": "been", "lat": 82, "long": 57, "scale": "Celius", "temp": 27, "timestamp": 1447892417.39581}
+{"device-id": 20, "device-name": "but", "lat": 1, "long": 18, "scale": "Celius", "temp": 15, "timestamp": 1447892417.421488}
+{"device-id": 21, "device-name": "by", "lat": 25, "long": 19, "scale": "Celius", "temp": 14, "timestamp": 1447892417.45301}
+{"device-id": 22, "device-name": "can", "lat": 84, "long": 30, "scale": "Celius", "temp": 19, "timestamp": 1447892417.474723}
+{"device-id": 23, "device-name": "cannot", "lat": 93, "long": 24, "scale": "Celius", "temp": 32, "timestamp": 1447892417.505528}
+{"device-id": 24, "device-name": "could", "lat": 14, "long": 12, "scale": "Celius", "temp": 30, "timestamp": 1447892417.528053}
+{"device-id": 25, "device-name": "dear", "lat": 87, "long": 24, "scale": "Celius", "temp": 23, "timestamp": 1447892417.558407}
+{"device-id": 26, "device-name": "did", "lat": 44, "long": 54, "scale": "Celius", "temp": 28, "timestamp": 1447892417.583475}
+{"device-id": 27, "device-name": "do", "lat": 94, "long": 20, "scale": "Celius", "temp": 23, "timestamp": 1447892417.760641}
+{"device-id": 28, "device-name": "does", "lat": 58, "long": 79, "scale": "Celius", "temp": 20, "timestamp": 1447892417.784213}
+{"device-id": 29, "device-name": "either", "lat": 5, "long": 22, "scale": "Celius", "temp": 19, "timestamp": 1447892417.811625}
+{"device-id": 30, "device-name": "else", "lat": 99, "long": 9, "scale": "Celius", "temp": 30, "timestamp": 1447892417.836528}
+{"device-id": 31, "device-name": "ever", "lat": 95, "long": 16, "scale": "Celius", "temp": 11, "timestamp": 1447892417.860556}
+{"device-id": 32, "device-name": "every", "lat": 30, "long": 7, "scale": "Celius", "temp": 11, "timestamp": 1447892417.890365}
+{"device-id": 33, "device-name": "for", "lat": 10, "long": 70, "scale": "Celius", "temp": 33, "timestamp": 1447892417.919379}
+{"device-id": 34, "device-name": "from", "lat": 99, "long": 55, "scale": "Celius", "temp": 20, "timestamp": 1447892417.945425}
+{"device-id": 35, "device-name": "get", "lat": 69, "long": 82, "scale": "Celius", "temp": 12, "timestamp": 1447892417.968607}
+{"device-id": 36, "device-name": "got", "lat": 39, "long": 24, "scale": "Celius", "temp": 24, "timestamp": 1447892417.994678}
+{"device-id": 37, "device-name": "had", "lat": 75, "long": 41, "scale": "Celius", "temp": 21, "timestamp": 1447892418.026479}
+{"device-id": 38, "device-name": "has", "lat": 35, "long": 35, "scale": "Celius", "temp": 31, "timestamp": 1447892418.051472}
+{"device-id": 39, "device-name": "have", "lat": 64, "long": 53, "scale": "Celius", "temp": 13, "timestamp": 1447892418.078668}
+{"device-id": 40, "device-name": "he", "lat": 89, "long": 43, "scale": "Celius", "temp": 18, "timestamp": 1447892418.107676}
+{"device-id": 41, "device-name": "her", "lat": 18, "long": 3, "scale": "Celius", "temp": 11, "timestamp": 1447892418.129212}
+{"device-id": 42, "device-name": "hers", "lat": 71, "long": 53, "scale": "Celius", "temp": 21, "timestamp": 1447892418.15947}
+{"device-id": 43, "device-name": "him", "lat": 26, "long": 46, "scale": "Celius", "temp": 33, "timestamp": 1447892418.289984}
+{"device-id": 44, "device-name": "his", "lat": 22, "long": 48, "scale": "Celius", "temp": 12, "timestamp": 1447892418.337593}
+{"device-id": 45, "device-name": "how", "lat": 74, "long": 86, "scale": "Celius", "temp": 11, "timestamp": 1447892418.368278}
+{"device-id": 46, "device-name": "however", "lat": 38, "long": 96, "scale": "Celius", "temp": 13, "timestamp": 1447892418.390018}
+{"device-id": 47, "device-name": "i", "lat": 12, "long": 47, "scale": "Celius", "temp": 22, "timestamp": 1447892418.412896}
+{"device-id": 48, "device-name": "if", "lat": 75, "long": 60, "scale": "Celius", "temp": 29, "timestamp": 1447892418.440584}
+{"device-id": 49, "device-name": "in", "lat": 22, "long": 39, "scale": "Celius", "temp": 15, "timestamp": 1447892418.467305}
+{"device-id": 50, "device-name": "into", "lat": 96, "long": 9, "scale": "Celius", "temp": 10, "timestamp": 1447892418.492774}
+{"device-id": 51, "device-name": "is", "lat": 18, "long": 58, "scale": "Celius", "temp": 26, "timestamp": 1447892418.563766}
+{"device-id": 52, "device-name": "it", "lat": 36, "long": 28, "scale": "Celius", "temp": 20, "timestamp": 1447892418.586507}
+{"device-id": 53, "device-name": "its", "lat": 35, "long": 77, "scale": "Celius", "temp": 18, "timestamp": 1447892418.610724}
+{"device-id": 54, "device-name": "just", "lat": 39, "long": 13, "scale": "Celius", "temp": 33, "timestamp": 1447892418.641738}
+{"device-id": 55, "device-name": "least", "lat": 35, "long": 7, "scale": "Celius", "temp": 23, "timestamp": 1447892418.672416}
+{"device-id": 56, "device-name": "let", "lat": 69, "long": 4, "scale": "Celius", "temp": 25, "timestamp": 1447892418.697369}
+{"device-id": 57, "device-name": "like", "lat": 90, "long": 87, "scale": "Celius", "temp": 30, "timestamp": 1447892418.726277}
+{"device-id": 58, "device-name": "likely", "lat": 49, "long": 95, "scale": "Celius", "temp": 15, "timestamp": 1447892418.754687}
+{"device-id": 59, "device-name": "may", "lat": 41, "long": 66, "scale": "Celius", "temp": 16, "timestamp": 1447892418.788084}
+{"device-id": 60, "device-name": "me", "lat": 52, "long": 61, "scale": "Celius", "temp": 23, "timestamp": 1447892418.81216}
+{"device-id": 61, "device-name": "might", "lat": 30, "long": 16, "scale": "Celius", "temp": 10, "timestamp": 1447892418.832268}
+{"device-id": 62, "device-name": "most", "lat": 60, "long": 9, "scale": "Celius", "temp": 31, "timestamp": 1447892418.854541}
+{"device-id": 63, "device-name": "must", "lat": 2, "long": 48, "scale": "Celius", "temp": 12, "timestamp": 1447892418.88335}
+{"device-id": 64, "device-name": "my", "lat": 0, "long": 29, "scale": "Celius", "temp": 24, "timestamp": 1447892418.910077}
+{"device-id": 65, "device-name": "neither", "lat": 96, "long": 21, "scale": "Celius", "temp": 19, "timestamp": 1447892418.929615}
+{"device-id": 66, "device-name": "no", "lat": 97, "long": 46, "scale": "Celius", "temp": 16, "timestamp": 1447892418.952287}
+{"device-id": 67, "device-name": "nor", "lat": 55, "long": 14, "scale": "Celius", "temp": 15, "timestamp": 1447892418.973816}
+{"device-id": 68, "device-name": "not", "lat": 15, "long": 3, "scale": "Celius", "temp": 21, "timestamp": 1447892418.998739}
+{"device-id": 69, "device-name": "of", "lat": 2, "long": 73, "scale": "Celius", "temp": 31, "timestamp": 1447892419.019426}
+{"device-id": 70, "device-name": "off", "lat": 30, "long": 35, "scale": "Celius", "temp": 18, "timestamp": 1447892419.049462}
+{"device-id": 71, "device-name": "often", "lat": 28, "long": 51, "scale": "Celius", "temp": 32, "timestamp": 1447892419.073636}
+{"device-id": 72, "device-name": "on", "lat": 40, "long": 11, "scale": "Celius", "temp": 29, "timestamp": 1447892419.09547}
+{"device-id": 73, "device-name": "only", "lat": 19, "long": 98, "scale": "Celius", "temp": 30, "timestamp": 1447892419.119817}
+{"device-id": 74, "device-name": "or", "lat": 28, "long": 79, "scale": "Celius", "temp": 24, "timestamp": 1447892419.142546}
+{"device-id": 75, "device-name": "other", "lat": 77, "long": 45, "scale": "Celius", "temp": 25, "timestamp": 1447892419.166914}
+{"device-id": 76, "device-name": "our", "lat": 10, "long": 4, "scale": "Celius", "temp": 20, "timestamp": 1447892419.198451}
+{"device-id": 77, "device-name": "own", "lat": 78, "long": 14, "scale": "Celius", "temp": 21, "timestamp": 1447892419.233106}
+{"device-id": 78, "device-name": "rather", "lat": 90, "long": 55, "scale": "Celius", "temp": 10, "timestamp": 1447892419.270052}
+{"device-id": 79, "device-name": "said", "lat": 36, "long": 82, "scale": "Celius", "temp": 29, "timestamp": 1447892419.299208}
+{"device-id": 80, "device-name": "say", "lat": 43, "long": 47, "scale": "Celius", "temp": 18, "timestamp": 1447892419.330387}
+{"device-id": 81, "device-name": "says", "lat": 6, "long": 60, "scale": "Celius", "temp": 26, "timestamp": 1447892419.356136}
+{"device-id": 82, "device-name": "she", "lat": 99, "long": 21, "scale": "Celius", "temp": 28, "timestamp": 1447892419.382119}
+{"device-id": 83, "device-name": "should", "lat": 55, "long": 71, "scale": "Celius", "temp": 25, "timestamp": 1447892419.406808}
+{"device-id": 84, "device-name": "since", "lat": 0, "long": 93, "scale": "Celius", "temp": 30, "timestamp": 1447892419.436263}
+{"device-id": 85, "device-name": "so", "lat": 67, "long": 8, "scale": "Celius", "temp": 32, "timestamp": 1447892419.464885}
+{"device-id": 86, "device-name": "some", "lat": 40, "long": 24, "scale": "Celius", "temp": 14, "timestamp": 1447892419.496549}
+{"device-id": 87, "device-name": "than", "lat": 69, "long": 70, "scale": "Celius", "temp": 32, "timestamp": 1447892419.530582}
+{"device-id": 88, "device-name": "that", "lat": 18, "long": 53, "scale": "Celius", "temp": 17, "timestamp": 1447892419.558489}
+{"device-id": 89, "device-name": "the", "lat": 80, "long": 19, "scale": "Celius", "temp": 24, "timestamp": 1447892419.582697}
+{"device-id": 90, "device-name": "their", "lat": 72, "long": 99, "scale": "Celius", "temp": 28, "timestamp": 1447892419.617274}
+{"device-id": 91, "device-name": "them", "lat": 59, "long": 87, "scale": "Celius", "temp": 15, "timestamp": 1447892419.643511}
+{"device-id": 92, "device-name": "then", "lat": 87, "long": 70, "scale": "Celius", "temp": 16, "timestamp": 1447892419.662748}
+{"device-id": 93, "device-name": "there", "lat": 16, "long": 40, "scale": "Celius", "temp": 10, "timestamp": 1447892419.681603}
+{"device-id": 94, "device-name": "these", "lat": 39, "long": 68, "scale": "Celius", "temp": 34, "timestamp": 1447892419.707744}
+{"device-id": 95, "device-name": "they", "lat": 94, "long": 89, "scale": "Celius", "temp": 23, "timestamp": 1447892419.738251}
+{"device-id": 96, "device-name": "this", "lat": 27, "long": 79, "scale": "Celius", "temp": 12, "timestamp": 1447892419.764914}
+{"device-id": 97, "device-name": "tis", "lat": 65, "long": 1, "scale": "Celius", "temp": 26, "timestamp": 1447892419.784738}
+{"device-id": 98, "device-name": "to", "lat": 50, "long": 98, "scale": "Celius", "temp": 33, "timestamp": 1447892419.803989}
+{"device-id": 99, "device-name": "too", "lat": 44, "long": 50, "scale": "Celius", "temp": 27, "timestamp": 1447892419.824751}
+{"device-id": 100, "device-name": "twas", "lat": 75, "long": 96, "scale": "Celius", "temp": 16, "timestamp": 1447892419.84611}
+{"device-id": 101, "device-name": "us", "lat": 9, "long": 31, "scale": "Celius", "temp": 30, "timestamp": 1447892419.869845}
+{"device-id": 102, "device-name": "wants", "lat": 6, "long": 67, "scale": "Celius", "temp": 32, "timestamp": 1447892419.893513}
+{"device-id": 103, "device-name": "was", "lat": 50, "long": 21, "scale": "Celius", "temp": 25, "timestamp": 1447892419.921833}
+{"device-id": 104, "device-name": "we", "lat": 46, "long": 96, "scale": "Celius", "temp": 20, "timestamp": 1447892419.952121}
+{"device-id": 105, "device-name": "were", "lat": 1, "long": 54, "scale": "Celius", "temp": 20, "timestamp": 1447892419.976148}
+{"device-id": 106, "device-name": "what", "lat": 72, "long": 37, "scale": "Celius", "temp": 24, "timestamp": 1447892419.996971}
+{"device-id": 107, "device-name": "when", "lat": 57, "long": 62, "scale": "Celius", "temp": 22, "timestamp": 1447892420.019399}
+{"device-id": 108, "device-name": "where", "lat": 44, "long": 40, "scale": "Celius", "temp": 13, "timestamp": 1447892420.042644}
+{"device-id": 109, "device-name": "which", "lat": 51, "long": 34, "scale": "Celius", "temp": 34, "timestamp": 1447892420.065377}
+{"device-id": 110, "device-name": "while", "lat": 81, "long": 22, "scale": "Celius", "temp": 28, "timestamp": 1447892420.089255}
+{"device-id": 111, "device-name": "who", "lat": 30, "long": 11, "scale": "Celius", "temp": 30, "timestamp": 1447892420.114301}
+{"device-id": 112, "device-name": "whom", "lat": 0, "long": 81, "scale": "Celius", "temp": 28, "timestamp": 1447892420.143091}
+{"device-id": 113, "device-name": "why", "lat": 39, "long": 38, "scale": "Celius", "temp": 16, "timestamp": 1447892420.168509}
+{"device-id": 114, "device-name": "will", "lat": 3, "long": 79, "scale": "Celius", "temp": 23, "timestamp": 1447892420.187122}
+{"device-id": 115, "device-name": "with", "lat": 99, "long": 85, "scale": "Celius", "temp": 28, "timestamp": 1447892420.207278}
+{"device-id": 116, "device-name": "would", "lat": 17, "long": 23, "scale": "Celius", "temp": 17, "timestamp": 1447892420.233156}
+{"device-id": 117, "device-name": "yet", "lat": 88, "long": 35, "scale": "Celius", "temp": 34, "timestamp": 1447892420.258647}
+{"device-id": 118, "device-name": "you", "lat": 78, "long": 38, "scale": "Celius", "temp": 25, "timestamp": 1447892420.284612}
+{"device-id": 119, "device-name": "your", "lat": 22, "long": 56, "scale": "Celius", "temp": 14, "timestamp": 1447892420.304208}
+{"device-id": 120, "device-name": "jules", "lat": 46, "long": 26, "scale": "Celius", "temp": 24, "timestamp": 1447892420.325277}

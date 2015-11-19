@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 from pubnub import Pubnub
+from thread import start_new_thread
+import getopt
 import urllib2
 import time
 import sys
 import socket
 import json
 import random
+import os
+
 """
 This short example illustrates the simplicity of using PubNub as a Publish-Subscribe cloud service. 
 As an example, it simulates as though multiple devices are registering themselves or announcing their
@@ -17,19 +21,40 @@ live data streams of JSON objects from each device.
 Here we sumiluate within a single example, but in reality ech JSON data object could be be published
 separately from its embedded PubNub API. 
 
-It downloads a list of words form the Internet and uses them as device names. Each JSON object has the 
+It downloads a list of words form the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 followin format:
- {"device-id": 97, 
- "lat": 22, 
- "long": 82, 
- "scale\: 
- "Celius", 
- "temp": 22, 
- "device-name": "tis"
+ {"device_id": 97, 
+  "timestamp", 1447886791.607918,
+  "lat": 22, 
+  "long": 82, 
+  "scale\: 
+  "Celius", 
+  "temp": 22, 
+  "device_name": "tis"
  }
 author: Jules S. Damji 
 """
+#
+#global variables, nedd that for thread functions
+#
+pubnub = None
+batches = []
+device_file = "devices.json"
 
+#
+# Publish the data to the devices channels as well as write to the data directory
+# If we are using Spark Streaming, then Spark Context can monitor this directory for a new file
+# and create a json datastream for processing, if enabled
+#
+def publish_devices_info(ch, filed):
+  global pubnub, batches
+  id=0
+  for b in batches:
+    for w in b:
+      id=id+1
+      device_msg = create_json(id, w)
+      write_to_dir(filed, device_msg)
+      pubnub.publish(ch, device_msg)
 #
 #
 # given a url fetch the words in the url that are comma separated
@@ -41,7 +66,6 @@ def get_batches(url):
   if len(words) % 10 != 0:
     words = words + ['jules']
     j = 10
-    batches = []
     for i in range(0, len(words), 10):
       batches.append(words[i:j])
       j = j + 10
@@ -52,7 +76,8 @@ def get_batches(url):
 def create_json(id, d):
   temp = random.randrange(10, 35)
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
-  return json.dumps({'device-id': id, 'device-name': d, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
+  ts = time.time()
+  return json.dumps({'device-id': id, 'device-name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings
@@ -78,37 +103,80 @@ def create_spark_connection(port, host):
 def close_spark_connection(s):
   if s:
     s.close()
-
 #
 # send JSON object or message to the Spark streaming context listener
 #
 def send_to_spark(s, dmsg):
   s.sendall(device_msg)
 
-if __name__ == "__main__":
-  if len(sys.argv) != 3:
-    print("Usage: pub_dev_words.py url channel [--spark=yes --host <hostname> --port portno]")
+#
+# the the file descriptor for the directory/filename
+# Note that this file will overwrite existing file
+#
+def get_file_handle(dir):
+  global device_file
+  fd = None
+  try:
+    path = os.path.join(dir, device_file)
+    fd = open(path, "w")
+  except IOError as e:
+    print "I/O error({0}): {1}".format(e.errno, e.strerror)
     sys.exit(-1)
+  return fd
 
-  url, ch = sys.argv[1:]
+#
+# close the filehandle
+#
+def close_file_handle(fd):
+  fd.close()
+#
+# write the device json to the file
+#
+def write_to_dir(fd, djson):
+  try:
+    fd.write(djson)
+    fd.write("\n")
+  except IOError as e:
+    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+
+if __name__ == "__main__":
+  url, ch , data_dir = None, None, None
+  iterations = 3
   #
-  #initialize the PubNub handle
+  # parse command line arguments
+  #
+  try:
+    opts, args = getopt.getopt(sys.argv[1:],"u:c:i:d:",["url=","channel=","iterations=","dir="])
+  except getopt.GetoptError:
+      print("Usage: pub_dev_words.py -u url -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
+      sys.exit(-1)
+
+  for opt, arg in opts:
+    if opt in ("-u", "url="):
+       url = arg
+    elif opt in ("-c", "channel="):
+       ch = arg
+    elif opt in ("-d", "dir="):
+       data_dir = arg
+  #
+  #initialize the PubNub handle, with your personal keys
   #
   pubnub = Pubnub(publish_key="pub-c-c3575cb5-36fc-4cff-b4e8-280262ed5f00", subscribe_key="sub-c-3bc37460-8899-11e5-bf00-02ee2ddab7fe")
   #
   # fetch the batches
+  #
   batches = get_batches(url)
   if batches == None or len(batches) == 0:
-  	url = 'http://www.textfixer.com/resources/common-english-words.txt'
-  	print "URL: " + url + "does not contain any words. Using this URL: " + url
+    print "URL: " + url + "does not contain any words. Using a different URL"
+    sys.exit(-1)
   #
   #create psuedo devices for provisioning as though there were all publishing upon activation
+  # Use number of iterations and sleep between them. For each iteration launch a thread that will
+  #execute the function.
   #
-  id=0
-  for b in batches:
-    for w in b:
-      id=id+1
-      device_msg = create_json(id, w)
-      print device_msg
-      pubnub.publish(ch, device_msg)
-
+  filed = get_file_handle(data_dir)
+  for i in range(int(iterations)):
+    start_new_thread(publish_devices_info, (ch,filed))
+    time.sleep(5)
+  close_file_handle(filed)
+  print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))

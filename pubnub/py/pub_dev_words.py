@@ -41,6 +41,8 @@ pubnub = None
 batches = []
 device_file = "devices.json"
 
+def on_error(message):
+  print ("ERROR: Publish " + str(message))
 #
 # Publish the data to the devices channels as well as write to the data directory
 # If we are using Spark Streaming, then Spark Context can monitor this directory for a new file
@@ -54,7 +56,7 @@ def publish_devices_info(ch, filed):
       id=id+1
       device_msg = create_json(id, w)
       write_to_dir(filed, device_msg)
-      pubnub.publish(ch, device_msg)
+      pubnub.publish(ch, device_msg, error=on_error)
 #
 #
 # given a url fetch the words in the url that are comma separated
@@ -74,9 +76,10 @@ def get_batches(url):
 # create a json object with attributes and values
 #
 def create_json(id, d):
-  temp = random.randrange(10, 35)
+  temp = random.randrange(0, 35)
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   ts = time.time()
+  d = "sensor-mac-" + d
   return json.dumps({'device-id': id, 'device-name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
 
 #

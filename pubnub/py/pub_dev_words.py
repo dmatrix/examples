@@ -17,8 +17,7 @@ As an example, it simulates as though multiple devices are registering themselve
 availability by publishing on a channel.  
 
 Also, as an optional extension, it can write to a socket or a directory where a Spark Streaming context monitoring for live
-live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app—and 
-in local mode.
+live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app and in local mode.
 
 Here I similuate mulitple devices publishing by using a thread, but in reality each JSON data object could be published
 separately by each device using PubNub's publish-subscribe API. 
@@ -32,9 +31,12 @@ followin format:
   "scale\: 
   "Celius", 
   "temp": 22, 
-  "device_name": "sensor-mac-word"
+  "device_name": "sensor-mac-word",
+  "humidity": 15,
+  "zipcode:" 95498
  }
 author: Jules S. Damji 
+
 """
 #
 #global variables, need that for thread functions
@@ -44,7 +46,7 @@ batches = []
 device_file = "devices.json"
 
 def on_error(message):
-  print ("ERROR: Publish " + str(message))
+  print >> sys.stderr, "ERROR: Publish " + str(message)
 #
 # Publish the data to the device channel as well as write to the data directory.
 # If we are using Spark Streaming, then Spark Context can monitor this directory for a new file
@@ -59,6 +61,15 @@ def publish_devices_info(ch, filed):
       device_msg = create_json(id, w)
       write_to_dir(filed, device_msg)
       pubnub.publish(ch, device_msg, error=on_error)
+
+#
+# get random letters
+#
+def get_random_word():
+  word = ''
+  for i in range(8):
+    word += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+  return word
 #
 #
 # given a url fetch the words (or could be device names) in the url that are comma separated
@@ -80,9 +91,12 @@ def get_batches(url):
 def create_json(id, d):
   temp = random.randrange(0, 35)
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
+  time.sleep(0.025)
   ts = time.time()
-  d = "sensor-mac-" + d
-  return json.dumps({'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
+  d = "sensor-mac-" + d + get_random_word()
+  zipcode = random.randrange(94538,97107)
+  humidity = random.randrange(25, 100)
+  return json.dumps({'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}, sort_keys=True)
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings
@@ -125,7 +139,7 @@ def get_file_handle(dir):
     path = os.path.join(dir, device_file)
     fd = open(path, "w")
   except IOError as e:
-    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    print >> sys.stderr, "I/O error({0}): {1}".format(e.errno, e.strerror)
     sys.exit(-1)
   return fd
 
@@ -142,7 +156,7 @@ def write_to_dir(fd, djson):
     fd.write(djson)
     fd.write("\n")
   except IOError as e:
-    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    print >> sys.stderr, "I/O error({0}): {1}".format(e.errno, e.strerror)
 #
 # the main program
 #
@@ -174,7 +188,7 @@ if __name__ == "__main__":
   #
   batches = get_batches(url)
   if batches == None or len(batches) == 0:
-    print "URL: " + url + "does not contain any words. Using a different URL"
+    print >> sys.stderr, "URL: " + url + "does not contain any words. Using a different URL"
     sys.exit(-1)
   #
   #Create psuedo devices for provisioning as though they are all publishing upon activation
@@ -186,5 +200,5 @@ if __name__ == "__main__":
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(5)
   close_file_handle(filed)
-  
+
   print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))

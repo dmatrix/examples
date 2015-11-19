@@ -161,7 +161,7 @@ if __name__ == "__main__":
   #
   #initialize the PubNub handle, with your personal keys
   #
-  pubnub = Pubnub(publish_key="pub-c-c3575cb5-36fc-4cff-b4e8-280262ed5f00", subscribe_key="sub-c-3bc37460-8899-11e5-bf00-02ee2ddab7fe")
+  pubnub = Pubnub(publish_key="demo", subscribe_key="demo")
   #
   # fetch the batches
   #

@@ -12,16 +12,18 @@ import os
 
 """
 This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk. 
+
 As an example, it simulates as though multiple devices are registering themselves or announcing their
-availability by publishing a channel.  
+availability by publishing on a channel.  
 
-Also, as an extension it can write to a socket or a directory where a Spark Streaming context monitoring for live
-live data streams of JSON objects from each device.
+Also, as an optional extension, it can write to a socket or a directory where a Spark Streaming context monitoring for live
+live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app—and 
+in local mode.
 
-Here I sumiluate with a single example, but in reality each JSON data object could be published
-separately from device using PubNub's publish-subscribe API. 
+Here I similuate mulitple devices publishing by using a thread, but in reality each JSON data object could be published
+separately by each device using PubNub's publish-subscribe API. 
 
-It downloads a list of words form the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
+It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 followin format:
  {"device_id": 97, 
   "timestamp", 1447886791.607918,
@@ -35,7 +37,7 @@ followin format:
 author: Jules S. Damji 
 """
 #
-#global variables, nedd that for thread functions
+#global variables, need that for thread functions
 #
 pubnub = None
 batches = []
@@ -44,7 +46,7 @@ device_file = "devices.json"
 def on_error(message):
   print ("ERROR: Publish " + str(message))
 #
-# Publish the data to the devices channels as well as write to the data directory
+# Publish the data to the device channel as well as write to the data directory.
 # If we are using Spark Streaming, then Spark Context can monitor this directory for a new file
 # and create a json datastream for processing, if enabled
 #
@@ -59,7 +61,7 @@ def publish_devices_info(ch, filed):
       pubnub.publish(ch, device_msg, error=on_error)
 #
 #
-# given a url fetch the words in the url that are comma separated
+# given a url fetch the words (or could be device names) in the url that are comma separated
 #
 def get_batches(url):
   webFile = urllib2.urlopen(url).read()
@@ -80,7 +82,7 @@ def create_json(id, d):
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   ts = time.time()
   d = "sensor-mac-" + d
-  return json.dumps({'device-id': id, 'device-name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
+  return json.dumps({'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y}, sort_keys=True)
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings
@@ -113,7 +115,7 @@ def send_to_spark(s, dmsg):
   s.sendall(device_msg)
 
 #
-# the the file descriptor for the directory/filename
+# Get the file descriptor for the directory/filename
 # Note that this file will overwrite existing file
 #
 def get_file_handle(dir):
@@ -141,7 +143,9 @@ def write_to_dir(fd, djson):
     fd.write("\n")
   except IOError as e:
     print "I/O error({0}): {1}".format(e.errno, e.strerror)
-
+#
+# the main program
+#
 if __name__ == "__main__":
   url, ch , data_dir = None, None, None
   iterations = 3
@@ -173,8 +177,8 @@ if __name__ == "__main__":
     print "URL: " + url + "does not contain any words. Using a different URL"
     sys.exit(-1)
   #
-  #create psuedo devices for provisioning as though there were all publishing upon activation
-  # Use number of iterations and sleep between them. For each iteration launch a thread that will
+  #Create psuedo devices for provisioning as though they are all publishing upon activation
+  #Use number of iterations and sleep between them. For each iteration, launch a thread that will
   #execute the function.
   #
   filed = get_file_handle(data_dir)
@@ -182,4 +186,5 @@ if __name__ == "__main__":
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(5)
   close_file_handle(filed)
+  
   print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))

@@ -11,15 +11,17 @@ import random
 import os
 
 """
-This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk. 
+This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
+and how to use PubNub SDK to program the netowrk, to publish data streams and to subscribe data streams.
 
-As an example, it simulates as though multiple devices are registering themselves or announcing their
-availability by publishing on a channel.  
+Though the example is simple, it simulates as though multiple devices are registering themselves or announcing their
+availability by publishing their state on a dedicated channel. In reality this could be a deployment of meters or sensors
+in an area code that you wish to monitor for tial and do some realtime analysis using Spark.
 
-Also, as an optional extension, it can write to a socket or a directory where a Spark Streaming context monitoring for live
+Also, as an optional extension, the app can write to a socket or a directory where a Spark Streaming context monitoring for live
 live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app and in local mode.
 
-Here I similuate mulitple devices publishing by using a thread, but in reality each JSON data object could be published
+I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
 separately by each device using PubNub's publish-subscribe API. 
 
 It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 

@@ -19,7 +19,7 @@ followin format:
   "timestamp", 1447886791.607918,
   "lat": 22, 
   "long": 82, 
-  "scale\: 
+  "scale: 
   "Celius", 
   "temp": 22, 
   "device_name": "sensor-mac-word",

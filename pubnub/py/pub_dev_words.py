@@ -30,14 +30,18 @@ followin format:
   "timestamp", 1447886791.607918,
   "lat": 22, 
   "long": 82, 
-  "scale\: 
+  "scale: 
   "Celius", 
   "temp": 22, 
   "device_name": "sensor-mac-word",
   "humidity": 15,
   "zipcode:" 95498
  }
+
+ To run this program to create json files into the destinattion directory for Spark Streaming consumption:
+ $ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data
 author: Jules S. Damji 
+
 
 """
 #

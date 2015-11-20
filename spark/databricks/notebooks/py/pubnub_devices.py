@@ -19,6 +19,7 @@ Though short and simple, it illustrates Spark's brevity in doing more with littl
 
 Simplicity does not preclude profundity. Once can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
+Author: Jules S. Damji
 
 """
 import json

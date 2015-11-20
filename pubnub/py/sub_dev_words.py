@@ -12,13 +12,19 @@ live data streams of JSON objects from each device. Alternatively, it can write 
 where a Spark streaming context is monitoring any data files.
 
 Each JSON object received on its subscribed channles is the following format.
- {"device-id": 97, 
- "lat": 22, 
- "long": 82, 
- "scale\: 
- "Celius", 
- "temp": 22, 
- "device-name": "tis"
+
+It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
+followin format:
+ {"device_id": 97, 
+  "timestamp", 1447886791.607918,
+  "lat": 22, 
+  "long": 82, 
+  "scale\: 
+  "Celius", 
+  "temp": 22, 
+  "device_name": "sensor-mac-word",
+  "humidity": 15,
+  "zipcode:" 95498
  }
 author: Jules S. Damji 
 """

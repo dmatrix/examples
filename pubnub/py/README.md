@@ -77,14 +77,14 @@ following format:
      `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
 ###pubnub_dir_streaming.py
- This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that write dataset files into its destination directory.
+ This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that writes dataset files into a destination directory.
 
-It's counter part, PubNub publisher, pub_dev_words.py publishes to a channel devices and also dumps it to a data directory
+Its counter part PubNub publisher, *pub_dev_words.py*, publishes to a channel devices and also dumps it to a data directory
 for this Spark Streaming program to consume. While it does not diretory use PubNub subscriber API to get the item, the next
 step is to modify this app so that it employ's PubNub's subscribe channel to recieve publishe data.
 
 (At the moment I having trouble getting publish.subscribe to work. Some problem with the keys. But for now this work around should
-for running both publisher (pub_dev_workds.py) and subscribler (pubnub_dir_streamingpy) on the same machine)
+for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streamingpy*) on the same machine)
 
 Ideally, you want the this Spark app to run on the cluster and directly subscrbe from the PubNub Data Network Stream.
 (stay tune... coming soon)

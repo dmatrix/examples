@@ -11,9 +11,9 @@ Legend
 ***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***
 
 ##Introduction
-For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selectively, though. Even today, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new.
+For as long as there have been papers, there have been publishers and a respective consumers. Even today, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
 
-Products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms for publishing and subscribing selective data and writing distributed streaming applications.
+Products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing selective data and writing distributed streaming applications.
 
 But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. [PubNub]
 (http://pubnub.com) is one such data streaming network that allows you to build and connect devices for realtime applications quickly and easily.
@@ -32,7 +32,7 @@ Interested parties can subscribe to this channel, particularly any app that's mo
 
 Additionally, this Spark App (or any subsriber) can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization over period of time. This is useful for trending and monitoring usage.
 
-For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb), I can visualize different datasets along different axis. Below are few examples:
+For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb) and [DataFrames & SQL] (http://spark.apache.org/docs/latest/sql-programming-guide.html), I can visualize different data fields along different axis. Below are few examples:
 
 
 ![](images/screen_3.png "Temperature vs Devices")
@@ -55,8 +55,7 @@ in an area code that you wish to monitor for tial and do some realtime analysis 
 Also, as an optional extension, the app can write to a socket or a directory where a Spark Streaming context monitoring for live
 live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app and in local mode.
 
-I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
-separately by each device using PubNub's publish-subscribe API. 
+I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published separately by each device using PubNub's publish-subscribe API. 
 
 It downloads a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 following format:
@@ -84,7 +83,7 @@ for this Spark Streaming program to consume. While it does not diretory use PubN
 step is to modify this app so that it employ's PubNub's subscribe channel to recieve publishe data.
 
 (At the moment I having trouble getting publish.subscribe to work. Some problem with the keys. But for now this work around should
-for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streamingpy*) on the same machine)
+for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streaming.py*) on the same machine)
 
 Ideally, you want the this Spark app to run on the cluster and directly subscrbe from the PubNub Data Network Stream.
 (stay tune... coming soon)

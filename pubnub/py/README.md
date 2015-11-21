@@ -11,7 +11,7 @@ Legend
 ***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***
 
 ##Introduction
-For as long as there have been papers, there have been publishers and a respective consumers. Even today, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
+For as long as there have been papers, there have been publishers and respective consumers. Even today, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
 
 Products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing selective data and writing distributed streaming applications.
 

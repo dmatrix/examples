@@ -85,12 +85,12 @@ Simplicity does not preclude profundity. Once can achieve a lot by doing little,
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
 ## Requirements
+
 In order to run these two applications you will need the following:
 1. Trial account with PubNub
 2. Install PubNub Python SDK 
 3. Apache Spark on your local machine running in local mode
 4. InfluxDB and Python SDK
 ##TO DO
-
 1. Integrate with InfluxDB
 2. Include Pubnub.subscribe() calls within the Spark Streaming App

@@ -87,10 +87,10 @@ Simplicity does not preclude profundity. Once can achieve a lot by doing little,
 ## Requirements
 
 In order to run these two applications you will need the following:
-1. Trial account with PubNub
-2. Install PubNub Python SDK 
-3. Apache Spark on your local machine running in local mode
-4. InfluxDB and Python SDK
+- Trial account with PubNub
+- Install PubNub Python SDK 
+- Apache Spark on your local machine running in local mode
+- InfluxDB and Python SDK
 ##TO DO
 1. Integrate with InfluxDB
 2. Include Pubnub.subscribe() calls within the Spark Streaming App

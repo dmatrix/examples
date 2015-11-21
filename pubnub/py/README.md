@@ -24,7 +24,7 @@ The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pen
 
 Ideally and eventually, I'll want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging with PubNub pub/sub keys' issues, I'm cheating slightly, by publishing dataset to a local file system directory where the local Spark appplication monitors the directory for any published datasets.
 
-Note that in this scenario, you can't run Spark Streaing App in a clustered or standlone mode. The Spark app will have to run in local mode on the same machine where you are publishing data.
+Note that in this scenario, you can't run Spark Streaming App in a clustered or standlone mode. The Spark app will have to run in local mode on the same machine as pubnub publisher app.
 ##Device Simulation
 I simulate as though a large installation of sensor devices in a particular zipcode area is publishing the state, temperature, and humidity data onto the PubNub Data Network on a well-known public channel "devices."
 

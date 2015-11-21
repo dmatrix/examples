@@ -1,6 +1,6 @@
 #PubNub integration with Apache Spark and InfluxDB
 
-![picture alt](./images/pubnub_spark.png"An Overview of Data Flow")
+![](images/pubnub_spark.png "An Overview of Data Flow")
 
 * Legend
 - P = Publish
@@ -26,23 +26,24 @@ I employ a thread that simulates mulitple devices acting as publishers, but in r
 separately by each device using PubNub's publish-subscribe API. 
 
 It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
-followin format:
- {"device_id": 97, 
-  "timestamp", 1447886791.607918,
-  "lat": 22, 
-  "long": 82, 
-  "scale: 
-  "Celius", 
-  "temp": 22, 
-  "device_name": "sensor-mac-word",
-  "humidity": 15,
-  "zipcode:" 95498
- }
+following format:
+
+     {"device_id": 97, 
+     "timestamp", 1447886791.607918,
+     "lat": 22, 
+     "long": 82, 
+     "scale: 
+     "Celius", 
+     "temp": 22, 
+     "device_name": "sensor-mac-word",
+     "humidity": 15,
+     "zipcode:" 95498
+    }
 
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
  	`$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
- ### pubnub_dir_streaming.py
+### pubnub_dir_streaming.py
  This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that write dataset files into its destination directory.
 
 It's counter part, PubNub publisher, pub_dev_words.py publishes to a channel devices and also dumps it to a data directory
@@ -61,7 +62,7 @@ Though short and simple, it illustrates Spark's brevity in doing more with littl
 Simplicity does not preclude profundity. Once can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
-    
+
 ##TO DO
 
 1. Integrate with InfluxDB

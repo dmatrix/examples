@@ -22,9 +22,9 @@ To have a go at it, I took it for a spin, using their [Python SDK](https://www.p
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
-Ideally and eventually, I'll want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other PubNub access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any published datasets.
+Ideally and eventually, I'll want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging with PubNub pub/sub keys issues, I'm cheating slighting, by publishing dataset to a local file system directory where the local Spark appplication monitors the directory for any published datasets.
 
-Note that in this scenario, you can't run Spark Streaing App in a distributed environment. The Spark app will have to run in local mode on the machine where you also are publishing data.
+Note that in this scenario, you can't run Spark Streaing App in a clustered or standlone mode. The Spark app will have to run in local mode on the machine where you also are publishing data.
 ##Device Simulation
 I simulate as though a large installation of sensor devices in a particular zipcode area is publishing the state, temperature, and humidity data onto the PubNub Data Network on a well-known public channel "devices."
 
@@ -96,5 +96,5 @@ In order to run these two applications you will need the following:
 
 ##TO DO
 1. Integrate with InfluxDB
-2. Fix PubNub subscribe() keys issues problems
+2. Fix PubNub subscribe() keys issues
 3. Include Pubnub.subscribe() calls within the Spark Streaming App

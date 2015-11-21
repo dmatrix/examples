@@ -2,20 +2,22 @@
 
 ![](images/pubnub_spark.png "An Overview of Data Flow")
 
-* Legend
+Legend
 - P = Publish
 - S = Subscribe
 - R = Read
 - W = Write
 
 ##Introduction
-For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selective subscription, though. Even today, in the digital era, digital data is securely and reliably publshied and subsequently and selectively subscribed.
+For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selectively, though. Even today, in the digital era, digital data is securely and reliably publshied and subsequently and selectively subscribed.
 
-Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platform infrastructure for publishing and subscribing selective data. 
+Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms for publishing and subscribing selective data and writing distributed streaming applications.
 
-But realtime streaming data networks are different. They're global, scalable, and reliable. PubNub is one such network that allows you to build realtime applications easily. 
+But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. PubNub! (http://pubnub.com) is one such network that allows you to build realtime applications quickly and easily.
 
-To have a go at it, I try and took it for a spin, using their Python SDK to write my first Publish-Subscribe app. I went futher to integrate that with Apache Spark Streaming. The diagram above shows the dataflow.
+To have a go at it, I took it for a spin, using their Python SDK !(https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with Apache Spark Streaming!(http://apache.spark.org)—and soon with InfluxDB. 
+
+The diagram above shows the dataflow (Ah, my first woeful attempt to use 53 Pencil & Paper Sketch!(https://www.fiftythree.com/))
 
 Ideally and eventually, I want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any files.
 

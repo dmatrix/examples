@@ -32,7 +32,7 @@ Additionally, this Spark App can insert data into a timeseries database such as 
 
 
 ##Relevant Files
-### pub_dev_words.py
+###pub_dev_words.py
 
 This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
 and how to use PubNub SDK to program the netowrk, to publish data streams or to subscribe data streams.
@@ -65,7 +65,7 @@ following format:
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
      `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
-### pubnub_dir_streaming.py
+###pubnub_dir_streaming.py
  This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that write dataset files into its destination directory.
 
 It's counter part, PubNub publisher, pub_dev_words.py publishes to a channel devices and also dumps it to a data directory
@@ -84,13 +84,15 @@ Though short and simple, it illustrates Spark's brevity in doing more with littl
 Simplicity does not preclude profundity. Once can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
-## Requirements
+##Requirements
 
 In order to run these two applications you will need the following:
 - Trial account with PubNub
 - Install PubNub Python SDK 
 - Apache Spark on your local machine running in local mode
 - InfluxDB and Python SDK
+
 ##TO DO
 1. Integrate with InfluxDB
-2. Include Pubnub.subscribe() calls within the Spark Streaming App
+2. Fix PubNub subscribe() keys issues problems
+3. Include Pubnub.subscribe() calls within the Spark Streaming App

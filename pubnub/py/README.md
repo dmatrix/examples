@@ -32,6 +32,20 @@ Interested parties can subscribe to this channel, particularly any app that's mo
 
 Additionally, this Spark App (or any subsriber) can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization over period of time. This is useful for trending and monitoring usage.
 
+For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb), I can visualize different datasets along different axis. Below are few examples:
+
+1. Temperature vs Devices
+
+![](images/screen_1.png "Temperature vs Devices")
+
+2. Temperature, Humidity vs Devices
+
+![](images/screen_2.png "Temperature, Humidity vs Devices")
+
+3. Humidity vs Zipcode
+
+![](images/screen_3.png "Humidity vs Zipcode")
+
 
 ##Relevant Files
 ###pub_dev_words.py

@@ -49,7 +49,7 @@ author: Jules S. Damji
 #
 pubnub = None
 batches = []
-device_file = "devices.json"
+device_file = "device.json"
 
 def on_error(message):
   print >> sys.stderr, "ERROR: Publish " + str(message)
@@ -66,7 +66,7 @@ def publish_devices_info(ch, filed):
       id=id+1
       device_msg = create_json(id, w)
       write_to_dir(filed, device_msg)
-      pubnub.publish(ch, device_msg, error=on_error)
+      pubnub.publish(channel=ch, message=device_msg, error=on_error)
 
 #
 # get random letters
@@ -138,9 +138,10 @@ def send_to_spark(s, dmsg):
 # Get the file descriptor for the directory/filename
 # Note that this file will overwrite existing file
 #
-def get_file_handle(dir):
+def get_file_handle(dir, i):
   global device_file
   fd = None
+  device_file = str(i) + "-" + device_file
   try:
     path = os.path.join(dir, device_file)
     fd = open(path, "w")
@@ -186,9 +187,9 @@ if __name__ == "__main__":
     elif opt in ("-d", "dir="):
        data_dir = arg
   #
-  #initialize the PubNub handle, with your personal keys
+  #Initialize the PubNub handle, with your personal keys
   #
-  pubnub = Pubnub(publish_key="demo", subscribe_key="demo")
+  pubnub = Pubnub(publish_key="YOUR PUB KEY", subscribe_key="YOUR SUB KEY")
   #
   # fetch the batches
   #
@@ -201,10 +202,11 @@ if __name__ == "__main__":
   #Use number of iterations and sleep between them. For each iteration, launch a thread that will
   #execute the function.
   #
-  filed = get_file_handle(data_dir)
+  
   for i in range(int(iterations)):
+    filed = get_file_handle(data_dir, i)
     start_new_thread(publish_devices_info, (ch,filed))
-    time.sleep(5)
-  close_file_handle(filed)
+    time.sleep(30)
+    print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))
+    close_file_handle(filed)
 
-  print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))

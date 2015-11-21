@@ -7,7 +7,7 @@ import sys
 # initate the Pubnub instance
 # subsistute your publish_key and subscribe_key here, if you want more security. But demo should work
 #
-pubnub = Pubnub(publish_key="demo", subscribe_key="demo")
+pubnub = Pubnub(publish_key="YOUR PUB KEY", subscribe_key="YOUR SUB KEY")
 
 #
 # define some callbacks

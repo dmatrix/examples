@@ -46,11 +46,11 @@ if __name__ == "__main__":
   	#
   	#initialize the PubNub handle
   	#
-  	pubnub = Pubnub(publish_key="demo", subscribe_key="demo")
+  	pubnub = Pubnub(publish_key="YOUR PUB KEY", subscribe_key="YOUR SUB KEY")
 
 	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
 	# channel
 	#
-	print("Subscribing from PubNub Channel '%s" % (ch))
+	print("Subscribing from PubNub Channel '%s'" % (ch))
 	pubnub.subscribe(channels=ch, callback=receive, error=on_error)
 	pubnub.start()

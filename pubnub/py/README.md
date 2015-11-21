@@ -34,17 +34,12 @@ Additionally, this Spark App (or any subsriber) can insert data into a timeserie
 
 For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb), I can visualize different datasets along different axis. Below are few examples:
 
-1. Temperature vs Devices
 
-![](images/screen_1.png "Temperature vs Devices")
+![](images/screen_3.png "Temperature vs Devices")
 
-2. Temperature, Humidity vs Devices
+![](images/screen_1.png "Temperature, Humidity vs Devices")
 
-![](images/screen_2.png "Temperature, Humidity vs Devices")
-
-3. Humidity vs Zipcode
-
-![](images/screen_3.png "Humidity vs Zipcode")
+![](images/screen_2.png "Humidity vs Zipcode")
 
 
 ##Relevant Files

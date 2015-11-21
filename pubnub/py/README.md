@@ -13,22 +13,21 @@ For as long as their has been paper around, there has been a need to publish and
 
 Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms for publishing and subscribing selective data and writing distributed streaming applications.
 
-But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. PubNub! (http://pubnub.com) is one such network that allows you to build realtime applications quickly and easily.
+But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. PubNub(http://pubnub.com) is one such network that allows you to build realtime applications quickly and easily.
 
-To have a go at it, I took it for a spin, using their Python SDK !(https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with Apache Spark Streaming!(http://apache.spark.org)—and soon with InfluxDB. 
+To have a go at it, I took it for a spin, using their Python SDK !(https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with Apache Spark Streaming(http://apache.spark.org)—and soon with InfluxDB. 
 
-The diagram above shows the dataflow (Ah, my first woeful attempt to use 53 Pencil & Paper Sketch!(https://www.fiftythree.com/))
+The diagram above shows the dataflow (Ah, my first woeful attempt to use 53 Pencil & Paper Sketch!(https://www.fiftythree.com/)
 
-Ideally and eventually, I want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any files.
+Ideally and eventually, I'll want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other PubNub access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any published datasets.
 
-Note that in this scenario, you can't runb this in a distributed environment. The Spark app will have to run in local mode on the machine where you also are publishing data.
+Note that in this scenario, you can't run Spark Streaing App in a distributed environment. The Spark app will have to run in local mode on the machine where you also are publishing data.
 ##Device Simulation
-I simulate as though a large installation of sensor devices in a particuarl zipcode area are publishing their state, temperature, and humidity data onto the PubNub Data Network on a well-known publich channel "devices."
+I simulate as though a large installation of sensor devices in a particular zipcode area is publishing the state, temperature, and humidity data onto the PubNub Data Network on a well-known public channel "devices."
 
-Interested parties can subscribe to this channel, especiall any app that's monitoring or provisioning devcies. In this case,
-I have my Spark Streaming App monitoring a directory.
+Interested parties can subscribe to this channel, particularly any app that's monitoring or provisioning devcies. In this case,I have my Spark Streaming App monitoring a directory.
 
-Additionally, this Spark App can insert data into a timeseries database such as InfluxDB (on the to do list)
+Additionally, this Spark App can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization for period of time.
 
 
 ##Relevant Files

@@ -1,4 +1,4 @@
-#PubNub integration with Apache Spark and InfluxDB
+#PubNub Integration with Apache Spark and InfluxDB
 
 ![](images/pubnub_spark.png "An Overview of Data Flow")
 
@@ -8,7 +8,27 @@
 - R = Read
 - W = Write
 
-##Introduciton
+##Introduction
+For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selective subscription, though. Even today, in the digital era, digital data is securely and reliably publshied and subsequently and selectively subscribed.
+
+Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platform infrastructure for publishing and subscribing selective data. 
+
+But realtime streaming data networks are different. They're global, scalable, and reliable. PubNub is one such network that allows you to build realtime applications easily. 
+
+To have a go at it, I try and took it for a spin, using their Python SDK to write my first Publish-Subscribe app. I went futher to integrate that with Apache Spark Streaming. The diagram above shows the dataflow.
+
+Ideally and eventually, I want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any files.
+
+Note that in this scenario, you can't runb this in a distributed environment. The Spark app will have to run in local mode on the machine where you also are publishing data.
+##Device Simulation
+I simulate as though a large installation of sensor devices in a particuarl zipcode area are publishing their state, temperature, and humidity data onto the PubNub Data Network on a well-known publich channel "devices."
+
+Interested parties can subscribe to this channel, especiall any app that's monitoring or provisioning devcies. In this case,
+I have my Spark Streaming App monitoring a directory.
+
+Additionally, this Spark App can insert data into a timeseries database such as InfluxDB (on the to do list)
+
+
 ##Relevant Files
 ### pub_dev_words.py
 
@@ -41,7 +61,7 @@ following format:
     }
 
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
- 	`$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
+     `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
 ### pubnub_dir_streaming.py
  This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that write dataset files into its destination directory.

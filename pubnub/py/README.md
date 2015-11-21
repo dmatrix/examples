@@ -8,8 +8,10 @@ Legend
 - R = Read
 - W = Write
 
+*my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/) 
+
 ##Introduction
-For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selectively, though. Even today, in the digital era, digital data is securely and reliably publshied and subsequently and selectively subscribed.
+For as long as their has been paper around, there has been a need to publish and a respective need to consume—some selectively, though. Even today, in the digital era, data is securely and reliably publshed and subsequently and selectively subscribed. In other words, the publish/subscribe paradigm is not new.
 
 Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms for publishing and subscribing selective data and writing distributed streaming applications.
 

@@ -13,11 +13,12 @@ For as long as their has been paper around, there has been a need to publish and
 
 Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms for publishing and subscribing selective data and writing distributed streaming applications.
 
-But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. PubNub(http://pubnub.com) is one such network that allows you to build realtime applications quickly and easily.
+But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. [PubNub]
+(http://pubnub.com) is one such data streaming network that allows you to build realtime applications quickly and easily.
 
-To have a go at it, I took it for a spin, using their Python SDK !(https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with Apache Spark Streaming(http://apache.spark.org)—and soon with InfluxDB. 
+To have a go at it, I took it for a spin, using their [Python SDK] (https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with Apache Spark Streaming(http://apache.spark.org)—and soon with InfluxDB. 
 
-The diagram above shows the dataflow (Ah, my first woeful attempt to use 53 Pencil & Paper Sketch!(https://www.fiftythree.com/)
+The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
 Ideally and eventually, I'll want to be able to subcribe to published channels from within the Spark Streaming App. For now, because of debugging and other PubNub access keys issues, I'm cheating slighting, by publishg data to a local directory where the local Spark appplication monitors the directory for any published datasets.
 
@@ -46,7 +47,7 @@ live data streams of JSON objects from each device. For directory, the Spark app
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
 separately by each device using PubNub's publish-subscribe API. 
 
-It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
+It downloads a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 following format:
 
      {"device_id": 97, 

@@ -16,7 +16,7 @@ Platforms such as Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, A
 But realtime streaming data networks are different. They're global, scalable, and reliable; they are low-latency. [PubNub]
 (http://pubnub.com) is one such data streaming network that allows you to build realtime applications quickly and easily.
 
-To have a go at it, I took it for a spin, using their [Python SDK] (https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon with [InfluxDB]. (http://influxdb.com) 
+To have a go at it, I took it for a spin, using their [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon with [InfluxDB](http://influxdb.com). 
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
@@ -84,7 +84,12 @@ Though short and simple, it illustrates Spark's brevity in doing more with littl
 Simplicity does not preclude profundity. Once can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
-
+## Requirements
+In order to run these two applications you will need the following:
+1. Trial account with PubNub
+2. Install PubNub Python SDK 
+3. Apache Spark on your local machine running in local mode
+4. InfluxDB and Python SDK
 ##TO DO
 
 1. Integrate with InfluxDB

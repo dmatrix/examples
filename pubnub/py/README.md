@@ -16,9 +16,9 @@ Back then the King's scribes were the publishers, the pigeon the courier or tran
 
 Today's products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing streaming applications.
 
-Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
+Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I tried using it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon with [InfluxDB](http://influxdb.com). 
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon with [InfluxDB](http://influxdb.com). 
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 

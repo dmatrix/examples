@@ -16,6 +16,9 @@ pubnub = None
 def sub_callback(message, channel):
 	print (channel + ":" + message)
 
+def on_connect_json(message):
+	print ("CONNECTED: %s" % (message))
+
 def on_error(message):
 	print ("ERROR: " + str(message))
 
@@ -38,5 +41,6 @@ if __name__ == "__main__":
 	sub_key=os.environ['SUB_KEY']
 	print ("PUB_KEY=%s; SUB_KEY=%s" % (pub_key, sub_key))
 	pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
-	pubnub.subscribe(channels="json_channel", callback=sub_callback, error=on_error, reconnect=on_reconnect, disconnect=on_disconnect)
+	pubnub.subscribe(channels="json_channel", callback=sub_callback, error=on_error, 
+		connect=on_connect_json, reconnect=on_reconnect, disconnect=on_disconnect)
 	pubnub.start()

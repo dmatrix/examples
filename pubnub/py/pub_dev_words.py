@@ -189,7 +189,9 @@ if __name__ == "__main__":
   #
   #Initialize the PubNub handle, with your personal keys
   #
-  pubnub = Pubnub(publish_key="YOUR PUB KEY", subscribe_key="YOUR SUB KEY")
+  pub_key=os.environ['PUB_KEY']
+  sub_key=os.environ['SUB_KEY']
+  pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   #
   # fetch the batches
   #

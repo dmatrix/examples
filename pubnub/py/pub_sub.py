@@ -3,12 +3,9 @@
 from pubnub import Pubnub
 import time
 import sys
+import os
 #
-# initate the Pubnub instance
-# subsistute your publish_key and subscribe_key here, if you want more security. But demo should work
-#
-pubnub = Pubnub(publish_key="YOUR PUB KEY", subscribe_key="YOUR SUB KEY")
-
+pubnub = None
 #
 # define some callbacks
 #
@@ -57,10 +54,21 @@ def on_reconnect(message):
 # callback whtn disconnected from the PubHub network
 def on_disconnect(message):
 	print ("DISCONNECTED")
-#
-# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
-# channel
-#
-pubnub.subscribe(channels="json_channel", callback=sub_callback, error=on_error,
+
+if __name__ == "__main__":
+	#
+	# get keys from the environment variable
+	#
+	pub_key=os.environ['PUB_KEY']
+	sub_key=os.environ['SUB_KEY']
+	#
+	# initate the Pubnub instance
+	# subsistute your publish_key and subscribe_key here, if you want more security. But demo should wor
+	pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
+	#
+	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
+	# channel
+	#
+	pubnub.subscribe(channels="json_channel", callback=sub_callback, error=on_error,
 					connect=on_connect_json, reconnect=on_reconnect, disconnect=on_disconnect)
-pubnub.start()
+	pubnub.start()

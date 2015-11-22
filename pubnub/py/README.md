@@ -12,7 +12,7 @@ Legend
 
 ##Introduction
 For as long as there have been papers, there have been publishers and consumers. 
-Back then the King's scribes were the publishers, the pigeon the courier or transport, and Lords of the Houses the consumers.In modren times, in the digital era, data are securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
+Back then the King's scribes were the publishers, the pigeon the courier or transport, and Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
 
 Today's products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing streaming applications.
 

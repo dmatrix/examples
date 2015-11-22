@@ -30,9 +30,9 @@ I simulate as though a large installation of sensors and devices in a particular
 
 Interested parties can subscribe to this channel, particularly any app that's monitoring or provisioning devcies. In this case,I have my Spark Streaming App monitoring a directory.
 
-Additionally, this Spark App (or any subsriber) can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization over period of time, which is useful for trending and monitoring usage.
+Additionally, this Spark App (or any subscriber) can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization over period of time, which is useful for trending and monitoring usage.
 
-For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb) and [DataFrames & SQL] (http://spark.apache.org/docs/latest/sql-programming-guide.html), I can visualize different data fields. Below are few examples:
+For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb) and [DataFrames & SQL] (http://spark.apache.org/docs/latest/sql-programming-guide.html), I can visualize and query different data fields. Below are few examples:
 
 
 ![](images/screen_3.png "Temperature vs Devices")
@@ -46,14 +46,14 @@ For example, using the datasets published by this app with [Databricks Notebook 
 ###pub_dev_words.py (Publisher)
 
 This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
-and how to use PubNub SDK to program the netowrk, to publish data streams or to subscribe to data streams.
+and how to use PubNub SDK to publish data streams or to subscribe to data streams.
 
-Though the example is simple, it simulates as though multiple devices and sensors are registering themselves or announcing their availability by publishing their state on a dedicated channel. In reality this could be a deployment of meters or sensors in an area code that you wish to monitor for tial and do some realtime analysis using Spark.
+Though the example is simple, it simulates as though multiple devices and sensors are registering themselves or announcing their availability by publishing their state on a dedicated channel. In reality this could be a deployment of meters or sensors in an area code that you wish to monitor for a trial deployment and do some realtime analysis using Spark.
 
 Also, as an optional extension, the app can write to a socket or a directory where a Spark Streaming is monitoring for live
-live data streams of JSON objects from each device. For directory monitoring of new files, the Spark application must run on the same JVM as this app and in Spark's local mode.
+ data streams of JSON objects from each device. For directory monitoring of new files, the Spark application must run on the same JVM as this app and in Spark's local mode.
 
-I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published separately by each device using PubNub's publish-subscribe API. 
+I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published separately by each device using PubNub's SDK. 
 
 It downloads a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
 following format:
@@ -69,24 +69,23 @@ following format:
      "humidity": 15,
      "zipcode:" 95498
     }
-As a developer, one huge attraction is how easy it's to write a PubNub publisher, using its SDK: a) instantiate an Pubnub handle b) define the right async callbacks, and c) publish data or message to a channel. 
+As a developer, one huge attraction is how easy it's to write a PubNub publisher, using its SDK: a) instantiate a Pubnub handle b) define the right async callbacks, and c) publish data or message to a channel. 
 
-All the complexity and reliablity is handled and hidden by the network. That's is huge productivity win for a developer who wants to connect devices and transmit realtime or periodic data to single or multiper subscribers listening on channels on the data network.
+All the complexity (and reliablity) is handled and hidden by the network. That's is a huge productivity win for a developer who wants to connect devices and transmit realtime or periodic data to single or multiple subscribers listening on channels on PubNub's streaming data network.
 
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
      `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
 ###pubnub_dir_streaming.py (Subscriber)
- This short example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset into files into a destination directory.
+ This short Spark example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset into files into a designated directory.
 
 Its counter part PubNub publisher, *pub_dev_words.py*, publishes to a channel and also writes JSON data to a data directory
-for this Spark Streaming program to consume. While it does not diretory use PubNub subscriber API to get the item, the next
-step is to modify this app so that it employ's PubNub's subscribe channel to recieve publishe data (on the to do list).
+for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data off a channel, the next step is to modify this app so that it employ's PubNub's subscribe channel to recieve published data (on the to do list).
 
-(At the moment I having trouble getting publish.subscribe() to work. But for now this work around suffices for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streaming.py*) on the same machine.)
+(At the moment I having trouble getting publish.subscribe(...) to work. But for now this work around suffices for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streaming.py*) on the same machine.)
 
-Ideally, you want the this Spark app to run on the cluster and directly subscrbe from the PubNub Data Network Stream.
-(stay tune... coming soon)
+Ideally, you want the this Spark app to run on the cluster and directly subscribe from the PubNub Data Network Stream.
+(stay tune...coming soon)
 
 
 Though short and simple, it illustrates Spark's brevity in doing more with little. 

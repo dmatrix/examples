@@ -141,14 +141,14 @@ def send_to_spark(s, dmsg):
 def get_file_handle(dir, i):
   global device_file
   fd = None
-  device_file = str(i) + "-" + device_file
+  fname = str(i) + "-" + device_file
   try:
-    path = os.path.join(dir, device_file)
+    path = os.path.join(dir, fname)
     fd = open(path, "w")
   except IOError as e:
     print >> sys.stderr, "I/O error({0}): {1}".format(e.errno, e.strerror)
     sys.exit(-1)
-  return fd
+  return fd, fname
 
 #
 # close the filehandle
@@ -182,6 +182,8 @@ if __name__ == "__main__":
   for opt, arg in opts:
     if opt in ("-u", "url="):
        url = arg
+    elif opt in ("-i", "iterations="):
+      iterations = arg
     elif opt in ("-c", "channel="):
        ch = arg
     elif opt in ("-d", "dir="):
@@ -204,11 +206,10 @@ if __name__ == "__main__":
   #Use number of iterations and sleep between them. For each iteration, launch a thread that will
   #execute the function.
   #
-  
   for i in range(int(iterations)):
-    filed = get_file_handle(data_dir, i)
+    filed, file_name = get_file_handle(data_dir, i)
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(30)
-    print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, device_file)))
+    print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, file_name)))
     close_file_handle(filed)
 

@@ -40,6 +40,8 @@ For example, using the datasets published by this app with [Databricks Notebook 
 ![](images/screen_1.png "Temperature, Humidity vs Devices")
 
 ![](images/screen_2.png "Humidity vs Zipcode")
+![](images/screen_4.png "Humidity, Temp vs Device ID")
+![] (images/screen_5.png "Humidity vs Temp Cluster Map")
 
 
 ##Relevant Files

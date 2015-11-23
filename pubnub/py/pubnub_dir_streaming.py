@@ -68,7 +68,7 @@ if __name__ == "__main__":
         except Exception as e:
             print(traceback.format_exc())
     #
-    # peek the 10 elements
+    # process each RRD on the dirver side
     #
     devicesRDD.foreachRDD(process)
     ssc.start()

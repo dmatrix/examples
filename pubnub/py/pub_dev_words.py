@@ -24,7 +24,8 @@ live data streams of JSON objects from each device. For directory, the Spark app
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
 separately by each device using PubNub's publish-subscribe API. 
 
-It downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
+It can either downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) or create the size specifed on the commandline options
+. From the list or bath, it composes device names. Each JSON object has the 
 followin format:
  {"device_id": 97, 
   "timestamp", 1447886791.607918,
@@ -39,7 +40,7 @@ followin format:
  }
 
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
- $ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data
+ $ python pub_dev_words.py {-u http://www.textfixer.com/resources/common-english-words.txt | -b num_of_devices} -c devices -i 1 -d data
 author: Jules S. Damji 
 
 
@@ -76,6 +77,16 @@ def get_random_word():
   for i in range(8):
     word += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
   return word
+
+#
+# instead of fething words from the URL, create 1..range(size) for the number of devices
+#
+def get_large_batches(size):
+  batches = []
+  for i in range(1, size):
+    batches.append(str(i))
+  return batches
+
 #
 #
 # given a url fetch the words (or could be device names) in the url that are comma separated
@@ -99,7 +110,15 @@ def create_json(id, d):
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   time.sleep(0.025)
   ts = time.time()
-  d = "sensor-mac-" + d + get_random_word()
+  if id % 2 == 0:
+    d = "sensor-pad-" + d + get_random_word()
+  elif id % 3 == 0:
+    d = "device-mac-" + d + get_random_word()
+  elif id % 5 == 0:
+    d = "therm-stick-" + d + get_random_word()
+  else:
+    d = "meter-gauge-" + d + get_random_word()
+    
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)
   return json.dumps({'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}, sort_keys=True)
@@ -168,15 +187,15 @@ def write_to_dir(fd, djson):
 # the main program
 #
 if __name__ == "__main__":
-  url, ch , data_dir = None, None, None
+  url, ch, num_of_devices, data_dir = None, None, None, None
   iterations = 3
   #
   # parse command line arguments
   #
   try:
-    opts, args = getopt.getopt(sys.argv[1:],"u:c:i:d:",["url=","channel=","iterations=","dir="])
+    opts, args = getopt.getopt(sys.argv[1:],"u:n:c:i:d:",["url=","ndevices=", "channel=","iterations=","dir="])
   except getopt.GetoptError:
-      print("Usage: pub_dev_words.py -u url -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
+      print("Usage: pub_dev_words.py {-u url | -n num_of_devices} -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
       sys.exit(-1)
 
   for opt, arg in opts:
@@ -186,8 +205,16 @@ if __name__ == "__main__":
       iterations = arg
     elif opt in ("-c", "channel="):
        ch = arg
+    elif opt in ("-n", "ndevices="):
+        num_of_devices = int(arg)
     elif opt in ("-d", "dir="):
        data_dir = arg
+
+  if url and num_of_devices:
+    print "(Can't specify both url and number of devices. Choose one."
+    print("Usage: pub_dev_words.py {-u url | -n num_of_devices} -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
+    sys.exit(-1)
+
   #
   #Initialize the PubNub handle, with your personal keys
   #
@@ -197,9 +224,13 @@ if __name__ == "__main__":
   #
   # fetch the batches
   #
-  batches = get_batches(url)
+  if url:
+    batches = get_batches(url)
+  else:
+    batches = get_large_batches(num_of_devices)
+
   if batches == None or len(batches) == 0:
-    print >> sys.stderr, "URL: " + url + "does not contain any words. Using a different URL"
+    print >> sys.stderr, "URL: " + url + "does not contain any words. Use the -n <num_of_devices option"
     sys.exit(-1)
   #
   #Create psuedo devices for provisioning as though they are all publishing upon activation

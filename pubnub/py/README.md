@@ -12,13 +12,13 @@ Legend
 
 ##Introduction
 For as long as there have been papers, there have been publishers and consumers. 
-Back then the King's scribes were the publishers, the pigeon the courier or transport, and Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
+Back then the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
 
-Today's products such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing streaming applications.
+Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing distributed streaming applications.
 
 Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon with [InfluxDB](http://influxdb.com). 
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon come with [InfluxDB](http://influxdb.com) and [Apache Kafka] (http://confluent.io)
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
@@ -103,5 +103,6 @@ In order to run these two applications you will need the following:
 
 ##TO DO
 1. Integrate with InfluxDB
-2. Fix PubNub subscribe() keys issues
+2. Integrate with Apache Kafka as one of the consumers
+4. Fix PubNub subscribe() keys issues
 3. Include Pubnub.subscribe() calls within the Spark Streaming App

@@ -76,7 +76,7 @@ All the complexity (and reliablity) is handled and hidden by the network. That's
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
      `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
 
-###pubnub_dir_streaming.py (Subscriber)
+###pubnub_dir_streaming.py (Subscriber/Consumer)
  This short Spark example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset into files into a designated directory.
 
 Its counter part PubNub publisher, *pub_dev_words.py*, publishes to a channel and also writes JSON data to a data directory

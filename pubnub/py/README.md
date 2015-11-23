@@ -6,6 +6,7 @@ Legend
 - P = Publish
 - S = Subscribe
 - R = Read
+- Rs = Read Data Stream
 - W = Write
 
 ***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***

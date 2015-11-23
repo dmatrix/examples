@@ -10,7 +10,7 @@ Legend
 
 ***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***
 
-##Introduction
+##Thou Shall Publish...Thy Shall Subscribe...
 For as long as there have been papers, there have been publishers and consumers. 
 Back then the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
 

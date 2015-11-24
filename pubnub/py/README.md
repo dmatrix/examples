@@ -19,7 +19,7 @@ Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Ap
 
 Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon come with [InfluxDB](http://influxdb.com) and [Apache Kafka] (http://confluent.io)
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com) and [Apache Kafka] (http://confluent.io)
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
@@ -58,7 +58,7 @@ Also, as an optional extension, the app can write to a socket or a directory whe
 
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published separately by each device using PubNub's SDK. 
 
-It downloads a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) and uses them as device names. Each JSON object has the 
+It can download a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) or create number of devices and uses them as device names. Each JSON object has the 
 following format:
 
      {"device_id": 97, 

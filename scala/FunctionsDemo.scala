@@ -4,7 +4,6 @@ import java.util.Date
  * Object in scala has a state and behaviors. In this case, behavior are functions, while 
  * instance variables are states. Here I've two states represented by instance variables 
  * author and what, and a behavior called myPrint()
- * Author: Jules S. Damji
  */
 object FunctionsDemo {
 	/** this is my first scala program
@@ -91,7 +90,7 @@ object FunctionsDemo {
 	 * Main program
 	 */
 	 def main(args: Array[String]) {
-	 	myPrint("Hello World!")
+	 	myPrint("Hello World! ")
 	 	println(computeSquare(5))
 	 	/**
 	 	* invoke the call-by-name funciton

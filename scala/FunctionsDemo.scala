@@ -4,6 +4,7 @@ import java.util.Date
  * Object in scala has a state and behaviors. In this case, behavior are functions, while 
  * instance variables are states. Here I've two states represented by instance variables 
  * author and what, and a behavior called myPrint()
+ * Author: Jules S. Damji
  */
 object FunctionsDemo {
 	/** this is my first scala program
@@ -124,20 +125,20 @@ object FunctionsDemo {
 	 	   * High-order functions
 	 	   */
 	 	  println(apply (layout, 10))
-	 	/* 
+		 /* 
 	 	 * Now we come to anonymous functions: called functional literals, they are evaluated and instantiated at runtime as 
 	 	 * objects called function values. They are synonymous to Python's lambda expressions
 	 	 */
-	 	 // inc is a varibale which is a function literal and increment the value of x at run time
-	 	 var inc = (x: Int) => x + 1 
-	 	 // mult is a varibale which is a function literal and multiplies two values: x * y
-	 	 var mult = (x:Int, y: Int) => x * y
+		 // inc is a varibale which is a function literal and increment the value of x at run time
+		 val inc = (x: Int) => x + 1
+		 // mult is a varibale which is a function literal and multiplies two values: x * y
+		 val mult = (x: Int, y: Int) => x * y
 	 	 // it's also possible to define a function literal without arguments
 	 	 var userDir = () => { System.getProperty("user.dir") }
 
 	 	 //invocation of these functional literals
 	 	 println( inc(5))
 	 	 println( mult(5, 5))
-	 	 println (userDir)
+	 	 println(userDir)
 	 }
 }

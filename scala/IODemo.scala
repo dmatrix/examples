@@ -10,7 +10,7 @@ object IODemo {
 	 val author = "Jules S. Damji"
 	 val what   = "Learning Scala!"
 
-	 var dict : Map[Char, List[String]] = Map()
+	 var dict : Map[Char, List[String]] = Map() 
 	 /**
 	 * Method to print a message Unit is equivalent to void in Java and signals Scala that this is a proceddure
 	 * function return a value.
@@ -37,14 +37,14 @@ object IODemo {
 		myPrint("Hello World! ")
 
 	 	//read words from the a huge file
-	 	println (args.length)
 	 	if (args.length != 1) {
 	 		println ("Usage: IODemo <file>")
 	 		System.exit(1)
 	 	}
 	 	try {
 	 		Source.fromFile(args(0)).getLines().toList.foreach {insertWordIntoMap }
-	 		for ((k, v) <- dict) (printf("KEY: %s, VALUE: %s\n", k, v))
+	 		//for ((k, v) <- dict) (printf("KEY: %s, VALUE: %s\n", k, v))
+	 		for ((k, v) <- dict) println( new Tuple2(k, v.length))
         } catch {
           case ex: FileNotFoundException => { println("Missing file exception") }
           case ex: IOException => { println("IO Exception") }

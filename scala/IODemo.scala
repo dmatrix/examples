@@ -1,6 +1,4 @@
-import java.io.FileReader
-import java.io.FileNotFoundException
-import java.io.IOException
+import java.io._
 import scala.io.Source
 
 object IODemo {
@@ -46,7 +44,12 @@ object IODemo {
 	 		// read the file, create iterator, convert into a list, apply a fucntion using foreach method 
 	 		// of the list
 	 		Source.fromFile(args(0)).getLines().toList.foreach {insertWordIntoMap }
-	 		//for ((k, v) <- dict) (printf("KEY: %s, VALUE: %s\n", k, v))
+	 		val writer = new PrintWriter(new File("IODemo.run.txt"))
+	 		for ((k, v) <- dict)  {
+	 			val fs = "KEY: " + k + "VALUE: " + v + "\n"
+	 			writer.write(fs)
+	 		}
+	 		writer.close()
 	 		// for brevity print out the (Key, <nunber of words>) that begin with the character as the key.
 	 		for ((k, v) <- dict) println( new Tuple2(k, v.length))
         } catch {

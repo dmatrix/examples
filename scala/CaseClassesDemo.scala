@@ -1,4 +1,4 @@
-object CaseCollectionsDemo {
+object CaseClassesDemo {
 	/**
 	 * This short example shows how case classes can be used in pattern matching, a feature as popular in use as function values and 
 	 * closures in Scala. You can define an empyt case class as possible means of match an equivalne object of that type, with writing
@@ -41,6 +41,9 @@ object CaseCollectionsDemo {
 		val go = new Person("Bob Pike", 42)
 		val c  = new Person ("Dennis Ritchie", 42)
 		val python = new Person ("Guido Van Rossum", 42)
+
+		myPrint("Hello World! ")
+		
 		// now use the explicit case and match statement block
 		println("------- explicit match with case class-------")
 		for (founder <- List(scala, java, go, c, python)) {

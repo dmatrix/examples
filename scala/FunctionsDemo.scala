@@ -126,7 +126,7 @@ object FunctionsDemo {
 	 	  println(apply (layout, 10))
 		 /* 
 	 	 * Now we come to anonymous functions: called functional literals, they are evaluated and instantiated at runtime as 
-	 	 * objects called function values. They are synonymous to Python's lambda expressions
+	 	 * objects called function values. They are synonymous to Python's lambda expressions, known in Scala as closures
 	 	 */
 		 // inc is a varibale which is a function literal and increment the value of x at run time
 		 val inc = (x: Int) => x + 1

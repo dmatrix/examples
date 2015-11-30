@@ -24,8 +24,9 @@ live data streams of JSON objects from each device. For directory, the Spark app
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
 separately by each device using PubNub's publish-subscribe API. 
 
-It can either downloads a list of words from the Internet (http://www.textfixer.com/resources/common-english-words.txt) or create the size specifed on the commandline options
-. From the list or bath, it composes device names. Each JSON object has the 
+It creates the size specifed on the commandline options
+
+From the list of devices it composes device names. Each JSON object has the 
 followin format:
  {"device_id": 97, 
   "timestamp", 1447886791.607918,
@@ -34,13 +35,13 @@ followin format:
   "scale: 
   "Celius", 
   "temp": 22, 
-  "device_name": "sensor-mac-word",
+  "device_name": "sensor-mac-id<random_string>",
   "humidity": 15,
   "zipcode:" 95498
  }
 
  To run this program to create json files into the destinattion directory for Spark Streaming consumption:
- $ python pub_dev_words.py {-u http://www.textfixer.com/resources/common-english-words.txt | -b num_of_devices} -c devices -i 1 -d data
+ $ python publish_devices.py -b num_of_devices -c devices -i 1 -d data
 author: Jules S. Damji 
 
 
@@ -61,13 +62,11 @@ def on_error(message):
 #
 def publish_devices_info(ch, filed):
   global pubnub, batches
-  id=0
-  for b in batches:
-    for w in b:
-      id=id+1
-      device_msg = create_json(id, w)
-      write_to_dir(filed, device_msg)
-      pubnub.publish(channel=ch, message=device_msg, error=on_error)
+  for id in batches:
+    device_msg = create_json(id)
+    write_to_dir(filed, device_msg)
+    pubnub.publish(channel=ch, message=device_msg, error=on_error)
+    id=id + 1
 
 #
 # get random letters
@@ -83,8 +82,8 @@ def get_random_word():
 #
 def get_large_batches(size):
   batches = []
-  for i in range(1, size):
-    batches.append(str(i))
+  for i in range(0, size):
+    batches.append(i)
   return batches
 
 #
@@ -105,19 +104,19 @@ def get_batches(url):
 #
 # create a json object with attributes and values
 #
-def create_json(id, d):
+def create_json(id):
   temp = random.randrange(0, 35)
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   time.sleep(0.025)
   ts = time.time()
   if id % 2 == 0:
-    d = "sensor-pad-" + d + get_random_word()
+    d = "sensor-pad-" + str(id) + get_random_word()
   elif id % 3 == 0:
-    d = "device-mac-" + d + get_random_word()
+    d = "device-mac-" + str(id) + get_random_word()
   elif id % 5 == 0:
-    d = "therm-stick-" + d + get_random_word()
+    d = "therm-stick-" + str(id) + get_random_word()
   else:
-    d = "meter-gauge-" + d + get_random_word()
+    d = "meter-gauge-" + str(id) + get_random_word()
     
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)
@@ -195,7 +194,7 @@ if __name__ == "__main__":
   try:
     opts, args = getopt.getopt(sys.argv[1:],"u:n:c:i:d:",["url=","ndevices=", "channel=","iterations=","dir="])
   except getopt.GetoptError:
-      print("Usage: pub_dev_words.py {-u url | -n num_of_devices} -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
+      print("Usage: publish_devices.py -n num_of_devices -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
       sys.exit(-1)
 
   for opt, arg in opts:
@@ -209,12 +208,6 @@ if __name__ == "__main__":
         num_of_devices = int(arg)
     elif opt in ("-d", "dir="):
        data_dir = arg
-
-  if url and num_of_devices:
-    print "(Can't specify both url and number of devices. Choose one."
-    print("Usage: pub_dev_words.py {-u url | -n num_of_devices} -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
-    sys.exit(-1)
-
   #
   #Initialize the PubNub handle, with your personal keys
   #
@@ -223,15 +216,9 @@ if __name__ == "__main__":
   pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   #
   # fetch the batches
-  #
-  if url:
-    batches = get_batches(url)
-  else:
-    batches = get_large_batches(num_of_devices)
+  batches = get_large_batches(num_of_devices)
 
-  if batches == None or len(batches) == 0:
-    print >> sys.stderr, "URL: " + url + "does not contain any words. Use the -n <num_of_devices option"
-    sys.exit(-1)
+
   #
   #Create psuedo devices for provisioning as though they are all publishing upon activation
   #Use number of iterations and sleep between them. For each iteration, launch a thread that will
@@ -241,6 +228,6 @@ if __name__ == "__main__":
     filed, file_name = get_file_handle(data_dir, i)
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(30)
-    print ("Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (ch, os.path.join(data_dir, file_name)))
+    print ("%d Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (num_of_devices, ch, os.path.join(data_dir, file_name)))
     close_file_handle(filed)
 

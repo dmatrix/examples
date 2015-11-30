@@ -19,7 +19,7 @@ Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Ap
 
 Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com) and [Apache Kafka] (http://confluent.io)
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com)
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
@@ -43,10 +43,11 @@ For example, using the datasets published by this app with [Databricks Notebook 
 ![](images/screen_2.png "Humidity vs Zipcode")
 ![](images/screen_4.png "Humidity, Temp vs Device ID")
 ![] (images/screen_5.png "Humidity vs Temp Cluster Map")
+![] (images/screen_6.png "Humidity vs Temp Pie Chart")
 
 
 ##Relevant Files
-###pub_dev_words.py (Publisher)
+###publist_devices.py (Publisher)
 
 This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
 and how to use PubNub SDK to publish data streams or to subscribe to data streams.
@@ -58,7 +59,7 @@ Also, as an optional extension, the app can write to a socket or a directory whe
 
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published separately by each device using PubNub's SDK. 
 
-It can download a list of words from the [Internet] (http://www.textfixer.com/resources/common-english-words.txt) or create number of devices and uses them as device names. Each JSON object has the 
+It creates a list of random devices devices and uses them as device names. Each JSON object has the 
 following format:
 
      {"device_id": 97, 
@@ -68,7 +69,7 @@ following format:
      "scale: 
      "Celius", 
      "temp": 22, 
-     "device_name": "sensor-mac-word",
+     "device_name": "sensor-mac-id<random_string>",
      "humidity": 15,
      "zipcode:" 95498
     }
@@ -76,20 +77,26 @@ As a developer, one huge attraction is how easy it's to write a PubNub publisher
 
 All the complexity (and reliablity) is handled and hidden by the network. That's is a huge productivity win for a developer who wants to connect devices and transmit realtime or periodic data to single or multiple subscribers listening on channels on PubNub's streaming data network.
 
- To run this program to create json files into the destinattion directory for Spark Streaming consumption:
-     `$ python pub_dev_words.py -u http://www.textfixer.com/resources/common-english-words.txt -c devices -i 1 -d data`
+ To run this program to create JSON files into the destinattion directory for Spark Streaming consumption:
+     `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
-###pubnub_dir_streaming.py (Subscriber/Consumer)
+###subscribe_devices.py (Subscriber)
+UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel. Using simple PubNub API to subscribe messages, it can either write to an repository timeseries DB like InfluxDB (on the TODO list) or write to NoSQL datastore such as Casandra (on the todo list).
+
+To run this program to subscribe to device JSON files, run this command:
+    `python subscribe_devices.py -c channel`
+
+Note: You must run this program first, before publishing. PubNub requires that subscribers attach or subscribe to channels first, before they can recieve messages published on the channels.
+
+
+###pubnub_dir_streaming.py (Consumer)
  This short Spark example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset into files into a designated directory.
 
-Its counter part PubNub publisher, *pub_dev_words.py*, publishes to a channel and also writes JSON data to a data directory
+Its counter part PubNub publisher, *publish_devices.py*, publishes to a channel and also writes JSON data to a data directory
 for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data off a channel, the next step is to modify this app so that it employ's PubNub's subscribe channel to recieve published data (on the to do list).
-
-(At the moment I having trouble getting publish.subscribe(...) to work. But for now this work around suffices for running both publisher (*pub_dev_workds.py*) and subscriber (*pubnub_dir_streaming.py*) on the same machine.)
 
 Ideally, you want the this Spark app to run on the cluster and directly subscribe from the PubNub Data Network Stream.
 (stay tune...coming soon)
-
 
 Though short and simple, it illustrates Spark's brevity in doing more with little. 
 
@@ -106,6 +113,4 @@ In order to run these two applications you will need the following:
 
 ##TO DO
 1. Integrate with InfluxDB
-2. Integrate with Apache Kafka as one of the consumers
-4. Fix PubNub subscribe() keys issues
-3. Include Pubnub.subscribe() calls within the Spark Streaming App
+2. Include Pubnub.subscribe() calls within the Spark Streaming App

@@ -36,5 +36,5 @@ def publish_json_data():
 if __name__ == "__main__":
 	pub_key=os.environ['PUB_KEY']
 	sub_key=os.environ['SUB_KEY']
-	pubnub = Pubnub(publish_key="pub-c-b2916045-1db6-4ae3-902a-dd49a3f4528", subscribe_key="sub-c-a498de90-87e9-11e5-a04a-0619f8945a4f")
+	pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
 	publish_json_data()

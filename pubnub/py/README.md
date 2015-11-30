@@ -127,7 +127,7 @@ For better results start each Python process in a different terminal window in t
 
      `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
-4. If you have Databricks Cloud Trial Account try some this Python and Scala Notebook:
+4. If you have Databricks Cloud Trial Account try some these Python and Scala Notebooks:
 
 - [Python Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
 - [Scala Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)

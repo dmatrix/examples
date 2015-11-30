@@ -1,23 +1,20 @@
 
 
 """
-This short example demonstrates how to consume a json dataset stream directory from a pubnub publisher that write dataset files 
+This short example demonstrates how to consume a JSON dataset stream directory from a pubnub publisher that writes dataset files 
 into its destination directory.
 
-It's counter part, PubNub publisher, pub_dev_words.py publishes to a channel devices and also dumps it to a data directory
+Its producer, publish_devices.py, publishes to a channel devices and also dumps it to a data directory
 for this Spark Streaming program to consume. While it does not diretory use PubNub subscriber API to get the item, the next
 step is to modify this app so that it employ's PubNub's subscribe channel to recieve publishe data.
 
-(At the moment I having trouble getting publish.subscribe to work. Some problem with the keys. But for now this work around should
-for running both publisher (pub_dev_workds.py) and subscribler (pubnub_dir_streamingpy) on the same machine)
-
 Ideally, you want the this Spark app to run on the cluster and directly subscrbe from the PubNub Data Network Stream.
-(stay tune... coming soon)
+(stay tuned... coming soon)
 
 
 Though short and simple, it illustrates Spark's brevity in doing more with little. 
 
-Simplicity does not preclude profundity. Once can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
+Simplicity does not preclude profundity. One can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
 Author: Jules S. Damji
 
@@ -36,8 +33,8 @@ from pyspark.sql import SQLContext
 #
 # TODO: integrate influx db insertion here as timeseries 
 #
-def insert_into_influxdb(item):
-    print ("influxdb: inserted %s" % (item))
+def insert_into_dbs(dbs, item):
+    print ("inserted items in DBs: %s %s" % (dbs, item))
 
 #
 # get the sqlcontext if we want to use dataframes
@@ -64,7 +61,7 @@ if __name__ == "__main__":
     def process(time, rdd):
         try:
             for item in rdd.collect():
-                insert_into_influxdb(item)
+                insert_into_dbs(["InfluxDB", "Cassandra"], item)
         except Exception as e:
             print(traceback.format_exc())
     #

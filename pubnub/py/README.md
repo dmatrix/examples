@@ -95,9 +95,6 @@ Note: You must run this program first, before publishing. PubNub requires that s
 Its counter part PubNub publisher, *publish_devices.py*, publishes to a channel and also writes JSON data to a data directory
 for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data off a channel, the next step is to modify this app so that it employ's PubNub's subscribe channel to recieve published data (on the to do list).
 
-Ideally, you want the this Spark app to run on the cluster and directly subscribe from the PubNub Data Network Stream.
-(stay tune...coming soon)
-
 Though short and simple, it illustrates Spark's brevity in doing more with little. 
 
 Simplicity does not preclude profundity. One can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
@@ -113,4 +110,4 @@ In order to run these two applications you will need the following:
 
 ##TO DO
 1. Integrate with InfluxDB
-2. Include Pubnub.subscribe() calls within the Spark Streaming App
+2. Integrate with Cassandra

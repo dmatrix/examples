@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Mon, 30 Nov 2015 03:37:47 UTC
+// Databricks notebook source exported at Mon, 30 Nov 2015 22:33:39 UTC
 // MAGIC %md In this equivalent Scala notebook version of the Python version, I mimic identical provisioning of devices, pretending to be sensors emitting data at periodic intervals. With the dataset generated as JSON objects, I create dataframes, save as a temporary table, and issue query commands. Also, with dataframes, I can visualize them in myriad plots, using fields for different kinds of graphs. The reason for the identical notebook was for me to learn Scala.
 // MAGIC 
 // MAGIC While this short example illustrates how to create JSON objects (as fake device information using random generated strings as device names), create an RDD schema as a dataframe, and register it as a temporary table, it demostrates Spark API's high-level abstraction?dataframes on top of RDD?allowing developers to manipulate and process data with relative easy and with a familiar query langauge. 
@@ -32,10 +32,10 @@ def getRandomNumber(from:Int, to:Int) : Int = {
 	return from + rnd.nextInt(Math.abs(to - from))
 }
 /**
- * Generate zipcode between two valid zipcodes
+ * Generate zipcode between two valid zipcodes. Restrict to CA codes
  */
 def getZipCode(): Int = {
-		return getRandomNumber(94538,97107)
+		return getRandomNumber(90001,96162)
 }
 
 /**
@@ -72,6 +72,13 @@ def getRandomString(minLen:Int=5, maxLen:Int=10): String = {
     return sb.toString
 }
 /**
+ * get an IP
+ */
+def getIPAddr : String = {
+  val tuple4 = Tuple4(getRandomNumber(60, 209), getRandomNumber(1, 127), getRandomNumber(1, 127), getRandomNumber(1, 127))
+  return tuple4.productIterator.map {_.toString} mkString (".")
+}
+/**
  * create Device JSON string
  */
 def createDeviceData(dev: String, id:Int): String = {
@@ -79,10 +86,11 @@ def createDeviceData(dev: String, id:Int): String = {
   val humidity = getHumidity()
   val coord    = getCoordinates()
   val zip = getZipCode()
+  val ip = getIPAddr
   // create json of the format:
-  // {'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
+  // {'device_id': id, 'device_name': d, 'ip': ipaddr, timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
   val timestamp: Long = System.currentTimeMillis / 1000
-  val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, coord._1, coord._2, zip, humidity)
+  val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"ip\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, ip, timestamp, temp, coord._1, coord._2, zip, humidity)
     return djson
 }
 /**
@@ -127,7 +135,7 @@ devicesRDD.take(5)
 
 // COMMAND ----------
 
-// MAGIC %md creata a Dataframe by reading the JsonRDDs. Note how the schema is inferred from the JSON object
+// MAGIC %md create a Dataframe by reading the JsonRDDs. Note how the schema is inferred from the JSON object
 
 // COMMAND ----------
 
@@ -160,7 +168,7 @@ df.registerTempTable("deviceTables")
 
 // COMMAND ----------
 
-// MAGIC %sql select device_id, device_name, humidity, temp from deviceTables where temp > 20 and humidity < 50
+// MAGIC %sql select device_id, device_name, ip, humidity, temp from deviceTables where temp > 20 and humidity < 50
 
 // COMMAND ----------
 
@@ -168,7 +176,11 @@ df.registerTempTable("deviceTables")
 
 // COMMAND ----------
 
-// MAGIC %sql select device_id, device_name, humidity, temp from deviceTables where device_name like 'therm%' and humidity < 50
+// MAGIC %sql select device_id, device_name, humidity, zipcode, temp from deviceTables where device_name like 'therm%' and humidity < 50
+
+// COMMAND ----------
+
+// MAGIC %sql select device_id, device_name, humidity, zipcode, temp from deviceTables where device_name like 'therm%' and humidity > 50
 
 // COMMAND ----------
 

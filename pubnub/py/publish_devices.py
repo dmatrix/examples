@@ -28,7 +28,8 @@ It creates the size specifed on the commandline options
 
 From the list of devices it composes device names. Each JSON object has the 
 followin format:
- {"device_id": 97, 
+ {"device_id": 97,
+  "ip": "191.35.83.75",
   "timestamp", 1447886791.607918,
   "lat": 22, 
   "long": 82, 
@@ -101,6 +102,15 @@ def get_batches(url):
       batches.append(words[i:j])
       j = j + 10
     return batches
+
+def get_ip_addr():
+  n1 = random.randrange(60, 209)
+  n2 = random.randrange(1, 127)
+  n3 = random.randrange(1, 127)
+  n4 = random.randrange(1,127)
+
+  ip = str(n1) + "." + str(n2) + "." + str (n3) + "." + str(n4)
+  return ip
 #
 # create a json object with attributes and values
 #
@@ -109,6 +119,8 @@ def create_json(id):
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   time.sleep(0.025)
   ts = time.time()
+  ip = get_ip_addr()
+
   if id % 2 == 0:
     d = "sensor-pad-" + str(id) + get_random_word()
   elif id % 3 == 0:
@@ -120,7 +132,8 @@ def create_json(id):
     
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)
-  return json.dumps({'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}, sort_keys=True)
+  ip = get_ip_addr()
+  return json.dumps({"device_id": id, "device_name": d, "ip": ip, "timestamp": ts, "temp": temp, "scale": "Celius", "lat": x, "long": y, "zipcode": zipcode, "humidity": humidity}, sort_keys=True)
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings

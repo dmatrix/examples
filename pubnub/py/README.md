@@ -62,8 +62,9 @@ I employ a thread that simulates mulitple devices acting as publishers, but in r
 It creates a list of random devices devices and uses them as device names. Each JSON object has the 
 following format:
 
-     {"device_id": 1, 
-     "timestamp", 1447886791.607918,
+     {"device_id": 1,
+     "ip": "191.35.83.75",  
+     "timestamp:", 1447886791.607918,
      "lat": 22, 
      "long": 82, 
      "scale: 
@@ -129,10 +130,10 @@ For better results start each Python process in a different terminal window in t
 
 4. If you have [Databricks Cloud] (http://databricks.com) trial account, have a go at these Python and Scala Notebooks:
 
-    -- [Python Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
-    -- [Scala Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
+- [Python Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
+- [Scala Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
 
-##TO DO
+##TO DO 
 1. Integrate with InfluxDB
 2. Integrate with Cassandra
 3. Possibly integrate pubnub.subscribe() calls within the Spark streaming app.

@@ -47,9 +47,9 @@ For example, using the datasets published by this app with [Databricks Notebook 
 
 
 ##Relevant Files
-###publist_devices.py (Publisher)
+###publish_devices.py (Publisher)
 
-This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
+This short example illustrates the simplicity of using PubNub Realtime Streaming Data Netowrk,
 and how to use PubNub SDK to publish data streams or to subscribe to data streams.
 
 Though the example is simple, it simulates as though multiple devices and sensors are registering themselves or announcing their availability by publishing their state on a dedicated channel. In reality this could be a deployment of meters or sensors in an area code that you wish to monitor for a trial deployment and do some realtime analysis using Spark.
@@ -62,7 +62,7 @@ I employ a thread that simulates mulitple devices acting as publishers, but in r
 It creates a list of random devices devices and uses them as device names. Each JSON object has the 
 following format:
 
-     {"device_id": 97, 
+     {"device_id": 1, 
      "timestamp", 1447886791.607918,
      "lat": 22, 
      "long": 82, 
@@ -90,24 +90,25 @@ Note: You must run this program first, before publishing. PubNub requires that s
 
 
 ###pubnub_dir_streaming.py (Consumer)
- This short Spark example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset into files into a designated directory.
+ This short Spark example demonstrates how to consume a JSON dataset stream from directory. A publisher writes dataset as text files into a designated directory.
 
 Its counter part PubNub publisher, *publish_devices.py*, publishes to a channel and also writes JSON data to a data directory
-for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data off a channel, the next step is to modify this app so that it employ's PubNub's subscribe channel to recieve published data (on the to do list).
+for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data directly off a channel, the next step is to modify this app so that it employs PubNub's subscribe channel to recieve published data (on the TODO list).
 
 Though short and simple, it illustrates Spark's brevity in doing more with little. 
 
-Simplicity does not preclude profundity. One can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
+Simplicity does not preclude profundity: One can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
 ##Requirements
 
-In order to run these two applications you will need the following:
+In order to run these three applications you will need the following:
 - Trial account with PubNub
 - Install PubNub Python SDK 
 - Apache Spark on your local machine running in local mode
-- InfluxDB and Python SDK
+- InfluxDB or Cassandra and Python SDK
 
 ##TO DO
 1. Integrate with InfluxDB
 2. Integrate with Cassandra
+3. Possibly integrate pubnub.subscribe() calls within the Spark streaming app.

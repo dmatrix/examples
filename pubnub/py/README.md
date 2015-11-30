@@ -78,12 +78,14 @@ As a developer, one huge attraction is how easy it's to write a PubNub publisher
 All the complexity (and reliablity) is handled and hidden by the network. That's is a huge productivity win for a developer who wants to connect devices and transmit realtime or periodic data to single or multiple subscribers listening on channels on PubNub's streaming data network.
 
  To run this program to create JSON files into the destinattion directory for Spark Streaming consumption:
+
      `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
 ###subscribe_devices.py (Subscriber)
 UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel. Using simple PubNub API to subscribe messages, it can either write to an repository timeseries DB like InfluxDB (on the TODO list) or write to NoSQL datastore such as Casandra (on the todo list).
 
 To run this program to subscribe to device JSON files, run this command:
+
     `python subscribe_devices.py -c channel`
 
 Note: You must run this program first, before publishing. PubNub requires that subscribers attach or subscribe to channels first, before they can recieve messages published on the channels.

@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Mon, 30 Nov 2015 03:25:40 UTC
+// Databricks notebook source exported at Mon, 30 Nov 2015 03:37:47 UTC
 // MAGIC %md In this equivalent Scala notebook version of the Python version, I mimic identical provisioning of devices, pretending to be sensors emitting data at periodic intervals. With the dataset generated as JSON objects, I create dataframes, save as a temporary table, and issue query commands. Also, with dataframes, I can visualize them in myriad plots, using fields for different kinds of graphs. The reason for the identical notebook was for me to learn Scala.
 // MAGIC 
 // MAGIC While this short example illustrates how to create JSON objects (as fake device information using random generated strings as device names), create an RDD schema as a dataframe, and register it as a temporary table, it demostrates Spark API's high-level abstraction?dataframes on top of RDD?allowing developers to manipulate and process data with relative easy and with a familiar query langauge. 
@@ -86,7 +86,7 @@ def createDeviceData(dev: String, id:Int): String = {
     return djson
 }
 /**
- * generate a batch of devices as JSON objects
+ * generate a batch of 'size' devices as JSON objects
  */
 def getDeviceBatch(size: Int) : List[String] = {
 	var batch: List[String] = List()
@@ -127,8 +127,16 @@ devicesRDD.take(5)
 
 // COMMAND ----------
 
+// MAGIC %md creata a Dataframe by reading the JsonRDDs. Note how the schema is inferred from the JSON object
+
+// COMMAND ----------
+
 val df = sqlContext.read.json(devicesRDD)
 df.printSchema()
+
+// COMMAND ----------
+
+// MAGIC %md Display the the dataframe and use some plotting options
 
 // COMMAND ----------
 

@@ -86,7 +86,7 @@ UnLike its counter part *publish_devices.py*, this simple Python process subscri
 
 To run this program to subscribe to device JSON files, run this command:
 
-    `python subscribe_devices.py -c channel`
+    `$ python subscribe_devices.py -c channel`
 
 Note: You must run this program first, before publishing. PubNub requires that subscribers attach or subscribe to channels first, before they can recieve messages published on the channels.
 
@@ -109,6 +109,23 @@ In order to run these three applications you will need the following:
 - Install PubNub Python SDK 
 - Apache Spark on your local machine running in local mode
 - InfluxDB or Cassandra and Python SDK
+
+##STEPS 
+For better results start each Python process in a different terminal window in the order specified below.
+
+1. Start the PubNub Python subscriber in a terminal.
+
+    `$ python subscribe_devices.py -c channel`
+
+2. Start the Spark Python Streaming application a terminal
+
+    
+    `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
+
+
+3. Start the PubNub Python publisher in a terminal
+
+     `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
 ##TO DO
 1. Integrate with InfluxDB

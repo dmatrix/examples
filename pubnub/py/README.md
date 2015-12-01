@@ -1,16 +1,7 @@
 #PubNub Integration with Apache Spark and InfluxDB
 
-![](images/pubnub_spark.png "An Overview of Data Flow")
+![](images/pubnub_spark.jpeg) "An Overview of Data Flow")
 
-Legend
-- P = Publish
-- S = Subscribe
-- R = Read
-- Rs = Read Data Stream
-- W = Write
-- Py = Python Process
-
-***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***
 
 ##Thou Shall Publish...Thy Shall Subscribe...
 For as long as there have been papers, there have been publishers and consumers. 
@@ -22,7 +13,7 @@ Add to that list a realtime streaming data network—and you get global, scalabl
 
 I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com) or [Cassandra] (http://http://cassandra.apache.org/)
 
-The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
+The diagram above shows the dataflow.
 
 Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App, but for now I have a another Python subscriber that subscribes to this channel, and will insert data into a DB: Cassandra and InfuxDB (on the TODO list).
 
@@ -103,6 +94,7 @@ Though short and simple, it illustrates Spark's brevity in doing more with littl
 Simplicity does not preclude profundity: One can achieve a lot by doing little, and that has been the appeal and draw of Spark Core API.
 
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
+
 ##Requirements
 
 In order to run these three applications you will need the following:
@@ -133,7 +125,7 @@ For better results start each Python process in a different terminal window in t
 - [Python Notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
 - [Scala Notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
 
-###WATCH THE RUNS
+##WATCH THE RUNS
 To see the program runs, here is a short screencast
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/1jOgcxkCElg/0.jpg)](https://youtu.be/1jOgcxkCElg "PubNub in Action with Apache Spark Streaming")

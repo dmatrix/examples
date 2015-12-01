@@ -142,4 +142,3 @@ To see the program runs, here is a short screencast
 ##TO DO 
 1. Integrate with InfluxDB
 2. Integrate with Cassandra
-3. Possibly integrate pubnub.subscribe() calls within the Spark streaming app.

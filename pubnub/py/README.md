@@ -1,6 +1,6 @@
 #PubNub Integration with Apache Spark and InfluxDB
 
-![](images/pubnub_spark.jpeg) "An Overview of Data Flow"
+![](images/pubnub_spark.jpeg)
 
 
 ##Thou Shall Publish...Thy Shall Subscribe...

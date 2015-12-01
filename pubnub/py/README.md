@@ -133,6 +133,11 @@ For better results start each Python process in a different terminal window in t
 - [Python Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
 - [Scala Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
 
+###WATCH THE RUNS
+To see the program runs, here is a short screencast
+
+[PubNub in action with Apache Spark Streaming] (https://youtu.be/1jOgcxkCElg)
+
 ##TO DO 
 1. Integrate with InfluxDB
 2. Integrate with Cassandra

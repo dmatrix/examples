@@ -8,42 +8,42 @@ Legend
 - R = Read
 - Rs = Read Data Stream
 - W = Write
+- Py = Python Process
 
 ***my woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)***
 
 ##Thou Shall Publish...Thy Shall Subscribe...
 For as long as there have been papers, there have been publishers and consumers. 
-Back then the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's ancient.
+In ancient times the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed. In other words, the publish/subscribe paradigm is not new; it's old.
 
 Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Apache Kafka, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing distributed streaming applications.
 
-Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect devices for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
+Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect Internet of Devices (IoT) for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com)
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com) or [Cassandra] (http://http://cassandra.apache.org/)
 
 The diagram above shows the dataflow (Ah, my first woeful attempt to use [53 Pencil & Paper Sketch!] (https://www.fiftythree.com/)
 
-Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App. For now, because of debugging with PubNub pub/sub keys' issues, I'm cheating slightly, by publishing dataset to a local file system directory where the local Spark appplication monitors the directory for any published datasets.
+Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App, but for now I have a another Python subscriber that subscribes to this channel, and will insert data into a DB: Cassandra and InfuxDB (on the TODO list).
 
 Note that in this scenario, you can't run Spark Streaming App in a clustered or standlone mode. The Spark app must run in local mode on the same machine as pubnub publisher app.
+
 ##Device Simulation
-I simulate as though a large installation of sensors and devices in a particular zipcode area is publishing the state, temperature, and humidity data onto the PubNub Data Network on a well-known public channel "devices."
+I simulate as though a large installation of sensors and devices in a particular zipcode area is publishing the state, temperature, and humidity data on to the PubNub Data Network on a well-known public channel "devices."
 
-Interested parties can subscribe to this channel, particularly any app that's monitoring or provisioning devcies. In this case,I have my Spark Streaming App monitoring a directory.
+Interested parties can subscribe to this channel, particularly any app that's monitoring or provisioning devcies. In this case,I have my Spark Streaming App monitoring a directory, and a Python PubNub process that's subscribing to this channel.
 
-Additionally, this Spark App (or any subscriber) can insert data into a timeseries database such as InfluxDB (on the to do list) for data visualization over period of time, which is useful for trending and monitoring usage.
+Additionally, this Spark App (or any subscriber) can insert data into a timeseries database such as InfluxDB (on the TODO list) for data visualization over period of time, which is useful for trending and monitoring usage.
 
 For example, using the datasets published by this app with [Databricks Notebook Python] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb) and [DataFrames & SQL] (http://spark.apache.org/docs/latest/sql-programming-guide.html), I can visualize and query different data fields. Below are few examples:
 
 
 ![](images/screen_3.png "Temperature vs Devices")
-
 ![](images/screen_1.png "Temperature, Humidity vs Devices")
-
 ![](images/screen_2.png "Humidity vs Zipcode")
 ![](images/screen_4.png "Humidity, Temp vs Device ID")
-![] (images/screen_5.png "Humidity vs Temp Cluster Map")
-![] (images/screen_6.png "Humidity vs Temp Pie Chart")
+![](images/screen_5.png "Humidity vs Temp Cluster Map")
+![](images/screen_6.png "Humidity vs Temp Pie Chart")
 
 
 ##Relevant Files
@@ -128,10 +128,10 @@ For better results start each Python process in a different terminal window in t
 
      `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
-4. If you have [Databricks Cloud] (http://databricks.com) trial account, have a go at these Python and Scala Notebooks:
+4. If you have [Databricks Cloud](http://databricks.com) trial account, have a go at these Python and Scala Notebooks:
 
-- [Python Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
-- [Scala Notebook] (https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
+- [Python Notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/py/sql_device_provisioning.ipynb)
+- [Scala Notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
 
 ###WATCH THE RUNS
 To see the program runs, here is a short screencast

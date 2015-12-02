@@ -131,7 +131,7 @@ To see the program runs, here is a short screencast
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/1jOgcxkCElg/0.jpg)](https://youtu.be/1jOgcxkCElg "PubNub in Action with Apache Spark Streaming")
 
 
-##TO DO 
-1. Integrate with InfluxDB
-2. Integrate with Cassandra
-3. Next replace PubNub with Apache Kafka
+##What's Next: TO DO 
+1. Integrate with InfluxDB and Cassandra
+2. Next replace PubNub with Apache Kafka and use its API to publish and subscribe topics
+3. Use the Kafka-Spark Connector to fetch data for the Spark Streaming App.

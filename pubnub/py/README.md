@@ -126,7 +126,7 @@ For better results start each Python process in a separate terminal window in th
 ##WATCH THE RUNS
 To see the program runs, here is a short screencast
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/1jOgcxkCElg/0.jpg)](https://youtu.be/1jOgcxkCElg "PubNub in Action with Apache Spark Streaming")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/CO0m_zQdD-A/0.jpg)](https://www.youtube.com/watch?v=CO0m_zQdD-A "PubNub in Action with Apache Spark Streaming and InfluxDB")
 
 
 ##What's Next: TO DO 

@@ -133,7 +133,7 @@ def create_json(id):
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)
   ip = get_ip_addr()
-  return json.dumps({"device_id": id, "device_name": d, "ip": ip, "timestamp": ts, "temp": temp, "scale": "Celius", "lat": x, "long": y, "zipcode": zipcode, "humidity": humidity}, sort_keys=True)
+  return json.dumps({"device_id": id, "device_name": d, "ip": ip, "timestamp": ts, "temp": temp, "scale": "Celsius", "lat": x, "long": y, "zipcode": zipcode, "humidity": humidity}, sort_keys=True)
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings

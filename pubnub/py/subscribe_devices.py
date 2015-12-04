@@ -22,7 +22,7 @@ followin format:
   "lat": 22, 
   "long": 82, 
   "scale: 
-  "Celius", 
+  "Celsius", 
   "temp": 22, 
   "device_name": "sensor-mac-word",
   "humidity": 15,
@@ -35,7 +35,13 @@ author: Jules S. Damji
 # define some callbacks
 #
 def receive(message, channel):
-	print (message)
+  insert_into_dbs(["InfluxDB", "Cassandra"], message)
+	#print (message)
+#
+# TODO: integrate influx db insertion here as timeseries 
+#
+def insert_into_dbs(dbs, item):
+    print ("Inserted items in DBs: %s %s" % (dbs, item))
 
 def on_error(message):
 	print ("ERROR: " + str(message))

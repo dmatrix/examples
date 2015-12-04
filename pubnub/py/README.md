@@ -57,8 +57,7 @@ The thread creates a list of random devices, the number specified on the command
      "timestamp:", 1447886791.607918,
      "lat": 22, 
      "long": 82, 
-     "scale: 
-     "Celius", 
+     "scale: "Celsius", 
      "temp": 22, 
      "device_name": "sensor-mac-id<random_string>",
      "humidity": 15,
@@ -108,13 +107,13 @@ For better results start each Python process in a separate terminal window in th
 
     `$ python subscribe_devices.py -c channel`
 
-2. Start the Spark Python Streaming application a terminal
+2. Start the Spark Python Streaming application in a separate terminal
 
     
     `$ bin/spark-submit pubnub_dir_streaming.py data_dir`
 
 
-3. Start the PubNub Python publisher in a terminal
+3. Start the PubNub Python publisher in a separate terminal
 
      `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
 
@@ -124,12 +123,12 @@ For better results start each Python process in a separate terminal window in th
 - [Scala Notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/sql_scala_device_provisioning.scala)
 
 ##WATCH THE RUNS
-To see the program runs, here is a short screencast
+To see the processes in action, here is a short screencast
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/CO0m_zQdD-A/0.jpg)](https://www.youtube.com/watch?v=CO0m_zQdD-A "PubNub in Action with Apache Spark Streaming and InfluxDB")
 
 
 ##What's Next: TO DO 
-1. Integrate with InfluxDB and Cassandra
+1. Integrate with InfluxDB or Cassandra
 2. Next replace PubNub with Apache Kafka and use its API to publish and subscribe topics
 3. Use the Kafka-Spark Connector to fetch data for the Spark Streaming App.

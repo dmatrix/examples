@@ -9,6 +9,7 @@ import socket
 import json
 import random
 import os
+import argparse
 
 """
 This short example illustrates the simplicity of using PubNub Realtime Streaming Netowrk,
@@ -66,6 +67,7 @@ def publish_devices_info(ch, filed):
   global pubnub, batches
   for id in batches:
     device_msg = create_json(id)
+    print ("message created=" + device_msg)
     write_to_dir(filed, device_msg)
     pubnub.publish(channel=ch, message=device_msg, error=on_error)
     id=id + 1
@@ -196,32 +198,30 @@ def write_to_dir(fd, djson):
     fd.write("\n")
   except IOError as e:
     print >> sys.stderr, "I/O error({0}): {1}".format(e.errno, e.strerror)
-#
-# the main program
-#
-if __name__ == "__main__":
-  url, ch, num_of_devices, data_dir = None, None, None, None
-  iterations = 3
-  #
-  # parse command line arguments
-  #
-  try:
-    opts, args = getopt.getopt(sys.argv[1:],"u:n:c:i:d:",["url=","ndevices=", "channel=","iterations=","dir="])
-  except getopt.GetoptError:
-      print("Usage: publish_devices.py -n num_of_devices -c channel -i iterations -d dirname [--spark=yes] [--host <hostname> --port portno]")
-      sys.exit(-1)
 
-  for opt, arg in opts:
-    if opt in ("-u", "url="):
-       url = arg
-    elif opt in ("-i", "iterations="):
-      iterations = arg
-    elif opt in ("-c", "channel="):
-       ch = arg
-    elif opt in ("-n", "ndevices="):
-        num_of_devices = int(arg)
-    elif opt in ("-d", "dir="):
-       data_dir = arg
+def parse_args():
+    parser = argparse.ArgumentParser(description='PubNub Publisher for JSON devices messages for a public channel "devices"')
+    parser.add_argument('--channel', type=str, required=True, default='devices',
+                        help='PubNub public channel')
+    parser.add_argument('--number', type=int, required=True, default=50,
+                        help='Number of psuedo-devices generated')
+    parser.add_argument('--iterations', type=int, required=True, default='3',
+                        help='Number of iterations to run')
+    parser.add_argument('--data_dir', type=str, required=True, default="data_dir",
+                        help='Directory to write JSON data files for the Spark Streaming application')
+    parser.add_argument('--host', type=str, required=False, default='localhost',
+                        help='hostname of Cassandra API[TODO]')
+    parser.add_argument('--port', type=int, required=False, default=9160,
+                        help='port of Cassandra API[TODO]')
+    return parser.parse_args()
+
+if __name__ == "__main__":
+
+  args = parse_args()
+  ch=args.channel
+  iterations=args.iterations
+  number=args.number
+  data_dir=args.data_dir
   #
   #Initialize the PubNub handle, with your personal keys
   #
@@ -230,9 +230,7 @@ if __name__ == "__main__":
   pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   #
   # fetch the batches
-  batches = get_large_batches(num_of_devices)
-
-
+  batches = get_large_batches(number)
   #
   #Create psuedo devices for provisioning as though they are all publishing upon activation
   #Use number of iterations and sleep between them. For each iteration, launch a thread that will
@@ -242,6 +240,6 @@ if __name__ == "__main__":
     filed, file_name = get_file_handle(data_dir, i)
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(30)
-    print ("%d Devices' info published on PubNub Channel '%s' and data written to file '%s'" % (num_of_devices, ch, os.path.join(data_dir, file_name)))
+    print ("%d Devices' infomation published on PubNub Channel '%s' and data written to file '%s'" % (number, ch, os.path.join(data_dir, file_name)))
     close_file_handle(filed)
 

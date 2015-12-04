@@ -69,7 +69,7 @@ All the complexity (and reliablity) is handled and hidden by the network infrast
 
  To run this program to create JSON files into the destinattion directory for Spark Streaming consumption:
 
-     `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
+     `$ python publish_devices.py --channel CHANNEL --number NUMBER --iterations ITERATIONS --data_dir DATA_DIRECTORY`
 
 ###subscribe_devices.py (Subscriber)
 UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel, "devices." Using simple PubNub API to subscribe messages, it can either write to a timeseries DB like InfluxDB (on the TODO list) or write to NoSQL datastore such as Casandra (on the TODO list).

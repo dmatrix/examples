@@ -61,7 +61,7 @@ if __name__ == "__main__":
     def process(time, rdd):
         try:
             for item in rdd.collect():
-                insert_into_dbs(["InfluxDB", "Cassandra"], item)
+                insert_into_dbs(["Cassandra"], item)
         except Exception as e:
             print(traceback.format_exc())
     #

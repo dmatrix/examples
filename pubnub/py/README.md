@@ -76,7 +76,7 @@ UnLike its counter part *publish_devices.py*, this simple Python process subscri
 
 To run this program to subscribe to device JSON files, run this command:
 
-    `$ python subscribe_devices.py -c channel`
+    `$ python subscribe_devices.py --channel devices`
 
 Note: You must run this program first, before publishing. PubNub requires that subscribers attach or subscribe to channels first, before they can recieve messages published on the channels.
 

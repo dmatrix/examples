@@ -4,6 +4,7 @@ import sys
 import signal
 import os
 import json
+import argparse
 """
 This short example illustrates the simplicity of using PubNub as a Publish-Subscribe cloud service. 
 As an example, this program simulates as though multiple devices are registering themselves or announcing their
@@ -35,7 +36,7 @@ author: Jules S. Damji
 # define some callbacks
 #
 def receive(message, channel):
-  insert_into_dbs(["InfluxDB", "Cassandra"], message)
+  insert_into_dbs(["InfluxDB"], message)
 	#print (message)
 #
 # TODO: integrate influx db insertion here as timeseries 
@@ -50,12 +51,17 @@ def signal_handler(signal, frame):
   println("Caugth Signal CNTL^C..exiting gracefully")
   sys.exit(0)
 
-if __name__ == "__main__":
-  if len(sys.argv) != 2:
-    print("Usage: subscribe_devices.py channel")
-    sys.exit(-1)
-  
-  ch = sys.argv[1]
+def parse_args():
+    parser = argparse.ArgumentParser(description='PubNub subscriber for JSON messages for a public channel "devices"')
+    parser.add_argument('--channel', type=str, required=True, default='devices',
+                        help='PubNub public channel')
+    parser.add_argument('--host', type=str, required=False, default='localhost',
+                        help='hostname of InfluxDB http API[TODO]')
+    parser.add_argument('--port', type=int, required=False, default=8086,
+                        help='port of InfluxDB http API[TODO]')
+    return parser.parse_args()
+
+def main(channel="devices"):
   #
   #initialize the PubNub handle
   #
@@ -67,6 +73,10 @@ if __name__ == "__main__":
 	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
 	# channel
 	#
-  print("Subscribing from PubNub Channel '%s'" % (ch))
-  pubnub.subscribe(channels=ch, callback=receive, error=on_error)
+  print("Subscribing from PubNub Channel '%s'" % (channel))
+  pubnub.subscribe(channels=channel, callback=receive, error=on_error)
   pubnub.start()
+
+if __name__ == "__main__":
+  args = parse_args()
+  main(channel=args.channel)

@@ -16,18 +16,19 @@ and how to use PubNub SDK to program the netowrk, to publish data streams and to
 
 Though the example is simple, it simulates as though multiple devices are registering themselves or announcing their
 availability by publishing their state on a dedicated channel. In reality this could be a deployment of meters or sensors
-in an area code that you wish to monitor for tial and do some realtime analysis using Spark.
+in an area code that you wish to monitor for trial and do some realtime analysis using Spark.
 
-Also, as an optional extension, the app can write to a socket or a directory where a Spark Streaming context monitoring for live
-live data streams of JSON objects from each device. For directory, the Spark application must run on the same JVM as this app and in local mode.
+Also, as an optional extension, the app can write to a socket or a directory where a Spark Streaming context is monitoring for live
+data streams of JSON objects from each device. For directory streaming, the Spark application must run on the same JVM as this app and in local mode.
 
 I employ a thread that simulates mulitple devices acting as publishers, but in reality each JSON data object could be published
-separately by each device using PubNub's publish-subscribe API. 
+separately by each device using PubNub's publish/subscribe API. 
 
-It creates the size specifed on the commandline options
+It creates the size or number of devices specifed on the commandline options
 
-From the list of devices it composes device names. Each JSON object has the 
-followin format:
+From the number of devices it composes device names. Each JSON object has the 
+following format:
+
  {"device_id": 97,
   "ip": "191.35.83.75",
   "timestamp", 1447886791.607918,
@@ -41,10 +42,10 @@ followin format:
   "zipcode:" 95498
  }
 
- To run this program to create json files into the destinattion directory for Spark Streaming consumption:
+ To run this program to create json files in the destination directory for Spark Streaming consumption:
  $ python publish_devices.py -b num_of_devices -c devices -i 1 -d data
-author: Jules S. Damji 
 
+author: Jules S. Damji 
 
 """
 #

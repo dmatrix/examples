@@ -67,7 +67,6 @@ def publish_devices_info(ch, filed):
   global pubnub, batches
   for id in batches:
     device_msg = create_json(id)
-    print ("message created=" + device_msg)
     write_to_dir(filed, device_msg)
     pubnub.publish(channel=ch, message=device_msg, error=on_error)
     id=id + 1
@@ -237,6 +236,7 @@ if __name__ == "__main__":
   #execute the function.
   #
   for i in range(int(iterations)):
+    print ("Creating iteration '%d' for batch of %d devices" % (i, number))
     filed, file_name = get_file_handle(data_dir, i)
     start_new_thread(publish_devices_info, (ch,filed))
     time.sleep(30)

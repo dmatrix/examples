@@ -42,7 +42,7 @@ def receive(message, channel):
 # TODO: integrate influx db insertion here as timeseries 
 #
 def insert_into_dbs(dbs, item):
-    print ("Inserted items in DBs: %s %s" % (dbs, item))
+    print ("Recieved JSON for insertion in DB: %s %s" % (dbs, item))
 
 def on_error(message):
 	print ("ERROR: " + str(message))

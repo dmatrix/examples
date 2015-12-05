@@ -32,7 +32,7 @@ following format:
 
  {"device_id": 97,
   "ip": "191.35.83.75",
-  "timestamp", 1447886791.607918,
+  "timestamp", 1447886791
   "lat": 22, 
   "long": 82, 
   "scale: 
@@ -44,7 +44,7 @@ following format:
  }
 
  To run this program to create json files in the destination directory for Spark Streaming consumption:
- $ python publish_devices.py -b num_of_devices -c devices -i 1 -d data
+ $ python publish_devices.py --help
 
 author: Jules S. Damji 
 
@@ -67,7 +67,8 @@ def publish_devices_info(ch, filed):
   global pubnub, batches
   for id in batches:
     device_msg = create_json(id)
-    write_to_dir(filed, device_msg)
+    device_msg_str = json.dumps(device_msg, sort_keys=True)
+    write_to_dir(filed, device_msg_str)
     pubnub.publish(channel=ch, message=device_msg, error=on_error)
     id=id + 1
 
@@ -120,7 +121,7 @@ def create_json(id):
   temp = random.randrange(0, 35)
   (x, y) = random.randrange(0, 100), random.randrange(0, 100)
   time.sleep(0.025)
-  ts = time.time()
+  ts = int(time.time())
   ip = get_ip_addr()
 
   if id % 2 == 0:
@@ -135,7 +136,20 @@ def create_json(id):
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)
   ip = get_ip_addr()
-  return json.dumps({"device_id": id, "device_name": d, "ip": ip, "timestamp": ts, "temp": temp, "scale": "Celsius", "lat": x, "long": y, "zipcode": zipcode, "humidity": humidity}, sort_keys=True)
+  jdoc = {}
+  jdoc["device_id"] = id
+  jdoc["device_name"] = d
+  jdoc["ip"] = ip
+  jdoc["timestamp"] = ts
+  jdoc["temp"] = temp
+  jdoc["scale"] = "Celsius"
+  jdoc["lat"] = x
+  jdoc["long"] = y
+  jdoc["zipcode"] = zipcode
+  jdoc["humidity"] = humidity
+
+  #return json.dumps({"device_id": id, "device_name": d, "ip": ip, "timestamp": ts, "temp": temp, "scale": "Celsius", "lat": x, "long": y, "zipcode": zipcode, "humidity": humidity}, sort_keys=True)
+  return jdoc
 
 #
 # create a connection to a socket where a spark streaming context will listen for incoming JSON strings

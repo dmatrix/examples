@@ -72,11 +72,11 @@ All the complexity (and reliablity) is handled and hidden by the network infrast
      `$ python publish_devices.py --channel CHANNEL --number NUMBER --iterations ITERATIONS --data_dir DATA_DIRECTORY`
 
 ###subscribe_devices.py (Subscriber)
-UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel, "devices." Using simple PubNub API to subscribe messages, it can either write to a timeseries DB like InfluxDB (on the TODO list) or write to NoSQL datastore such as Casandra (on the TODO list).
+UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel, "devices." Using simple PubNub API to subscribe messages, it writes to a timeseries DB like InfluxDB.
 
 To run this program to subscribe to device JSON files, run this command:
 
-    `$ python subscribe_devices.py --channel devices`
+    `$ python subscribe_devices.py --channel devices --host localhost --port 8086`
 
 Note: You must run this program first, before publishing. PubNub requires that subscribers attach or subscribe to channels first, before they can recieve messages published on the channels.
 
@@ -96,16 +96,16 @@ Simplicity does not preclude profundity: One can achieve a lot by doing little, 
 
 In order to run these three applications you will need the following:
 - Trial account with PubNub for sub/pub keys
-- Install PubNub Python SDK 
+- Install InfluxDB on the localhost
 - Install Apache Spark on your local machine and run in local mode
-- Install InfluxDB or Cassandra and its respective Python SDK
+- Install InfluxDB and its respective Python SDK
 
 ##STEPS 
 For better results start each Python process in a separate terminal window in the order specified below.
 
 1. Start the PubNub Python subscriber in a terminal.
 
-    `$ python subscribe_devices.py -c channel`
+    `$ python subscribe_devices.py --channel devices --host localhost --port 8086`
 
 2. Start the Spark Python Streaming application in a separate terminal
 
@@ -115,7 +115,7 @@ For better results start each Python process in a separate terminal window in th
 
 3. Start the PubNub Python publisher in a separate terminal
 
-     `$ python publish_devices.py -n number_of_devices -c devices -i 1 -d data`
+     `$ python publish_devices.py --channel devices --number 50 --iterations 3 --data_dir data_dir`
 
 4. If you have [Databricks Cloud](http://databricks.com) trial account, have a go at these Python and Scala Notebooks:
 
@@ -129,6 +129,6 @@ To see the processes in action, here is a short screencast
 
 
 ##What's Next: TO DO 
-1. Integrate with InfluxDB or Cassandra
+1. Integrate with Cassandra
 2. Next replace PubNub with Apache Kafka and use its API to publish and subscribe topics
 3. Use the Kafka-Spark Connector to fetch data for the Spark Streaming App.

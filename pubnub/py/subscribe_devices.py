@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 from pubnub import Pubnub
+from influxdb import InfluxDBClient
 import sys
 import signal
 import os
 import json
 import argparse
+
 """
 This short example illustrates the simplicity of using PubNub as a Publish-Subscribe cloud service. 
 As an example, this program simulates as though multiple devices are registering themselves or announcing their
@@ -19,7 +21,7 @@ Each JSON object received on its subscribed channles is the following format.
 Each JSON object has the 
 followin format:
  {"device_id": 97, 
-  "timestamp", 1447886791.607918,
+  "timestamp", 1447886791
   "lat": 22, 
   "long": 82, 
   "scale: 
@@ -31,18 +33,60 @@ followin format:
  }
 author: Jules S. Damji 
 """
+
+#
+# global variables for InfluxDB
+#
+user = 'pubnub'
+password = 'pubnub'
+dbname = 'pubnub_devices'
+dbuser = 'jules'
+dbuser_password = 'influxdb'
+client = None
 #
 #
 # define some callbacks
 #
 def receive(message, channel):
   insert_into_dbs(["InfluxDB"], message)
-	#print (message)
+	
 #
 # TODO: integrate influx db insertion here as timeseries 
 #
-def insert_into_dbs(dbs, item):
-    print ("Recieved JSON for insertion in DB: %s %s" % (dbs, item))
+def create_influxdb_point(jdoc, measurement):
+
+  data={}
+  data['measurement'] = measurement
+
+  tags = {}
+  tags['humidity']= str(jdoc['humidity'])
+  tags['temp'] = str(jdoc['temp'])
+  tags['device_id'] = str(jdoc['device_id'])
+  tags['device_name'] = str(jdoc['device_name'])
+  tags['zipcode'] = str(jdoc['zipcode'])
+
+  data['tags'] = tags
+  data['time'] = jdoc['timestamp']
+
+  fields={}
+  fields['lat'] = jdoc['lat']
+  fields['long'] = jdoc['long']
+  fields['scale'] = jdoc['scale']
+
+  data['fields'] = fields
+
+  return [data]
+
+
+def insert_into_dbs(dbs, jdoc):
+
+  client = InfluxDBClient("localhost", 8086, 'jules', 'influxdb', 'pubnub_devices')
+  print ("Recieved JSON for insertion in DB: %s %s" % (dbs, json.dumps(jdoc, sort_keys="True")))
+  influxTemperatureDoc = create_influxdb_point(jdoc, "temperature")
+  print (influxTemperatureDoc)
+  client.write_points(influxTemperatureDoc)
+  influxHumidityDoc = create_influxdb_point(jdoc, "humidity")
+  client.write_points(influxHumidityDoc)  
 
 def on_error(message):
 	print ("ERROR: " + str(message))
@@ -55,13 +99,13 @@ def parse_args():
     parser = argparse.ArgumentParser(description='PubNub subscriber for JSON messages for a public channel "devices"')
     parser.add_argument('--channel', type=str, required=True, default='devices',
                         help='PubNub public channel')
-    parser.add_argument('--host', type=str, required=False, default='localhost',
-                        help='hostname of InfluxDB http API[TODO]')
-    parser.add_argument('--port', type=int, required=False, default=8086,
-                        help='port of InfluxDB http API[TODO]')
+    parser.add_argument('--host', type=str, required=True, default='localhost',
+                        help='hostname of InfluxDB http API')
+    parser.add_argument('--port', type=int, required=True, default=8086,
+                        help='port of InfluxDB http API')
     return parser.parse_args()
 
-def main(channel="devices"):
+def main(channel="devices", host="localhost", port=8086):
   #
   #initialize the PubNub handle
   #
@@ -70,6 +114,10 @@ def main(channel="devices"):
   
   pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   signal.signal(signal.SIGINT, signal_handler)
+  #
+  # create handle to DB
+  #
+  #client = InfluxDBClient(host, port, user, password, dbname)
 	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
 	# channel
 	#

@@ -6,7 +6,7 @@ from influxdb import InfluxDBClient
 def main(host='localhost', port=8086):
     user = 'pubnub'
     password = 'pubnub'
-    dbname = 'pubnub_devices'
+    dbname = 'pubnub_devices_test'
     dbuser = 'jules'
     dbuser_password = 'influxdb'
     query = 'select * from temperature;'
@@ -49,7 +49,7 @@ def main(host='localhost', port=8086):
 
     client = InfluxDBClient(host, port, user, password, dbname)
 
-    print("Create database: " + dbname)
+    print("Using database: " + dbname)
     client.create_database(dbname)
 
     print("Create a retention policy")

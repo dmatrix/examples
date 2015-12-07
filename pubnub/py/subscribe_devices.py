@@ -51,13 +51,16 @@ def receive(message, channel):
   insert_into_dbs(["InfluxDB"], message)
 	
 #
-# TODO: integrate influx db insertion here as timeseries 
+# Integrate influx db insertion here as timeseries. Create a measurement point with tags and fields
 #
 def create_influxdb_point(jdoc, measurement):
 
+  #use this incoming arg as measurement (or synonmous to table in DB)
   data={}
   data['measurement'] = measurement
-
+  #
+  # Define key tags in as part of this measurment table. Keys are going to be indexed so queries as
+  # faster for its values
   tags = {}
   tags['humidity']= str(jdoc['humidity'])
   tags['temp'] = str(jdoc['temp'])
@@ -67,7 +70,9 @@ def create_influxdb_point(jdoc, measurement):
 
   data['tags'] = tags
   data['time'] = jdoc['timestamp']
-
+  #
+  # define fields, which are not indexed
+  #
   fields={}
   fields['lat'] = jdoc['lat']
   fields['long'] = jdoc['long']
@@ -80,13 +85,13 @@ def create_influxdb_point(jdoc, measurement):
 
 def insert_into_dbs(dbs, jdoc):
 
+  ##TODO Convert this into a Singleton class so that we don't call this each time a message is recieved.
   client = InfluxDBClient("localhost", 8086, 'jules', 'influxdb', 'pubnub_devices')
   print ("Recieved JSON for insertion in DB: %s %s" % (dbs, json.dumps(jdoc, sort_keys="True")))
-  influxTemperatureDoc = create_influxdb_point(jdoc, "temperature")
-  print (influxTemperatureDoc)
-  client.write_points(influxTemperatureDoc)
-  influxHumidityDoc = create_influxdb_point(jdoc, "humidity")
-  client.write_points(influxHumidityDoc)  
+  for measurement in ["temperature", "humidity"]:
+    influxDoc = create_influxdb_point(jdoc, measurement)
+    print (influxDoc)
+    client.write_points(influxDoc)
 
 def on_error(message):
 	print ("ERROR: " + str(message))
@@ -114,10 +119,7 @@ def main(channel="devices", host="localhost", port=8086):
   
   pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   signal.signal(signal.SIGINT, signal_handler)
-  #
-  # create handle to DB
-  #
-  #client = InfluxDBClient(host, port, user, password, dbname)
+  
 	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
 	# channel
 	#

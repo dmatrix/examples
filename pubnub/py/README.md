@@ -15,7 +15,7 @@ I used it to publish (or simulate) realtime sensor or device data, using its [Py
 
 The diagram above shows the dataflow.
 
-Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App, but for now I have a another Python subscriber that subscribes to this channel, and will insert data into a DB: Cassandra and InfuxDB (on the TODO list).
+Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App, but for now I have a another Python subscriber that subscribes to this channel, and inserts data into a DB: InfuxDB.
 
 Note that in this scenario, I'm running Spark Streaming App in local mode.on the same machine as pubnub publisher app. As such, it makes it easier for developer to *learn, try and do things*.
 

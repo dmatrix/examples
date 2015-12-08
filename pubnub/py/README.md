@@ -11,13 +11,13 @@ Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Ap
 
 Add to that list a realtime streaming data network—and you get global, scalable, and reliable messaging network with sub-second low-latency, allowing you to build and connect Internet of Devices (IoT) for realtime applications quickly and easily. One such data streaming and messaging network is [PubNub.] (http://pubnub.com)
 
-I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and soon to come with [InfluxDB](http://influxdb.com) or [Cassandra] (http://http://cassandra.apache.org/)
+I used it to publish (or simulate) realtime sensor or device data, using its [Python SDK](https://www.pubnub.com/developers/), to write my first Publish-Subscribe app. To make things interesting, I went futher to integrate the app with [Apache Spark Streaming] (http://apache.spark.org)—and ingestion into timeseries [InfluxDB](http://influxdb.com) database.
 
 The diagram above shows the dataflow.
 
 Ideally, I'm going to want to subcribe to a published channel from within the Spark Streaming App, but for now I have a another Python subscriber that subscribes to this channel, and will insert data into a DB: Cassandra and InfuxDB (on the TODO list).
 
-Note that in this scenario, you can't run Spark Streaming App in a clustered or standlone mode. The Spark app must run in local mode on the same machine as pubnub publisher app. Also, it makes it easier for developer to *learn, try and do things*.
+Note that in this scenario, I'm running Spark Streaming App in local mode.on the same machine as pubnub publisher app. As such, it makes it easier for developer to *learn, try and do things*.
 
 ##Device Simulation
 I simulate as though a large installation of sensors and devices in a particular zipcode area is publishing the state, temperature, and humidity data on to the PubNub Data Network on a well-known public channel "devices."
@@ -72,7 +72,7 @@ All the complexity (and reliablity) is handled and hidden by the network infrast
      `$ python publish_devices.py --channel CHANNEL --number NUMBER --iterations ITERATIONS --data_dir DATA_DIRECTORY`
 
 ###subscribe_devices.py (Subscriber)
-UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel, "devices." Using simple PubNub API to subscribe messages, it writes to a timeseries DB like InfluxDB.
+UnLike its counter part *publish_devices.py*, this simple Python process subscribes to the messages published on the specified channel, "devices." Using simple PubNub API to subscribe messages, and upon receiving messages, it writes to a timeseries DB like InfluxDB.
 
 To run this program to subscribe to device JSON files, run this command:
 
@@ -84,7 +84,7 @@ Note: You must run this program first, before publishing. PubNub requires that s
 ###pubnub_dir_streaming.py (Consumer)
  This short Spark example demonstrates how to consume a JSON data stream from a directory. 
 
-Its counter part PubNub publisher, *publish_devices.py*, publishes to a channel and also writes JSON data to a desinated directory for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data directly off a channel, the next step is to modify this app so that it employs PubNub's subscribe channel to recieve published data (on the TODO list).
+Its counter part PubNub publisher, *publish_devices.py*, publishes to a channel and also writes JSON data to a desinated directory for this Spark Streaming program to consume. While presently it does not use PubNub subscriber API to get data directly off a channel, the next step is to modify this app so that it employs PubNub's subscribe channel to recieve published data.
 
 Though short and simple, it illustrates Spark's brevity in doing more with little. 
 
@@ -128,7 +128,6 @@ To see the processes in action, here is a short screencast
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/CO0m_zQdD-A/0.jpg)](https://www.youtube.com/watch?v=CO0m_zQdD-A "PubNub in Action with Apache Spark Streaming and InfluxDB")
 
 
-##What's Next: TO DO 
-1. Integrate with Cassandra
-2. Next replace PubNub with Apache Kafka and use its API to publish and subscribe topics
-3. Use the Kafka-Spark Connector to fetch data for the Spark Streaming App.
+##What's Next Screencast: TO DO 
+1. Next replace PubNub with Apache Kafka and use its API to publish and subscribe topics
+2. Use the Kafka-Spark Connector to fetch data for the Spark Streaming App.

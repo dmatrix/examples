@@ -2,7 +2,7 @@
 
 ![](images/confluent.png)
 
-![source] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+[source: Demystifiy Streaming Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 
 ##Thou Shall Publish...Thy Shall Subscribe...
 For as long as there have been printing papers, there have been publishers and consumers. 

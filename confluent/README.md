@@ -37,31 +37,67 @@ I'll leave that as an exercise for other enthusiasts.
 To get started, let's compile and create a producer package. 
 
 - cd into the producer directory
-- mvn clean package
+
+	`$ mvn clean package`
 
 This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
 
 ###Command Line Consumer (Consumer)
 I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala REPLs are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different is the UNIX shell. 
 
-In fact, creators of Python and Scala languages (as well as *PySpark* and Scala *spark-shell*) were inspired by this notion from UNIX shell, where developers can interact and try code—and see the results instanstally. Why wait for something to compile when all I want is to quickly prototype a function or an object class, test and tweak it.
+In fact, creators of Python and Scala languages (as well as *PySpark* and Scala *spark-shell*) were inspired by this notion from UNIX shell, where developers can interact and try or test code—and see the results instanstally. Why wait for something to compile when all you want is to quickly prototype a function or an object class, test and tweak it.
 
-Just as REPLs are developers' delight, so are CLI tools and utilities that ship with the platform, allowing quick inspection, fostering rapid prototyping, and offering concrete blocks for building larger applications.
+Just as REPLs are developers' delight, so are CLI tools and utilities that ship with a platform, allowing quick inspection, foster rapid prototyping, and offer discrete blocks for building larger applications.
 
 For example, I can use a number of command line scripts shipped with CP in the distribution's *bin* directory. Once such utility is ability to inspect messages on a topic. Instead of writing a consumer yourself, you can easily use one out-of-the-box. 
-(Note, I'll write a Java one above, but I just finished publishing few messages on a topic, and I'm curious to see if that worked.)
+(Note: if I just finished publishing few messages on a topic and I'm curious to see if that worked, here's a quick way to check.)
 
-To see what you just published on your topic, *devices*,run this command:
+To see what you just published on your topic, *devices*, run this command:
 
-	`bin/kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+	`$ kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
-Equally useful is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
+Another example, and qqually useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
+
+	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 200`
 
 ##Requirements
-In order to try these examples you must download and insall the following on your laptop (Mine is Mac)
+In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)
 - Download and Install Confluent 2.0
 - Download and Install Maven
 - Download and Install JDK 1.7
 ##Steps to Runs
-- 
+
+Assuming that you have satisfied the above requirements, here is the order of steps to get this first publisher and consumer 
+going. Further, let's assume you have Confluent Plaform installed in ${CONFLUENT_HOME}/bin and included in your $PATH.
+
+1. Start the zookeeper in one terminal.
+
+	`$ cd ${CONFLUENT_HOME} && zookeeper-server-start ./etc/kafka/zookeeper.properties`
+
+2. Launch the Apache Kafka Server in a separate terminal.
+
+	`$ cd ${CONFLUENT_HOME} && kafka-server-start ./etc/kafka/server.properties`
+
+3. Start the Schema Registery in a separate terminal. 
+	`$ cd ${CONFLUENT_HOME} && schema-registry-start ./etc/schema-registry/schema-registry.properties
+
+4. In your producer directory where you created the package execute the following command:
+
+	`$ mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"`
+
+	This will publish five device messages on the topic 'devices.'
+
+5. Finally, to see the outcome of what you published, consume the messages 
+
+	`$ cd cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+
+At this point, you should see all the messages published in the same order recevied. 
+
+In short, the above recipe gets you started on the notion of publish and subscribe paradigm using Confluent Platform 2.0. There's much more to is power and potential in the distributed world of stream processing at massive scale. You can comprehend the history, the motiviation, and potential of this platform, both from developers' and infracture point of view, if you visit some of the resources. I'm quite enamored by it. 
+
+As I said earlier, what's gets my passion flowing are the steps above. To that extent, Confleunt met my needs. 
+
 ##Watch the Runs
+## Resources for Exploration
+## TODO
+1. Implement a simulation of [Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md) with Confluent Platform. 

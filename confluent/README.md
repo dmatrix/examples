@@ -117,6 +117,7 @@ Try it for yourself.
 
 ## Resources for Further Exploration
 - [Demystifying Stream Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+- [An evening with Jay Kreps: author of Apache Kafka, Samza, Voldemort & Azkaban.](http://www.slideshare.net/sawjd/an-evening-with-jay-kreps-author-of-apache-kafka-samza-voldemort-azkaban)
 - [What's Confluent Platform?](http://docs.confluent.io/2.0.0/platform.html)
 - [Confluent Blogs] (http://www.confluent.io/blog)
 - [Apache Kafka 0.9.0 Documentation] (http://kafka.apache.org/documentation.html)

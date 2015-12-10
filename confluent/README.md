@@ -1,4 +1,4 @@
-#A Simple Producer and Consumer for Confluent 2.0 with Apache Spark 0.9
+#Romancing with Confluent Platform 2.0 with Apache Kafka 0.9: A Simple Producer and Consumer Example
 
 ![](images/confluent.png)
 
@@ -62,7 +62,7 @@ Another example, and qqually useful, is the *kafka-simple-consumer-shell*, which
 
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)
-- Download and Install Confluent 2.0
+- [Download and Install Confluent 2.0] (http://docs.confluent.io/2.0.0/quickstart.html)
 - Download and Install Maven
 - Download and Install JDK 1.7
 ##Steps to Runs
@@ -89,7 +89,7 @@ going. Further, let's assume you have Confluent Plaform installed in ${CONFLUENT
 
 5. Finally, to see the outcome of what you published, consume the messages 
 
-	`$ cd cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+	`$ cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
 At this point, you should see all the messages published in the same order recevied. 
 
@@ -98,6 +98,10 @@ In short, the above recipe gets you started on the notion of publish and subscri
 As I said earlier, what's gets my passion flowing are the steps above. To that extent, Confleunt met my needs. 
 
 ##Watch the Runs
-## Resources for Exploration
+## Resources for Further Exploration
+- [Demystifying Stream Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+- [What's Confluent Platform?](http://docs.confluent.io/2.0.0/platform.html)
+- [Confluent Blogs] (http://www.confluent.io/blog)
+
 ## TODO
 1. Implement a simulation of [Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md) with Confluent Platform. 

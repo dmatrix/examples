@@ -9,7 +9,7 @@ For as long as there have been printing papers, there have been publishers and c
 In ancient times the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers or subscribers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed.In other words, the publish/subscribe paradigm is not new; it's old.
 
 In this short, simple putative rendition of HelloWorld equivalent of Publish/Subscribe paradigm programming model, I explore the 
-[Confluent Data Platform 2.0 (CDP)](http://confluent.io), backed and supported by the developers and creators of Apache Kafka (0.9.0), orginally at LinkedIn.
+[Confluent Platform 2.0 (CP)](http://confluent.io), backed and supported by the developers and creators of Apache Kafka (0.9.0), orginally at LinkedIn.
 
 The central idea and test is simple: how easy it's for me (or any developer) to do the following:
 - Download and Install the platform
@@ -34,26 +34,28 @@ As the name suggests, it's a simple producer of few fake devices state and publi
 
 I'll leave that as an exercise for other enthusiasts. 
 
-But to get started, let's compile and create a package. 
+To get started, let's compile and create a producer package. 
 
-- cd into the producer
+- cd into the producer directory
 - mvn clean package
 
-This will create the jar file in the target directory.
+This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
 
 ###Command Line Consumer (Consumer)
-I get excited when I can learn, try and do something both programmatically and interactively. No surprise that Python and Scala REPLs are such a huge hit with developers. No different is the UNIX shell. In fact, that's what's inspired the creators of Python and Scala to adopt this quick interactive way to try something—and see the results instanstally. Why wait for something to compile when I want to quickly try or prototype a function or class and test and tweak it.
+I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala REPLs are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different is the UNIX shell. 
 
-So is the utility of CLI tools that ship with the platform, allowing quick inspection, fostering rapid prototyping, and offering blocks to build larger tools and utilities.
+In fact, creators of Python and Scala languages (as well as *PySpark* and Scala *spark-shell*) were inspired by this notion from UNIX shell, where developers can interact and try code—and see the results instanstally. Why wait for something to compile when all I want is to quickly prototype a function or an object class, test and tweak it.
+
+Just as REPLs are developers' delight, so are CLI tools and utilities that ship with the platform, allowing quick inspection, fostering rapid prototyping, and offering concrete blocks for building larger applications.
 
 For example, I can use a number of command line scripts shipped with CP in the distribution's *bin* directory. Once such utility is ability to inspect messages on a topic. Instead of writing a consumer yourself, you can easily use one out-of-the-box. 
 (Note, I'll write a Java one above, but I just finished publishing few messages on a topic, and I'm curious to see if that worked.)
 
-To see what you just published on your topic, devices,run this command:
+To see what you just published on your topic, *devices*,run this command:
 
 	`bin/kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
-Equally as useful is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queue and partitions.
+Equally useful is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
 
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is Mac)

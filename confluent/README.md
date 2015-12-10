@@ -50,13 +50,13 @@ In fact, creators of Python and Scala languages (as well as *PySpark* and Scala 
 Just as REPLs are developers' delight, so are CLI tools and utilities that ship with a platform, allowing quick inspection, foster rapid prototyping, and offer discrete blocks for building larger applications.
 
 For example, I can use a number of command line scripts shipped with CP in the distribution's *bin* directory. Once such utility is ability to inspect messages on a topic. Instead of writing a consumer yourself, you can easily use one out-of-the-box. 
-(Note: if I just finished publishing few messages on a topic and I'm curious to see if that worked, here's a quick way to check.)
+(Note: If you just finished publishing few messages on a topic and are curious to see if that worked, here's a quick way to check.)
 
 To see what you just published on your topic, *devices*, run this command:
 
 	`$ kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
-Another example, and qqually useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
+Another example, and equally useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
 
 	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 200`
 

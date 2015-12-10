@@ -26,24 +26,41 @@ public class SimplePublisher {
 
 	private String topic;
 
-	public SimplePublisher(String pTopic) {
+	/**
+	 *
+	 * @param pTopic
+     */
+	public SimplePublisher(String pTopic)
+	{
 		topic = pTopic;
 	}
-	public String getTopic() {
+
+	/**
+	 *
+	 * @return
+     */
+	public String getTopic()
+	{
 		return topic;
 	}
 
+	/**
+	 *
+	 * @param id
+	 * @param schema
+     * @return
+     */
 	public GenericRecord buildDeviceInfo(int id, Schema schema) {
 
 		GenericRecord deviceRecord = new GenericData.Record(schema);
 		deviceRecord.put("device_id", id);
-		deviceRecord.put("device_name", "sensor-X25ForJSD");
+		deviceRecord.put("device_name", IotDevices.getDeviceType(id));
 		deviceRecord.put("ip", "192.34.5." + id);
-		deviceRecord.put("temp", 45);
-		deviceRecord.put("humidity", 76);
-		deviceRecord.put("lat", 32);
-		deviceRecord.put("long", 45);
-		deviceRecord.put("zipcode", 94356);
+		deviceRecord.put("temp", IotDevices.getTemp());
+		deviceRecord.put("humidity", IotDevices.getHumidity());
+		deviceRecord.put("lat", IotDevices.getCoordinate());
+		deviceRecord.put("long", IotDevices.getCoordinate());
+		deviceRecord.put("zipcode", IotDevices.getZipCode(id));
 		deviceRecord.put("scale", "Celsius");
 		deviceRecord.put("timestamp", new Date().getTime());
 
@@ -100,7 +117,7 @@ public class SimplePublisher {
 			ProducerRecord<String, GenericRecord> data = new ProducerRecord<String, GenericRecord>(topic, deviceRec);
 			// publish it on the topic "devices." This assumes that the topic exists
 			try {
-				System.out.format("Device info publishing to Kafka topic %s : %s",
+				System.out.format("Device info publishing to Kafka topic %s : %s\n",
 						sp.getTopic(), data.toString()) ;
 				producer.send(data);
 			} catch (Exception exec) {

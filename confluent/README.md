@@ -95,7 +95,9 @@ At this point, you should see all the messages recevied in the same order publis
 
 In short, the above recipe gets you started romancing with publish and subscribe paradigm using Confluent Platform 2.0. There's much more to its power and potential in the distributed world of stream processing at massive scale. You can read the history, the motiviation, and potential of this platform, both from developers' and infrastruccture point of view, if you persuse some of the resources. 
 
-As I said earlier, what gets my passion flowing is the **get-started** experience. To that extent, Confleunt met my initial needs. 
+As I said earlier, what gets my passion flowing is the **get-started** positive experience. In general, in my opinion, any platform that takes inordinate amount of time to install, configure, launch, and learn to write your equivalent Hello World program is negative sign of *more* friction and resistance *less* desire to adopiton and acceptance. To that extent, Confleunt met my initial, "get-started" needs, with minimal friction.
+
+Try it for yourself.
 
 ##Watch the Runs
 

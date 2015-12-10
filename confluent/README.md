@@ -39,26 +39,28 @@ For now let's first crawl and have coffee with our date before we run and have f
 
 ##Relevant Files
 ###SimplePublisher.java (Producer)
-As the name suggests, it's a simple producer of few fake devices state and publishes each device record to the CDP topic "devices." Three key takeaways. First, each topic to which you wish to publish a message, you must provide and register an Avro schema. For the duration of process (and even later) all producers publishing to this topic must adhere to this schema, which is registered and maintained in the Schema Registery. Second, since by default CP uses Avoro ser/der for the messages, you get the benefit of most default data types out-of-the box. And finally, the Java API are fairly easy (I have not tried other client implementations; but it's worth exploring at least Scala, Python or Go).
+As the name suggests, it's a simple producer of few fake devices' state data and publishes each device record to the CP topic "devices." Three key takeaways. First, each topic to which you wish to publish a message, you must provide and register an Avro schema. For the duration of process (and even later) all producers publishing to this topic must adhere to this schema, which is registered and maintained in the Schema Registery. 
 
-I'll leave that as an exercise for other enthusiasts. 
+Second, since by default CP uses Avoro ser/der for the messages, you get the benefit of most default data types ser/der out-of-the box. 
+
+And finally, the Java client APIs are fairly easy (I have not tried other [client implementations](https://cwiki.apache.org/confluence/display/KAFKA/Clients#Clients-Python); but it's worth exploring at least Scala, Python or Go). I'll leave that as an exercise for other enthusiasts. 
 
 To get started, let's compile and create a producer package. 
 
-- cd into the producer directory
+- cd into the producer directory in this git repo.
 
 	`$ mvn clean package`
 
 This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
 
 ###Command Line Consumer (Consumer)
-I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala Read Evaluate Process and Loop (REPLs) are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different is the UNIX shell. 
+I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala Read Evaluate Process and Loop (REPLs) are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different are the UNIX shells. 
 
-Not since the creators of UNIX shells—Bourne, Csh, and Bash—were computer scientists and software engineers so inspired to consider providing interactive shell as part an their platform enviornment. Look at *PySpark* and Scala *spark-shell*, where developers can interact and try or test code—and see the results instanstally. Why wait for something to compile when all you want is to quickly prototype a function or an object class, test and tweak it.
+Not since the creators of UNIX shells—Bourne, Csh, and Bash—are computer scientists and software engineers today so inspired to consider providing interactive shell as part of their platform enviornment. Look at *PySpark* and Scala *spark-shell*, where developers can interact and try or test code—and see the results instanstally. Why wait for something to compile when all you want is to quickly prototype a function or an object class, test and tweak it.
 
 Just as REPLs are developers' delight, so are CLI tools and utilities that ship with a platform, allowing quick inspection, fostering rapid prototyping, and offering discrete blocks to build upon.
 
-For example, I can use a number of command line scripts shipped with CP in the distribution's *bin* directory. One such utility allows to inspect messages on a topic. Instead of writing a consumer yourself to do quick inspection, you can easily use one out-of-the-box. Especially, if you just finished publishing few messages on a topic and are curious to see if that worked, here's a quick way to check.
+For example, in the CP's distribution's *bin* directory, I can use a number of command line scripts. One such utility allows you to inspect messages on a topic. This means, instead of writing a consumer yourself to do quick inspection, you can easily use one out-of-the-box. It comes handy, especially if you just finished publishing few messages on a topic and are curious to see if that worked. Here's a quick way to inspect topics.
 
 To see what you just published on your topic, say *devices*, run this command:
 
@@ -66,7 +68,7 @@ To see what you just published on your topic, say *devices*, run this command:
 
 Another example, and equally useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
 
-	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 200`
+	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 25`
 
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)
@@ -94,17 +96,17 @@ going. Further, let's assume you have CP installed in ${CONFLUENT_HOME}/bin and 
 
 	`$ mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"`
 
-	This will publish five device messages on the topic 'devices.'
+	This will publish five device messages to the topic 'devices.'
 
-5. Finally, to see the outcome of what you published, consume the messages 
+5. Finally, to see the outcome of what you published, fetch the messages 
 
 	`$ cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
-At this point, you should see all the messages recevied in the same order published.
+At this point, you should see all the messages recevied in the order published.
 
-In short, the above recipe gets you started romancing with publish and subscribe paradigm using Confluent Platform 2.0. There's much more to its power and potential in the distributed world of stream processing at massive scale. You can read the history, the motiviation, and potential of this platform, both from developers' and infrastruccture point of view, if you persuse some of the resources. 
+In short, the above recipe gets you started romancing with publish and subscribe paradigm using Confluent Platform 2.0. There's much more to its power and potential in the distributed data processing of stream processing at massive scale. You can read the history, the motiviation, testimonials, use-case, and social proof of this platform, both from developers' and infrastruccture point of view, if you persuse some of the resources. The spectrum of large scale deployment in production speaks volume of Apache Kafka's potential.
 
-As I said earlier, what gets my passion flowing is the **get-started** positive experience. In general, in my opinion, any platform that takes inordinate amount of time to install, configure, launch, and learn to write your equivalent Hello World program is negative sign of *more* friction and resistance *less* desire to adopiton and acceptance. To that extent, Confleunt met my initial, "get-started" needs, with minimal friction.
+As I said earlier, what gets my passion flowing is the **get-started** positive experience. In general, in my opinion, any platform that takes inordinate amount of time to install, configure, launch, and learn to write your equivalent Hello World program is a negative sign of *more* friction and resistance and *less* desire of adopiton and acceptance. To that extent, Confleunt met my initial, "get-started" needs, with minimal friction.
 
 Try it for yourself.
 

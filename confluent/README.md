@@ -106,7 +106,8 @@ At this point, you should see all the messages recevied in the order published.
 
 In short, the above recipe gets you started romancing with publish and subscribe paradigm using Confluent Platform 2.0. There's much more to its power and potential in the distributed data processing of stream processing at massive scale. You can read the history, the motiviation, testimonials, use-case, and social proof of this platform, both from developers' and infrastruccture point of view, if you persuse some of the resources. The spectrum of large scale deployment in production speaks volume of Apache Kafka's potential.
 
-As I said earlier, what gets my passion flowing is the **get-started** positive experience. In general, in my opinion, any platform that takes inordinate amount of time to install, configure, launch, and learn to write your equivalent Hello World program is a negative sign of *more* friction and resistance and *less* desire of adopiton and acceptance. To that extent, Confleunt met my initial, "get-started" needs, with minimal friction.
+As I said earlier, what gets my passion flowing is the **get-started** positive experience. In general, in my opinion, any platform that takes inordinate amount of time to install, difficult to configure and launch, and hard tolearn to write your equivalent Hello World program is a negative sign of *more* friction and resistance and *less* desire of adopiton and acceptance.
+To that extent, Confleunt met my initial, "get-started" needs, with minimal friction.
 
 Try it for yourself.
 

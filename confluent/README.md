@@ -98,6 +98,9 @@ In short, the above recipe gets you started on the notion of publish and subscri
 As I said earlier, what's gets my passion flowing are the steps above. To that extent, Confleunt met my needs. 
 
 ##Watch the Runs
+
+*Screencast coming soon....*
+
 ## Resources for Further Exploration
 - [Demystifying Stream Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 - [What's Confluent Platform?](http://docs.confluent.io/2.0.0/platform.html)

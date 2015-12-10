@@ -12,21 +12,21 @@ Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Am
 
 Add to that list a realtime streaming platform—and you get scalable, fault-tolerant and reliable messaging network with low-latency, allowing you to build and connect your disparate source sources for both realtime and batch applications quickly and easily. One such data streaming and messaging platform is [Confluent Platform.] (http://confluent.io)
 
-The key challenge in all these aforementioned messaging systems is that do they guarantee that the right data goes to the right place, within acceptable latency? 
+The key challenge in all these aforementioned messaging systems is can they guarantee that the *right data* goes to the *right place*, within acceptable latency? 
 
-The founders of Confluent declare that it's their mission to "make sure data ends up in all the right places."
+Confluent founders declare that it's their mission to "make sure data ends up in all the right places."
 
-I had a go at it to ascertain, as a developer, my "get-started" experience. For all platforms today, "get-started" is your initial feel for what to expect; it's imperative that your experience is positive; it's your first date, if you will—and you know how first impressions matter.
+I had a go at it to ascertain, as a developer, my "get-started" experience. For all platforms today, the "get-started" is your initial feel for what to expect; it's imperative that your experience is positive; it's unimpeded and unencumbered; it's your first date, if you will. As you know first impressions matter!
 
 The central notion and test is simple: how easy it's for any developer to do the following:
 - Download and Install the platform
 - Run it in local mode, not cluster mode
-- Ease or pain to write a first Hello World equivalent, in the supported SDK in language of choice
-- Command Line mode if supported
+- Write with relative ease a first Hello World equivalent, in the supported SDK in language of choice
+- Use Command Line mode if supported
 
 I abide by the moto: *Less friction to development invariably leads to more (and rapid) adoption and acceptance*.
 
-While my goal on this first date is not to explore and expound on all features of the platform, it is to write a simple, putative rendition of HelloWorld equivalent of Publish/Subscribe paradigm programming model, using the  
+While my goal on this first date is not to explore and embrace on all features of the platform, it is to write a simple, putative rendition of HelloWorld equivalent of Publish/Subscribe paradigm programming model, using the  
 [Confluent Platform 2.0 (CP)](http://confluent.io), backed and supported by creators of [Apache Kafka (0.9.0)](http://kafka.apache.org), originally developed at LinkedIn.
 
 My simple example is derived from two sources:
@@ -35,7 +35,7 @@ My simple example is derived from two sources:
 
 Later, I'll implement an elaborate simulation of disparate data sources, large scale deployment of IoT devices all publishing data, in which I'll employ CP as the messaging system as done with [PubNub](https://www.linkedin.com/pulse/pubnub-integration-apache-spark-influxdb-simulation-iot-damji) previously.
 
-For now let's first crawl and have coffee with our date before we run and have full course dinner...
+For now let's first crawl and have coffee with our first date before we run and have full course dinner...
 
 ##Relevant Files
 ###SimplePublisher.java (Producer)

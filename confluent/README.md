@@ -65,6 +65,7 @@ In order to try these examples you must download and insall the following on you
 - [Download and Install Confluent 2.0] (http://docs.confluent.io/2.0.0/quickstart.html)
 - Download and Install Maven
 - Download and Install JDK 1.7
+
 ##Steps to Runs
 
 Assuming that you have satisfied the above requirements, here is the order of steps to get this first publisher and consumer 

@@ -29,11 +29,11 @@ I abide by the moto: *Less friction to development invariably leads to more (and
 While my goal on this first date is not to explore and expound on all features of the platform, it is to write a simple, putative rendition of HelloWorld equivalent of Publish/Subscribe paradigm programming model, using the  
 [Confluent Platform 2.0 (CP)](http://confluent.io), backed and supported by creators of [Apache Kafka (0.9.0)](http://kafka.apache.org), originally developed at LinkedIn.
 
-The above example is derived from two sources:
+My simple example is derived from two sources:
 - [The Confluent examples on Github] (https://github.com/dmatrix/examples-1/blob/master/README.md)
-- [An IoT Device Simulation with PubNub- Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md)
+- [An IoT Device Simulation with PubNub-Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md)
 
-Later, I'll implement an example in which I'll employ CP as the messaging system for simulating large scale IoT deployment simulation as done with [PubNub](https://www.linkedin.com/pulse/pubnub-integration-apache-spark-influxdb-simulation-iot-damji).
+Later, I'll implement an elaborate simulation of disparate data sources,large scale deployment of IoT devices all publishing data, in which I'll employ CP as the messaging system as done with [PubNub](https://www.linkedin.com/pulse/pubnub-integration-apache-spark-influxdb-simulation-iot-damji) previously.
 
 For now let's first crawl and have coffee with our date before we run and have full course dinner...
 

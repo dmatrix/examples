@@ -8,17 +8,17 @@
 For as long as there have been printing papers, there have been publishers and consumers. 
 In ancient times the King's scribes were the publishers, the pigeon the courier or transport, and remote Lords of the Houses the consumers or subscribers. In modern times, in the digital era, data is securely and reliably published and selectively subscribed.In other words, the publish/subscribe paradigm is not new; it's old.
 
-Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Amazon SQS. etc are examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing distributed streaming applications.
+Today's messaging systems such Tibco, Java Messaging Service (JMS), RabbitMQ, Amazon SQS. etc are some examples of frameworks and platforms built on this paradigm for publishing and subscribing data and writing distributed streaming applications.
 
 Add to that list a realtime streaming platform—and you get scalable, fault-tolerant and reliable messaging network with low-latency, allowing you to build and connect your disparate source sources for both realtime and batch applications quickly and easily. One such data streaming and messaging platform is [Confluent Platform.] (http://confluent.io)
 
-The key challenge in all these aforementioned messaging systems is can they guarantee that the *right data* goes to the *right place*, within acceptable latency? 
+A key challenge in all these aforementioned messaging systems, including scale, reliability and security, is can they guarantee that the *right data* goes to the *right place*, within acceptable latency? 
 
 Confluent founders declare that it's their mission to "make sure data ends up in all the right places."
 
 I had a go at it to ascertain, as a developer, my "get-started" experience. For all platforms today, the "get-started" is your initial feel for what to expect; it's imperative that your experience is positive; it's unimpeded and unencumbered; it's your first date, if you will. As you know first impressions matter!
 
-The central notion and test is simple: how easy it's for any developer to do the following:
+The central notion and litmus tests are simple: how easy it's for any developer to do the following:
 - Download and Install the platform
 - Run it in local mode, not cluster mode
 - Write with relative ease a first Hello World equivalent, in the supported SDK in language of choice

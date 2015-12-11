@@ -79,7 +79,7 @@ public class SimplePublisher {
 		String url= args[2];
 
 		SimplePublisher sp = new SimplePublisher(topic);
-		// build properties
+		// 1. build properties
 		Properties props = new Properties();
 		props.put("bootstrap.servers", "localhost:9092");
 		props.put("acks", "all");
@@ -89,7 +89,7 @@ public class SimplePublisher {
 		props.put("value.serializer",
 				"io.confluent.kafka.serializers.KafkaAvroSerializer");
 		props.put("schema.registry.url", url);
-		// create a schema for the device JSON
+		// 2. create a schema for the device JSON
 		String schemaDeviceString = "{\"namespace\": \"device.avro\", \"type\": \"record\", " +
 				"\"name\": \"devices\"," +
 				"\"fields\": [" +
@@ -115,7 +115,7 @@ public class SimplePublisher {
 			GenericRecord deviceRec = sp.buildDeviceInfo(i, schema);
 			// create a ProducerRecord
 			ProducerRecord<String, GenericRecord> data = new ProducerRecord<String, GenericRecord>(topic, deviceRec);
-			// publish it on the topic "devices." This assumes that the topic exists
+			// publish it on the topic "devices."
 			try {
 				System.out.format("Device info publishing to Kafka topic %s : %s\n",
 						sp.getTopic(), data.toString()) ;

@@ -1,0 +1,29 @@
+
+LAUNCHING CP COMPONENTS:
+
+1. Zookeeper       : 	bin/zookeeper-server-start etc/kafka/zookeeper.properties &
+2. Kafka Server    : 	bin/kafka-server-start etc/kafka/server.properties &
+3. Schema Registry :	bin/schema-registry-start etc/schema-registry/schema-registry.properties &
+
+CLI PRODUCER/CONSUMER	
+
+1. Produce Messages:
+			$ ./bin/kafka-avro-console-producer \
+			--broker-list localhost:9092 --topic test \
+			--property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+2. Enter messages:
+
+	{"f1": "Hello World!"}
+	{"f1": "Happy Holidays!"}
+	{"f1": "Happy Hacking!"}
+
+3. Consume Messages:
+
+			bin/kafka-avro-console-consumer --topic test  --zookeeper localhost:2181 --from-beginning
+
+
+
+	
+RUNNING A PRODUCER
+
+mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"

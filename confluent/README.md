@@ -47,7 +47,7 @@ And finally, the Java client APIs are fairly easy (I have not tried other [clien
 
 To get started, let's compile and create a producer package. 
 
-- cd into the producer directory in this git repo.
+- cd into the publisher directory in this git repo.
 
 	`$ mvn clean package`
 
@@ -92,7 +92,7 @@ going. Further, let's assume you have CP installed in ${CONFLUENT_HOME}/bin and 
 3. Start the Schema Registery in a separate terminal. 
 	`$ cd ${CONFLUENT_HOME} && schema-registry-start ./etc/schema-registry/schema-registry.properties
 
-4. In your producer directory where you created the package execute the following command:
+4. In your publisher directory where you created the package execute the following command:
 
 	`$ mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"`
 
@@ -121,6 +121,8 @@ Try it for yourself.
 - [What's Confluent Platform?](http://docs.confluent.io/2.0.0/platform.html)
 - [Confluent Blogs] (http://www.confluent.io/blog)
 - [Apache Kafka 0.9.0 Documentation] (http://kafka.apache.org/documentation.html)
+- [Kafka Clients](http://docs.confluent.io/2.0.0/clients/apidocs.html)
+- [RESTful API](http://docs.confluent.io/2.0.0/kafka-rest/docs/index.html)
 
 ## TODO
 1. Implement a simulation of [Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md) with Confluent Platform. 

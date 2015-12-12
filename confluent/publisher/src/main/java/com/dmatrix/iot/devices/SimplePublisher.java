@@ -91,26 +91,12 @@ public class SimplePublisher {
 
 		return buffer.toString();
 
-		/**
-		String schema = "{\"namespace\": \"device.avro\", \"type\": \"record\", " +
-				"\"name\": \"devices\"," +
-				"\"fields\": [" +
-				"{\"name\": \"device_id\", \"type\": \"int\"}," +
-				"{\"name\": \"device_name\", \"type\": \"string\"}," +
-				"{\"name\": \"ip\", \"type\": \"string\"}," +
-				"{\"name\": \"temp\", \"type\": \"int\"}," +
-				"{\"name\": \"humidity\", \"type\": \"int\"}," +
-				"{\"name\": \"lat\", \"type\": \"int\"}," +
-				"{\"name\": \"long\", \"type\": \"int\"}," +
-				"{\"name\": \"zipcode\", \"type\": \"int\"}," +
-				"{\"name\": \"scale\", \"type\": \"string\"}," +
-				"{\"name\": \"timestamp\", \"type\": \"long\"}" +
-				"]}";
-
-		return schema;
-		 */
-
 	}
+
+	/**
+	 *  Main driver for the publisher
+	 * @param args Command line arguments
+     */
 	public static void main(String[] args) {
 		if (args.length != 3) {
 			System.out

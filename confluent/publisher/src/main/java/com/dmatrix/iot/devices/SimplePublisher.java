@@ -74,6 +74,24 @@ public class SimplePublisher {
      */
 	public String buildAvroSchema() {
 
+		StringBuffer buffer = new StringBuffer("{\"namespace\": \"device.avro\", \"type\": \"record\", ");
+		buffer.append("\"name\": \"devices\"," );
+		buffer.append("\"fields\": [" );
+		buffer.append("{\"name\": \"device_id\", \"type\": \"int\"}," );
+		buffer.append("{\"name\": \"device_name\", \"type\": \"string\"}," );
+		buffer.append("{\"name\": \"ip\", \"type\": \"string\"},");
+		buffer.append("{\"name\": \"temp\", \"type\": \"int\"},");
+		buffer.append("{\"name\": \"humidity\", \"type\": \"int\"},");
+		buffer.append("{\"name\": \"lat\", \"type\": \"int\"},");
+		buffer.append("{\"name\": \"long\", \"type\": \"int\"},");
+		buffer.append("{\"name\": \"zipcode\", \"type\": \"int\"},");
+		buffer.append("{\"name\": \"scale\", \"type\": \"string\"},");
+		buffer.append("{\"name\": \"timestamp\", \"type\": \"long\"}");
+		buffer.append("]}");
+
+		return buffer.toString();
+
+		/**
 		String schema = "{\"namespace\": \"device.avro\", \"type\": \"record\", " +
 				"\"name\": \"devices\"," +
 				"\"fields\": [" +
@@ -90,6 +108,7 @@ public class SimplePublisher {
 				"]}";
 
 		return schema;
+		 */
 
 	}
 	public static void main(String[] args) {

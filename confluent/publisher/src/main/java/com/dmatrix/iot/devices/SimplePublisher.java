@@ -45,10 +45,10 @@ public class SimplePublisher {
 	}
 
 	/**
-	 *
+	 * Build device record
 	 * @param id
 	 * @param schema
-     * @return
+     * @return GenericRecord
      */
 	public GenericRecord buildDeviceInfo(int id, Schema schema) {
 
@@ -67,30 +67,14 @@ public class SimplePublisher {
 		return deviceRecord;
 
 	}
-	public static void main(String[] args) {
-		if (args.length != 3) {
-			System.out
-					.println("Usage: SimplePublisher topic number schema-registry-URL");
-			System.exit(1);
-		}
-		String topic = args[0];
-		int numOfDevices;
-		numOfDevices = Integer.valueOf(args[1]);
-		String url= args[2];
 
-		SimplePublisher sp = new SimplePublisher(topic);
-		// 1. build properties
-		Properties props = new Properties();
-		props.put("bootstrap.servers", "localhost:9092");
-		props.put("acks", "all");
-		props.put("retries", 0);
-		props.put("key.serializer",
-				"io.confluent.kafka.serializers.KafkaAvroSerializer");
-		props.put("value.serializer",
-				"io.confluent.kafka.serializers.KafkaAvroSerializer");
-		props.put("schema.registry.url", url);
-		// 2. create a schema for the device JSON
-		String schemaDeviceString = "{\"namespace\": \"device.avro\", \"type\": \"record\", " +
+	/**
+	 *  Build a schema
+	 * @return schema string
+     */
+	public String buildAvroSchema() {
+
+		String schema = "{\"namespace\": \"device.avro\", \"type\": \"record\", " +
 				"\"name\": \"devices\"," +
 				"\"fields\": [" +
 				"{\"name\": \"device_id\", \"type\": \"int\"}," +
@@ -104,18 +88,46 @@ public class SimplePublisher {
 				"{\"name\": \"scale\", \"type\": \"string\"}," +
 				"{\"name\": \"timestamp\", \"type\": \"long\"}" +
 				"]}";
-		// check schema
+
+		return schema;
+
+	}
+	public static void main(String[] args) {
+		if (args.length != 3) {
+			System.out
+					.println("Usage: SimplePublisher topic number schema-registry-URL");
+			System.exit(1);
+		}
+		String topic = args[0];
+		int numOfDevices;
+		numOfDevices = Integer.valueOf(args[1]);
+		String url= args[2];
+
+		SimplePublisher sp = new SimplePublisher(topic);
+		// Build properties
+		Properties props = new Properties();
+		props.put("bootstrap.servers", "localhost:9092");
+		props.put("acks", "all");
+		props.put("retries", 0);
+		props.put("key.serializer",
+				"io.confluent.kafka.serializers.KafkaAvroSerializer");
+		props.put("value.serializer",
+				"io.confluent.kafka.serializers.KafkaAvroSerializer");
+		props.put("schema.registry.url", url);
+		// Create a schema for the device JSON
+		String schemaDeviceString = sp.buildAvroSchema();
+		// Verify and parse schema
 		Schema.Parser parser = new Schema.Parser();
 		Schema schema = parser.parse(schemaDeviceString);
 
-		// instantiate a Kafka producer
+		// Instantiate a Kafka producer
 		Producer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(props);
-		// create devices info based on the schema
+		// Create devices info based on the schema
 		for (int i = 0; i < numOfDevices; i++) {
 			GenericRecord deviceRec = sp.buildDeviceInfo(i, schema);
 			// create a ProducerRecord
 			ProducerRecord<String, GenericRecord> data = new ProducerRecord<String, GenericRecord>(topic, deviceRec);
-			// publish it on the topic "devices."
+			// Publish it on the topic "devices."
 			try {
 				System.out.format("Device info publishing to Kafka topic %s : %s\n",
 						sp.getTopic(), data.toString()) ;

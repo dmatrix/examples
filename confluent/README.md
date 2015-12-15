@@ -41,7 +41,7 @@ For now let's first crawl and have coffee with our first date before we run and 
 ###SimplePublisher.java (Producer)
 As the name suggests, it's a simple producer of few fake devices' state data and publishes each device record to the CP topic "devices." Three key takeaways. First, each topic to which you wish to publish a message, you must provide and register an Avro schema. For the duration of process (and even later) all producers publishing to this topic must adhere to this schema, which is registered and maintained in the Schema Registery. 
 
-Second, since by default CP uses Avoro ser/der for the messages, you get the benefit of most default data types ser/der out-of-the box. 
+Second, since by default CP uses Avro ser/der for the messages, you get the benefit of most default data types ser/der out-of-the box. 
 
 And finally, the Java client APIs are fairly easy (I have not tried other [client implementations](https://cwiki.apache.org/confluence/display/KAFKA/Clients#Clients-Python); but it's worth exploring at least Scala, Python or Go). I'll leave that as an exercise for other enthusiasts. 
 
@@ -89,7 +89,7 @@ going. Further, let's assume you have CP installed in ${CONFLUENT_HOME}/bin and 
 
 	`$ cd ${CONFLUENT_HOME} && kafka-server-start ./etc/kafka/server.properties`
 
-3. Start the Schema Registery in a separate terminal. 
+3. Start the Schema Registry in a separate terminal. 
 	`$ cd ${CONFLUENT_HOME} && schema-registry-start ./etc/schema-registry/schema-registry.properties
 
 4. In your publisher directory where you created the package execute the following command:

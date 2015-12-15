@@ -18,6 +18,7 @@ Confluent founders declare that it's their mission to "make sure data ends up in
 
 I had a go at it to ascertain, as a developer, my "get-started" experience. For all platforms today, the "get-started" is your initial feel for what to expect; it's imperative that your experience is positive; it's unimpeded and unencumbered; it's your first date, if you will. As you know first impressions matter!
 
+##The Rule of Three##
 The central notion and litmus tests are simple: how easy it's for any developer to do the following:
 - Download and Install the platform
 - Run it in local mode, not cluster mode

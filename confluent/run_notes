@@ -5,12 +5,13 @@ LAUNCHING CP COMPONENTS:
 2. Kafka Server    : 	bin/kafka-server-start etc/kafka/server.properties &
 3. Schema Registry :	bin/schema-registry-start etc/schema-registry/schema-registry.properties &
 
-CLI PRODUCER/CONSUMER	
+CLI PRODUCER/CONSUMER (Blue Terminal D1)
 
 1. Produce Messages:
-			$ ./bin/kafka-avro-console-producer \
+			./bin/kafka-avro-console-producer \
 			--broker-list localhost:9092 --topic test \
 			--property value.schema='{"type":"record","name":"myrecord","fields":[{"name":"f1","type":"string"}]}'
+
 2. Enter messages:
 
 	{"f1": "Hello World!"}
@@ -22,8 +23,9 @@ CLI PRODUCER/CONSUMER
 			bin/kafka-avro-console-consumer --topic test  --zookeeper localhost:2181 --from-beginning
 
 
+SIMPLE JAVA PRODUCER (Blue Terminal D1)
 
-	
-RUNNING A PRODUCER
-
-mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"
+1. cd examples/confluent/publisher
+2. mvn clean package
+3. mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"
+4. bin/kafka-avro-console-consumer --topic devices  --zookeeper localhost:2181 --from-beginning

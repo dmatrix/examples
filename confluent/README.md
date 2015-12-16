@@ -29,7 +29,7 @@ I abide by the moto: *Less friction to development invariably leads to more (and
 While my goal on this first date is not to explore and embrace on all features of the platform, it is to write a simple, putative rendition of HelloWorld equivalent of Publish/Subscribe paradigm programming model, using the  
 [Confluent Platform 2.0 (CP)](http://confluent.io), backed and supported by creators of [Apache Kafka (0.9.0)](http://kafka.apache.org), originally developed at LinkedIn.
 
-My examplea are derived from two sources:
+My examples are derived from two sources:
 - [The Confluent examples on Github] (https://github.com/dmatrix/examples-1/blob/master/README.md)
 - [An IoT Device Simulation with PubNub-Part 1] (https://github.com/dmatrix/examples/blob/master/pubnub/py/README.md)
 
@@ -54,9 +54,9 @@ To get started, let's compile and create a producer package.
 This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
 
 ###Command Line Consumer (Consumer)
-I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala Read Evaluate Process and Loop (REPLs) are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different are the UNIX shells. 
+I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala Read Evaluate Print and Loop (REPLs) are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different are the UNIX shells. 
 
-Not since the creators of UNIX shells—Bourne, Csh, and Bash—are computer scientists and software engineers today so inspired to consider providing interactive shell as part of their platform environment. Look at *PySpark* and Scala *spark-shell*, where developers can interact and try or test code—and see the results instanstaly. Why wait for something to compile when all you want is to quickly prototype a function or an object class, test and tweak it.
+Not since the creators of UNIX shells—Bourne, Csh, and Bash—are computer scientists and software engineers today so inspired to consider providing interactive shell as part of their platform environment. Look at *PySpark* and Scala *spark-shell*, where developers can interact and try or test code—and see the results instanstly. Why wait for something to compile when all you want is to quickly prototype a function or an object class, test and tweak it.
 
 Just as REPLs are developers' delight, so are CLI tools and utilities that ship with a platform, allowing quick inspection, fostering rapid prototyping, and offering discrete blocks to build upon.
 
@@ -102,7 +102,7 @@ going. Further, let's assume you have CP installed in ${CONFLUENT_HOME}/bin and 
 
 	`$ cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 
-At this point, you should see all the messages recevied in the order published.
+At this point, you should see all the messages received in the order published.
 
 In short, the above recipe gets you started romancing with publish and subscribe paradigm using Confluent Platform 2.0. There's much more to its power and potential in the distributed data processing of data stream at massive scale. You can read the history, the motivation, testimonials, use-cases, and social proof of this platform, both from developers' and infrastructure point of view, if you peruse some of the resources. The spectrum of large scale deployment in production speaks volume of Apache Kafka's potential.
 
@@ -113,7 +113,7 @@ Try it for yourself.
 
 ##Watch the Runs
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/ytlSqa07YJ8/0.jpg)](https://youtu.be/ytlSqa07YJ8 "Romancing The Confluent Platform: Getting Started")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/664IuqtU_yg/0.jpg)](https://youtu.be/664IuqtU_yg "Romancing The Confluent Platform: Getting Started")
 
 ## Resources for Further Exploration
 - [Demystifying Stream Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)

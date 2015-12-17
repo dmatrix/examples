@@ -113,7 +113,7 @@ Try it for yourself.
 
 ##Watch the Runs
 
-[![IMAGE ALT TEXT](http://img.youtube.com/vi/664IuqtU_yg/0.jpg)](https://youtu.be/664IuqtU_yg "Romancing The Confluent Platform: Getting Started")
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/c_VumwWR5ss/0.jpg)](https://www.youtube.com/watch?v=c_VumwWR5ss "Romancing The Confluent Platform: Getting Started")
 
 ## Resources for Further Exploration
 - [Demystifying Stream Processing] (https://speakerdeck.com/nehanarkhede/demystifying-stream-processing-with-apache-kafka?utm_content=bufferd17aa&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)

@@ -3,6 +3,7 @@
  *
  * author:Jules S. Damji
  */
+package com.dmatrix.iot.devices;
 
 import org.influxdb.*;
 import org.influxdb.dto.Point;
@@ -37,7 +38,7 @@ public final class InfluxDBConnection {
         return instance;
     }
 
-    public static void writePoints(Point pt) {
+    public static void writePoint(Point pt) {
         influxDB.write(db, "default", pt);
     }
 

@@ -78,25 +78,35 @@ public class ConsumeIoTDevices implements Runnable {
    *  Fetch each record from the partition.
    */
   public void run() {
-    ConsumerIterator<Object, Object> it = stream.iterator();
 
-    while (it.hasNext()) {
-        MessageAndMetadata<Object, Object> record = it.next();
-
-        String topic = record.topic();
-        int partition = record.partition();
-        long offset = record.offset();
-        Object key = record.key();
-        GenericRecord message = (GenericRecord) record.message();
-        System.out.println("Thread " + threadNumber +
-                         " received: " + "Topic " + topic +
-                         " Partition " + partition +
-                         " Offset " + offset +
-                         " Key " + key +
-                         " Message " + message.toString());
-        Point influxPoint = generateInfluxDBPoint(message, "humidity");
-        System.out.println("Inserting InfluxDB:" + influxPoint.toString());
-    }
-    System.out.println("Shutting down Thread: " + threadNumber);
+      boolean dbFailed = false;
+      InfluxDBConnection influxDBConn = null;
+      ConsumerIterator<Object, Object> it = stream.iterator();
+      try {
+          influxDBConn = InfluxDBConnection.getInstance();
+      } catch (Exception ex) {
+          ex.printStackTrace();
+          dbFailed = true;
+      }
+      while (it.hasNext()) {
+          MessageAndMetadata<Object, Object> record = it.next();
+          String topic = record.topic();
+          int partition = record.partition();
+          long offset = record.offset();
+          Object key = record.key();
+          GenericRecord message = (GenericRecord) record.message();
+          System.out.println("Thread " + threadNumber +
+                  " received: " + "Topic " + topic +
+                  " Partition " + partition +
+                  " Offset " + offset +
+                  " Key " + key +
+                  " Message " + message.toString());
+          if (!dbFailed) {
+              Point influxPoint = generateInfluxDBPoint(message, "humidity");
+              influxDBConn.writePoint(influxPoint);
+              System.out.println("Inserted InfluxDB:" + influxPoint.toString());
+          }
+      }
+      System.out.println("Shutting down Thread: " + threadNumber);
   }
 }

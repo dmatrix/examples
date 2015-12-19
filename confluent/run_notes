@@ -29,3 +29,9 @@ SIMPLE JAVA PRODUCER (Blue Terminal D1)
 2. mvn clean package
 3. mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SimplePublisher" -Dexec.args="devices 5 http://localhost:8081"
 4. bin/kafka-avro-console-consumer --topic devices  --zookeeper localhost:2181 --from-beginning
+
+TO USE THE JAVA CONSUMER
+
+1. cd subscriber
+2 mvn clean package
+3.  mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SubscribeIoTDevices" -Dexec.args="localhost:2181 group devices 1 http://localhost:8081"

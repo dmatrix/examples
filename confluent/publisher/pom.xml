@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.dmatrix.iot.devices</groupId>
-    <artifactId>iot-devices</artifactId>
+    <artifactId>iot-pub-devices</artifactId>
     <packaging>jar</packaging>
     <version>2.0-SNAPSHOT</version>
 

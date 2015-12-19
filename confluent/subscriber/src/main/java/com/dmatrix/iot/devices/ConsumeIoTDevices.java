@@ -27,7 +27,7 @@ import kafka.message.MessageAndMetadata;
 import org.influxdb.*;
 import org.influxdb.dto.Point;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -44,7 +44,7 @@ public class ConsumeIoTDevices implements Runnable {
 
   public Point generateInfluxDBPoint(GenericRecord deviceRecord, String measurement) {
 
-      Map <String, String> tags = new ConcurrentHashMap<String, String>();
+      Map <String, String> tags = new HashMap<String, String>();
       // get message values
       long ts = Long.parseLong((deviceRecord.get("timestamp")).toString());
       int devId = Integer.parseInt((deviceRecord.get("device_id")).toString());

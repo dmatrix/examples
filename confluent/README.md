@@ -38,7 +38,7 @@ Later, I'll implement an elaborate simulation of disparate data sources, large s
 For now let's first crawl and have coffee with our first date before we run and have full course dinner...
 
 ##Relevant Files
-###SimplePublisher.java (Producer)
+#####SimplePublisher.java (Producer)
 As the name suggests, it's a simple producer of few fake devices' state data and publishes each device record to the CP topic "devices." Three key takeaways. First, each topic to which you wish to publish a message, you must provide and register an Avro schema. For the duration of process (and even later) all producers publishing to this topic must adhere to this schema, which is registered and maintained in the Schema Registery. 
 
 Second, since by default CP uses Avro ser/der for the messages, you get the benefit of most default data types ser/der out-of-the box. 
@@ -52,9 +52,9 @@ To get started, let's compile and create a producer package.
 	`$ mvn clean package`
 
 This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
-###SubscribeToIoTDevices.java (Consumer)
-###ConsumeIoTDevices.java
-###InfluxDBConnection.java
+#####SubscribeToIoTDevices.java (Consumer)
+#####ConsumeIoTDevices.java
+#####InfluxDBConnection.java
 Device messages produced above, then, can be consumed by this subscriber. As well as subscribing to each message, from the beginning, it creates 
 two InfluxDB measurements points and insert them in the time series database.
 
@@ -79,7 +79,7 @@ To see what you just published on your topic, say *devices*, run this command:
 	`$ kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
 ### Java Subscriber (Consumer)
 
-![](images/images/kafka_pub_sub/kafka_pub_sub.001.jpeg)
+![](images/kafka_pub_sub/kafka_pub_sub.001.jpeg)
 	
 To use the Java consumer and insert devices messages into the time series database, run this command from within the 'subscriber' directory.
 
@@ -122,6 +122,8 @@ going. Further, let's assume you have CP installed in ${CONFLUENT_HOME}/bin and 
 5. Finally, to see the outcome of what you published, fetch the messages 
 
 	`$ cd ${CONFLUENT_HOME} && kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+	
+or you could use the Java consumer command as shown above.
 
 At this point, you should see all the messages received in the order published.
 

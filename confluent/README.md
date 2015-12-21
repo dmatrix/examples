@@ -77,6 +77,11 @@ For example, in the CP's distribution's *bin* directory, I can use a number of c
 To see what you just published on your topic, say *devices*, run this command:
 
 	`$ kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+
+Another example, and equally useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
+
+	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 25`
+	
 ### Java Subscriber (Consumer)
 
 ![](images/kafka_pub_sub/kafka_pub_sub.001.jpeg)
@@ -85,9 +90,6 @@ To use the Java consumer and insert devices messages into the time series databa
 
     `$ mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SubscribeIoTDevices" -Dexec.args="localhost:2181 group devices 1 http://localhost:8081"`
 
-Another example, and equally useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
-
-	`$ kafka-simple-consumer-shell --broker-list localhost:8081 --topic devices --partition 0 --max-messages 25`
 
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)

@@ -1,4 +1,4 @@
-#Romancing the Confluent Platform 2.0 with Apache Kafka 0.9: A Simple Producer and Consumer Example
+#Romancing the Confluent Platform 2.0 with Apache Kafka 0.9 & InfluxDB: A Simple Producer and Consumer Example
 
 ![](images/confluent.png)
 

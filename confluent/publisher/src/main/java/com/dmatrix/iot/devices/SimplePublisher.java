@@ -128,10 +128,10 @@ public class SimplePublisher {
 		// Instantiate a Kafka producer
 		Producer<String, GenericRecord> producer = new KafkaProducer<String, GenericRecord>(props);
 		// Create devices info based on the schema
-		for (int i = 0; i < numOfDevices; i++) {
-			GenericRecord deviceRec = sp.buildDeviceInfo(i, schema);
+		for (int id = 0; id < numOfDevices; id++) {
+			GenericRecord deviceRec = sp.buildDeviceInfo(id, schema);
 			// create a ProducerRecord
-			ProducerRecord<String, GenericRecord> data = new ProducerRecord<String, GenericRecord>(topic, deviceRec);
+			ProducerRecord<String, GenericRecord> data = new ProducerRecord<String, GenericRecord>(topic, Integer.toString(id), deviceRec);
 			// Publish it on the topic "devices."
 			try {
 				System.out.format("Device info publishing to Kafka topic %s : %s\n",

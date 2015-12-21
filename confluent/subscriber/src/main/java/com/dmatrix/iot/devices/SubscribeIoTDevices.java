@@ -62,6 +62,10 @@ public class SubscribeIoTDevices {
     return props;
   }
 
+  /**
+   * Create an executor thread pool and bind N threads to it.
+   * @param numThreads
+     */
   public void run(int numThreads) {
     Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
     topicCountMap.put(topic, numThreads);

@@ -102,9 +102,13 @@ public class ConsumeIoTDevices implements Runnable {
                   " Key " + key +
                   " Message " + message.toString());
           if (!dbFailed) {
-              Point influxPoint = generateInfluxDBPoint(message, "humidity");
-              influxDBConn.writePoint(influxPoint);
-              System.out.println("Inserted InfluxDB:" + influxPoint.toString());
+              // create two measurements points for respective tags and fields
+              String[] measurements={"humidity", "temperature"};
+              for (String measure: measurements) {
+                  Point influxPoint = generateInfluxDBPoint(message, measure);
+                  influxDBConn.writePoint(influxPoint);
+                  System.out.println("Inserted InfluxDB:" + influxPoint.toString());
+              }
           }
       }
       System.out.println("Shutting down Thread: " + threadNumber);

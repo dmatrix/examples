@@ -52,6 +52,18 @@ To get started, let's compile and create a producer package.
 	`$ mvn clean package`
 
 This will create the jar file in the *target* directory. Once created, you can follow the *Steps To Run* below to publish device records.
+###SubscribeToIoTDevices.java (Consumer)
+###ConsumeIoTDevices.java
+###InfluxDBConnection.java
+Device messages produced above, then, can be consumed by this subscriber. As well as subscribing to each message, from the beginning, it creates 
+two InfluxDB measurements points and insert them in the time series database.
+
+As above, to get started using this consumer (as opposed to the command line) do the following:
+- cd into the subscriber directory in this git repo.
+
+    `mvn clean package`
+    
+This will create the jar files in the *target* directory. Once created, you can follow the *Steps to Run* below to publish device records.
 
 ###Command Line Consumer (Consumer)
 I get excited when I can *learn, try and do* something both programmatically and interactively. No surprise that Python and Scala Read Evaluate Print and Loop (REPLs) are such a huge hit with developers, because they allow developer to prototype an idea quickly. No different are the UNIX shells. 
@@ -65,6 +77,13 @@ For example, in the CP's distribution's *bin* directory, I can use a number of c
 To see what you just published on your topic, say *devices*, run this command:
 
 	`$ kafka-avro-console-consumer --topic devices --zookeeper localhost:2181 --from-beginning`
+### Java Subscriber (Consumer)
+
+![](images/images/kafka_pub_sub/kafka_pub_sub.001.jpeg)
+	
+To use the Java consumer and insert devices messages into the time series database, run this command from within the 'subscriber' directory.
+
+    `$ mvn exec:java -Dexec.mainClass="com.dmatrix.iot.devices.SubscribeIoTDevices" -Dexec.args="localhost:2181 group devices 1 http://localhost:8081"`
 
 Another example, and equally useful, is the *kafka-simple-consumer-shell*, which allows you to interactively inspect your topic queues and partitions.
 
@@ -73,6 +92,8 @@ Another example, and equally useful, is the *kafka-simple-consumer-shell*, which
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)
 - [Download and Install Confluent 2.0] (http://docs.confluent.io/2.0.0/quickstart.html)
+- [Download adn Install InfluxDB] (http://influxdata.com)
+- [Git clone influxdb-java and install](https://github.com/influxdb/influxdb-java)
 - Download and Install Maven
 - Download and Install JDK 1.7
 

@@ -92,7 +92,7 @@ Another example, and equally useful, is the *kafka-simple-consumer-shell*, which
 ##Requirements
 In order to try these examples you must download and insall the following on your laptop (Mine is a Mac)
 - [Download and Install Confluent 2.0] (http://docs.confluent.io/2.0.0/quickstart.html)
-- [Download adn Install InfluxDB] (http://influxdata.com)
+- [Download and Install InfluxDB] (http://influxdata.com)
 - [Git clone influxdb-java and install](https://github.com/influxdb/influxdb-java)
 - Download and Install Maven
 - Download and Install JDK 1.7

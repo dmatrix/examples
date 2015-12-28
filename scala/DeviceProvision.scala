@@ -1,11 +1,16 @@
 import util.Random._
+import scala.collection.mutable.Map
 
+/**
+	* This example illustrates how to use a Singleton scala object with the same names as the class object, within the
+	* same file. Note that as Singleton object, it can be use outside this class as well.
+	*/
 object DeviceProvision {
 
 	val author = "Jules S. Damji"
 	val what = "Learning Scala!"
 	val choice = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-	val rnd = new Random()
+	val rnd = new util.Random()
 
 	def getRandomNumber(from: Int, to: Int): Int = {
 		return from + rnd.nextInt(Math.abs(to - from))
@@ -38,7 +43,8 @@ object DeviceProvision {
 		return sb.toString
 	}
 
-	def createDeviceData(dev: String, id: Int): String = {
+	def createDeviceData(dev: String, id: Int): scala.collection.mutable.Map[String, Any] = {
+		var dmap = scala.collection.mutable.Map[String, Any]()
 		val temp = getTemperature()
 		val humidity = getHumidity()
 		val coord = getCoordinates()
@@ -46,12 +52,22 @@ object DeviceProvision {
 		// create json of the format:
 		// {'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
 		val timestamp: Long = System.currentTimeMillis / 1000
-		val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, coord._1, coord._2, zip, humidity)
-		return djson
+		dmap.put("device_name", dev)
+		dmap.put("device_id", id)
+		dmap.put("timestamp", timestamp)
+		dmap.put("temp", temp)
+		dmap.put("scale", "Celcius")
+		dmap.put("lat", coord._1)
+		dmap.put("long", coord._2)
+		dmap.put("zipcode", zip)
+		dmap.put("humidity", humidity)
+		//val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, coord._1, coord._2, zip, humidity)
+		return dmap
 	}
 
-	def getDeviceBatch(size: Int): List[String] = {
-		var batch: List[String] = List()
+
+	def getDeviceBatch(size: Int): List[Map[String, Any]] = {
+		var batch: List[Map[String, Any]] = List()
 		var id: Int = 0
 		var device: String = ""
 		for (id <- 1 to size) {
@@ -78,14 +94,18 @@ object DeviceProvision {
 	}
 }
 
+/**
+	*
+	* @param number of devices to generate
+  */
 	class DeviceProvision (number: Int) {
 		private val devicesNumber = number
 
 		def main (args: Array[String]): Unit = {
 
 			DeviceProvision.myPrint("Hello World! ")
-			val devices = new DeviceProvision(250)
+			val devices = new DeviceProvision(25)
 			val batches = DeviceProvision.getDeviceBatch(devices.devicesNumber)
-			batches.foreach(println(_))
+			batches.foreach(m => println(m.toString))
 		}
 }

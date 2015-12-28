@@ -38,7 +38,7 @@ object CollectionsMapDemo {
 						println(" Value = " + A(i) )}
 		//using case statement
         A.foreach { case (key, value)  => println (key + "-->" + value)}
-        //yet anohter way, using a for statement
+        //yet another way, using a for statement
         for ((k, v) <- A) (printf("key: %s, value: %s\n", k, v))
 
         println (A.toSeq)

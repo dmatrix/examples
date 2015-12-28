@@ -18,11 +18,11 @@ object CaseClassesDemo {
    		person match {
    			case Person("Martin Odersky", 42) => println("Hello Martin, Luving Scala!")
    			case Person("James Gosling", 42)  => println("Hello James, Getting the feel for Java!")
-			case Person("Bob Pike", 42) 	  => println("Hello Bob, Using Communication to share memory, not memory to communicate!")
-			case Person("Dennis Ritchie", 42) => println("RIP, Dennis. Pointers Rock the World!")
-			case Person("Guido Van Rossum", 42) => println("Guido, Love the Pytbon Shell, minus tabs!")
-			case Person(name, age) => println("Age: " + age + " year, name: " + name + "what's your claim to fame?!")
-			case _ => println("Uhh!..")
+				case Person("Bob Pike", 42) 	  => println("Hello Bob, Using Communication to share memory, not memory to communicate!")
+				case Person("Dennis Ritchie", 42) => println("RIP, Dennis. Pointers Rock the World!")
+				case Person("Guido Van Rossum", 42) => println("Guido, Love the Pytbon Shell, minus tabs!")
+				case Person(name, age) => println("Age: " + age + " year, name: " + name + "what's your claim to fame?!")
+				case _ => println("Uhh!..")
 		}
 	}
 	/**

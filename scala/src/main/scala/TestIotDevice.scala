@@ -16,7 +16,7 @@ object TestIotDevice {
     */
   def filterByKey(elem: scala.collection.mutable.Map[String, String], k:String, v: Int): Boolean = {
     val value:Int = elem.get(k).get.toInt
-    return (value > v)
+    return (value >= v)
   }
 
   /**
@@ -36,7 +36,8 @@ object TestIotDevice {
     * @param args command line arguments
     */
   def main(args: Array[String]) {
-    val nDevices = args(0).toInt
+    //TODO use parse command line arguments with options
+    val nDevices: Int = args(0).toInt
     val value1 = args(1).toInt
     val value2 = args(2).toInt
     val pattern = args(3)
@@ -50,12 +51,12 @@ object TestIotDevice {
     // the predicate. Print the newly filtered batches
     // Filter the first batch on humidity k/v
     val filteredBatches1: List[Map[String, String]] = batches.filter(filterByKey(_, "humidity", value1))
-    printf("%d Devices found where humidity is greater than %d\n", filteredBatches1.length, value1)
+    printf("%d Devices found where humidity is greater than or equal to %d\n", filteredBatches1.length, value1)
     filteredBatches1.foreach(println(_))
     // Filter the second batch on temperatue k/v
     val filteredBatches2: List[Map[String, String]] = batches.filter(filterByKey(_, "temp", value2))
     println()
-    printf("%d Devices found where temperature is greater than %d\n", filteredBatches2.length, value2)
+    printf("%d Devices found where temperature is greater than or equal to %d\n", filteredBatches2.length, value2)
     filteredBatches2.foreach(println(_))
     val filteredBatches3: List[Map[String, String]] = batches.filter(filterByDevicePattern(_, new Regex("^"+pattern)))
     println()

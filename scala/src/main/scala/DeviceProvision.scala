@@ -20,10 +20,13 @@ object DeviceProvision {
 		return getRandomNumber(94538, 97107)
 	}
 
-	def getCoordinates(): (Int, Int) = {
+	def getX(): Int = {
 		val x: Int = getRandomNumber(10, 100)
+		return x
+	}
+	def getY(): Int = {
 		val y: Int = getRandomNumber(10, 100)
-		return Tuple2(x, y)
+		return y
 	}
 
 	def getHumidity(): Int = {
@@ -43,22 +46,21 @@ object DeviceProvision {
 		return sb.toString
 	}
 
-	def createDeviceData(dev: String, id: Int): scala.collection.mutable.Map[String, Any] = {
-		var dmap = scala.collection.mutable.Map[String, Any]()
-		val temp = getTemperature()
-		val humidity = getHumidity()
-		val coord = getCoordinates()
-		val zip = getZipCode()
+	def createDeviceData(dev: String, id: Int): scala.collection.mutable.Map[String, String] = {
+		var dmap = scala.collection.mutable.Map[String, String]()
+		val temp = getTemperature().toString
+		val humidity = getHumidity().toString
+		val zip = getZipCode().toString
 		// create json of the format:
 		// {'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
 		val timestamp: Long = System.currentTimeMillis / 1000
 		dmap.put("device_name", dev)
-		dmap.put("device_id", id)
-		dmap.put("timestamp", timestamp)
+		dmap.put("device_id", id.toString)
+		dmap.put("timestamp", timestamp.toString)
 		dmap.put("temp", temp)
 		dmap.put("scale", "Celcius")
-		dmap.put("lat", coord._1)
-		dmap.put("long", coord._2)
+		dmap.put("lat", getX().toString)
+		dmap.put("long", getY().toString)
 		dmap.put("zipcode", zip)
 		dmap.put("humidity", humidity)
 		//val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, coord._1, coord._2, zip, humidity)
@@ -66,8 +68,8 @@ object DeviceProvision {
 	}
 
 
-	def getDeviceBatch(size: Int): List[Map[String, Any]] = {
-		var batch: List[Map[String, Any]] = List()
+	def getDeviceBatch(size: Int): List[Map[String, String]] = {
+		var batch: List[Map[String, String]] = List()
 		var id: Int = 0
 		var device: String = ""
 		for (id <- 1 to size) {

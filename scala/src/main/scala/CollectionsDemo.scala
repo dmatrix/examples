@@ -1,4 +1,4 @@
-object CollectionsListDemo {
+object CollectionsDemo {
 	/**
 	 * define few types of lists as global variables to this Singleton
 	 * Use the List.methods to illusrate the functional nature of Scala programming.

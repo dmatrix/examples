@@ -1,3 +1,4 @@
+package main.scala
 import util.Random._
 import scala.collection.mutable.Map
 
@@ -12,31 +13,64 @@ object DeviceProvision {
 	val choice = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 	val rnd = new util.Random()
 
+	/**
+		* Get a randome from within the specifed range
+		* @param from
+		* @param to
+		* @return generated number
+    */
 	def getRandomNumber(from: Int, to: Int): Int = {
 		return from + rnd.nextInt(Math.abs(to - from))
 	}
 
+	/**
+		* Generate a random zipcode between two legal ranges
+		* @return generated zip code
+    */
 	def getZipCode(): Int = {
 		return getRandomNumber(94538, 97107)
 	}
 
+	/**
+		* Generate a random X coordinate
+		* @return generated x coordinate
+    */
 	def getX(): Int = {
 		val x: Int = getRandomNumber(10, 100)
 		return x
 	}
+
+	/**
+		* Generate a random Y coordinate
+		* @return generated Y coordinate
+    */
 	def getY(): Int = {
 		val y: Int = getRandomNumber(10, 100)
 		return y
 	}
 
+	/**
+		* Generate random humidity between two numbers: min and max
+		* @return generated humidity
+    */
 	def getHumidity(): Int = {
 		return getRandomNumber(25, 100)
 	}
 
+	/**
+		* Generate a random temperature between two min and max
+		* @return generated temperature
+    */
 	def getTemperature(): Int = {
 		return getRandomNumber(10, 35)
 	}
 
+	/**
+		* Generate a randome string from with an alphate range between min and max len
+		* @param minLen
+		* @param maxLen
+		* @return
+    */
 	def getRandomString(minLen: Int = 5, maxLen: Int = 10): String = {
 		val len = rnd.nextInt(1 + maxLen - minLen) + minLen
 		val sb = new StringBuilder(len)
@@ -46,6 +80,12 @@ object DeviceProvision {
 		return sb.toString
 	}
 
+	/**
+		* Create a Map of device information
+		* @param dev device name
+		* @param id device id
+		* @return Map[String, String]
+    */
 	def createDeviceData(dev: String, id: Int): scala.collection.mutable.Map[String, String] = {
 		var dmap = scala.collection.mutable.Map[String, String]()
 		val temp = getTemperature().toString
@@ -67,12 +107,16 @@ object DeviceProvision {
 		return dmap
 	}
 
-
-	def getDeviceBatch(size: Int): List[Map[String, String]] = {
+	/**
+		* Create a collection, List, of Map[String, String] for range of device id
+		* @param range of device ids
+		* @return List[Map[String, String]]
+    */
+	def getDeviceBatch(range: Range): List[Map[String, String]] = {
 		var batch: List[Map[String, String]] = List()
-		var id: Int = 0
+		var id: Int = range.start
 		var device: String = ""
-		for (id <- 1 to size) {
+		for (id <- range.start to range.end) {
 			if (id % 2 == 0) {
 				device = "sensor-pad-" + id.toString + getRandomString()
 			} else if (id % 3 == 0) {
@@ -89,6 +133,10 @@ object DeviceProvision {
 		return batch.reverse
 	}
 
+	/**
+		* Generate a luv message :)
+		* @param message
+    */
 	def myPrint(message: String): Unit = {
 		val luv = "...And Luving it!"
 		print(message)
@@ -107,7 +155,8 @@ object DeviceProvision {
 
 			DeviceProvision.myPrint("Hello World! ")
 			val devices = new DeviceProvision(25)
-			val batches = DeviceProvision.getDeviceBatch(devices.devicesNumber)
+			val range = 0 until devices.devicesNumber
+			val batches = DeviceProvision.getDeviceBatch(range)
 			batches.foreach(m => println(m.toString))
 		}
 }

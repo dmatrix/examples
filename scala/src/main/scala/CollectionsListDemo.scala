@@ -1,3 +1,4 @@
+package main.scala
 object CollectionsListDemo {
 	/**
 	 * define few types of lists as global variables to this Singleton

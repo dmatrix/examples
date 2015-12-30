@@ -1,3 +1,4 @@
+package main.scala
 object CaseClassesDemo {
 	/**
 	 * This short example shows how case classes can be used in pattern matching, a feature as popular in use as function values and 

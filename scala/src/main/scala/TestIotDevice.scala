@@ -1,9 +1,11 @@
+package main.scala
+
 import scala.collection.mutable.Map
 import scala.util.matching.Regex
 
 /**
-  * Simple illustration of of using Maps, Singleton Objects defined in a package, collection filters and foreach
-  * on collections.
+  * Simple illustration of of using Maps, Singleton Objects, and threads defined in a package as well as usage of
+  * collection filters and foreach methods on collections.
   */
 
 object TestIotDevice {
@@ -43,8 +45,12 @@ object TestIotDevice {
     val pattern = args(3)
     //Use singleton object's method
     DeviceProvision.myPrint("Hello World! ")
-    // Use the singleton to Scala Object to create devices batches as a List of Maps[String, String] and print them out
-    val batches = DeviceProvision.getDeviceBatch(nDevices)
+    // Use the Scala thread to create devices batches, for a range, as a List of Maps[String, String] and print them out
+    val range = 1 until nDevices
+    val dgen = new DeviceIoTGenerators(range)
+    val thrd = new Thread(dgen).start()
+    Thread.sleep(1000)
+    val batches = dgen.getDeviceBatches()
     batches.foreach(println(_))
     println()
     // Use filter methods to create collections where one of the key's value on each K/V in the list of maps satisfies

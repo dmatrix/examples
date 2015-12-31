@@ -10,10 +10,12 @@ class DeviceIoTGenerators(range :Range) extends Runnable{
   val this.range = range
   var deviceMap: List[mutable.Map[String, String]] = List()
   var done: Boolean = false
+  var thrName = ""
 
   def run: Unit = {
 
-    println("Generating Devices info in:  " + Thread.currentThread().getName())
+    thrName = Thread.currentThread().getName()
+    println("Generating Devices info in:  " + thrName)
     deviceMap = DeviceProvision.getDeviceBatch(this.range)
     done = true
   }

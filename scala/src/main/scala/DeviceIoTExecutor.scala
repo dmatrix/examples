@@ -48,7 +48,7 @@ object DeviceIoTExecutor {
     val pool = Executors.newFixedThreadPool(cores)
     val multiple = ndevices / 3
     var devGenerators: List[DeviceIoTGenerators] = List()
-    //create list of three Device Generator Runnable(s), each with its begin..end range.
+    //create list of three DeviceGenerator Runnable(s), each with its begin..end range of device numbers
     devGenerators = devGenerators.::(new DeviceIoTGenerators(1 until multiple))
     devGenerators = devGenerators.::(new DeviceIoTGenerators(multiple + 1 until 2 * multiple))
     devGenerators = devGenerators.::(new DeviceIoTGenerators((2 * multiple) + 1 until 3 * multiple))

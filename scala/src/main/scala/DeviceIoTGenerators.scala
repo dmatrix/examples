@@ -15,7 +15,7 @@ class DeviceIoTGenerators(range :Range) extends Runnable{
   def run: Unit = {
 
     thrName = Thread.currentThread().getName()
-    println("Generating Devices info in:  " + thrName)
+    println("Generating Devices info in " + thrName)
     deviceMap = DeviceProvision.getDeviceBatch(this.range)
     done = true
   }

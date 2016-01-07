@@ -1,11 +1,12 @@
 package com.dmatrix.iot.devices;
 
-import org.apache.spark.api.java.JavaPairRDD;
+import io.confluent.kafka.serializers.KafkaAvroDecoder;
 import org.apache.spark.api.java.JavaRDD;
 import scala.Tuple2;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Properties;
 
 import kafka.serializer.StringDecoder;
 
@@ -14,6 +15,7 @@ import org.apache.spark.api.java.function.*;
 import org.apache.spark.streaming.api.java.*;
 import org.apache.spark.streaming.kafka.KafkaUtils;
 import org.apache.spark.streaming.Durations;
+import kafka.utils.VerifiableProperties;
 
 
 public final class DeviceIoTStreamApp {
@@ -24,12 +26,25 @@ public final class DeviceIoTStreamApp {
         }
         System.out.println("Spark Streaming Welcome!");
 
+        Properties props = new Properties();
+        props.put("zookeeper.connect", "localhost:2181");
+        props.put("group.id", "group");
+        props.put("auto.commit.enable", "false");
+        props.put("auto.offset.reset", "smallest");
+        props.put("schema.registry.url", "http://localhost:8081");
+
+        VerifiableProperties vProps = new VerifiableProperties(props);
+
+        // Create decoders for key and value
+        KafkaAvroDecoder avroDecoder = new KafkaAvroDecoder(vProps);
+
         String brokers = args[0];
         String topics = args[1];
 
-        // Create context with a 30 seconds batch interval
-        SparkConf sparkConf = new SparkConf().setAppName("DeviceIoTStreamApp");
-        JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, Durations.seconds(30));
+        // Create context with a 5 seconds batch interval
+        SparkConf sparkConf = new SparkConf().setAppName("DeviceIoTStreamApp").set("spark.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, Durations.seconds(5));
+        jssc.checkpoint("devices");
 
         HashSet<String> topicsSet = new HashSet<String>();
         topicsSet.add(topics);
@@ -37,6 +52,7 @@ public final class DeviceIoTStreamApp {
         kafkaParams.put("metadata.broker.list", brokers);
 
         // Create direct kafka stream with brokers and topics
+
         JavaPairInputDStream<String, String> messages = KafkaUtils.createDirectStream(
                 jssc,
                 String.class,
@@ -50,15 +66,15 @@ public final class DeviceIoTStreamApp {
         JavaDStream<String> devices = messages.map(new Function<Tuple2<String, String>, String>() {
             @Override
             public String call(Tuple2<String, String> tuple2) {
-                System.out.println("in map()...");
-                return tuple2._2().toString();
+                System.out.println("in map()...:" + tuple2.toString());
+                return tuple2._2();
             }
         });
         devices.foreach(new Function<JavaRDD<String>, Void>() {
             @Override
             public Void call(JavaRDD<String> stringJavaRDD) throws Exception {
                 System.out.println("in foreach()...");
-                System.out.println(stringJavaRDD);
+                System.out.println(stringJavaRDD.rdd().toString());
                 return null;
             }
         });

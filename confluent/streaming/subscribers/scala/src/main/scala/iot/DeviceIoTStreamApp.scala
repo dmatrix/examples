@@ -1,15 +1,11 @@
 package main.scala.iot
 
 import kafka.serializer.DefaultDecoder
-import org.apache.avro.Schema
-import org.apache.avro.generic.GenericData.Record
-import org.apache.avro.generic.{GenericData, GenericRecord}
-import org.apache.avro.util.Utf8
+import org.apache.avro.generic.{GenericRecord}
 import org.apache.spark.SparkConf
 import org.apache.spark.storage.StorageLevel
-import org.apache.spark.streaming._
+import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka._
-import io.confluent.kafka.serializers._
 
 
 object DeviceIoTStreamApp {
@@ -48,7 +44,6 @@ object DeviceIoTStreamApp {
         })
 
         devicesRecords.print()
-        
 
         // Start the computation
         ssc.start()

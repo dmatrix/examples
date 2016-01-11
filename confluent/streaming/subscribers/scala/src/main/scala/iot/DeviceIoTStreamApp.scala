@@ -27,7 +27,7 @@ object DeviceIoTStreamApp {
 
         if (args.length < 4) {
             println("Need 2 arguments: <kafka-broker:port> <topic> device-filter value")
-            println("DeviceToStream App localhost:9092 {temperature|humidity value")
+            println("DeviceToStream App localhost:9092 {temperature|humidity} value")
             System.exit(1)
         }
 

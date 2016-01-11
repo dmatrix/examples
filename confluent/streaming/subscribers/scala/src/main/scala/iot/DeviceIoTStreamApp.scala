@@ -10,6 +10,19 @@ import org.apache.spark.streaming.kafka._
 
 object DeviceIoTStreamApp {
 
+  /**
+    * Filter the DStream as determined by the predicate function
+    * @param rec GenericRecord, the device message
+    * @param temp filter by this temperature
+    * @return boolean if the condition is satisfied
+    */
+    def filterByTemperature (rec: GenericRecord, temp : Int) : Boolean = {
+        val tmp = rec.get("temp").asInstanceOf[Int]
+        println("filterByTemperature: Processing record: " + rec.toString)
+        println("Temperature = " + tmp)
+        return (tmp >= temp)
+    }
+
     def main(args: Array[String]) : Unit = {
 
         if (args.length < 2) {
@@ -39,9 +52,11 @@ object DeviceIoTStreamApp {
 
         val deviceMessages = KafkaUtils.createStream[Array[Byte], SchemaAndData, DefaultDecoder, AvroDecoder](ssc, consumerConfig, topicMap, StorageLevel.MEMORY_ONLY)
 
+        // Use DStream.map() to serialize all GenericRecords and then use DStream.filter() to extract only records whose device temperature
+        // is greater than or equal to 35, as evaluated in the filter predicate.
         val devicesRecords = deviceMessages.map(elem => {
             elem._2.deserialize().asInstanceOf[GenericRecord]
-        })
+                    }).filter(e => filterByTemperature(e, 35))
 
         devicesRecords.print()
 

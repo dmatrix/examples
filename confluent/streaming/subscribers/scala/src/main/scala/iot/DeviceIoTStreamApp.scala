@@ -13,26 +13,27 @@ object DeviceIoTStreamApp {
   /**
     * Filter the DStream as determined by the predicate function
     * @param rec GenericRecord, the device message
-    * @param temp filter by this temperature
-    * @return boolean if the condition is satisfied
+    * @param key filter by this key
+    * @return true or false as determined by the predicate
     */
-    def filterByTemperature (rec: GenericRecord, temp : Int) : Boolean = {
-        val tmp = rec.get("temp").asInstanceOf[Int]
-        println("filterByTemperature: Processing record: " + rec.toString)
-        println("Temperature = " + tmp)
-        return (tmp >= temp)
+    def filterByKey(rec: GenericRecord, key: String, value : Int) : Boolean = {
+        val  v = rec.get(key).asInstanceOf[Int]
+        println("filterBy: " + key + " Processing record: " + rec.toString)
+        println(key + " = " + v)
+        return (v >= value)
     }
 
     def main(args: Array[String]) : Unit = {
 
-        if (args.length < 2) {
-            println("Need 2 arguments: <kafka-broker:port> <topic>")
+        if (args.length < 4) {
+            println("Need 2 arguments: <kafka-broker:port> <topic> device-filter value")
+            println("DeviceToStream App localhost:9092 {temperature|humidity value")
             System.exit(1)
         }
 
         println("Spark Streaming..here.. I come!")
 
-        val Array(brokers, topics) = args
+        val Array(brokers, topics, filter, value) = args
 
         // Create context with 2 second batch interval
         val sparkConf = new SparkConf().setAppName("DeviceIoTStreamApp").set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
@@ -56,7 +57,7 @@ object DeviceIoTStreamApp {
         // is greater than or equal to 35, as evaluated in the filter predicate.
         val devicesRecords = deviceMessages.map(elem => {
             elem._2.deserialize().asInstanceOf[GenericRecord]
-                    }).filter(e => filterByTemperature(e, 35))
+                    }).filter(e => filterByKey(e, filter, value.toInt))
 
         devicesRecords.print()
 

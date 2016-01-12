@@ -1,5 +1,0 @@
-<?xml version="1.0" ?> 
-<project name="TemperaturesMRApp" default="jar">
-    <property name="example.package" value="tempmr"/>
-    <import file="./ant-common.xml"/>
-</project>

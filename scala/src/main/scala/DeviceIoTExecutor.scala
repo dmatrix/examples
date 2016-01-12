@@ -1,14 +1,14 @@
 package main.scala
 
-import scala.actors.threadpool.Executors
 import scala.collection.mutable.Map
+import java.util.concurrent.{Executors}
 
 /**
   * Created by jules on 12/30/15.
   * In this example, I use an Executor Service with a pool threads to generate devices information concurrently. Not only it's an illustration
   * of Scala expressive, succinct, and declarative way of programming, it shows the power of its functional programming.
   *
-  * Note how foreach methods are used in List collection to submit jobs, to iterate over each List of Maps, and to print each
+  * Note how Collection.foreach() methods are used in List collection to submit jobs, to iterate over each List of Maps, and to print each
   * device Map. You can't help but admire the tightness of its API.
   *
   * Simple few lies of Scala.
@@ -18,8 +18,9 @@ object DeviceIoTExecutor {
   /**
     * Using the foreach method of the List or Collection, print each device Map. In fact, this method
     * could be insert device data into an NoSQL or publish onto to a messaging system like Kafka.
+    *
     * Also, note how filters are used from a previous Singleton instance, to create a a filtered
-    * collection depeding on the predicate
+    * collection depending on the predicate
     * @param elem
     */
   def processMap(elem: List[scala.collection.mutable.Map[String, String]], thrName: String): Unit = {

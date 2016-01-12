@@ -2,9 +2,10 @@ package main.scala
 object CaseClassesDemo {
 	/**
 	 * This short example shows how case classes can be used in pattern matching, a feature as popular in use as function values and 
-	 * closures in Scala. You can define an empyt case class as possible means of match an equivalne object of that type, with writing
+	 * closures in Scala. You can define an empty case class as possible means of matching an equivalent object of that type, with writing
 	 * you own hashCode, toString or isEqual; the compiler will automatically generate them for you.
-	 * Also, note the case class definition is short, where modifiers like "var" or "val" are infered and defaulted to "val," unless
+		*
+	 * Also, note the case class definition is short, where modifiers like "var" or "val" are inferred and defaulted to "val," unless
 	 * explicitly stated.
 	 */
 	val author = "Jules S. Damji"
@@ -62,7 +63,7 @@ object CaseClassesDemo {
 		println("------- explicit match witch match block -------")
 		for (founder <- List(scala, java, go, c, python)) {
 			println(matchPerson(founder))
-      	}
+		}
 	
 	}
 }

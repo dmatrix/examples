@@ -16,7 +16,7 @@ import java.util.Queue;
 public class BlockingQueue<T> {
 
 	@SuppressWarnings("hiding")
-	public class QCallable<T> implements QueueCallalable<T> {
+	public class QCallable<T> implements threads.QueueCallable {
 		public QCallable(Object pObj) {
 			
 		}

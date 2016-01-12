@@ -1,0 +1,5 @@
+<?xml version="1.0" ?> 
+<project name="ComputeSum" default="jar">
+    <property name="example.package" value="computesum"/>
+    <import file="./ant-common.xml"/>
+</project>

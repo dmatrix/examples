@@ -1,13 +1,15 @@
 package ds;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * A linked list implementation, which really is Queue, since elements are appended to the end, while elements
  * can be removed from the front, FIFO; however, it can also remove nodes by searching or by indexing.
  * Created by jules on 1/12/16.
  */
-public class LinkedList {
+public class LinkedList implements Iterable <ds.Node>{
 
     //instance variables for the LinkedList
     private Node first, last;
@@ -158,6 +160,68 @@ public class LinkedList {
     }
 
     /**
+     * Implement the iterator method
+     * @return an iterator
+     */
+    @Override
+    public Iterator<ds.Node> iterator() {
+
+        return new ListIterator<Node>() {
+            private Node current = first;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public Node next() {
+                if (hasNext()) {
+                    Node n = current;
+                    current = current.next();
+                    return n;
+                }
+                return null;
+            }
+
+            @Override
+            public boolean hasPrevious() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public Node previous() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public int nextIndex() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public int previousIndex() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void set(Node node) {
+                throw new UnsupportedOperationException();
+            }
+
+            @Override
+            public void add(Node node) {
+                throw new UnsupportedOperationException();
+            }
+        };
+    }
+
+    /**
      * Main driver of the program
      * @param args
      */
@@ -200,5 +264,15 @@ public class LinkedList {
         System.out.println("\nAdding new devicies\n");
         list.insertAll(devices);
         list.display();
+        System.out.println("\n Printing with iterator");
+        Iterator<Node> itr = list.iterator();
+        if (itr != null) {
+            while (itr.hasNext()) {
+                Node n = itr.next();
+                n.displayNode();
+            }
+        } else {
+            System.out.println("Problem: Iterator is null!");
+        }
     }
 }

@@ -59,6 +59,7 @@ public class Node {
      * @param n
      */
     public void setNext( Node n) { next = n;}
+
     public void displayNode() {
         System.out.println("Node = " + getDevice());
         if (next() == null)

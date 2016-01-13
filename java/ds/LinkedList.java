@@ -1,8 +1,10 @@
 package ds;
 
+import java.util.List;
+
 /**
- * A linked list implementation, which really is Queue, since elments are appended to the end, while elements
- * are removed from the front. FIFO
+ * A linked list implementation, which really is Queue, since elements are appended to the end, while elements
+ * can be removed from the front, FIFO; however, it can also remove nodes by searching or by indexing.
  * Created by jules on 1/12/16.
  */
 public class LinkedList {
@@ -62,6 +64,20 @@ public class LinkedList {
     }
 
     /**
+     * Add all devices in one swoop.
+     * @param devices
+     * @return list if devices added
+     */
+    public List<Node> insertAll(String[] devices) {
+        List<Node> lst = new java.util.LinkedList<Node>();
+        for (String device: devices) {
+            Node n = insert(new Node(device));
+            lst.add(n);
+        }
+        return lst;
+    }
+
+    /**
      * Remove elment from the front of th list.
      * @return
      */
@@ -80,13 +96,48 @@ public class LinkedList {
      */
     public void display() {
         Node link = first;
-        while (link.next() != null) {
-            link.displayNode();
-            link = link.next();
+        if (!isEmpty()) {
+            while (link != null) {
+                link.displayNode();
+                link = link.next();
+            }
         }
     }
 
     /**
+     * Remove a particular device from the linked list
+     * @param device
+     * @return
+     */
+    public Node remove(String device) {
+        Node link = first;
+        Node prev = first;
+        Node found = null;
+        if (!isEmpty()) {
+            while (link != null) {
+                if (link.equals(device)) {
+                    found = link;
+                    if (link == first) {
+                        first = link.next();
+                        break;
+                    }
+                    if (link == last) {
+                        last = prev;
+                        break;
+                    } else {
+                        //this breaks the chain, removes the link, and attaches chain again
+                        prev.setNext(link.next());
+                    }
+                } else {
+                    prev = link;
+                    link = link.next();
+                }
+            }
+        }
+        return found;
+    }
+
+    /** Remove at Node containing the device
      * @param device
      * @return Node with device name, device, otherwise return null
      */
@@ -94,7 +145,7 @@ public class LinkedList {
         Node link = first;
         Node found = null;
         if (!isEmpty()) {
-            while (link.next() != null) {
+            while (link != null) {
                 if (link.equals(device)) {
                     found = link;
                     break;
@@ -126,6 +177,11 @@ public class LinkedList {
         } else {
             System.out.println("\nNot Found Node");
         }
+        node = list.remove("iMac");
+        if (node != null) {
+            System.out.println("\nRemoved Node:" + node.getDevice());
+        }
+        list.display();
         int size = list.size();
         if (size > 2) {
             for (int i = 1; i <= size - 2; i++) {
@@ -139,5 +195,10 @@ public class LinkedList {
             }
             list.display();
         }
+        //add a bunch of new devices
+        devices = new String[]{"Compac Notebook", "Chrome Notebook", "iCar", "iWatch", "Fitbit HR"};
+        System.out.println("\nAdding new devicies\n");
+        list.insertAll(devices);
+        list.display();
     }
 }

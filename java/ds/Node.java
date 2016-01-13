@@ -61,6 +61,9 @@ public class Node {
     public void setNext( Node n) { next = n;}
     public void displayNode() {
         System.out.println("Node = " + getDevice());
-        System.out.println("    Next -> " + next().toString());
+        if (next() == null)
+            System.out.println("  Next -> null");
+        else
+            System.out.println("  Next -> " + next().toString());
     }
 }

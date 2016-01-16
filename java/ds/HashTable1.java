@@ -27,7 +27,6 @@ public class HashTable1 {
 
     private String[] theArray;
     private int arraySize;
-    private int itemsInArray = 0;
 
     /**
      * Constructor to create a Hashtable implemented as an array of strings represented by the numbers as keys;

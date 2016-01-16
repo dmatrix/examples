@@ -6,6 +6,7 @@ package ds;
 public class Node {
     private String device;
     private Node next;
+    private Node prev;
 
     /**
      * Constructor for the Node
@@ -14,6 +15,7 @@ public class Node {
     public Node(String pDevice) {
         device = pDevice;
         next = null;
+        prev = null;
 
      }
 
@@ -54,11 +56,19 @@ public class Node {
      */
     public Node next() { return next; }
 
+    public Node previous() { return prev; }
+
     /**
      * setter
      * @param n
      */
     public void setNext( Node n) { next = n;}
+
+    /**
+     * setter
+     * @param n
+     */
+    public void setPrevious(Node n) { prev = n; }
 
     public void displayNode() {
         System.out.println("Node = " + getDevice());

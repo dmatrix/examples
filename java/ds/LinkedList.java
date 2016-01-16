@@ -264,7 +264,8 @@ public class LinkedList implements Iterable <ds.Node>{
         System.out.println("\nAdding new devicies\n");
         list.insertAll(devices);
         list.display();
-        System.out.println("\n Printing with iterator");
+        list.insertAll(new String[]{"iPen XP", "iCamera VX", "iScope"});
+        System.out.println("\nPrinting with iterator\n");
         Iterator<Node> itr = list.iterator();
         if (itr != null) {
             while (itr.hasNext()) {

@@ -145,9 +145,7 @@ public class HashTable2 {
                 // Found the key so return it
                 System.out.println(key + " was found in index "
                         + arrayIndexHash);
-
                 return theArray[arrayIndexHash];
-
             }
             // Look in the next index
             arrayIndexHash += stepDistance;
@@ -214,7 +212,6 @@ public class HashTable2 {
                     System.out
                             .print(String.format("| %3s " + " ", theArray[n]));
             }
-
             System.out.println("|");
             for (int n = 0; n < 71; n++)
                 System.out.print("-");
@@ -239,7 +236,7 @@ public class HashTable2 {
         theFunc.displayTheHashTable();
         // clear out the array
         theFunc.fillArrayWithNeg1();
-        // try with newer data
+        // try with newer data with double-hashing function
         theFunc.doubleHashFunc(elementsToAdd3, theFunc.theArray);
         theFunc.displayTheHashTable();
         theFunc.findKeyDblHashed("984");

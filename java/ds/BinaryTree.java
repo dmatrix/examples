@@ -301,6 +301,7 @@ public class BinaryTree {
         // Different ways to traverse binary trees
         System.out.println("In-order Traversal: ");
         System.out.println("Total Number of Nodes:" + theTree.getNumOfNodes());
+        System.out.println("Root key: "+ theTree.getRoot().getKey());
         theTree.inOrderTraverseTree(theTree.root);
         System.out.println("\nPre-order Traversal: ");
         theTree.preorderTraverseTree(theTree.root);
@@ -314,7 +315,7 @@ public class BinaryTree {
         System.out.println("Removing the root key: "+ theTree.getRoot().getKey());
         theTree.remove(theTree.getRoot().getKey());
         System.out.println("In-order Traversal: ");
-        System.out.println("New root key: "+ theTree.getRoot().getKey());
+        System.out.println("Root key: "+ theTree.getRoot().getKey());
         theTree.inOrderTraverseTree(theTree.root);
         theTree.remove(75);
         System.out.println("In-order Traversal: ");
@@ -333,6 +334,7 @@ public class BinaryTree {
         }
         System.out.println("In-order Traversal: ");
         System.out.println("Total Number of Nodes:" + theTree.getNumOfNodes());
+        System.out.println("Root key: "+ theTree.getRoot().getKey());
         theTree.inOrderTraverseTree(theTree.root);
     }
 }

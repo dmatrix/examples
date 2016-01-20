@@ -65,6 +65,19 @@ public class BNode {
      */
     public String toString() {
 
-            return "[ " + name + " has the key " + key + " ]";
+            StringBuffer b = new StringBuffer();
+            b.append("[Key="); b.append(key);
+            if (leftChild == null) {
+                b.append(";leftChild=null");
+            } else {
+                b.append(";leftChild=" + leftChild.getKey());
+            }
+            if (rightChild== null) {
+                b.append(";rightChild=null");
+            } else {
+                b.append(";rightChild=" + rightChild.getKey());
+            }
+            b.append("]");
+            return b.toString();
     }
 }

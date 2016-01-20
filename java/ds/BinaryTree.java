@@ -1,4 +1,5 @@
 package ds;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by jules on 1/19/16.
@@ -8,6 +9,12 @@ package ds;
 public class BinaryTree {
     BNode root;
 
+    /**
+     * Constructor
+     */
+    public BinaryTree() {
+        root = null;
+    }
     /**
      * Add node traversing the tree until you find the right place for insertion.
      * @param key
@@ -112,9 +119,13 @@ public class BinaryTree {
     public BNode findNode(int key) {
         // Start at the top of the tree
         BNode focusNode = root;
+        // check if empty tree
+        if (root == null) {
+            return null;
+        }
         // While we haven't found the Node
         // keep looking
-        while (focusNode.getKey() != key) {
+        while ( focusNode.getKey() != key)  {
             // If we should search to the left
             if (key < focusNode.getKey()) {
                 // Shift the focus Node to the left child
@@ -132,17 +143,19 @@ public class BinaryTree {
 
     public static void main(String[] args) {
         BinaryTree theTree = new BinaryTree();
-        theTree.addNode(70, "Seventy");
-        theTree.addNode(30, "Thirty");
-        theTree.addNode(35, "Thirty Five");
-        theTree.addNode(32, "Thirty Two");
-        theTree.addNode(15, "Fifteen");
-        theTree.addNode(75, "Seventy Five");
-        theTree.addNode(72, "Seventy Two");
-        theTree.addNode(7, "Seven");
-        theTree.addNode(8, "Eight");
-        theTree.addNode(85, "Eighty Five");
-        theTree.addNode(60, "Sixty");
+        //generate random numbers so we don't get an unbalanced tree
+        int maxKeys = 15;
+        for (int i = 0 ; i < maxKeys; i++) {
+            int key = ThreadLocalRandom.current().nextInt(1, 85);
+            //only insert if no key already exits
+            if (theTree.findNode(key) == null) {
+                theTree.addNode(key, Integer.toString(key));
+            } else {
+                // got a match don't count that key.
+                System.out.println("Key "+ key + " in already in the tree. Not added");
+                maxKeys++;
+            }
+        }
         // Different ways to traverse binary trees
         System.out.println("In-order Traversal: ");
         theTree.inOrderTraverseTree(theTree.root);
@@ -150,20 +163,9 @@ public class BinaryTree {
         theTree.preorderTraverseTree(theTree.root);
         System.out.println("\nPost-order Traversal: ");
         theTree.postOrderTraverseTree(theTree.root);
-        // Find the node with key 75
+        // Add and Find the node with key 75
+        theTree.addNode(75, "75");
         System.out.println("\nNode with the key 75");
         System.out.println(theTree.findNode(75));
-
-        // Add few more nodes
-        theTree.addNode(79, "Seventy Nine");
-        theTree.addNode(74, "Seventy Four");
-        theTree.addNode(1, "One");
-        // traverse again
-        System.out.println("In-order Traversal: ");
-        theTree.inOrderTraverseTree(theTree.root);
-        System.out.println("\nPre-order Traversal: ");
-        theTree.preorderTraverseTree(theTree.root);
-        System.out.println("\nPost-order Traversal: ");
-        theTree.postOrderTraverseTree(theTree.root);
     }
 }

@@ -231,7 +231,7 @@ public class BinaryTree {
                 parent.setRightChild(focusNode.getRightChild());
 
         }
-        // Two children so I need to find the deleted nodes
+        // Two children so I need to find the targeted deleted nodes'
         // replacement
         else {
             BNode replacement = getReplacementNode(focusNode);
@@ -253,7 +253,8 @@ public class BinaryTree {
     }
 
     /**
-     * Find the replacement node
+     * Find the replacement node. We have identified the node to delete, find which node in the tree
+     * should replace this targeted node (to be deleted)
      * @param replacedNode
      * @return BNode or null;
      */

@@ -165,7 +165,9 @@ public class BinaryTree {
 
     /**
      * Given a key, locate the appropriate node to replace and do all the magic of reassigning and replacing the right
-     * and letf child nodes
+     * and letf child nodes.
+     * This is the iterative version of delete. Check the recursive version below, much elegant thanks to
+     * https://gist.githubusercontent.com/mycodeschool/9465a188248b624afdbf/raw/ff5842220d84629535509adec5dda82af13c16a7/BSTDeletion_CPP.cpp
      * @param key
      * @return true if deleted, false otherwise
      */

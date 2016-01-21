@@ -55,6 +55,11 @@ public class BNode {
     public int getKey() { return key; }
 
     /**
+     * setter
+     * @param data
+     */
+    public void setKey(int data) { key = data; }
+    /**
      * Getter
      * @return name
      */

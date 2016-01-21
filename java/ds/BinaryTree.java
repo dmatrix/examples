@@ -17,6 +17,16 @@ public class BinaryTree {
         root = null;
     }
 
+    /**
+     * increment the number of items in the tree
+     */
+    public void inc() { numOfNodes++;}
+
+    /**
+     * decrement the number of items in the tree
+     */
+    public void dec() { numOfNodes--;}
+
     /** getter
      *
      * @return number of nodes in the tree
@@ -35,7 +45,7 @@ public class BinaryTree {
         // If there is no root this becomes root
         if (root == null) {
             root = newNode;
-            numOfNodes++;
+            inc();
         } else {
             // Set root as the Node we will start
             // with as we traverse the tree
@@ -55,7 +65,7 @@ public class BinaryTree {
                     if (focusNode == null) {
                         // then place the new node on the left of it
                         parent.setLeftChild(newNode);
-                        numOfNodes++;
+                        inc();
                         return; // All Done
                     }
                 } else { // If we get here put the node on the right
@@ -64,7 +74,7 @@ public class BinaryTree {
                     if (focusNode == null) {
                         // then place the new node on the right of it
                         parent.setRightChild(newNode);
-                        numOfNodes++;
+                        inc();
                         return; // All Done
                     }
                 }
@@ -248,7 +258,7 @@ public class BinaryTree {
                 parent.setRightChild(replacement);
             replacement.setLeftChild(focusNode.getLeftChild());
         }
-        numOfNodes--;
+        dec();
         return true;
     }
 
@@ -279,6 +289,63 @@ public class BinaryTree {
         }
         return replacement;
     }
+
+
+    /**
+     * Given root of the tree or subtree, find its minimum. Note that Btree's left subtree leaf node will
+     * always have the smallest value, whereas the right most subtree will have have the largest value.
+     * @param root
+     * @return
+     */
+    public BNode findMin(BNode root)
+    {
+        BNode focusNode = root;
+        while (focusNode.getLeftChild() != null) {
+            focusNode = focusNode.getLeftChild();
+        }
+        return focusNode;
+    }
+
+    /**
+     * Recursive version of the deletion.
+     * @param root
+     * @param data
+     * @return the deleted node
+     */
+    public BNode delete(BNode root, int data) {
+        if (root == null)  {
+            return root;
+        } else if(data < root.getKey()) {
+            // traverse recursively the left side
+            root.setLeftChild(delete(root.getLeftChild(), data));
+            // travers recursively the right side
+        } else if (data > root.getKey())  {
+            root.setRightChild(delete(root.getRightChild(), data));
+        } else {
+            // Wohoo... I found you, Get ready to be deleted
+            // check the three cases
+            // Case 1:  No child, the easy case
+            if(root.getLeftChild() == null && root.getRightChild() == null) {
+                root = null;
+            }
+            //Case 2: One child
+            else if(root.getLeftChild() == null) {
+                BNode temp = root;
+                root = root.getRightChild();
+            } else if(root.getRightChild() == null) {
+                BNode temp = root;
+                root = root.getLeftChild();
+            }
+            // case 3: 2 children
+            else {
+                BNode temp = findMin(root.getRightChild());
+                root.setKey(temp.getKey());
+                root.setRightChild(delete(root.getRightChild(), temp.getKey()));
+            }
+        }
+        return root;
+    }
+
 
     /**
      * Driver for the program
@@ -314,7 +381,8 @@ public class BinaryTree {
         System.out.println(theTree.findNode(75));
         //remove root
         System.out.println("Removing the root key: "+ theTree.getRoot().getKey());
-        theTree.remove(theTree.getRoot().getKey());
+        theTree.delete(theTree.getRoot(), theTree.getRoot().getKey());
+        theTree.dec();
         System.out.println("In-order Traversal: ");
         System.out.println("Root key: "+ theTree.getRoot().getKey());
         theTree.inOrderTraverseTree(theTree.root);
@@ -326,8 +394,11 @@ public class BinaryTree {
             int key = ThreadLocalRandom.current().nextInt(1, 85);
             //only delete if key  exits
             if (theTree.findNode(key) != null) {
-                theTree.remove(key);
-                System.out.println("Key "+ key + " Deleted!.");
+                BNode del = theTree.delete(theTree.getRoot(), key);
+                if (del != null) {
+                    theTree.dec();
+                    System.out.println("Key " + del.getKey() + " Deleted!.");
+                }
             } else {
                 // got a match don't count that key.
                 System.out.println("Key "+ key + " Not found.");

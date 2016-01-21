@@ -134,6 +134,51 @@ public class BinaryTree {
     }
 
     /**
+     * Find the height of the tree or given node. The height of a root or a given node is the longest path with number of edges from itself
+     * to the leaf node. For example, the height of leaf node is 0, the height of root node with one child is 1, and with only one node,
+     * itself, would be 0.
+     * @param root
+     * @return
+     */
+    public int findHeight(BNode root) {
+        if (root == null) {
+            return -1;
+        } else
+            return Math.max(findHeight(root.getLeftChild()), findHeight(root.getRightChild())) + 1;
+    }
+    /**
+     * Using recursion, find Mininum value in the tree. Since all values less than root will be in the left subtree, recurse till we find
+     * the leaf nodes containing least value.
+     * @param root
+     * @return value or -1 if tree is empty
+     */
+    public int findMinValue(BNode root) {
+        if (root == null) {
+            return -1;
+        } else if (root.getLeftChild() == null) {
+            return root.getKey();
+        } else {
+            return findMinValue(root.getLeftChild());
+        }
+    }
+
+    /**
+     * Using recursion, find the Maximum value in the tree. Since all values greater than root will be in the right subtree, recurse until we
+     * find the leaf node containing that value.
+     * @param root
+     * @return
+     */
+    public int findMaxValue(BNode root) {
+        if (root == null) {
+            return -1;
+        } else if (root.getRightChild() == null) {
+            return root.getKey();
+        } else {
+            return findMaxValue(root.getRightChild());
+        }
+    }
+
+    /**
      * Find if the key exists in the tree. This is 0(N/k), where k is the heigth of the tree.
      * @param key
      * @return return Bnode if found otherwise null
@@ -372,6 +417,9 @@ public class BinaryTree {
         System.out.println("In-order Traversal: ");
         System.out.println("Total Number of Nodes:" + theTree.getNumOfNodes());
         System.out.println("Root key: "+ theTree.getRoot().getKey());
+        System.out.println("Max Value: " + theTree.findMaxValue(theTree.getRoot()));
+        System.out.println("Min Value: " + theTree.findMinValue(theTree.getRoot()));
+        System.out.println("Binary Tree Height: " + theTree.findHeight(theTree.getRoot()));
         theTree.inOrderTraverseTree(theTree.root);
         System.out.println("\nPre-order Traversal: ");
         theTree.preorderTraverseTree(theTree.root);
@@ -409,6 +457,9 @@ public class BinaryTree {
         System.out.println("In-order Traversal: ");
         System.out.println("Total Number of Nodes:" + theTree.getNumOfNodes());
         System.out.println("Root key: "+ theTree.getRoot().getKey());
+        System.out.println("Max Value:" + theTree.findMaxValue(theTree.getRoot()));
+        System.out.println("Min Value:" + theTree.findMinValue(theTree.getRoot()));
+        System.out.println("Binary Tree Height: " + theTree.findHeight(theTree.getRoot()));
         theTree.inOrderTraverseTree(theTree.root);
     }
 }

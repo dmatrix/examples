@@ -393,7 +393,19 @@ public class BinaryTree {
         return root;
     }
 
-
+    /**
+     * Check if this tree an a binary tree
+     * @param root
+     * @return true or false
+     */
+    boolean isBinarySearchTree(BNode root) {
+        int rootKey = root.getKey();
+        if (root == null) {
+            return true;
+        } else if (findMinValue(root.getLeftChild()) < rootKey && findMaxValue(root.getRightChild()) > rootKey) {
+            return true;
+        } else return false;
+    }
     /**
      * Driver for the program
      * @param args
@@ -420,6 +432,7 @@ public class BinaryTree {
         System.out.println("Max Value: " + theTree.findMaxValue(theTree.getRoot()));
         System.out.println("Min Value: " + theTree.findMinValue(theTree.getRoot()));
         System.out.println("Binary Tree Height: " + theTree.findHeight(theTree.getRoot()));
+        System.out.println("Is Binary Search Tree: " + theTree.isBinarySearchTree(theTree.getRoot()));
         theTree.inOrderTraverseTree(theTree.root);
         System.out.println("\nPre-order Traversal: ");
         theTree.preorderTraverseTree(theTree.root);

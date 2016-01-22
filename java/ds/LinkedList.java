@@ -94,7 +94,7 @@ public class LinkedList implements Iterable <ds.Node>{
     }
 
     /**
-     * Display the lnked list
+     * Display the linked list iteratively
      */
     public void display() {
         Node link = first;
@@ -104,6 +104,34 @@ public class LinkedList implements Iterable <ds.Node>{
                 link = link.next();
             }
         }
+    }
+
+    /**
+     * Display recursively
+     * @param node
+     */
+    public void displayRecursively(Node node) {
+
+        // anchor or termination condition for recursion
+        if (node == null) {
+            return;
+        }
+        //display the node
+        node.displayNode();
+        //recurse by sending the next value
+        displayRecursively(node.next());
+    }
+
+    public void displayReverse(Node node) {
+        // anchor or termination condition for recursion
+        if (node == null) {
+            return;
+        }
+        //recurse by sending the next value
+        displayRecursively(node.next());
+        // display in the reverse order as you pop up the recursion stack
+        node.displayNode();
+
     }
 
     /**
@@ -137,6 +165,47 @@ public class LinkedList implements Iterable <ds.Node>{
             }
         }
         return found;
+    }
+
+    /**
+     * revverse the list using iterative method
+     */
+    public void reversei() {
+        //set to nul because we always want to keep a reference to the previous node to adjust the reverse link
+        Node prev = null;
+        // current is the current node we are traversing in the list, starting at the head node
+        Node current = first;
+        // this is the node ahead of the current node, that is current->next
+        Node next;
+        // iterate unil current reaches the end of the list
+        while (current != null) {
+            //set it to the next node from the current one
+            next = current.next();
+            //adjust the current's next to point to the previous node. This is what does the reversing
+            current.setNext(prev);
+            //previous now becomes the current one for which we just adjusted its next link
+            prev = current;
+            // make current the next node we are going to reverse, and repeat the process
+            current = next;
+        }
+        //finally, make first now point to the previous, since by now current has become null, and previous is now
+        // pointing to the last node, which now becomes the first, because of the reversal.
+        first = prev;
+
+    }
+
+    /**
+     * Use recursion to reverse the list
+     */
+    public void reverser(Node n) {
+        if (n.next() == null) {
+            first = n;
+            return;
+        }
+        reverser(n.next());
+        Node next = n.next();
+        next.setNext(n);
+        n.setNext(null);
     }
 
     /** Remove at Node containing the device
@@ -275,5 +344,18 @@ public class LinkedList implements Iterable <ds.Node>{
         } else {
             System.out.println("Problem: Iterator is null!");
         }
+        System.out.println("\nPrinting with recursion\n");
+        list.displayRecursively(list.getFirst());
+        System.out.println("\nReversing the list");
+       //list.reversei();
+        list.reverser(list.getFirst());
+        list.displayRecursively(list.getFirst());
+        System.out.println("\n Printing recursviely");
+        list.displayReverse(list.getFirst());
+        /**
+        System.out.println("\n Printing reverse order recursively");
+        list.displayReverse(list.getFirst());
+         */
+
     }
 }

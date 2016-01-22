@@ -76,5 +76,10 @@ public class Node {
             System.out.println("  Next -> null");
         else
             System.out.println("  Next -> " + next().toString());
+
+        if (previous() == null)
+            System.out.println(" Prev -> null");
+        else
+            System.out.println(" Prev -> " + previous().toString());
     }
 }

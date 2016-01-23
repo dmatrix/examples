@@ -83,7 +83,7 @@ public class DoubleLinkedList {
 
     /**
      * Print recursivley starting at the last node
-     * @param node
+     * @param node, the reference to the last node
      */
     public void printReverseOrder(Node node) {
 

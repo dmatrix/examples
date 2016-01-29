@@ -1,5 +1,4 @@
 package main.scala
-import util.Random._
 import scala.collection.mutable.Map
 
 /**

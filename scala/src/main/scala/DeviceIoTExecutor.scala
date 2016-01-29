@@ -11,7 +11,7 @@ import java.util.concurrent.{Executors}
   * Note how Collection.foreach() methods are used in List collection to submit jobs, to iterate over each List of Maps, and to print each
   * device Map. You can't help but admire the tightness of its API.
   *
-  * Simple few lies of Scala.
+  * Simple few lines Scala.
   */
 object DeviceIoTExecutor {
 
@@ -44,6 +44,7 @@ object DeviceIoTExecutor {
       println("Number of devices must be multiple of 3.")
       System.exit(1)
     }
+    DeviceProvision.myPrint("Hello World! ")
     //create a pool of three threads, assuming we have three cores
     val cores = 3
     val pool = Executors.newFixedThreadPool(cores)

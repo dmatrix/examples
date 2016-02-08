@@ -79,7 +79,7 @@ public class ConsumeIoTDevices implements Runnable {
    */
   public void run() {
 
-      boolean dbFailed = false;
+      boolean dbFailed = true;
       InfluxDBConnection influxDBConn = null;
       ConsumerIterator<Object, Object> it = stream.iterator();
       try {

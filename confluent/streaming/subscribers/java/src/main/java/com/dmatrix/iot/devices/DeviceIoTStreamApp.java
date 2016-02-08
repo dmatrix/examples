@@ -42,7 +42,7 @@ public final class DeviceIoTStreamApp {
         String topics = args[1];
 
         // Create context with a 5 seconds batch interval
-        SparkConf sparkConf = new SparkConf().setAppName("DeviceIoTStreamApp").set("spark.serializer", "io.confluent.kafka.serializers.KafkaAvroSerializer");
+        SparkConf sparkConf = new SparkConf().setAppName("DeviceIoTStreamApp").set("spark.serializer", "org.apache.spark.serializer.KryoSerializer");
         JavaStreamingContext jssc = new JavaStreamingContext(sparkConf, Durations.seconds(5));
         jssc.checkpoint("devices");
 

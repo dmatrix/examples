@@ -86,23 +86,26 @@ object DeviceProvision {
 		* @return Map[String, String]
     */
 	def createDeviceData(dev: String, id: Int): scala.collection.mutable.Map[String, String] = {
-		var dmap = scala.collection.mutable.Map[String, String]()
-		val temp = getTemperature().toString
-		val humidity = getHumidity().toString
-		val zip = getZipCode().toString
+		val dmap = scala.collection.mutable.Map[String, String]()
+		val temp = getTemperature()
+		val humidity = getHumidity()
+		val zip = getZipCode()
+		val xcoor = getX();
+		val ycoor = getY();
 		// create json of the format:
 		// {'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
 		val timestamp: Long = System.currentTimeMillis / 1000
 		dmap.put("device_name", dev)
 		dmap.put("device_id", id.toString)
 		dmap.put("timestamp", timestamp.toString)
-		dmap.put("temp", temp)
+		dmap.put("temp", temp.toString)
 		dmap.put("scale", "Celcius")
-		dmap.put("lat", getX().toString)
-		dmap.put("long", getY().toString)
-		dmap.put("zipcode", zip)
-		dmap.put("humidity", humidity)
-		//val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, coord._1, coord._2, zip, humidity)
+		dmap.put("lat", xcoor.toString)
+		dmap.put("long", xcoor.toString)
+		dmap.put("zipcode", zip.toString)
+		dmap.put("humidity", humidity.toString)
+		val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
+		println(djson)
 		return dmap
 	}
 

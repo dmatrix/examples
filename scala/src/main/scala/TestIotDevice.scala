@@ -39,9 +39,13 @@ object TestIotDevice {
     */
   def main(args: Array[String]) {
     //TODO use parse command line arguments with options
+    //number of devices
     val nDevices: Int = args(0).toInt
+    // filter for humidity
     val value1 = args(1).toInt
+    // filter for temperature
     val value2 = args(2).toInt
+    //string pattern by device, eg. mac-, therm, sensor, etc
     val pattern = args(3)
     //Use singleton object's method
     DeviceProvision.myPrint("Hello World! ")

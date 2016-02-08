@@ -11,7 +11,8 @@ libraryDependencies ++= Seq(
   "org.apache.kafka" % "kafka-clients" % "0.8.2.1",
   "org.apache.kafka" % "kafka_2.10" % "0.8.2.1",
   "org.slf4j" % "slf4j-log4j12" % "1.6.1",
-  "io.confluent" % "kafka-avro-serializer" % "1.0"
+  "org.apache.zookeeper" % "zookeeper" % "3.4.5",
+  "io.confluent" % "kafka-avro-serializer" % "1.0.1"
 )
 
 ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }

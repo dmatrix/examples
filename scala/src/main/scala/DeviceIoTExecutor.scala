@@ -56,7 +56,7 @@ object DeviceIoTExecutor {
     devGenerators = devGenerators.::(new DeviceIoTGenerators((2 * multiple) + 1 until 3 * multiple))
     // Using foreach method on the list, submit each runnable to the executor service thread pool
     devGenerators.foreach(pool.submit(_))
-    // let each Runnable finish in the poo; we could use an elaborate LatchCountDown if we wanted to , but since
+    // let each Runnable finish in the pool we could use an elaborate LatchCountDown if we wanted to , but since
     // this is a simple case, where the thread are unlikely to block or delay, a minor Sleep shall suffice.
     Thread.sleep(3000)
     // reverse the order of the List, since in Scala, for efficiency, Lists are appended to the front.

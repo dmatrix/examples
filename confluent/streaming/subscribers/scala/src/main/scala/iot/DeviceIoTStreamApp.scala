@@ -7,7 +7,6 @@ import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.streaming.kafka._
 
-
 object DeviceIoTStreamApp {
 
   /**
@@ -54,14 +53,40 @@ object DeviceIoTStreamApp {
         val deviceMessages = KafkaUtils.createStream[Array[Byte], SchemaAndData, DefaultDecoder, AvroDecoder](ssc, consumerConfig, topicMap, StorageLevel.MEMORY_ONLY)
 
         // Use DStream.map() to serialize all GenericRecords and then use DStream.filter() to extract only records whose device temperature
-        // is greater than or equal to 35, as evaluated in the filter predicate.
+        // or humidity is greater than or equal to given argument as evaluated in the filter predicate.
         val devicesRecords = deviceMessages.map(elem => {
             elem._2.deserialize().asInstanceOf[GenericRecord]
                     }).filter(e => filterByKey(e, filter, value.toInt))
 
         devicesRecords.print()
+        // now use the case class DeviceInfo
+      /**
+        *  {"device_id": 0,
+        * "device_name": "sensor-025ForJSD",
+        * "ip": "192.34.5.0",
+        * "temp": 35,
+        * "humidity": 82,
+        * "lat": 33,
+        * "long": 8,
+        * "zipcode": 94538,
+        * "scale": "Celsius",
+        * "timestamp": 1454785287191
+        * }
+        */
+      val devices = devicesRecords.map(d => IOTDevice (d.get(0).asInstanceOf[Int],
+                        d.get(1).asInstanceOf[String],
+                        d.get(2).asInstanceOf[String],
+                        d.get(3).asInstanceOf[Int],
+                        d.get(4).asInstanceOf[Int],
+                        d.get(5).asInstanceOf[Int],
+                        d.get(6).asInstanceOf[Int],
+                        d.get(7).asInstanceOf[Int],
+                        d.get(8).asInstanceOf[String],
+                        d.get(9).asInstanceOf[Long]))
 
-        // Start the computation
+      devices.print();
+
+        // Start the receiver
         ssc.start()
         ssc.awaitTermination()
     }

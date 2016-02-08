@@ -52,6 +52,7 @@ object TestIotDevice {
     val value2 = args(2).toInt
     //string pattern by device, eg. mac-, therm, sensor, etc
     val pattern = args(3)
+    //Use countdown latch to wait for the thread to finish
     val latch: CountDownLatch = new CountDownLatch(1)
     //Use singleton object's method
     DeviceProvision.myPrint("Hello World! ")
@@ -59,9 +60,11 @@ object TestIotDevice {
     val range = 1 until nDevices
     val dgen = new DeviceIoTGenerators(range, latch)
     val thrd = new Thread(dgen).start()
+    // wait till the thread is finished
     latch.await()
-    //Thread.sleep(1000)
+    //get the batch
     val batches = dgen.getDeviceBatches()
+    //dump it on stdout
     batches.foreach(println(_))
     println()
     // Use filter methods to create collections where one of the key's value on each K/V in the list of maps satisfies
@@ -77,7 +80,7 @@ object TestIotDevice {
     filteredBatches2.foreach(println(_))
     val filteredBatches3: List[Map[String, String]] = batches.filter(filterByDevicePattern(_, new Regex("^"+pattern)))
     println()
-    //Filter by device that matches a regx pattern
+    //Filter by device that matches a regex pattern
     printf("%d Devices found where they match a pattern %s\n", filteredBatches3.length, "^"+ pattern)
     filteredBatches3.foreach(println(_))
   }

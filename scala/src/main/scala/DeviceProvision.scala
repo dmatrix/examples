@@ -92,8 +92,6 @@ object DeviceProvision {
 		val zip = getZipCode()
 		val xcoor = getX();
 		val ycoor = getY();
-		// create json of the format:
-		// {'device_id': id, 'device_name': d, 'timestamp': ts, 'temp': temp, 'scale': 'Celius', "lat": x, "long": y, 'zipcode': zipcode, 'humidity': humidity}
 		val timestamp: Long = System.currentTimeMillis / 1000
 		dmap.put("device_name", dev)
 		dmap.put("device_id", id.toString)
@@ -104,8 +102,8 @@ object DeviceProvision {
 		dmap.put("long", xcoor.toString)
 		dmap.put("zipcode", zip.toString)
 		dmap.put("humidity", humidity.toString)
-		val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
-		println(djson)
+		//val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
+		//println(djson)
 		return dmap
 	}
 

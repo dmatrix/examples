@@ -1,5 +1,7 @@
 package main.scala
 
+import java.util.concurrent.CountDownLatch
+
 import scala.collection.mutable.Map
 import scala.util.matching.Regex
 
@@ -11,6 +13,7 @@ import scala.util.matching.Regex
 object TestIotDevice {
   /**
     * Filter each device map where the k/v satisfy a predicate
+    *
     * @param elem Map[String, String]
     * @param k key in the Map
     * @param v value to satisfy
@@ -23,6 +26,7 @@ object TestIotDevice {
 
   /**
     * Filter each device map where the device_name key satisfies the regex pattern
+    *
     * @param elem Map[String, String]
     * @param pattern Regex that matches the device pattern
     * @return true or false
@@ -35,6 +39,7 @@ object TestIotDevice {
 
   /**
     *  Main routine
+    *
     * @param args command line arguments
     */
   def main(args: Array[String]) {
@@ -47,13 +52,15 @@ object TestIotDevice {
     val value2 = args(2).toInt
     //string pattern by device, eg. mac-, therm, sensor, etc
     val pattern = args(3)
+    val latch: CountDownLatch = new CountDownLatch(1)
     //Use singleton object's method
     DeviceProvision.myPrint("Hello World! ")
     // Use the Scala thread to create devices batches, for a range, as a List of Maps[String, String] and print them out
     val range = 1 until nDevices
-    val dgen = new DeviceIoTGenerators(range)
+    val dgen = new DeviceIoTGenerators(range, latch)
     val thrd = new Thread(dgen).start()
-    Thread.sleep(1000)
+    latch.await()
+    //Thread.sleep(1000)
     val batches = dgen.getDeviceBatches()
     batches.foreach(println(_))
     println()

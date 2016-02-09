@@ -1,6 +1,6 @@
 package main.scala
 
-import java.io.{IOException, FileNotFoundException, File, PrintWriter}
+import java.io.{IOException, File, PrintWriter}
 import java.util.concurrent.{Executors, CountDownLatch}
 
 /**
@@ -8,8 +8,8 @@ import java.util.concurrent.{Executors, CountDownLatch}
   * This short program generates JSON file for each device. It uses DeviceIoTGenerators executor pool of threads to
   * generate large data sets.
   *
-  * The dataset generate can be use to demonstrate the usage of and differences between RDDs, Datatframes, and Datasets in
-  * Apache Spark
+  * The dataset generated can be used to demonstrate the usage and differences among RDDs, Dataframes, and Datasets in
+  * Apache Spark 1.6
   */
 object GenerateIoTDeviceData {
 
@@ -64,12 +64,13 @@ object GenerateIoTDeviceData {
       devGenerators = devGenerators.::(new DeviceIoTGenerators((2 * multiple) + 1 until 3 * multiple, latch))
       // Using foreach method on the list, submit each runnable to the executor service thread pool
       println("Generating " + nDevices + " Devices' data in " + jsonFile)
-      println("Launching 3 threads and waiting for them to end...")
+      println("Launching 3 threads and waiting for them to finish via Latch Countdown mechanism...")
       devGenerators.foreach(pool.submit(_))
       // Using a LatchCountDown mechanism, let each Runnable finish in the executor pool.
       try {
         latch.await()
-        println("All Device Generators Threads ended\n")
+        println("All Device Generators Threads ended.\n")
+        pool.shutdown()
       } catch {
         case e: InterruptedException => {
           e.printStackTrace
@@ -81,11 +82,11 @@ object GenerateIoTDeviceData {
       try {
         val writer = new PrintWriter(new File(jsonFile))
         devGenerators.foreach(e => generateJsonFile(e.getDeviceBatches(), writer))
-
-        writer.close();
+        writer.close()
         println("Finished! File " + jsonFile + " created.")
       } catch {
         case ex: IOException => {
+          ex.printStackTrace()
           println("IO Exception")
         }
       }

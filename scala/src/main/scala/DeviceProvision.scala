@@ -126,10 +126,11 @@ object DeviceProvision {
 			} else {
 				device = "meter-gauge-" + id.toString + getRandomString()
 			}
-			Thread.sleep(10)
+			//Thread.sleep(10)
 			val djson = createDeviceData(device, id)
 			batch = batch.::(djson)
 		}
+		println("Batch of " + batch.length + " devices completed...")
 		return batch.reverse
 	}
 

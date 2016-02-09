@@ -42,18 +42,20 @@ object IODemo {
 	 		System.exit(1)
 	 	}
 	 	try {
-	 		// read the file, create iterator, convert into a list, apply a fucntion using foreach method 
-	 		// of the list
-	 		Source.fromFile(args(0)).getLines().toList.foreach {insertWordIntoMap }
-	 		val writer = new PrintWriter(new File("IODemo.run.txt"))
-	 		for ((k, v) <- dict)  {
-	 			val fs = "KEY: " + k + "VALUE: " + v + "\n"
-	 			writer.write(fs)
-	 		}
-	 		writer.close()
-	 		// for brevity print out the (Key, <nunber of words>) that begin with the character as the key.
-	 		for ((k, v) <- dict) println( new Tuple2(k, v.length))
-        } catch {
+			// read the file, create iterator, convert into a list, apply a fucntion using foreach method
+			// of the list
+			Source.fromFile(args(0)).getLines().toList.foreach {
+				insertWordIntoMap
+			}
+			val writer = new PrintWriter(new File("IODemo.run.txt"))
+			for ((k, v) <- dict) {
+				val fs = "KEY: " + k + "VALUE: " + v + "\n"
+				writer.write(fs)
+			}
+			writer.close()
+			// for brevity print out the (Key, <number of words>) that begin with the character as the key.
+			for ((k, v) <- dict) println(new Tuple2(k, v.length))
+		} catch {
           case ex: FileNotFoundException => { println("Missing file exception") }
           case ex: IOException => { println("IO Exception") }
         }

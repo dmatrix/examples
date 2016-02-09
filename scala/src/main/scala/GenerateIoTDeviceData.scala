@@ -1,6 +1,6 @@
 package main.scala
 
-import java.io.{File, PrintWriter}
+import java.io.{IOException, FileNotFoundException, File, PrintWriter}
 import java.util.concurrent.{Executors, CountDownLatch}
 
 /**
@@ -39,7 +39,12 @@ object GenerateIoTDeviceData {
 
     def main(args:Array[String]): Unit = {
 
+      if (args.length != 2 ) {
+        println("Usage: number_of_devices <output_path_filename.json>")
+        System.exit(1)
+      }
       val nDevices = args(0).toInt
+      val jsonFile = args(1)
       // for easy of creating equal batches, let's force the device number to be a multiple of three
       if (nDevices % 3 != 0) {
         println("Number of devices must be multiple of 3.")
@@ -58,7 +63,7 @@ object GenerateIoTDeviceData {
       devGenerators = devGenerators.::(new DeviceIoTGenerators(multiple + 1 until 2 * multiple, latch))
       devGenerators = devGenerators.::(new DeviceIoTGenerators((2 * multiple) + 1 until 3 * multiple, latch))
       // Using foreach method on the list, submit each runnable to the executor service thread pool
-      println("Generating " + nDevices + " Devices' data")
+      println("Generating " + nDevices + " Devices' data in " + jsonFile)
       println("Launching 3 threads and waiting for them to end...")
       devGenerators.foreach(pool.submit(_))
       // Using a LatchCountDown mechanism, let each Runnable finish in the executor pool.
@@ -73,12 +78,16 @@ object GenerateIoTDeviceData {
       }
       // reverse the order of the List, since in Scala, for efficiency, Lists are appended to the front.
       devGenerators = devGenerators.reverse
+      try {
+        val writer = new PrintWriter(new File(jsonFile))
+        devGenerators.foreach(e => generateJsonFile(e.getDeviceBatches(), writer))
 
-      val writer = new PrintWriter(new File("/Users/jules/data/iot/IoTDevices.json"))
-      devGenerators.foreach(e=> generateJsonFile(e.getDeviceBatches(), writer))
-
-      writer.close();
-      println("Finished...")
-  }
-
+        writer.close();
+        println("Finished! File " + jsonFile + " created.")
+      } catch {
+        case ex: IOException => {
+          println("IO Exception")
+        }
+      }
+    }
 }

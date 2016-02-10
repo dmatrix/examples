@@ -54,8 +54,16 @@ object IoTDeviceDFApp {
     df.registerTempTable("iot_devices_table")
 
     //issue select statements and then print the first 50 items from the results set
+    println("SELECT device_id, device_name FROM iot_devices_table")
     val results = sqlContext.sql("SELECT device_id, device_name FROM iot_devices_table")
     results.map(t => "Device Id: " + t(0) + " Device Name: " + t(1)).take(50).foreach(println)
+    println("Total number of devices selected: " + results.count())
+
+    //issue select statements and then print the first 50 items from the results set
+    println("SELECT device_id, device_name, humidity, temp FROM iot_devices_table WHERE humidity  >= 85 AND temp <= 20")
+    val results2 = sqlContext.sql("SELECT device_id, device_name, humidity, temp FROM iot_devices_table WHERE humidity  >= 85 AND temp <= 20")
+    results2.map(t => "[Device Id: " + t(0) + " Device Name: " + t(1) + " Humidity: " +  t(2) + " Temp: " + t (3) + " ]").take(50).foreach(println)
+    println("Total number of devices selected: " + results2.count())
 
   }
 }

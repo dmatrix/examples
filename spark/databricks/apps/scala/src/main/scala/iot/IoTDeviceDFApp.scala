@@ -1,6 +1,5 @@
 package main.scala.iot
 
-import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkContext, SparkConf}
 
 /**

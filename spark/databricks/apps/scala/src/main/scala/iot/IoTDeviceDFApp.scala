@@ -35,15 +35,28 @@ object IoTDeviceDFApp {
     //perform some operations on dataframes
     //select only device names
     df.select("device_name").show()
+
     //filter all devices who humidity is greater than 75 and show them
     df.filter(df("humidity") > 75).show()
+
     //group together all same zipcodes and count them
     df.groupBy("zipcode").count().show()
+
     //filter all devices with humidity greater than 75 and count them
     df.filter(df("humidity") > 85).groupBy("humidity").count()show()
+
     //filter all devices with temperature  greater than 35 and count them
     df.filter(df("temp") > 30).groupBy("temp").count()show()
+
     // filter by zipcodes
     df.groupBy("zipcode").count().show()
+
+    //Now register the dataframe as a table and issue SQL queries against it
+    df.registerTempTable("iot_devices_table")
+
+    //issue select statements and then print the first 50 items from the results set
+    val results = sqlContext.sql("SELECT device_id, device_name FROM iot_devices_table")
+    results.map(t => "Device Id: " + t(0) + " Device Name: " + t(1)).take(50).foreach(println)
+
   }
 }

@@ -15,7 +15,7 @@ public class ReverseString {
 		for (int i=0; i < arr.length/2; i++) {
 			c = arr[idx-i];
 			arr[idx-i] = arr[i];
-			arr[i] =c;
+			arr[i] = c;
 		}
 		return new String(arr);
 	}

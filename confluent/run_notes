@@ -47,5 +47,4 @@ TO USE THE SCALA SPARK STREAMING APP
 1. cd examples/confluent/streaming/subscribers/scala
 2. sbt clean package
 3. spark-submit --packages org.apache.spark:spark-streaming_2.10:1.6.0,org.apache.spark:spark-streaming-kafka_2.10:1.6.0,io.confluent:kafka-avro-serializer:1.0.1,org.apache.kafka:kafka_2.10:0.8.2.1,org.slf4j:slf4j-log4j12:1.6.1 --class main.scala.iot.DeviceIoTStreamApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar localhost:9092 devices humidity 60
-  
 

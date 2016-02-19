@@ -90,6 +90,7 @@ public class FindElement {
 	/**
 	 * Recusrive way to find an element in a large array. Split the array into halves, and acerstain
 	 * if the sought element is to the left of the middle elment or right. Repeat process unitl you find it.
+	 * This funciton presumes the array is sorted in an ascending order.
 	 * @param array
 	 * @param value
 	 * @param start

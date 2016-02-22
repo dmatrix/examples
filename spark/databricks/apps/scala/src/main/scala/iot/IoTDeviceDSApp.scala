@@ -3,8 +3,8 @@ package main.scala.iot
 import org.apache.spark.{SparkContext, SparkConf}
 
 //case class for the Device data
-//"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "lat": 51, "long": 51, "zipcode": 94844, "humidity": 64}
-case class DeviceData (deviceID: Long, deviceName: String, ts: Long, temp: Long, scale:String, lat: Long, long: Long, zip: Long, humidity: Long)
+//"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "lat": 51, "lng": 51, "zipcode": 94844, "humidity": 64}
+case class DeviceData (device_id: Long, device_name: String, timestamp: Long, temp: Long, scale:String, lat: Long, lng: Long, zipcode: Long, humidity: Long)
 
 /**
   * Created by jules on 2/9/16.
@@ -34,7 +34,14 @@ object IoTDeviceDSApp {
     //read the json file and create the dataframe
     import sqlContext.implicits._
 
-    val df = sqlContext.read.json(jsonFile).as[DeviceData]
-    df.show()
+    //convert the dataframe into a dataset using the case class DeviceData defined above.
+    val ds = sqlContext.read.json(jsonFile).as[DeviceData]
+    //show the datasets in a tabular form
+    ds.show(20)
+
+    //issue select, map, filter, foreach operations on the datasets, just as you would for RDDs
+    ds.printSchema()
+
+    ds.filter(_.humidity > 70).show()
   }
 }

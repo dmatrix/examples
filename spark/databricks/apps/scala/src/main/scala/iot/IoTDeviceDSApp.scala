@@ -2,6 +2,10 @@ package main.scala.iot
 
 import org.apache.spark.{SparkContext, SparkConf}
 
+//case class for the Device data
+//"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "lat": 51, "long": 51, "zipcode": 94844, "humidity": 64}
+case class DeviceData (deviceID: Long, deviceName: String, ts: Long, temp: Long, scale:String, lat: Long, long: Long, zip: Long, humidity: Long)
+
 /**
   * Created by jules on 2/9/16.
   * This simple Spark app shows the utility and ease with which you can read and process a large dataset of JSON file as structured data.
@@ -27,12 +31,8 @@ object IoTDeviceDSApp {
     val sc = new SparkContext(sparkConf)
     val sqlContext = new org.apache.spark.sql.SQLContext(sc)
 
-    import sqlContext.implicits._
-
-    //case class for the Device data
-    //"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "lat": 51, "long": 51, "zipcode": 94844, "humidity": 64}
-    case class DeviceData (deviceID: Int, deviceName: String, ts:Long, temp:Int, scale:String, lat:Int, long: Int, zip: Int, humidity: Int)
     //read the json file and create the dataframe
+    import sqlContext.implicits._
 
     val df = sqlContext.read.json(jsonFile).as[DeviceData]
     df.show()

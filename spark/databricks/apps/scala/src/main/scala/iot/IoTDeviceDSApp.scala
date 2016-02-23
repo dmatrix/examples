@@ -3,8 +3,8 @@ package main.scala.iot
 import org.apache.spark.{SparkContext, SparkConf}
 
 //case class for the Device data
-//"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "lat": 51, "lng": 51, "zipcode": 94844, "humidity": 64}
-case class DeviceData (device_id: Long, device_name: String, timestamp: Long, temp: Long, scale:String, lat: Long, lng: Long, zipcode: Long, humidity: Long)
+//"device_id": 12000, "device_name": "sensor-pad-12000gtYLp00o", "timestamp":1454965623, "temp": 20, "scale": "Celius", "latitude": 51, "longitude": 51, "zipcode": 94844, "humidity": 64}
+case class DeviceData (device_id: Long, device_name: String, timestamp: Long, temp: Long, scale:String, latitude: Long, longitude: Long, zipcode: Long, humidity: Long)
 
 /**
   * Created by jules on 2/9/16.
@@ -40,8 +40,13 @@ object IoTDeviceDSApp {
     ds.show(20)
 
     //issue select, map, filter, foreach operations on the datasets, just as you would for RDDs
-    ds.printSchema()
-
-    ds.filter(_.humidity > 70).show()
+    // convert the dataset to dataframe and use simple column name selects with the select() method.
+    ds.toDF().select("device_name", "device_id", "temp", "humidity").show(20)
+    // filter out dataset rows that meet the temperature and humimdity predicate
+    ds.filter (d => {d.temp > 30 && d.humidity > 70}).show(20)
+    //use map() methods
+    ds.map(d => {d.toString}).show(20)
+    ds.map(d => {d.device_name}).show(20)
+    ds.foreach(println(_))
   }
 }

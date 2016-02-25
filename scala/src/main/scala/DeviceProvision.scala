@@ -98,12 +98,11 @@ object DeviceProvision {
 		dmap.put("timestamp", timestamp.toString)
 		dmap.put("temp", temp.toString)
 		dmap.put("scale", "Celcius")
-		dmap.put("lat", xcoor.toString)
-		dmap.put("long", xcoor.toString)
+		dmap.put("latitude", xcoor.toString)
+		dmap.put("longitude", xcoor.toString)
 		dmap.put("zipcode", zip.toString)
 		dmap.put("humidity", humidity.toString)
-		//val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
-		//println(djson)
+
 		return dmap
 	}
 

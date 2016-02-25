@@ -26,11 +26,11 @@ object GenerateIoTDeviceData {
           val timestamp: Int = elem.get("timestamp").get.toInt
           val temp: Int = elem.get("temp").get.toInt
           val scale: String = elem.get("scale").get.toString
-          val xcoor: Int = elem.get("lat").get.toInt
-          val ycoor: Int = elem.get("long").get.toInt
+          val xcoor: Int = elem.get("latitude").get.toInt
+          val ycoor: Int = elem.get("longitude").get.toInt
           val zip: Int = elem.get("zipcode").get.toInt
           val humidity: Int = elem.get("humidity").get.toInt
-          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"lat\": %d, \"long\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
+          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"latitude\": %d, \"longitude\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
 
           w.write(djson)
           w.write("\n") }

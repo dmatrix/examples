@@ -14,7 +14,7 @@ case class DeviceData (device_id: Long, device_name: String, timestamp: Long, te
   *
   * All very easy and intuitive to use.
   *
-  * spark-submit --class main.scala.iot.IoTDeviceDSApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar <path_to_json_file>
+  * spark-submit --class main.scala.iot.IoTDeviceDSApp --master local[6] target/scala-2.10/spark-device-iot-app_2.10-1.0.jar <path_to_json_file>
   */
 object IoTDeviceDSApp {
 
@@ -44,6 +44,8 @@ object IoTDeviceDSApp {
     ds.toDF().select("device_name", "device_id", "temp", "humidity").show(20)
     // filter out dataset rows that meet the temperature and humimdity predicate
     ds.filter (d => {d.temp > 30 && d.humidity > 70}).show(20)
+    // a more complicated query
+    ds.filter (d => {d.temp > 30 && d.humidity > 70}).toDF().groupBy($"zipcode").avg("temp").show(50)
     //use map() methods
     ds.map(d => {d.toString}).show(20)
     ds.map(d => {d.device_name}).show(20)

@@ -27,10 +27,12 @@ public class HashTable2 {
      */
     public boolean isPrime(int number) {
         // Eliminate the need to check versus even numbers, since no prime number can be an even, except for 2
+        if (number == 2 ) return true;
+        // eliminate all even numbers
         if (number % 2 == 0)
             return false;
-        // Check against all odd numbers: any number multiplied by 3 will alwasy result in an odd number
-        for (int i = 3; i * i <= number; i += 2) {
+        // Check against all odd numbers: any number multiplied by 3 will always result in an odd number
+        for (int i = 3; 3 * i <= number; i += 2) {
             if (number % i == 0)
                 return false;
         }

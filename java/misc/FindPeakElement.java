@@ -33,7 +33,7 @@ public class FindPeakElement {
      */
     public static int findPeak(int[] numbers, int start, int end) {
 
-        if (end == 0) return numbers[0];
+        if (end == 0) return numbers[end];
 
         int midpoint = end/ 2;
         if (numbers[midpoint] < numbers[midpoint-1]) {

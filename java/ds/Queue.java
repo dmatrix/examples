@@ -15,7 +15,7 @@ public class Queue {
 	private int numberOfItems;
 
 	/**
-	 * The constructor for the Queu
+	 * The constructor for the Queue
 	 * @param size
      */
 	public Queue (int size) {

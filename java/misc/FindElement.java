@@ -69,7 +69,7 @@ public class FindElement {
 		}
 	}
 	/**
-	 * Finde avarge or mean of this sorted array
+	 * Find average or mean of this sorted array
 	 * @param array
 	 * @return avearge or mean
      */

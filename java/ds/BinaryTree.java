@@ -83,7 +83,7 @@ public class BinaryTree {
     }
 
     /**
-     * Traverse in the inorder.
+     * Traverse in the inorder. This is the sorted order.
      * 1. Go down the left's nodes' children recursively until no children
      * 2. Print Node's key
      * 3. Go down the right nodes' children recursively until no children
@@ -103,7 +103,7 @@ public class BinaryTree {
     }
 
     /**
-     * Travefse in the preorder
+     * Travere in the preorder
      * 1. Print Node's key
      * 2. Go down the left's nodes' children recursively until no children
      * 3. Go down the right nodes' children recursively until no children
@@ -413,7 +413,7 @@ public class BinaryTree {
     public static void main(String[] args) {
         BinaryTree theTree = new BinaryTree();
         //generate random numbers so we don't get an unbalanced tree
-        int maxKeys = 15;
+        int maxKeys = 4;
         for (int i = 0 ; i < maxKeys; i++) {
             int key = ThreadLocalRandom.current().nextInt(1, 85);
             //only insert if no key already exits
@@ -474,5 +474,19 @@ public class BinaryTree {
         System.out.println("Min Value:" + theTree.findMinValue(theTree.getRoot()));
         System.out.println("Binary Tree Height: " + theTree.findHeight(theTree.getRoot()));
         theTree.inOrderTraverseTree(theTree.root);
+
+        int[] array = {49, 46, 41, 48, 79};
+        BinaryTree tree2 = new BinaryTree();
+        for (int i = 0; i < array.length; i++) {
+            tree2.addNode(array[i], Integer.toString(array[i]));
+        }
+        System.out.println("New Tree:");
+        System.out.println("In-order Traversal: ");
+        tree2.inOrderTraverseTree(tree2.getRoot());
+        System.out.println("\nPre-order Traversal: ");
+        tree2.preorderTraverseTree(tree2.getRoot());
+        System.out.println("\nPost-order Traversal: ");
+        tree2.postOrderTraverseTree(tree2.root);
+
     }
 }

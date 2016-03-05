@@ -7,12 +7,22 @@ public class TrimSpaces {
 	public TrimSpaces(String pString) {
 		mString = pString;
 	}
-	
+
+	/**
+	 * trim front, embedded and trailing spaces
+	 * @return
+     */
 	public String trim() {
 		char[] arr = mString.toCharArray();
 		StringBuffer b = new StringBuffer();
+		/** flags for where to stop for the front and back
+		 * set front to true when first non-space is encountered.
+		 * set back to true when the first non-space characers is encountered from the back
+		 */
 		boolean front = false, back = false;
+		// keep track of the front and back indexes to keep track
 		int frontIndex = 0, len = arr.length, backIndex = len-1;
+		//since we are starting both from the front and back only traverse to the midpoint
 		for (int i = 0; i < len/2; i++) {
 			if (front && back)
 				break;
@@ -25,8 +35,10 @@ public class TrimSpaces {
 				back=true;
 			}
 		}
+		//copy the array from the frontIndex to the backIndex and if there are embedded spaces remove them
 		for (int i = frontIndex; i <= backIndex; i++) {
-			b.append(arr[i]);
+			if (arr[i] != ' ')
+				b.append(arr[i]);
 		}
 
 		return b.toString();

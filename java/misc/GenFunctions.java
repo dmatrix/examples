@@ -124,7 +124,75 @@ public class GenFunctions {
         }
         return lst.get(lst.size()-1);
     }
+
+    /**
+     * Trim extra spaces withouth using replace or reg Ex
+     * @param str
+     * @return trimmed string
+     */
+    public static String trimExtraSpaces(String str) {
+        if (str == null) return null;
+        if (str.length() == 1 || str.length() == 0) return str;
+        StringBuffer b = new StringBuffer();
+        String[] tokens = str.split(" ");
+        for (String t: tokens) {
+            if (t.length() == 0)
+                continue;
+            b.append(t);
+            b.append(' ');
+        }
+        return b.toString();
+    }
+
+    /**
+     * Find if a number can be expressed as an exponent of the base
+     * @param N
+     * @param base
+     * @return exponent
+     */
+    public static int findExponent(int N, int base) {
+        int sum = 0;
+        int exp = -1;
+        for (int i = 1; ; i++) {
+            sum = sum * base;
+            if (sum == 0) {
+                sum = base;
+            }
+            if (sum == N) {
+                if (sum == base)
+                    exp = 0;
+                else
+                    exp = i++;
+                break;
+            }
+            if (sum > N)
+                break;
+        }
+        return exp;
+    }
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
+
+        if (args.length < 0) {
+            System.out.println("need at least one String argument");
+        }
+        for (String arg: args) {
+            String trim = trimExtraSpaces(arg);
+            System.out.println("Original string:" + arg);
+            System.out.println("Trimmed string :" + trim);
+        }
+        int [] numbers = {25, 5, 17, 10, 21, 125, 625};
+        for (int n: numbers) {
+            int exp = findExponent(n, 5);
+            if (exp >= 0) {
+                System.out.println(n + " == " + 5 + " ^ " + exp);
+            } else {
+                System.out.println(n + " ==  Not expressible as an exponent of " + 5 );
+            }
+        }
 
     }
 }

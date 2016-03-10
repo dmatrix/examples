@@ -1,5 +1,5 @@
 package main.scala
-import scala.collection.mutable.Map
+import scala.collection.mutable.{StringBuilder, Map}
 
 /**
 	* This example illustrates how to use a Singleton scala object with the same names as the class object, within the
@@ -13,7 +13,7 @@ object DeviceProvision {
 	val rnd = new util.Random()
 
 	/**
-		* Get a randome from within the specifed range
+		* Get a random from within the specified range
 		* @param from
 		* @param to
 		* @return generated number
@@ -46,6 +46,29 @@ object DeviceProvision {
 	def getY(): Int = {
 		val y: Int = getRandomNumber(10, 100)
 		return y
+	}
+
+	/**
+		* Construct an IP address
+		* @return String as an IP address
+    */
+	def getIP(): String = {
+
+		val ip1 = getRandomNumber(10, 192)
+		val ip2 = getRandomNumber(1, 255)
+		val ip3 = getRandomNumber(1, 255)
+		val ip4 = getRandomNumber(1, 255)
+
+		var sb = new StringBuilder()
+		sb.append(ip1.toString)
+		sb.append('.')
+		sb.append(ip2.toString)
+		sb.append('.')
+		sb.append(ip3.toString)
+		sb.append('.')
+		sb.append(ip4.toString)
+
+		return sb.toString()
 	}
 
 	/**
@@ -92,6 +115,7 @@ object DeviceProvision {
 		val zip = getZipCode()
 		val xcoor = getX();
 		val ycoor = getY();
+		val ip = getIP()
 		val timestamp: Long = System.currentTimeMillis / 1000
 		dmap.put("device_name", dev)
 		dmap.put("device_id", id.toString)
@@ -100,6 +124,7 @@ object DeviceProvision {
 		dmap.put("scale", "Celcius")
 		dmap.put("latitude", xcoor.toString)
 		dmap.put("longitude", xcoor.toString)
+		dmap.put("ip", ip)
 		dmap.put("zipcode", zip.toString)
 		dmap.put("humidity", humidity.toString)
 

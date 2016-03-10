@@ -28,9 +28,10 @@ object GenerateIoTDeviceData {
           val scale: String = elem.get("scale").get.toString
           val xcoor: Int = elem.get("latitude").get.toInt
           val ycoor: Int = elem.get("longitude").get.toInt
+          val ip: String = elem.get("ip").get.toString
           val zip: Int = elem.get("zipcode").get.toInt
           val humidity: Int = elem.get("humidity").get.toInt
-          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"latitude\": %d, \"longitude\": %d, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, zip, humidity)
+          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"latitude\": %d, \"longitude\": %d, \"ip\": %s, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
 
           w.write(djson)
           w.write("\n") }

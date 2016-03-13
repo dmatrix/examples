@@ -8,7 +8,7 @@ class ChecksumAccumulator {
   private var sum = 0
   /**
     * a method with side effect. the value returned is not the sum, but Unit. Indeed, as such
-    * it's a procedure
+    * it's a procedure, not a pure function in the Scala sense.
     * @param b
     */
   def add(b: Byte) = { sum += b }

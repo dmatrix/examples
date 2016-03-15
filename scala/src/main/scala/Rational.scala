@@ -125,8 +125,7 @@ class Rational (n: Int, d: Int) {
     * @param that
     * @return Rataionl
     */
-  def max (that: Rational): Rational =
-    if (this.lessThan(that)) that else this
+  def max (that: Rational): Rational = if (this.lessThan(that)) that else this
 
   /**
     * Method to commute the greates common divisor so that we can normalize our Rational Numbers
@@ -134,8 +133,7 @@ class Rational (n: Int, d: Int) {
     * @param b
     * @return Int as the greatest common divisor of a and b
     */
-  private def gcd (a: Int, b: Int): Int =
-    if (b == 0) a else return gcd (b, a % b)
+  private def gcd (a: Int, b: Int): Int = if (b == 0) a else  gcd (b, a % b)
 }
 
 object Rational {

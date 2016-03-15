@@ -25,15 +25,14 @@ object GenerateGeoIPIoTDeviceData {
   val timeDelta = 150000
 
   def getDeviceName(id: Int): String = {
-    var device: String = ""
-      if (id % 2 == 0) {
-        device = "sensor-pad-" + id.toString + getRandomString()
+    val device = if (id % 2 == 0) {
+        "sensor-pad-" + id.toString + getRandomString()
       } else if (id % 3 == 0) {
-        device = "device-mac-" + id.toString + getRandomString()
+        "device-mac-" + id.toString + getRandomString()
       } else if (id % 5 == 0) {
-        device = "therm-stick-" + id.toString + getRandomString()
+        "therm-stick-" + id.toString + getRandomString()
       } else {
-        device = "meter-gauge-" + id.toString + getRandomString()
+        "meter-gauge-" + id.toString + getRandomString()
       }
       return device
   }
@@ -119,10 +118,10 @@ object GenerateGeoIPIoTDeviceData {
         println("IO Exception")
       }
     } finally  {
-      if (id > 0)
-        println("JSON device file " + args(2) + " created with " + (id) + " devices.")
       if (w != null)
         w.close()
+      println()
+      println(if (id > 0) "JSON device file " + args(2) + " created with " + (id) + " devices.")
     }
   }
 }

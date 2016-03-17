@@ -3,7 +3,7 @@ import scala.collection.mutable.{StringBuilder, Map}
 
 /**
 	* This example illustrates how to use a Singleton scala object with the same names as the class object, within the
-	* same file. Note that as Singleton object, it can be use outside this class as well.
+	* same file. As such the singletone becomes a companion. Note that as Singleton object, it can be use outside this class as well.
 	*/
 object DeviceProvision {
 
@@ -29,6 +29,27 @@ object DeviceProvision {
 	def getZipCode(): Int = {
 		return getRandomNumber(94538, 97107)
 	}
+
+	/**
+		* Get C02 emission levels, which can range from 800 pmm to 16000 ppm (parts per million)
+		* @return
+    */
+	def getC02Level(): Int = {
+		getRandomNumber(800, 1600)
+	}
+
+	/** Get the corrosponding LCD light for the C02 level
+		*
+		* @param l
+		* @return
+    */
+	def getC02LCD(l: Int): String = (
+		if (l <= 1000)
+			"green"
+		else if (l > 1000 && l <= 1400)
+			"yellow"
+		else
+			"red" )
 
 	/**
 		* Generate a random X coordinate

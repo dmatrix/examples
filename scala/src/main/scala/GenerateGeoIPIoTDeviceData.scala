@@ -4,7 +4,7 @@ import java.io.{IOException, File, PrintWriter}
 
 import scala.collection.mutable.Map
 import scala.io.Source
-import DeviceProvision.{getHumidity, getRandomString, getTemperature, getRandomNumber}
+import DeviceProvision.{getHumidity, getRandomString, getTemperature, getRandomNumber, getC02LCD, getC02Level}
 
 /**
   * author: Jules S. Damji
@@ -58,6 +58,8 @@ object GenerateGeoIPIoTDeviceData {
       val temperature = getTemperature()
       val humidity = getHumidity()
       val battery  = getRandomNumber(0, 10)
+      val c02 = getC02Level()
+      val c02LCD = getC02LCD(c02)
       val timestamp: Long = System.currentTimeMillis + timeDelta
 
       djson = "{\"device_id\": %d, " +
@@ -72,7 +74,9 @@ object GenerateGeoIPIoTDeviceData {
         "\"temp\": %d, " +
         "\"humidity\": %d, " +
         "\"battery_level\": %d, " +
-        "\"timestamp\" :%d }" format(id, deviceName, ip, cca2, cca3, cn, latitude, longitude, temperature, humidity, battery, timestamp)
+        "\"c02_level\": %d, " +
+        "\"lcd\": \"%s\", " +
+        "\"timestamp\" :%d }" format(id, deviceName, ip, cca2, cca3, cn, latitude, longitude, temperature, humidity, battery, c02, c02LCD, timestamp)
     }
     djson
   }

@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Thu, 17 Mar 2016 00:39:53 UTC
+// Databricks notebook source exported at Thu, 17 Mar 2016 00:51:21 UTC
 import main.scala._
 import main.scala.DeviceIoTData
 import org.apache.spark.{SparkContext, SparkConf}
@@ -6,7 +6,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 
 // COMMAND ----------
 
-// MAGIC %md Use the case class so that we can use a Dataset and Dataframe interchangably
+// MAGIC %md Use the case class so that we can interchangelbly use a Dataset and Dataframe
 // MAGIC Case class for mapping to a Dataset for the JSON {"device_id": 198164, "device_name": "sensor-pad-198164owomcJZ", "ip": "80.55.20.25", "cca2": "PL", "cca3": "POL", "cn": "Poland", "latitude": 53.080000, "longitude": 18.620000, "scale": "Celius", "temp": 21, "humidity": 65, "battery_level": 8, "c02_level": 1408, "lcd": "red", "timestamp" :1458081226051 }
 
 // COMMAND ----------
@@ -16,6 +16,7 @@ import org.apache.spark.{SparkContext, SparkConf}
 val jsonFile = "/FileStore/tables/hll2y8jf1458081917577/iot_devices.json"
 
 //read the json file and create the dataset using the case class
+// ds is now a collection of org.apache.spark.sql.Row
 val ds = sqlContext.read.json(jsonFile).as[DeviceIoTData]
 
 //show Dataset's first 20 rows
@@ -62,7 +63,7 @@ dsGroupBy.show(10)
 
 // COMMAND ----------
 
-// MAGIC %md Save the Dataset as a temporary table and issue SQL queires against it.
+// MAGIC %md Save the Dataset, after converting to Dataframe, as a temporary table and issue SQL queries against it.
 
 // COMMAND ----------
 
@@ -91,7 +92,3 @@ ds.toDF().registerTempTable("iot_device_data")
 // COMMAND ----------
 
 // MAGIC %sql select cca3, count(distinct device_id) as device_id from iot_device_data where battery_level == 0 group by cca3 order by device_id desc limit 100
-
-// COMMAND ----------
-
-

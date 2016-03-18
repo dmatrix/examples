@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Thu, 17 Mar 2016 21:58:31 UTC
+// Databricks notebook source exported at Fri, 18 Mar 2016 00:36:43 UTC
 // MAGIC %md ## How to Process IoT Device Data using Datasets and Dataframes - Part 2
 
 // COMMAND ----------
@@ -50,7 +50,8 @@ ds.take(10).foreach(println(_))
 
 //issue select, map, filter, foreach operations on the datasets, just as you would for Dataframes
 // convert the dataset to dataframe and use simple column name select() method.
-ds.filter(d => {d.temp > 25 && d.humidity > 70}).toDF().select("device_name", "device_id", "temp", "humidity").orderBy($"temp".desc).show(10)
+val dsTemps = ds.filter(d => {d.temp > 30 && d.humidity > 70}).toDF().select("device_name", "device_id", "temp", "humidity").orderBy($"temp".desc).show(10)
+
 
 // COMMAND ----------
 
@@ -67,8 +68,8 @@ val dsFilter = ds.filter (d => {d.temp > 30 && d.humidity > 70}).take(10).foreac
 
 // COMMAND ----------
 
-def logBatteryReplacement(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row): Unit = {
-val message = "[***ALERT***: BATTERY NEEDS REPLACEMENT: device_name: %s; device_id: %s ; cca3: %s]" format(row(0), row(1), row(2))
+def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row, alert: String): Unit = {
+val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" format(alert, row(0), row(1), row(2))
   log.println(message)
 }
 
@@ -84,9 +85,16 @@ val message = "[***ALERT***: BATTERY NEEDS REPLACEMENT: device_name: %s; device_
 // COMMAND ----------
 
 //filter dataset rows with battery level == 0 and apply our defined funcion to each element to log an alert.
-val dsBatteryZero = ds.filter (d => {d.battery_level == 0}).toDF().select("device_name", "device_id", "cca3")
-//apply logBatteryReplacement() method on the new Dataset
-dsBatteryZero.foreach(d => logBatteryReplacement(Console.err, d))
+val dsBatteryZero = ds.filter(d => {d.battery_level == 0}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "REPLACE DEVICE BATTERY"))
+
+// COMMAND ----------
+
+// MAGIC %md Check the cluser logs for this alert
+
+// COMMAND ----------
+
+// filter datasets with dangerous levels of C02 and apply our defined function to each element to log an alert.
+val dsHighC02Levels = ds.filter(d => {d.c02_level > 1400 && d.lcd == "red"}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "DEVICE DETECTS HIGH LEVELS OF C02 LEVELS"))
 
 // COMMAND ----------
 
@@ -95,7 +103,7 @@ dsBatteryZero.foreach(d => logBatteryReplacement(Console.err, d))
 // COMMAND ----------
 
 // apply filter, convert to dataframe, groupBy, and compute average
-val dsGroupBy = ds.filter (d => {d.temp > 30 && d.humidity > 70}).toDF().groupBy($"cca3").avg("temp")
+val dsGroupBy = ds.filter ( d => {d.temp > 30 && d.humidity > 70} ).toDF().groupBy($"cca3").avg("temp")
 dsGroupBy.show(10)
 
 // COMMAND ----------

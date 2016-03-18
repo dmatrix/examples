@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Fri, 18 Mar 2016 02:07:03 UTC
+// Databricks notebook source exported at Fri, 18 Mar 2016 02:12:35 UTC
 // MAGIC %md ## How to Process IoT Device JSON Datasets using Datasets and Dataframes - Part 2
 
 // COMMAND ----------
@@ -14,7 +14,7 @@
 // MAGIC * [Scala Libraries](https://github.com/dmatrix/examples/tree/master/scala/src/main/scala)
 // MAGIC * [Scala Notebooks](https://github.com/dmatrix/examples/tree/master/spark/databricks/notebooks/scala)
 // MAGIC 
-// MAGIC Beside importing this notebook into your Databricks Cloud, you can also watch a [screencast]()
+// MAGIC Beside [importing this notebook](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/IoTDeviceGeoIPDS.scala) into your Databricks Cloud, you can also watch a [screencast]()
 
 // COMMAND ----------
 
@@ -25,7 +25,9 @@ import org.apache.spark.{SparkContext, SparkConf}
 // COMMAND ----------
 
 // MAGIC %md Use the case class *DeviceIoTData* to convert the JSON device data into a Scala object.
-// MAGIC Case class for mapping to a Dataset for the JSON {"device_id": 198164, "device_name": "sensor-pad-198164owomcJZ", "ip": "80.55.20.25", "cca2": "PL", "cca3": "POL", "cn": "Poland", "latitude": 53.080000, "longitude": 18.620000, "scale": "Celius", "temp": 21, "humidity": 65, "battery_level": 8, "c02_level": 1408, "lcd": "red", "timestamp" :1458081226051 }
+// MAGIC Case class for mapping to a Dataset for the JSON 
+// MAGIC 
+// MAGIC *{"device_id": 198164, "device_name": "sensor-pad-198164owomcJZ", "ip": "80.55.20.25", "cca2": "PL", "cca3": "POL", "cn": "Poland", "latitude": 53.080000, "longitude": 18.620000, "scale": "Celius", "temp": 21, "humidity": 65, "battery_level": 8, "c02_level": 1408, "lcd": "red", "timestamp" :1458081226051 }*
 
 // COMMAND ----------
 

@@ -1,13 +1,13 @@
-// Databricks notebook source exported at Fri, 18 Mar 2016 02:12:35 UTC
+// Databricks notebook source exported at Fri, 18 Mar 2016 02:52:57 UTC
 // MAGIC %md ## How to Process IoT Device JSON Datasets using Datasets and Dataframes - Part 2
 
 // COMMAND ----------
 
-// MAGIC %md As in the [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity of using Spark on the Databricks Cloud, without need to provisiom nodes, without need to manage clusters; all is done for you in this free [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
+// MAGIC %md As in [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity with which you can use Spark on the Databricks Cloud, without need to provision nodes, without need to manage clusters, and without need to download a sandbox; all done for you, all free with [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
 // MAGIC 
-// MAGIC With the introduction of [Dataframes](http://spark.apache.org/docs/latest/sql-programming-guide.html#dataframes) in Apache Spark 1.3 and [Datasets](https://databricks.com/blog/2016/01/04/introducing-spark-datasets.html) preview in 1.6, this notebook uses its APIs to show how you can quickly process structued data (JSON) with an inherent schema, intuitively compose relational queries using APIs, and, finally, against a temporary table, issue SQL like queries. By using notebook's myriad plotting options, the results from the SQL queries can be visualized for presenation and narration. Even better, these plots can be added to your dashboard.
+// MAGIC With the introduction of [Dataframes](http://spark.apache.org/docs/latest/sql-programming-guide.html#dataframes) in Apache Spark 1.3 and [Datasets](https://databricks.com/blog/2016/01/04/introducing-spark-datasets.html) preview in 1.6, in this notebook I use both sets of APIs to show how you can quickly process structued data (JSON) with an inherent and infered schema, intuitively compose relational queries, and, finally, against a temporary table, issue [Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) queries. By using notebook's myriad plotting options, you can visualize results for presenation and narration. Even better, you can save these plots as dashboards.
 // MAGIC 
-// MAGIC In this second part, I have augmented the device dataset to include additional attributes, such as GeoIP locations, an idea borrowed from [AdTech Sample Notebook](https://cdn2.hubspot.net/hubfs/438089/notebooks/Samples/Miscellaneous/AdTech_Sample_Notebook_Part_1.html), as well as additional device attributes on which we can log alerts. Unlike the dataset size in [Part 1](http://bit.ly/1RhErbF), I uploaded close to 200K devices, curtailing from 2M entries to a smaller dataset.
+// MAGIC In this second part, I have augmented the device dataset to include additional attributes, such as GeoIP locations, an idea borrowed from [AdTech Sample Notebook](https://cdn2.hubspot.net/hubfs/438089/notebooks/Samples/Miscellaneous/AdTech_Sample_Notebook_Part_1.html), as well as additional device attributes on which we can log alerts, for instance *device_battery* levels or *C02* levels. Unlike the dataset size in [Part 1](http://bit.ly/1RhErbF), I upload close to 200K devices, curtailing from original 2M entries, as a smaller dataset.
 // MAGIC 
 // MAGIC Again, all code is availabe on my github:
 // MAGIC * [Python Scripts](https://github.com/dmatrix/examples/tree/master/py/ips)
@@ -163,6 +163,12 @@ ds.toDF().registerTempTable("iot_device_data")
 // COMMAND ----------
 
 // MAGIC %md ##Conclusion
+// MAGIC 
+// MAGIC In this two part series of notebooks, we got a glimpse of simple ways to use Spark, saw the potential to process relatively large dataset garnered from IoT connected devices, got a feel to use Dataframes and Dataset APIs, with relative easy and comfort, visualize all our results, and finally introduction to Databricks Cloud Community Edition.
+// MAGIC 
+// MAGIC Though the dataset generated was a simulation, it does not preclude you from using real datasets, garnered from your data sources. For the outcome would be no different, only the manner in which you transform your data with the APIs and your Scala case class that reflects the inherent schema in your JSON data would be different. 
+// MAGIC 
+// MAGIC If you haven't signed up for Databricks Community Edition, what you waiting for?
 
 // COMMAND ----------
 

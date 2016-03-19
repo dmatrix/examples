@@ -1,16 +1,16 @@
-// Databricks notebook source exported at Sat, 19 Mar 2016 17:43:12 UTC
-// MAGIC %md ## How to Process IoT Device JSON Datasets using Datasets and Dataframes - Part 2
+// Databricks notebook source exported at Sat, 19 Mar 2016 23:17:44 UTC
+// MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
 
 // MAGIC %md #### Pursuing simplicity and ubiquity
-// MAGIC "Spark is a developer's delight" is a common refrain heard among Spark's developer community. Since its inception the vision?the guiding North Star?to make big data processing simple at scale has not faded. In fact, each subsequent release of Apache Spark, from 1.0 to 1.6, seems to have adhered to that guiding principle?in its architecture, in its consistent APIs across programming languages, and in its unification of major library components built atop the Spark core.
+// MAGIC "Spark is a developer's delight" is a common refrain heard among Spark's developer community. Since its inception the vision?the guiding North Star?to make big data processing simple at scale has not faded. In fact, each subsequent release of Apache Spark, from 1.0 to 1.6, seems to have adhered to that guiding principle?in its architecture, in its consistent APIs across programming languages, and in its unification of major library components built atop the Spark core that can handle a shared data abstraction such as RDDs, DataFrames, or Datasets.
 // MAGIC 
-// MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." And they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the roadmap attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be) to the community so everyone can get the "feel of Spark." 
+// MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." And they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the release road map attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be) to the community so everyone can get the "feel of Spark." 
 // MAGIC 
 // MAGIC And for us to get that "feel of Spark," as in [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity with which you can use Spark on the Databricks Cloud, without need to provision nodes, without need to manage clusters; all done for you, all free with [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
 // MAGIC 
-// MAGIC With [Dataframes](http://spark.apache.org/docs/latest/sql-programming-guide.html#dataframes) (introduced in 1.3) and [Datasets](https://databricks.com/blog/2016/01/04/introducing-spark-datasets.html) (previewed in 1.6), in this notebook I use both sets of APIs to show how you can quickly process structued data (JSON) with an inherent and inferred schema, intuitively compose relational queries, and finally issue [Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) queries against a table. By using notebook's myriad plotting options, you can visualize results for presenation and narration. Even better, you can save these plots as dashboards.
+// MAGIC With [DataFrames](http://spark.apache.org/docs/latest/sql-programming-guide.html#dataframes) (introduced in 1.3) and [Datasets](https://databricks.com/blog/2016/01/04/introducing-spark-datasets.html) (previewed in 1.6), in this notebook I use both sets of APIs to show how you can quickly process structured data (JSON) with an inherent and inferred schema, intuitively compose relational queries, and finally issue [Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) queries against a table. By using notebook's myriad plotting options, you can visualize results for presenation and narration. Even better, you can save these plots as dashboards.
 // MAGIC 
 // MAGIC In this second part, I have augmented the device dataset to include additional attributes, such as GeoIP locations, an idea borrowed from [AdTech Sample Notebook](https://cdn2.hubspot.net/hubfs/438089/notebooks/Samples/Miscellaneous/AdTech_Sample_Notebook_Part_1.html), as well as additional device attributes on which we can log alerts, for instance *device_battery* levels or *C02* levels. Unlike the dataset size in [Part 1](http://bit.ly/1RhErbF), I upload close to 200K devices, curtailing from original 2M entries, as a smaller dataset for rapid prototyping.
 // MAGIC 
@@ -55,8 +55,8 @@ val jsonFile = "/FileStore/tables/hll2y8jf1458081917577/iot_devices.json"
 //read the json file and create the dataset from the case class
 // ds is now a collection of org.apache.spark.sql.Row
 val ds = sqlContext.read.json(jsonFile).as[DeviceIoTData]
-//show Dataset's first 5 rows
-ds.show(5)
+//show Dataset's 1000 rows
+display(ds)
 
 // COMMAND ----------
 
@@ -76,11 +76,11 @@ ds.take(10).foreach(println(_))
 
 // COMMAND ----------
 
-// MAGIC %md Because the Dataset API in 1.6.1 is experimental, and not all relational query functionality for writing complex expressions available since it is still under flux and development, I have elected, where necessary, to convert dataset to its equivalent dataframe. Against this dataframe, I write in-depth relation expressions.
+// MAGIC %md Because the Dataset API in 1.6.1 is experimental, and not all relational query functionality for writing complex expressions available since it is still under flux and development, I have elected, where necessary, to convert Dataset to its equivalent DataFrame. Against this dataframe, I write in-depth relation expressions.
 // MAGIC 
 // MAGIC For all relational expressions, the [Catalyst Optimizer](https://databricks.com/blog/2015/04/13/deep-dive-into-spark-sqls-catalyst-optimizer.html) will formulate an optimized logical and physical plan for execution, and [Tungsten](https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html) engine will efficiently execute and optimize code. For our *DeviceIoTData*, it will use its standard encoders to optimize its binary internal representation, hence decrease the size of generated code, minimize the bytes transfered over the networks between nodes, and execute faster.
 // MAGIC 
-// MAGIC For instance, let's first filter the device dataset on *temp* and *humidity* attributes with a predicate, convert the resulting Dataset into its Dataframe, and then select column by names, order by temperature (in a descending order), and, finally display the first 10 items.
+// MAGIC For instance, let's first filter the device dataset on *temp* and *humidity* attributes with a predicate, convert the resulting Dataset into its DataFrame, and then select column by names, order by temperature (in a descending order), and, finally display the first 10 items.
 
 // COMMAND ----------
 
@@ -88,9 +88,11 @@ ds.take(10).foreach(println(_))
 
 // COMMAND ----------
 
-//issue select, map, filter, foreach operations on the datasets, just as you would for Dataframes
+//issue select, map, filter, foreach operations on the datasets, just as you would for DataFrames
 // convert the dataset to dataframe and use simple column name select() method.
-val dsTemps = ds.filter(d => {d.temp > 30 && d.humidity > 70}).toDF().select("device_name", "device_id", "temp", "humidity").orderBy($"temp".desc).show(10)
+val dsTemps = ds.filter(d => {d.temp > 30 && d.humidity > 70}).toDF().select("device_name", "device_id", "temp", "humidity").orderBy($"temp".desc)
+// some the new transformed dataset
+display(dsTemps)
 
 
 // COMMAND ----------
@@ -122,7 +124,7 @@ val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" fo
 // MAGIC %md Check the cluster's stderr log, where these alert messages
 // MAGIC are logged.
 // MAGIC 
-// MAGIC *Note* that for this notebook I'm logging to stderr, but in production I could do an HTTP POST to a listening or monitering service, issue SNMP alert, or notify Nagios service.
+// MAGIC *Note* that for this notebook I'm logging to stderr, but in production I could do an HTTP POST to a listening or monitering service, issue SNMP alerts, notify Nagios service, publish it on [PuNub](https://www.pubnub.com/) or [Confluent](http://www.confluent.io/) publish/subscribe networks and platforms. 
 
 // COMMAND ----------
 
@@ -144,7 +146,7 @@ val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).to
 
 // COMMAND ----------
 
-// MAGIC %md Since I'm having loads of fun and feeling adventurous, I'll string together a relational query expression on my Dataset. For instance, do a filter, convert to dataframe, groupBy, and compute average.
+// MAGIC %md Since I'm having loads of fun and feeling adventurous, I'll string together a relational query expression on my Dataset. For instance, do a filter, convert to DataFrame, groupBy, and compute average.
 // MAGIC 
 // MAGIC Look at Spark Jobs' DAGs to visualize the stages and where Tungsten comes into play to execute the physical plan.
 
@@ -152,7 +154,7 @@ val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).to
 
 // apply filter, convert to dataframe, groupBy, and compute average
 val dsGroupBy = ds.filter ( d => {d.temp > 30 && d.humidity > 70} ).toDF().groupBy($"cca3").avg("temp")
-dsGroupBy.show(10)
+display(dsGroupBy)
 
 // COMMAND ----------
 
@@ -164,11 +166,11 @@ dsGroupBy.show(10)
 // MAGIC 
 // MAGIC Data without visualization, withouth a narrative arc, to infer insights or to see a trend is useless. We always desire to make sense of the results.
 // MAGIC 
-// MAGIC By saving our Dataset, after converting to Dataframe, as a temporary table, I can issue complex SQL queries against it and visualize the results, using notebook's myriad plotting options.
+// MAGIC By saving our Dataset, after converting to DataFrame, as a temporary table, I can issue complex SQL queries against it and visualize the results, using notebook's myriad plotting options.
 
 // COMMAND ----------
 
-ds.toDF().registerTempTable("iot_device_data")
+Fds.toDF().registerTempTable("iot_device_data")
 
 // COMMAND ----------
 
@@ -214,7 +216,7 @@ ds.toDF().registerTempTable("iot_device_data")
 
 // MAGIC %md ####Conclusion
 // MAGIC 
-// MAGIC In this two part series of notebooks, we got a glimpse of simple ways to use Spark, saw the potential to process relatively large structured dataset garnered from IoT connected devices, got a feel for Dataframes and Dataset APIs, and with relative easy and comfort visualize all our results, all from within Databricks Cloud Community Edition, without us provisioning any clusters on prem.
+// MAGIC In this two part series of notebooks, we got a glimpse of simple ways to use Spark, saw the potential to process relatively large structured dataset garnered from IoT connected devices, got a feel for DataFrames and Dataset APIs, and with relative easy and comfort visualize all our results, all from within Databricks Cloud Community Edition, without us provisioning any clusters on prem.
 // MAGIC 
 // MAGIC Though the dataset generated was a simulation, it does not preclude you from doing a prototype or POC using real datasets, garnered from your data sources. For the outcome would be no different; only the manner in which you transform your data with the APIs and your Scala case class that reflects the inherent schema in your real JSON data would be different. 
 // MAGIC 
@@ -224,4 +226,6 @@ ds.toDF().registerTempTable("iot_device_data")
 
 // MAGIC %md ####What's next?
 // MAGIC I want to use Google Maps library to map device's longitude and latitude as markers on a global map. Your ideas how to are welcome.
-// MAGIC DM me at [@2twitme](https://twitter.com/2twitme)
+// MAGIC DM me at [@2twitme](https://twitter.com/2twitme).
+// MAGIC 
+// MAGIC Also, I want to use Spark 2.0 Structured Streaming, where these device events are injested as streams into a Notebook or a Spark streaming application. Instead of uploading a JSON file and then processing its state, the above SQL/DataFrame state queries can be done in real time. Both [Matei Zaharia](https://youtu.be/ZFBgY0PwUeY?t=795) and [Raynold Xin](https://youtu.be/oXkxXDG0gNk?t=418) refer to it as [continuous application](https://youtu.be/ZFBgY0PwUeY?t=795) in their keynote at Spark Summit NY, 2016, which is not just streaming but an end-to-end application that handles streaming combined with Spark SQL/Dataset ad-hoc queries and operations on a data stream?all in a single application.

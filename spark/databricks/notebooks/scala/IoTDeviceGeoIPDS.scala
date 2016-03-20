@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Sun, 20 Mar 2016 20:49:31 UTC
+// Databricks notebook source exported at Sun, 20 Mar 2016 20:58:00 UTC
 // MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
@@ -148,7 +148,7 @@ def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.
 
 //filter dataset rows with battery level == 0 and apply our defined funcion to each element to log an alert.
 val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "REPLACE DEVICE BATTERY", "twilio"))
-println("Total Bad Batteries = " + batteryCounts.value)
+println("Total Devices with Bad Batteries = " + batteryCounts.value)
 
 // COMMAND ----------
 
@@ -158,7 +158,7 @@ println("Total Bad Batteries = " + batteryCounts.value)
 
 // filter datasets with dangerous levels of C02 and apply our defined function to each element to log an alert.
 val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "DEVICE DETECTS HIGH LEVELS OF C02 LEVELS", "pubnub"))
-println("Total High Levels of C02 = " + c02Counts.value)
+println("Total Devices with High Levels of C02 = " + c02Counts.value)
 
 // COMMAND ----------
 

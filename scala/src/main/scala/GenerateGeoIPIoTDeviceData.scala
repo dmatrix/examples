@@ -70,7 +70,7 @@ object GenerateGeoIPIoTDeviceData {
         "\"cn\": \"%s\", " +
         "\"latitude\": %f, " +
         "\"longitude\": %f, " +
-        "\"scale\": \"Celius\", " +
+        "\"scale\": \"Celsius\", " +
         "\"temp\": %d, " +
         "\"humidity\": %d, " +
         "\"battery_level\": %d, " +
@@ -84,7 +84,7 @@ object GenerateGeoIPIoTDeviceData {
   def main(args:Array[String]): Unit = {
 
       if (args.length != 3) {
-        println("Need two files: <country_codes.txt> <ips_info.txt> <ouput_path_to_json_file>")
+        println("Need two files: <country_codes.txt> <ips_info.txt> <output_path_to_json_file>")
         System.exit(2)
       }
 

@@ -1,10 +1,10 @@
-// Databricks notebook source exported at Sun, 20 Mar 2016 04:31:14 UTC
+// Databricks notebook source exported at Sun, 20 Mar 2016 17:29:46 UTC
 // MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
 
 // MAGIC %md #### Pursuing simplicity and ubiquity
-// MAGIC "Spark is a developer's delight" is a common refrain heard among Spark's developer community. Since its inception the vision?the guiding North Star?to make big data processing simple at scale has not faded. In fact, each subsequent release of Apache Spark, from 1.0 to 1.6, seems to have adhered to that guiding principle?in its architecture, in its consistent APIs across programming languages, and in its unification of major library components built atop the Spark core that can handle a shared data abstraction such as RDDs, DataFrames or Datasets.
+// MAGIC "Spark is a developer's delight" is a common refrain heard among Spark's developer community. Since its inception the vision?the guiding North Star?to make big data processing simple at scale has not faded. In fact, each subsequent release of Apache Spark, from 1.0 to 1.6, seems to have adhered to that guiding principle?in its architecture, in its consistency and parity of APIs across programming languages, and in its unification of major library components built atop the Spark core that can handle a shared data abstraction such as RDDs, DataFrames or Datasets.
 // MAGIC 
 // MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." And they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the release road map attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be) to the community so everyone can get the "feel of Spark." 
 // MAGIC 
@@ -50,9 +50,12 @@ import org.apache.spark.{SparkContext, SparkConf}
 
 // COMMAND ----------
 
+// create global accumulators Accumulator[Int]to keep track of alerts
+val batteryCounts = sc.accumulator(0)
+val c02Counts = sc.accumulator(0)
+
 //fetch the JSON device information uploaded into the Filestore
 val jsonFile = "/FileStore/tables/23lc6thg1458443979644/iot_devices.json"
-
 //read the json file and create the dataset from the case class DeviceIoTData
 // ds is now a collection of org.apache.spark.sql.Row
 val ds = sqlContext.read.json(jsonFile).as[DeviceIoTData]
@@ -113,7 +116,7 @@ val dsFilter = ds.filter (d => {d.temp > 30 && d.humidity > 70}).take(10).foreac
 // COMMAND ----------
 
 def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row, alert: String, notify: String ="kafka"): Unit = {
-val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" format(alert, row(0), row(1), row(2))
+  val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" format(alert, row(0), row(1), row(2))
   log.println(message)
   notify match {
       case "twilio" => DeviceAlerts.sendTwilio(message)
@@ -122,6 +125,11 @@ val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" fo
       case "kafka" => DeviceAlerts.publishOnConcluent(message)
       case "pubnub" => DeviceAlerts.publishOnPubNub(message)
   }
+  //update accumulators
+  if (message.contains("BATTERY"))
+    batteryCounts += 1
+  if (message.contains("C02"))
+    c02Counts += 1
 }
 
 // COMMAND ----------
@@ -135,6 +143,7 @@ val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" fo
 
 //filter dataset rows with battery level == 0 and apply our defined funcion to each element to log an alert.
 val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "REPLACE DEVICE BATTERY", "twilio"))
+println("Total Bad Batteries = " + batteryCounts.value)
 
 // COMMAND ----------
 
@@ -144,6 +153,7 @@ val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device
 
 // filter datasets with dangerous levels of C02 and apply our defined function to each element to log an alert.
 val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "DEVICE DETECTS HIGH LEVELS OF C02 LEVELS", "pubnub"))
+println("Total High Levels of C02 = " + c02Counts.value)
 
 // COMMAND ----------
 
@@ -233,6 +243,6 @@ ds.toDF().registerTempTable("iot_device_data")
 // MAGIC I want to use Google Maps library to map device's longitude and latitude as markers on a global map. Your ideas how to are welcome.
 // MAGIC DM me at [@2twitme](https://twitter.com/2twitme).
 // MAGIC 
-// MAGIC Also, I want to use Spark 2.0 Structured Streaming, where these device events are injested as streams into a Notebook or a Spark streaming application. Instead of uploading a JSON file and then processing its state, the above SQL/DataFrame state queries can be done in real time. In their keynote at Spark Summit NY, 2016, both [Matei Zaharia](https://youtu.be/ZFBgY0PwUeY?t=795) and [Raynold Xin](https://youtu.be/oXkxXDG0gNk?t=418) refer to it as [continuous application](https://youtu.be/ZFBgY0PwUeY?t=795), which is not just streaming but an end-to-end application that handles streaming combined with Spark SQL/DataFrame ad-hoc queries and operations on a continuous DataFrame stream?all within a single application.
+// MAGIC Also, I want to use Spark 2.0 Structured Streaming, where these device events are injested as streams into a Notebook or a Spark streaming application. Instead of uploading a JSON file and then processing its state, the above SQL/DataFrame state queries can be done in real time. In their keynote at Spark Summit NY, 2016, both [Matei Zaharia](https://youtu.be/ZFBgY0PwUeY?t=795) and [Reynold Xin](https://youtu.be/oXkxXDG0gNk?t=418) refer to it as [continuous application](https://youtu.be/ZFBgY0PwUeY?t=795), which is not just streaming but an end-to-end application that handles streaming combined with Spark SQL/DataFrame ad-hoc queries and operations on a continuous DataFrame stream?all within a single application.
 // MAGIC 
-// MAGIC That's the future of Spark Structured Streaming, according to [Raynold Xin](https://youtu.be/oXkxXDG0gNk)
+// MAGIC That's the future of Spark Structured Streaming, according to [Reynold Xin](https://youtu.be/oXkxXDG0gNk) and [Michael Armbrust](https://www.youtube.com/watch?v=i7l3JQRx7Qw&feature=youtu.be) 

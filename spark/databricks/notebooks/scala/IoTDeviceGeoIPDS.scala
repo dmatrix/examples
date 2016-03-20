@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Sun, 20 Mar 2016 17:29:46 UTC
+// Databricks notebook source exported at Sun, 20 Mar 2016 20:49:31 UTC
 // MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
@@ -6,7 +6,7 @@
 // MAGIC %md #### Pursuing simplicity and ubiquity
 // MAGIC "Spark is a developer's delight" is a common refrain heard among Spark's developer community. Since its inception the vision?the guiding North Star?to make big data processing simple at scale has not faded. In fact, each subsequent release of Apache Spark, from 1.0 to 1.6, seems to have adhered to that guiding principle?in its architecture, in its consistency and parity of APIs across programming languages, and in its unification of major library components built atop the Spark core that can handle a shared data abstraction such as RDDs, DataFrames or Datasets.
 // MAGIC 
-// MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." And they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the release road map attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be) to the community so everyone can get the "feel of Spark." 
+// MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." Not surprisingly, they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the release road map attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be), so everyone can get the "feel of Spark." 
 // MAGIC 
 // MAGIC And for us to get that "feel of Spark," as in [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity with which you can use Spark on the Databricks Cloud, without need to provision nodes, without need to manage clusters; all done for you, all free with [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
 // MAGIC 
@@ -16,8 +16,9 @@
 // MAGIC 
 // MAGIC Again, all code is availabe on my github:
 // MAGIC * [Python Scripts](https://github.com/dmatrix/examples/tree/master/py/ips)
-// MAGIC * [Scala Libraries](https://github.com/dmatrix/examples/tree/master/scala/src/main/scala)
+// MAGIC * [Scala Library](https://github.com/dmatrix/examples/tree/master/scala/src/main/scala)
 // MAGIC * [Scala Notebooks](https://github.com/dmatrix/examples/tree/master/spark/databricks/notebooks/scala)
+// MAGIC * [JSON Data](https://github.com/dmatrix/examples/tree/master/spark/databricks/notebooks/data)
 // MAGIC 
 // MAGIC Beside getting this notebook from [github](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/IoTDeviceGeoIPDS.scala) or importing from here into your Databricks Cloud, you can also watch a [screencast](https://youtu.be/5cas87tpCt4)
 
@@ -117,14 +118,18 @@ val dsFilter = ds.filter (d => {d.temp > 30 && d.humidity > 70}).take(10).foreac
 
 def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row, alert: String, notify: String ="kafka"): Unit = {
   val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" format(alert, row(0), row(1), row(2))
+  //default log to Stderr
   log.println(message)
-  notify match {
-      case "twilio" => DeviceAlerts.sendTwilio(message)
-      case "snmp" => DeviceAlerts.sendSNMP(message)
-      case "post" => DeviceAlerts.sendPOST(message)
-      case "kafka" => DeviceAlerts.publishOnConcluent(message)
-      case "pubnub" => DeviceAlerts.publishOnPubNub(message)
+  // use an appropriate notification method
+  val func = notify match {
+      case "twilio" => DeviceAlerts.sendTwilio _
+      case "snmp" => DeviceAlerts.sendSNMP _
+      case "post" => DeviceAlerts.sendPOST _
+      case "kafka" => DeviceAlerts.publishOnConcluent _
+      case "pubnub" => DeviceAlerts.publishOnPubNub _
   }
+  //send the appropriate alert
+  func(message)
   //update accumulators
   if (message.contains("BATTERY"))
     batteryCounts += 1

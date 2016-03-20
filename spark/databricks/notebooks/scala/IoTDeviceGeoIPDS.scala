@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Sun, 20 Mar 2016 03:31:58 UTC
+// Databricks notebook source exported at Sun, 20 Mar 2016 04:31:14 UTC
 // MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
@@ -29,6 +29,7 @@
 
 import main.scala._
 import main.scala.DeviceIoTData
+import main.scala.DeviceAlerts
 import org.apache.spark.{SparkContext, SparkConf}
 
 // COMMAND ----------
@@ -111,9 +112,16 @@ val dsFilter = ds.filter (d => {d.temp > 30 && d.humidity > 70}).take(10).foreac
 
 // COMMAND ----------
 
-def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row, alert: String): Unit = {
+def logAlerts(log: java.io.PrintStream = Console.out, row: org.apache.spark.sql.Row, alert: String, notify: String ="kafka"): Unit = {
 val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" format(alert, row(0), row(1), row(2))
   log.println(message)
+  notify match {
+      case "twilio" => DeviceAlerts.sendTwilio(message)
+      case "snmp" => DeviceAlerts.sendSNMP(message)
+      case "post" => DeviceAlerts.sendPOST(message)
+      case "kafka" => DeviceAlerts.publishOnConcluent(message)
+      case "pubnub" => DeviceAlerts.publishOnPubNub(message)
+  }
 }
 
 // COMMAND ----------
@@ -121,12 +129,12 @@ val message = "[***ALERT***: %s : device_name: %s; device_id: %s ; cca3: %s]" fo
 // MAGIC %md Check the cluster's stderr log, where these alert messages
 // MAGIC are logged.
 // MAGIC 
-// MAGIC *Note* that for this notebook I'm logging to stderr, but in production I could do an HTTP POST to a listening or monitering service, issue SNMP alerts, send a SMS via [Twilio](http://www.twilio.com), notify Nagios service, publish it on [PuNub](https://www.pubnub.com/) or [Confluent](http://www.confluent.io/) publish/subscribe networks and platforms. What platform you choose is a function of your operational needs. 
+// MAGIC *Note* that for this notebook I'm logging to stderr, but in production I could do an HTTP POST to a listening or monitoring service, issue SNMP alerts, send a SMS via [Twilio](http://www.twilio.com), notify Nagios service, publish it on [PuNub](https://www.pubnub.com/) or [Confluent](http://www.confluent.io/) publish/subscribe networks and platforms. What platform you choose is a function of your operational needs. 
 
 // COMMAND ----------
 
 //filter dataset rows with battery level == 0 and apply our defined funcion to each element to log an alert.
-val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "REPLACE DEVICE BATTERY"))
+val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "REPLACE DEVICE BATTERY", "twilio"))
 
 // COMMAND ----------
 
@@ -135,7 +143,7 @@ val dsBatteryZero = ds.filter(d => {d.battery_level <= 1}).toDF().select("device
 // COMMAND ----------
 
 // filter datasets with dangerous levels of C02 and apply our defined function to each element to log an alert.
-val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "DEVICE DETECTS HIGH LEVELS OF C02 LEVELS"))
+val dsHighC02Levels = ds.filter(d => {d.c02_level >= 1400 && d.lcd == "red"}).toDF().select("device_name", "device_id", "cca3").foreach(d => logAlerts(Console.err, d, "DEVICE DETECTS HIGH LEVELS OF C02 LEVELS", "pubnub"))
 
 // COMMAND ----------
 

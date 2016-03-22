@@ -6,9 +6,10 @@ import org.apache.spark.{SparkContext, SparkConf}
   * Created by jules on 2/9/16.
   * This simple Spark app shows the utility and ease with which you can read and process a large dataset of JSON file as structured data.
   * Using dataframes to represent a columnar structure, you can filter with predicates, select, and process data as though you were
-  * using a query langauge against an SQl table. Undeneath, Spark creates an optimized logical and physical plan, using Tungsten.
+  * using a query language against an SQL table. Underneat, Spark creates an optimized logical and physical plan, using the Catalyst Optimizer, along
+  * with Tungsten for optimized code generation.
   *
-  * Additionally, you can register the dataframe as a temporary table and then issue SQL like queries to it.
+  * Additionally, you can register a DataFrame as a temporary table and then issue Spark SQL queries against it.
   *
   * All very easy and intuitive to use.
   * 
@@ -35,7 +36,7 @@ object IoTDeviceDFApp {
     //show or display the datafram's schema as inferred by Spark after reading the JSON structured data
     df.printSchema()
     //show the tables's first 20 rows
-    df.show()
+    df.show(20)
     //display the the total number of rows in the dataframe
     println("Total number of devices read: " + df.count())
 

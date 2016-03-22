@@ -1,4 +1,9 @@
-// Databricks notebook source exported at Sun, 20 Mar 2016 20:58:00 UTC
+// Databricks notebook source exported at Tue, 22 Mar 2016 04:32:04 UTC
+// MAGIC %md
+// MAGIC **Click on ![](http://training.databricks.com/databricks_guide/ImportNotebookIcon3.png) at the top if you want to import this notebook and run the code in your Databricks account.** 
+
+// COMMAND ----------
+
 // MAGIC %md ## How to Process IoT Device JSON Data Using Dataset and DataFrames - Part 2
 
 // COMMAND ----------
@@ -8,11 +13,11 @@
 // MAGIC 
 // MAGIC Since Spark's early days, its creators embraced Alan Kay's principle that "simple things should be simple, complex things possible." Not surprisingly, they articulated and reiterated that commitment to the community at the [Spark Summit NY, 2016](https://spark-summit.org/east-2016/schedule/): the keynotes and the release road map attest to that vision of [simplicity](https://www.youtube.com/watch?v=ZFBgY0PwUeY&feature=youtu.be) and [accessibility](https://www.youtube.com/watch?v=BPotQuqFnyw&feature=youtu.be), so everyone can get the "feel of Spark." 
 // MAGIC 
-// MAGIC And for us to get that "feel of Spark," as in [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity with which you can use Spark on the Databricks Cloud, without need to provision nodes, without need to manage clusters; all done for you, all free with [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
+// MAGIC And for us to get that "feel of Spark," as in [Part 1](http://bit.ly/1RhErbF), this notebook demonstrates the ease and simplicity with which you can use Spark on the Databricks, without need to provision nodes, without need to manage clusters; all done for you, all free with [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist).
 // MAGIC 
 // MAGIC With [DataFrames](http://spark.apache.org/docs/latest/sql-programming-guide.html#dataframes) (introduced in 1.3) and [Datasets](https://databricks.com/blog/2016/01/04/introducing-spark-datasets.html) (previewed in 1.6), in this notebook I use both sets of APIs to show how you can quickly process structured data (JSON) with an inherent and inferred schema, intuitively compose relational queries, and finally issue [Spark SQL](http://spark.apache.org/docs/latest/sql-programming-guide.html) queries against a table. By using notebook's myriad plotting options, you can visualize results for presenation and narration. Even better, you can save these plots as dashboards.
 // MAGIC 
-// MAGIC In this second part, I have augmented the device dataset to include additional attributes, such as GeoIP locations, an idea borrowed from [AdTech Sample Notebook](https://cdn2.hubspot.net/hubfs/438089/notebooks/Samples/Miscellaneous/AdTech_Sample_Notebook_Part_1.html), as well as additional device attributes on which we can log alerts, for instance *device_battery* levels or *C02* levels. Unlike the dataset size in [Part 1](http://bit.ly/1RhErbF), I upload close to 200K devices, curtailing from original 2M entries, as a smaller dataset for rapid prototyping.
+// MAGIC In this second part, I have augmented the device dataset to include additional attributes, such as GeoIP locations, an idea borrowed from [AdTech Sample Notebook](https://cdn2.hubspot.net/hubfs/438089/notebooks/Samples/Miscellaneous/AdTech_Sample_Notebook_Part_1.html), as well as additional device attributes on which we can log alerts, for instance *device_battery* levels or *C02* levels. Unlike the dataset size in [Part 1](http://bit.ly/1RhErbF), I uploaded close to 200K devices, curtailing from original 2M entries, as a smaller dataset for rapid prototyping.
 // MAGIC 
 // MAGIC Again, all code is availabe on my github:
 // MAGIC * [Python Scripts](https://github.com/dmatrix/examples/tree/master/py/ips)
@@ -20,7 +25,7 @@
 // MAGIC * [Scala Notebooks](https://github.com/dmatrix/examples/tree/master/spark/databricks/notebooks/scala)
 // MAGIC * [JSON Data](https://github.com/dmatrix/examples/tree/master/spark/databricks/notebooks/data)
 // MAGIC 
-// MAGIC Beside getting this notebook from [github](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/IoTDeviceGeoIPDS.scala) or importing from here into your Databricks Cloud, you can also watch a [screencast](https://youtu.be/5cas87tpCt4)
+// MAGIC Beside getting this notebook from [github](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/scala/IoTDeviceGeoIPDS.scala) or importing from here into your Databricks account, you can also watch a [screencast](https://youtu.be/5cas87tpCt4)
 
 // COMMAND ----------
 
@@ -152,7 +157,7 @@ println("Total Devices with Bad Batteries = " + batteryCounts.value)
 
 // COMMAND ----------
 
-// MAGIC %md Again, check the cluser logs for C02 alerts
+// MAGIC %md Again, check the cluster logs for C02 alerts
 
 // COMMAND ----------
 
@@ -234,16 +239,6 @@ ds.toDF().registerTempTable("iot_device_data")
 
 // COMMAND ----------
 
-// MAGIC %md ####Conclusion
-// MAGIC 
-// MAGIC In this two part series of notebooks, we got a glimpse of simple ways to use Spark, saw the potential to process relatively large structured dataset garnered from IoT connected devices, got a feel for DataFrames and Dataset APIs, and with relative easy and comfort visualize all our results, all from within Databricks Cloud Community Edition, without us provisioning any clusters on prem.
-// MAGIC 
-// MAGIC Though the dataset generated was a simulation, it does not preclude you from doing a prototype or POC using real datasets, garnered from your data sources. For the outcome would be no different; only the manner in which you transform your data with the APIs and your Scala case class that reflects the inherent schema in your real JSON data would be different. 
-// MAGIC 
-// MAGIC If you haven't signed up for [Databricks Community Edition](http://go.databricks.com/databricks-community-edition-beta-waitlist), what you waiting for? 
-
-// COMMAND ----------
-
 // MAGIC %md ####What's next?
 // MAGIC I want to use Google Maps library to map device's longitude and latitude as markers on a global map. Your ideas how to are welcome.
 // MAGIC DM me at [@2twitme](https://twitter.com/2twitme).
@@ -251,3 +246,14 @@ ds.toDF().registerTempTable("iot_device_data")
 // MAGIC Also, I want to use Spark 2.0 Structured Streaming, where these device events are injested as streams into a Notebook or a Spark streaming application. Instead of uploading a JSON file and then processing its state, the above SQL/DataFrame state queries can be done in real time. In their keynote at Spark Summit NY, 2016, both [Matei Zaharia](https://youtu.be/ZFBgY0PwUeY?t=795) and [Reynold Xin](https://youtu.be/oXkxXDG0gNk?t=418) refer to it as [continuous application](https://youtu.be/ZFBgY0PwUeY?t=795), which is not just streaming but an end-to-end application that handles streaming combined with Spark SQL/DataFrame ad-hoc queries and operations on a continuous DataFrame stream?all within a single application.
 // MAGIC 
 // MAGIC That's the future of Spark Structured Streaming, according to [Reynold Xin](https://youtu.be/oXkxXDG0gNk) and [Michael Armbrust](https://www.youtube.com/watch?v=i7l3JQRx7Qw&feature=youtu.be) 
+
+// COMMAND ----------
+
+// MAGIC %md ####Conclusion
+// MAGIC 
+// MAGIC In this two part series of notebooks, we got a glimpse of simple ways to use Spark, saw the potential to process relatively large structured dataset garnered from IoT connected devices, got a feel for DataFrames and Dataset APIs, and with relative easy and comfort visualize all our results, all from within Databricks Cloud Community Edition, without us provisioning any clusters on prem.
+// MAGIC 
+// MAGIC Though the dataset generated was a simulation, it does not preclude you from doing a prototype or POC using real datasets, garnered from your data sources. For the outcome would be no different; only the manner in which you transform your data with the APIs and your Scala case class that reflects the inherent schema in your real JSON data would be different. 
+// MAGIC 
+// MAGIC To get access to Databricks Community Edition, [join the waitlist now](http://go.databricks.com/databricks-community-edition-beta-waitlist)!
+// MAGIC  

@@ -142,7 +142,7 @@ object DeviceProvision {
 		dmap.put("device_id", id.toString)
 		dmap.put("timestamp", timestamp.toString)
 		dmap.put("temp", temp.toString)
-		dmap.put("scale", "Celcius")
+		dmap.put("scale", "Celsius")
 		dmap.put("latitude", xcoor.toString)
 		dmap.put("longitude", xcoor.toString)
 		dmap.put("ip", ip)

@@ -20,7 +20,7 @@ object GenerateIoTDeviceData {
     * @param w
     */
     def generateJsonFile(listElem: List[scala.collection.mutable.Map[String, String]], w:PrintWriter): Unit = {
-        listElem.foreach(elem => ( {
+        listElem.foreach(elem => ({
           val id: Int = elem.get("device_id").get.toInt
           val dev: String = elem.get("device_name").get.toString
           val timestamp: Int = elem.get("timestamp").get.toInt
@@ -31,10 +31,10 @@ object GenerateIoTDeviceData {
           val ip: String = elem.get("ip").get.toString
           val zip: Int = elem.get("zipcode").get.toInt
           val humidity: Int = elem.get("humidity").get.toInt
-          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celius\", \"latitude\": %d, \"longitude\": %d, \"ip\": %s, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
-
+          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celsius\", \"latitude\": %d, \"longitude\": %d, \"ip\": %s, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
           w.write(djson)
-          w.write("\n") }
+          w.write("\n")
+        }
           ) )
     }
 

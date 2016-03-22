@@ -14,7 +14,7 @@ case class DeviceData (device_id: Long, device_name: String, timestamp: Long, te
   *
   * All very easy and intuitive to use.
   *
-  * spark-submit --class main.scala.iot.IoTDeviceDSApp --master local[6] target/scala-2.10/spark-device-iot-app_2.10-1.0.jar <path_to_json_file>
+  * spark-submit --class main.scala.iot.IoTDeviceDSApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar  <path_to_json_file>
   */
 object IoTDeviceDSApp {
 

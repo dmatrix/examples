@@ -12,7 +12,7 @@ import org.apache.spark.{SparkContext, SparkConf}
   *
   * All very easy and intuitive to use.
   * 
-  * spark-submit --class main.scala.iot.IotDeviceDFApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar <path_to_json_file>
+  * spark-submit --class main.scala.iot.IoTDeviceDFApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar <path_to_json_file>
   */
 object IoTDeviceDFApp {
 

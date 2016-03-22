@@ -31,7 +31,17 @@ object GenerateIoTDeviceData {
           val ip: String = elem.get("ip").get.toString
           val zip: Int = elem.get("zipcode").get.toInt
           val humidity: Int = elem.get("humidity").get.toInt
-          val djson = "{\"device_id\": %d, \"device_name\": \"%s\", \"timestamp\":%d, \"temp\": %d, \"scale\": \"Celsius\", \"latitude\": %d, \"longitude\": %d, \"ip\": %s, \"zipcode\": %d, \"humidity\": %d}" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
+          //construct JSON string
+          val djson = "{\"device_id\": %d, " +
+                      "\"device_name\": \"%s\", " +
+                      "\"timestamp\":%d, "+
+                      "\"temp\": %d, " +
+                      "\"scale\": \"Celsius\", " +
+                      "\"latitude\": %d, " +
+                      "\"longitude\": %d, " + "" +
+                      "\"ip\": %s, " +
+                      "\"zipcode\": %d, " +
+                      "\"humidity\": %d }" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
           w.write(djson)
           w.write("\n")
         }

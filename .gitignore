@@ -15,3 +15,4 @@ PyDmatrix/
 *.iws
 *.iml
 *.class
+target/

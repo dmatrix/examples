@@ -1,4 +1,4 @@
-// Databricks notebook source exported at Mon, 14 Mar 2016 21:21:45 UTC
+// Databricks notebook source exported at Wed, 23 Mar 2016 01:43:53 UTC
 // MAGIC %md #How to Process IoT Device Dataset Using Dataframes - Part 1
 
 // COMMAND ----------
@@ -9,7 +9,7 @@
 // MAGIC 
 // MAGIC **Note:** I've already uploaded a Scala library (main.scala) that I developed on my IDE. By creating a shared library and attaching it across my mini-cluster, my distributed code (or functions to the transformers) can access any classes they need from this jar. 
 // MAGIC 
-// MAGIC Also, to access that device dataset, I imported a 10K JSON file into the FileStore /FileStore/tables/cqqoij9j1457633994821/IoTDevices10K.json
+// MAGIC Also, to access that device dataset, I imported a 120K JSON file into the FileStore /FileStore/tables/ujos0imm1458694774580/devices120K.json
 // MAGIC 
 // MAGIC And finally, to learn how to upload your own Scala library jar or upload a dataset files, peruse these links.
 // MAGIC 
@@ -47,16 +47,22 @@
 import main.scala._
 import org.apache.spark.{SparkContext, SparkConf}
 
+// COMMAND ----------
+
+
 //fetch the JSON device information uploaded into the Filestore
-val jsonFile = "/FileStore/tables/cqqoij9j1457633994821/IoTDevices10K.json"
+val jsonFile = "/FileStore/tables/ujos0imm1458694774580/devices120K.json"
 
 //read the json file and create the dataframe
 val df = sqlContext.read.json(jsonFile)
 
 //show or display the datafram's schema as inferred by Spark after reading the JSON structured data
 df.printSchema()
-//show the tables's first 20 rows
-df.show()
+
+// COMMAND ----------
+
+//show the tables
+display(df)
 
 // COMMAND ----------
 
@@ -77,36 +83,42 @@ println("Total number of devices read: " + df.count())
 // COMMAND ----------
 
 //select only device names
-df.select("device_name").show()
+val dfNames = df.select("device_name")
+display(dfNames)
 
 
 // COMMAND ----------
 
 //filter all devices who humidity is greater than 75 and show them
-df.filter(df("humidity") > 75).show()
+val dfFilter = df.filter(df("humidity") > 75)
+display(dfFilter)
 
 
 // COMMAND ----------
 
 //group together all same zipcodes and count them
-df.groupBy("zipcode").count().show()
+val dfByCntGroup = df.groupBy("zipcode").count()
+display(dfByCntGroup)
 
 
 // COMMAND ----------
 
 //filter all devices with humidity greater than 75 and count them
-df.filter(df("humidity") > 85).groupBy("humidity").count().show()
+val dfGroupByHumdity = df.filter(df("humidity") > 85).groupBy("humidity").count()
+display(dfGroupByHumdity)
 
 
 // COMMAND ----------
 
 // filter and groupBy zipcodes
- df.groupBy("zipcode").count().show()
+val dfByZipcode = df.groupBy("zipcode").count()
+display(dfByZipcode)
 
 // COMMAND ----------
 
 //filter all devices with temperature greater than 35 and count them
- df.filter(df("temp") > 30).groupBy("temp").count().show()
+ val dfByTemp = df.filter(df("temp") > 30).groupBy("temp").count()
+display(dfByTemp)
 
 // COMMAND ----------
 
@@ -171,7 +183,3 @@ println("Total number of devices selected: " + results2.count())
 // COMMAND ----------
 
 // MAGIC %sql select device_id, device_name, humidity, temp, zipcode, timestamp from iot_devices_table where zipcode > 91000
-
-// COMMAND ----------
-
-

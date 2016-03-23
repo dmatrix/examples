@@ -20,32 +20,32 @@ object GenerateIoTDeviceData {
     * @param w
     */
     def generateJsonFile(listElem: List[scala.collection.mutable.Map[String, String]], w:PrintWriter): Unit = {
-        listElem.foreach(elem => ({
-          val id: Int = elem.get("device_id").get.toInt
-          val dev: String = elem.get("device_name").get.toString
-          val timestamp: Int = elem.get("timestamp").get.toInt
-          val temp: Int = elem.get("temp").get.toInt
-          val scale: String = elem.get("scale").get.toString
-          val xcoor: Int = elem.get("latitude").get.toInt
-          val ycoor: Int = elem.get("longitude").get.toInt
-          val ip: String = elem.get("ip").get.toString
-          val zip: Int = elem.get("zipcode").get.toInt
-          val humidity: Int = elem.get("humidity").get.toInt
-          //construct JSON string
-          val djson = "{\"device_id\": %d, " +
-                      "\"device_name\": \"%s\", " +
-                      "\"timestamp\":%d, "+
-                      "\"temp\": %d, " +
-                      "\"scale\": \"Celsius\", " +
-                      "\"latitude\": %d, " +
-                      "\"longitude\": %d, " + "" +
-                      "\"ip\": %s, " +
-                      "\"zipcode\": %d, " +
-                      "\"humidity\": %d }" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
-          w.write(djson)
-          w.write("\n")
-        }
-          ) )
+        listElem.foreach(elem => (
+          {
+            val id: Int = elem.get("device_id").get.toInt
+            val dev: String = elem.get("device_name").get.toString
+            val timestamp: Long = elem.get("timestamp").get.toLong
+            val temp: Int = elem.get("temp").get.toInt
+            val scale: String = elem.get("scale").get.toString
+            val xcoor: Int = elem.get("latitude").get.toInt
+            val ycoor: Int = elem.get("longitude").get.toInt
+            val ip: String = elem.get("ip").get.toString
+            val zip: Int = elem.get("zipcode").get.toInt
+            val humidity: Int = elem.get("humidity").get.toInt
+            //construct JSON string
+            var djson = "{\"device_id\":%d," +
+                        "\"device_name\":\"%s\"," +
+                        "\"timestamp\":%d,"+
+                        "\"temp\":%d," +
+                        "\"scale\":\"Celsius\"," +
+                        "\"latitude\":%d," +
+                        "\"longitude\":%d," +
+                        "\"ip\":\"%s\"," +
+                        "\"zipcode\":%d," +
+                        "\"humidity\":%d}" format(id, dev, timestamp, temp, xcoor, ycoor, ip, zip, humidity)
+            djson = djson + "\n"
+            w.write(djson)
+        } ) )
     }
 
     def main(args:Array[String]): Unit = {

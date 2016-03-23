@@ -137,7 +137,7 @@ object DeviceProvision {
 		val xcoor = getX();
 		val ycoor = getY();
 		val ip = getIP()
-		val timestamp: Long = System.currentTimeMillis / 1000
+		val timestamp: Long = System.currentTimeMillis + 15000
 		dmap.put("device_name", dev)
 		dmap.put("device_id", id.toString)
 		dmap.put("timestamp", timestamp.toString)
@@ -193,7 +193,8 @@ object DeviceProvision {
 /**
 	*
 	* @param number of devices to generate
-  */
+	*/
+
 	class DeviceProvision (number: Int) {
 		private val devicesNumber = number
 

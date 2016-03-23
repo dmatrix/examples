@@ -20,7 +20,7 @@ object IoTDeviceDFApp {
   def main(args: Array[String]): Unit = {
 
     if (args.length != 1) {
-      println("Usage: IotDeviceDFApp <path_to_json_file")
+      println("Usage: IoTDeviceDFApp <path_to_json_file")
       System.exit(1)
     }
     //get the JSON file
@@ -33,7 +33,7 @@ object IoTDeviceDFApp {
     //read the json file and create the dataframe
     val df = sqlContext.read.json(jsonFile)
 
-    //show or display the datafram's schema as inferred by Spark after reading the JSON structured data
+    //show or display the dataframe's schema as inferred by Spark after reading the JSON structured data
     df.printSchema()
     //show the tables's first 20 rows
     df.show(20)

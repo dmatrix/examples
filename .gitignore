@@ -16,3 +16,5 @@ PyDmatrix/
 *.iml
 *.class
 target/
+derby.log
+metastore_db/

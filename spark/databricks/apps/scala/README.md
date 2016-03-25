@@ -20,6 +20,10 @@ Similarly, you can build and run this Dataset version of the Spark App.
 * `sbt clean package`
 * `spark-submit --class main.scala.iot.IoTDeviceDSApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar <path_to_json_file>`
 
+A similar Spark as above but with slightly different device dataset that contatins GeoIP information is noteworthy to have a go at. Its modified
+data set is [here](https://github.com/dmatrix/examples/blob/master/spark/databricks/notebooks/data/iot_devices.json)
+
+* `spark-submit --class main.scala.iot.IoTDeviceGeoIPApp --master local[6] target/scala-2.10/main-scala-iot_2.10-1.0.jar <path_to_geoip_device_json_file>`
 ### Generating JSON Data 
 
 * `cd to ../../../../scala/`
@@ -28,7 +32,7 @@ Similarly, you can build and run this Dataset version of the Spark App.
 
 The first argument to this Scala app is a number of devices that **must** be a multiple of three, and the second is path to a JSON output file.
 You can generated millions of devices with this app. Using Executor Service thread pool and a Latch Countdown by assigning batches, this short
-program is farily efficient.
+program is efficient.
 
 (I have generated over 9M entries!)
 

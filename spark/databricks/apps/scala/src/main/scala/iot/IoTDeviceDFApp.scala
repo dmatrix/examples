@@ -6,8 +6,8 @@ import org.apache.spark.{SparkContext, SparkConf}
   * Created by jules on 2/9/16.
   * This simple Spark app shows the utility and ease with which you can read and process a large dataset of JSON file as structured data.
   * Using dataframes to represent a columnar structure, you can filter with predicates, select, and process data as though you were
-  * using a query language against an SQL table. Underneat, Spark creates an optimized logical and physical plan, using the Catalyst Optimizer, along
-  * with Tungsten for optimized code generation.
+  * using a query language against an SQL table. Underneath, Spark creates an optimized logical and physical plan, using the Catalyst Optimizer, along
+  * for the plan and with Tungsten for optimized code generation.
   *
   * Additionally, you can register a DataFrame as a temporary table and then issue Spark SQL queries against it.
   *

@@ -79,6 +79,12 @@ object SparkSessionSimpleZipsExample {
 
      //Find the populus cities in Calfornia with total number of zips using the hive table
      spark.sql("SELECT COUNT(zip), SUM(pop), city FROM zips_hive_table WHERE state = 'CA' GROUP BY city ORDER BY SUM(pop) DESC").show(10)
+
+     // register a simple UDF
+     spark.udf.register("cityLength", (c:String) => c.length())
+     val resultsCityLens = spark.sql("SELECT city, cityLength(city) as city_length FROM zips_hive_table ORDER BY city_length DESC")
+     resultsCityLens.show(10)
+
   }
 }
 

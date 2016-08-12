@@ -4,7 +4,7 @@ In this directory is simple sample Spark application that demonstrates SparkSess
 level of abstraction are DataFrames and Datasets, built on top of Spark SQL engine, SparkSession provides a consolidated and encapsulated access to
 manipulate data in your Spark Applications.
 
-### Note ###: There's also a 1.6 version in this directory that will run with in a Spark 2.0 environment, suggesting it's backward compaitble.
+### Note: There's also a 1.6 version in this directory that will run with in a Spark 2.0 environment, suggesting it's backward compaitble.
 
 ### Using DataFrames.
 To see how you can use DataFrame's and Dataset's high-level declarative API, this small sample code is a good introduction as well as a guide how to use 

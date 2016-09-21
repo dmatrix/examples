@@ -43,13 +43,12 @@ object DeviceProvision {
 		* @param l
 		* @return
     */
-	def getC02LCD(l: Int): String = (
-		if (l <= 1000)
-			"green"
-		else if (l > 1000 && l <= 1400)
-			"yellow"
-		else
-			"red" )
+	def getC02LCD(l: Int): String = if (l <= 1000)
+		"green"
+	else if (l > 1000 && l <= 1400)
+		"yellow"
+	else
+		"red"
 
 	/**
 		* Generate a random X coordinate
@@ -67,6 +66,14 @@ object DeviceProvision {
 	def getY(): Int = {
 		val y: Int = getRandomNumber(10, 100)
 		return y
+	}
+
+	/**
+		* Generate a random signal between 10 and 75
+		* @return in
+    */
+	def getSignal(): Int = {
+		return getRandomNumber(10, 75)
 	}
 
 	/**

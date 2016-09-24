@@ -1,5 +1,6 @@
-package main.scala
-object CollectionsDemo {
+package main.scala.sandboxobject
+
+class CollectionsDemo {
 	/**
 	 * define few types of lists as global variables to this Singleton
 	 * Use the List.methods to illusrate the functional nature of Scala programming.

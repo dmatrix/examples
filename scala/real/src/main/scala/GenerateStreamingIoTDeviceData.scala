@@ -2,9 +2,11 @@ package main.scala
 
 import java.io.{File, IOException, PrintWriter}
 
+import main.scala.DeviceProvision.{getC02Level, getRandomNumber, getSignal, getTemperature}
+
 import scala.collection.mutable.Map
 import scala.io.Source
-import DeviceProvision.{ getC02Level, getSignal, getRandomNumber, getTemperature }
+import scala.util.control.Breaks
 
 
 /**
@@ -102,27 +104,34 @@ object GenerateStreamingIoTDeviceData {
         * Read each line from the ip's info read from http://freegeoip.net/csv/<ip>, parse it, and extract relevant
         * info needed. For example, IP, cca2, country, latitude and longitude etc
         */
+      val inner = new Breaks
 
       var w: PrintWriter = null
+
       for (i <-1 to  numOfFiles) {
         val fn: String = args(2) + "/" + deviceFileNames + "-" + i + deviceFileNameSuffix
         try {
           w = new PrintWriter(new File(fn))
           var id = 0
-          for (ipline <- Source.fromFile(args(1)).getLines()) {
-            val json = toJSonDeviceData(ipline, id)
-            if (json.length > 0) {
-              w.write(json)
-              w.write("\n")
-              println(json)
-            } else {
-              println("Failed to create JSON device data for " + ipline + " skipping...")
+          inner.breakable {
+              for (ipline <- Source.fromFile(args(1)).getLines()) {
+                val json = toJSonDeviceData(ipline, id)
+                if (json.length > 0) {
+                  w.write(json)
+                  w.write("\n")
+                  w.flush()
+                  println(json)
+                } else {
+                  println("Failed to create JSON device data for " + ipline + " skipping...")
+                }
+                id += 1
+                if (id == 500)
+                  inner.break()
+                //sleep for 30 seconds between each device entry
+                Thread.sleep(2000)
+              }
             }
-            id += 1
-            //sleep for 30 seconds between each device entry
-            Thread.sleep(5000)
-          }
-          println("Created device file:" + fn + " with " + id  +  " devices")
+          println("Created device file:" + fn + " with " + id + " devices")
         }
         catch {
           case ex: IOException => {
@@ -133,7 +142,7 @@ object GenerateStreamingIoTDeviceData {
           if (w != null)
             w.close()
         }
-        Thread.sleep(300000)
+        Thread.sleep(5000)
       }
   }
 }

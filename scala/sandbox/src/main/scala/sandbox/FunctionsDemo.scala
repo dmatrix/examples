@@ -1,4 +1,5 @@
-package main.scala
+package main.scala.sandbox
+
 import java.util.Date
 /**
  *

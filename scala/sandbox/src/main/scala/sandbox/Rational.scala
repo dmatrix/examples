@@ -1,4 +1,4 @@
-package main.scala
+package main.scala.sandbox
 
 /**
   * Created by jules on 3/13/16.

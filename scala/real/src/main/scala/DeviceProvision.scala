@@ -14,7 +14,8 @@ object DeviceProvision {
 
 	/**
 		* Get a random from within the specified range
-		* @param from
+    *
+    * @param from
 		* @param to
 		* @return generated number
     */
@@ -24,19 +25,13 @@ object DeviceProvision {
 
 	/**
 		* Generate a random zipcode between two legal ranges
-		* @return generated zip code
+    *
+    * @return generated zip code
     */
 	def getZipCode(): Int = {
 		return getRandomNumber(94538, 97107)
 	}
 
-	/**
-		* Get C02 emission levels, which can range from 800 pmm to 16000 ppm (parts per million)
-		* @return
-    */
-	def getC02Level(): Int = {
-		getRandomNumber(800, 1600)
-	}
 
 	/** Get the corrosponding LCD light for the C02 level
 		*
@@ -52,7 +47,8 @@ object DeviceProvision {
 
 	/**
 		* Generate a random X coordinate
-		* @return generated x coordinate
+    *
+    * @return generated x coordinate
     */
 	def getX(): Int = {
 		val x: Int = getRandomNumber(10, 100)
@@ -61,7 +57,8 @@ object DeviceProvision {
 
 	/**
 		* Generate a random Y coordinate
-		* @return generated Y coordinate
+    *
+    * @return generated Y coordinate
     */
 	def getY(): Int = {
 		val y: Int = getRandomNumber(10, 100)
@@ -69,16 +66,9 @@ object DeviceProvision {
 	}
 
 	/**
-		* Generate a random signal between 10 and 75
-		* @return in
-    */
-	def getSignal(): Int = {
-		return getRandomNumber(10, 75)
-	}
-
-	/**
 		* Construct an IP address
-		* @return String as an IP address
+    *
+    * @return String as an IP address
     */
 	def getIP(): String = {
 
@@ -101,7 +91,8 @@ object DeviceProvision {
 
 	/**
 		* Generate random humidity between two numbers: min and max
-		* @return generated humidity
+    *
+    * @return generated humidity
     */
 	def getHumidity(): Int = {
 		return getRandomNumber(25, 100)
@@ -109,15 +100,57 @@ object DeviceProvision {
 
 	/**
 		* Generate a random temperature between two min and max
-		* @return generated temperature
+    *
+    * @return generated temperature
     */
 	def getTemperature(): Int = {
-		return getRandomNumber(10, 35)
+		return getRandomNumber(10, 50)
 	}
+
+	def getTemperatureWithTrend(lastVal: Int): Int = {
+		if (lastVal == 0) {
+			  return getTemperature()
+		} else
+				return lastVal + 1
+	}
+
+  /**
+    * Generate a random signal between 10 and 75
+    *
+    * @return in
+    */
+  def getSignal(): Int = {
+    return getRandomNumber(10, 30)
+  }
+
+  def getSignalWithDownTrend(lastValue: Int): Int = {
+    if (lastValue == 0) {
+      return getSignal ()
+    } else {
+      return lastValue - 1
+    }
+  }
+
+  /**
+    * Get C02 emission levels, which can range from 800 pmm to 16000 ppm (parts per million)
+    *
+    * @return
+    */
+  def getC02Level(): Int = {
+    getRandomNumber(800, 1600)
+  }
+
+  def getC02LevelWithTrend(lastValue: Int): Int = {
+    if (lastValue == 0) {
+      return getC02Level()
+    } else
+      return lastValue + 2
+  }
 
 	/**
 		* Generate a randome string from with an alphate range between min and max len
-		* @param minLen
+    *
+    * @param minLen
 		* @param maxLen
 		* @return
     */
@@ -132,7 +165,8 @@ object DeviceProvision {
 
 	/**
 		* Create a Map of device information
-		* @param dev device name
+    *
+    * @param dev device name
 		* @param id device id
 		* @return Map[String, String]
     */
@@ -161,9 +195,10 @@ object DeviceProvision {
 
 	/**
 		* Create a collection, List, of Map[String, String] for range of device id
-		* @param range of device ids
+    *
+    * @param range of device ids
 		* @return List[Map[String, String]]
-    */
+    **/
 	def getDeviceBatch(range: Range): List[Map[String, String]] = {
 		var batch: List[Map[String, String]] = List()
 		var id: Int = range.start
@@ -188,7 +223,8 @@ object DeviceProvision {
 
 	/**
 		* Generate a luv message :)
-		* @param message
+    *
+    * @param message
     */
 	def myPrint(message: String): Unit = {
 		val luv = "...And Luving it!"

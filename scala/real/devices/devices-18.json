@@ -1,150 +1,100 @@
-{"device_id": 0, "device_type": "sensor-ipad", "ip": "68.161.225.1", "cca3": "USA", "cn": "United States", "temp": 21, "signal": 9, "battery_level": 1, "c02_level": 1232, "timestamp" :1475454235320 }
-{"device_id": 1, "device_type": "sensor-igauge", "ip": "213.161.254.1", "cca3": "NOR", "cn": "Norway", "temp": 22, "signal": 8, "battery_level": 1, "c02_level": 1234, "timestamp" :1475454237324 }
-{"device_id": 2, "device_type": "sensor-ipad", "ip": "88.36.5.1", "cca3": "ITA", "cn": "Italy", "temp": 23, "signal": 7, "battery_level": 0, "c02_level": 1236, "timestamp" :1475454239327 }
-{"device_id": 3, "device_type": "sensor-inest", "ip": "66.39.173.154", "cca3": "USA", "cn": "United States", "temp": 24, "signal": 6, "battery_level": 1, "c02_level": 1238, "timestamp" :1475454241330 }
-{"device_id": 4, "device_type": "sensor-ipad", "ip": "203.82.41.9", "cca3": "PHL", "cn": "Philippines", "temp": 25, "signal": 5, "battery_level": 0, "c02_level": 1240, "timestamp" :1475454243335 }
-{"device_id": 5, "device_type": "sensor-istick", "ip": "204.116.105.67", "cca3": "USA", "cn": "United States", "temp": 26, "signal": 4, "battery_level": 1, "c02_level": 1242, "timestamp" :1475454245337 }
-{"device_id": 6, "device_type": "sensor-ipad", "ip": "220.173.179.1", "cca3": "CHN", "cn": "China", "temp": 27, "signal": 3, "battery_level": 1, "c02_level": 1244, "timestamp" :1475454247337 }
-{"device_id": 7, "device_type": "sensor-igauge", "ip": "210.173.177.1", "cca3": "JPN", "cn": "Japan", "temp": 28, "signal": 2, "battery_level": 1, "c02_level": 1246, "timestamp" :1475454249338 }
-{"device_id": 8, "device_type": "sensor-ipad", "ip": "118.23.68.227", "cca3": "JPN", "cn": "Japan", "temp": 29, "signal": 1, "battery_level": 0, "c02_level": 1248, "timestamp" :1475454251342 }
-{"device_id": 9, "device_type": "sensor-inest", "ip": "208.109.163.218", "cca3": "USA", "cn": "United States", "temp": 30, "signal": 0, "battery_level": 1, "c02_level": 1250, "timestamp" :1475454253345 }
-{"device_id": 10, "device_type": "sensor-ipad", "ip": "88.213.191.34", "cca3": "ITA", "cn": "Italy", "temp": 31, "signal": 23, "battery_level": 7, "c02_level": 1252, "timestamp" :1475454255348 }
-{"device_id": 11, "device_type": "sensor-igauge", "ip": "68.28.91.22", "cca3": "USA", "cn": "United States", "temp": 32, "signal": 22, "battery_level": 6, "c02_level": 1254, "timestamp" :1475454257351 }
-{"device_id": 12, "device_type": "sensor-ipad", "ip": "59.144.114.250", "cca3": "IND", "cn": "India", "temp": 33, "signal": 21, "battery_level": 6, "c02_level": 1256, "timestamp" :1475454259355 }
-{"device_id": 13, "device_type": "sensor-igauge", "ip": "193.156.90.200", "cca3": "NOR", "cn": "Norway", "temp": 34, "signal": 20, "battery_level": 9, "c02_level": 1258, "timestamp" :1475454261359 }
-{"device_id": 14, "device_type": "sensor-ipad", "ip": "67.185.72.1", "cca3": "USA", "cn": "United States", "temp": 35, "signal": 19, "battery_level": 9, "c02_level": 1260, "timestamp" :1475454263361 }
-{"device_id": 15, "device_type": "sensor-inest", "ip": "68.85.85.106", "cca3": "USA", "cn": "United States", "temp": 36, "signal": 18, "battery_level": 5, "c02_level": 1262, "timestamp" :1475454265362 }
-{"device_id": 16, "device_type": "sensor-ipad", "ip": "161.188.212.254", "cca3": "USA", "cn": "United States", "temp": 37, "signal": 17, "battery_level": 4, "c02_level": 1264, "timestamp" :1475454267367 }
-{"device_id": 17, "device_type": "sensor-igauge", "ip": "221.3.128.242", "cca3": "CHN", "cn": "China", "temp": 38, "signal": 16, "battery_level": 7, "c02_level": 1266, "timestamp" :1475454269367 }
-{"device_id": 18, "device_type": "sensor-ipad", "ip": "64.124.180.215", "cca3": "USA", "cn": "United States", "temp": 39, "signal": 15, "battery_level": 1, "c02_level": 1268, "timestamp" :1475454271372 }
-{"device_id": 19, "device_type": "sensor-igauge", "ip": "66.153.162.66", "cca3": "USA", "cn": "United States", "temp": 40, "signal": 14, "battery_level": 0, "c02_level": 1270, "timestamp" :1475454273375 }
-{"device_id": 20, "device_type": "sensor-ipad", "ip": "193.200.142.254", "cca3": "AUT", "cn": "Austria", "temp": 41, "signal": 13, "battery_level": 1, "c02_level": 1272, "timestamp" :1475454275379 }
-{"device_id": 21, "device_type": "sensor-inest", "ip": "221.113.129.83", "cca3": "JPN", "cn": "Japan", "temp": 42, "signal": 12, "battery_level": 1, "c02_level": 1274, "timestamp" :1475454277379 }
-{"device_id": 22, "device_type": "sensor-ipad", "ip": "59.90.65.1", "cca3": "IND", "cn": "India", "temp": 43, "signal": 11, "battery_level": 1, "c02_level": 1276, "timestamp" :1475454279383 }
-{"device_id": 23, "device_type": "sensor-igauge", "ip": "69.90.67.1", "cca3": "CAN", "cn": "Canada", "temp": 44, "signal": 10, "battery_level": 1, "c02_level": 1278, "timestamp" :1475454281386 }
-{"device_id": 24, "device_type": "sensor-ipad", "ip": "24.154.45.90", "cca3": "USA", "cn": "United States", "temp": 45, "signal": 9, "battery_level": 1, "c02_level": 1280, "timestamp" :1475454283390 }
-{"device_id": 25, "device_type": "sensor-istick", "ip": "210.158.147.11", "cca3": "JPN", "cn": "Japan", "temp": 46, "signal": 8, "battery_level": 0, "c02_level": 1282, "timestamp" :1475454285390 }
-{"device_id": 26, "device_type": "sensor-ipad", "ip": "218.239.168.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 47, "signal": 7, "battery_level": 0, "c02_level": 1284, "timestamp" :1475454287390 }
-{"device_id": 27, "device_type": "sensor-inest", "ip": "211.238.224.77", "cca3": "KOR", "cn": "Republic of Korea", "temp": 48, "signal": 6, "battery_level": 1, "c02_level": 1286, "timestamp" :1475454289391 }
-{"device_id": 28, "device_type": "sensor-ipad", "ip": "83.98.224.49", "cca3": "NLD", "cn": "Netherlands", "temp": 49, "signal": 5, "battery_level": 1, "c02_level": 1288, "timestamp" :1475454291396 }
-{"device_id": 29, "device_type": "sensor-igauge", "ip": "66.225.253.47", "cca3": "USA", "cn": "United States", "temp": 50, "signal": 4, "battery_level": 0, "c02_level": 1290, "timestamp" :1475454293399 }
-{"device_id": 30, "device_type": "sensor-ipad", "ip": "80.251.64.1", "cca3": "ESP", "cn": "Spain", "temp": 51, "signal": 3, "battery_level": 0, "c02_level": 1292, "timestamp" :1475454295399 }
-{"device_id": 31, "device_type": "sensor-igauge", "ip": "128.83.9.146", "cca3": "USA", "cn": "United States", "temp": 52, "signal": 2, "battery_level": 0, "c02_level": 1294, "timestamp" :1475454297400 }
-{"device_id": 32, "device_type": "sensor-ipad", "ip": "178.23.147.134", "cca3": "RUS", "cn": "Russia", "temp": 53, "signal": 1, "battery_level": 1, "c02_level": 1296, "timestamp" :1475454299404 }
-{"device_id": 33, "device_type": "sensor-inest", "ip": "80.255.179.78", "cca3": "RUS", "cn": "Russia", "temp": 54, "signal": 0, "battery_level": 0, "c02_level": 1298, "timestamp" :1475454301407 }
-{"device_id": 34, "device_type": "sensor-ipad", "ip": "124.164.2.186", "cca3": "CHN", "cn": "China", "temp": 55, "signal": 14, "battery_level": 0, "c02_level": 1300, "timestamp" :1475454303409 }
-{"device_id": 35, "device_type": "sensor-istick", "ip": "213.7.14.1", "cca3": "CYP", "cn": "Cyprus", "temp": 56, "signal": 13, "battery_level": 0, "c02_level": 1302, "timestamp" :1475454305413 }
-{"device_id": 36, "device_type": "sensor-ipad", "ip": "211.128.96.230", "cca3": "JPN", "cn": "Japan", "temp": 57, "signal": 12, "battery_level": 0, "c02_level": 1304, "timestamp" :1475454307417 }
-{"device_id": 37, "device_type": "sensor-igauge", "ip": "193.51.189.61", "cca3": "FRA", "cn": "France", "temp": 58, "signal": 11, "battery_level": 1, "c02_level": 1306, "timestamp" :1475454309418 }
-{"device_id": 38, "device_type": "sensor-ipad", "ip": "218.7.15.1", "cca3": "CHN", "cn": "China", "temp": 59, "signal": 10, "battery_level": 1, "c02_level": 1308, "timestamp" :1475454311419 }
-{"device_id": 39, "device_type": "sensor-inest", "ip": "188.7.9.1", "cca3": "FRA", "cn": "France", "temp": 60, "signal": 9, "battery_level": 1, "c02_level": 1310, "timestamp" :1475454313424 }
-{"device_id": 40, "device_type": "sensor-ipad", "ip": "212.103.205.250", "cca3": "ITA", "cn": "Italy", "temp": 61, "signal": 8, "battery_level": 0, "c02_level": 1312, "timestamp" :1475454315426 }
-{"device_id": 41, "device_type": "sensor-igauge", "ip": "62.82.3.66", "cca3": "ESP", "cn": "Spain", "temp": 62, "signal": 7, "battery_level": 1, "c02_level": 1314, "timestamp" :1475454317426 }
-{"device_id": 42, "device_type": "sensor-ipad", "ip": "80.81.64.142", "cca3": "ESP", "cn": "Spain", "temp": 63, "signal": 6, "battery_level": 0, "c02_level": 1316, "timestamp" :1475454319427 }
-{"device_id": 43, "device_type": "sensor-igauge", "ip": "62.128.16.74", "cca3": "DEU", "cn": "Germany", "temp": 64, "signal": 5, "battery_level": 0, "c02_level": 1318, "timestamp" :1475454321431 }
-{"device_id": 44, "device_type": "sensor-ipad", "ip": "213.140.20.230", "cca3": "ITA", "cn": "Italy", "temp": 65, "signal": 4, "battery_level": 0, "c02_level": 1320, "timestamp" :1475454323435 }
-{"device_id": 45, "device_type": "sensor-inest", "ip": "65.5.48.253", "cca3": "USA", "cn": "United States", "temp": 66, "signal": 3, "battery_level": 0, "c02_level": 1322, "timestamp" :1475454325438 }
-{"device_id": 46, "device_type": "sensor-ipad", "ip": "195.178.145.209", "cca3": "UKR", "cn": "Ukraine", "temp": 67, "signal": 2, "battery_level": 1, "c02_level": 1324, "timestamp" :1475454327440 }
-{"device_id": 47, "device_type": "sensor-igauge", "ip": "90.37.208.1", "cca3": "FRA", "cn": "France", "temp": 68, "signal": 1, "battery_level": 1, "c02_level": 1326, "timestamp" :1475454329445 }
-{"device_id": 48, "device_type": "sensor-ipad", "ip": "170.37.224.1", "cca3": "USA", "cn": "United States", "temp": 69, "signal": 0, "battery_level": 1, "c02_level": 1328, "timestamp" :1475454331448 }
-{"device_id": 49, "device_type": "sensor-igauge", "ip": "62.153.177.73", "cca3": "DEU", "cn": "Germany", "temp": 70, "signal": 27, "battery_level": 8, "c02_level": 1330, "timestamp" :1475454333453 }
-{"device_id": 50, "device_type": "sensor-ipad", "ip": "146.97.40.113", "cca3": "GBR", "cn": "United Kingdom", "temp": 71, "signal": 26, "battery_level": 4, "c02_level": 1332, "timestamp" :1475454335456 }
-{"device_id": 51, "device_type": "sensor-inest", "ip": "72.49.128.1", "cca3": "USA", "cn": "United States", "temp": 72, "signal": 25, "battery_level": 9, "c02_level": 1334, "timestamp" :1475454337456 }
-{"device_id": 52, "device_type": "sensor-ipad", "ip": "80.89.168.34", "cca3": "SWE", "cn": "Sweden", "temp": 73, "signal": 24, "battery_level": 7, "c02_level": 1336, "timestamp" :1475454339456 }
-{"device_id": 53, "device_type": "sensor-igauge", "ip": "204.15.64.249", "cca3": "USA", "cn": "United States", "temp": 74, "signal": 23, "battery_level": 5, "c02_level": 1338, "timestamp" :1475454341457 }
-{"device_id": 54, "device_type": "sensor-ipad", "ip": "124.160.81.22", "cca3": "CHN", "cn": "China", "temp": 75, "signal": 22, "battery_level": 7, "c02_level": 1340, "timestamp" :1475454343461 }
-{"device_id": 55, "device_type": "sensor-istick", "ip": "203.130.148.41", "cca3": "THA", "cn": "Thailand", "temp": 76, "signal": 21, "battery_level": 5, "c02_level": 1342, "timestamp" :1475454345462 }
-{"device_id": 56, "device_type": "sensor-ipad", "ip": "64.246.146.13", "cca3": "USA", "cn": "United States", "temp": 77, "signal": 20, "battery_level": 5, "c02_level": 1344, "timestamp" :1475454347462 }
-{"device_id": 57, "device_type": "sensor-inest", "ip": "200.76.250.4", "cca3": "MEX", "cn": "Mexico", "temp": 78, "signal": 19, "battery_level": 5, "c02_level": 1346, "timestamp" :1475454349462 }
-{"device_id": 58, "device_type": "sensor-ipad", "ip": "86.189.54.129", "cca3": "GBR", "cn": "United Kingdom", "temp": 79, "signal": 18, "battery_level": 3, "c02_level": 1348, "timestamp" :1475454351463 }
-{"device_id": 59, "device_type": "sensor-igauge", "ip": "134.61.64.1", "cca3": "DEU", "cn": "Germany", "temp": 80, "signal": 17, "battery_level": 8, "c02_level": 1350, "timestamp" :1475454353467 }
-{"device_id": 60, "device_type": "sensor-ipad", "ip": "86.198.202.1", "cca3": "FRA", "cn": "France", "temp": 81, "signal": 16, "battery_level": 4, "c02_level": 1352, "timestamp" :1475454355470 }
-{"device_id": 61, "device_type": "sensor-igauge", "ip": "151.198.215.1", "cca3": "USA", "cn": "United States", "temp": 82, "signal": 15, "battery_level": 1, "c02_level": 1354, "timestamp" :1475454357472 }
-{"device_id": 62, "device_type": "sensor-ipad", "ip": "66.198.198.1", "cca3": "USA", "cn": "United States", "temp": 83, "signal": 14, "battery_level": 1, "c02_level": 1356, "timestamp" :1475454359474 }
-{"device_id": 63, "device_type": "sensor-inest", "ip": "38.99.198.186", "cca3": "USA", "cn": "United States", "temp": 84, "signal": 13, "battery_level": 1, "c02_level": 1358, "timestamp" :1475454361478 }
-{"device_id": 64, "device_type": "sensor-ipad", "ip": "64.76.146.154", "cca3": "CHL", "cn": "Chile", "temp": 85, "signal": 12, "battery_level": 1, "c02_level": 1360, "timestamp" :1475454363481 }
-{"device_id": 65, "device_type": "sensor-istick", "ip": "213.210.151.1", "cca3": "CZE", "cn": "Czech Republic", "temp": 86, "signal": 11, "battery_level": 1, "c02_level": 1362, "timestamp" :1475454365486 }
-{"device_id": 66, "device_type": "sensor-ipad", "ip": "78.110.188.6", "cca3": "ITA", "cn": "Italy", "temp": 87, "signal": 10, "battery_level": 1, "c02_level": 1364, "timestamp" :1475454367488 }
-{"device_id": 67, "device_type": "sensor-igauge", "ip": "216.83.68.103", "cca3": "USA", "cn": "United States", "temp": 88, "signal": 9, "battery_level": 1, "c02_level": 1366, "timestamp" :1475454369489 }
-{"device_id": 68, "device_type": "sensor-ipad", "ip": "194.146.109.12", "cca3": "HRV", "cn": "Croatia", "temp": 89, "signal": 8, "battery_level": 0, "c02_level": 1368, "timestamp" :1475454371489 }
-{"device_id": 69, "device_type": "sensor-inest", "ip": "137.164.46.143", "cca3": "USA", "cn": "United States", "temp": 90, "signal": 7, "battery_level": 1, "c02_level": 1370, "timestamp" :1475454373489 }
-{"device_id": 70, "device_type": "sensor-ipad", "ip": "195.222.71.1", "cca3": "BLR", "cn": "Belarus", "temp": 91, "signal": 6, "battery_level": 1, "c02_level": 1372, "timestamp" :1475454375489 }
-{"device_id": 71, "device_type": "sensor-igauge", "ip": "80.222.48.1", "cca3": "FIN", "cn": "Finland", "temp": 92, "signal": 5, "battery_level": 0, "c02_level": 1374, "timestamp" :1475454377490 }
-{"device_id": 72, "device_type": "sensor-ipad", "ip": "209.251.80.58", "cca3": "USA", "cn": "United States", "temp": 93, "signal": 4, "battery_level": 1, "c02_level": 1376, "timestamp" :1475454379490 }
-{"device_id": 73, "device_type": "sensor-igauge", "ip": "121.33.241.193", "cca3": "CHN", "cn": "China", "temp": 94, "signal": 3, "battery_level": 1, "c02_level": 1378, "timestamp" :1475454381491 }
-{"device_id": 74, "device_type": "sensor-ipad", "ip": "143.161.246.65", "cca3": "AUT", "cn": "Austria", "temp": 95, "signal": 2, "battery_level": 1, "c02_level": 1380, "timestamp" :1475454383496 }
-{"device_id": 75, "device_type": "sensor-inest", "ip": "208.103.221.1", "cca3": "USA", "cn": "United States", "temp": 96, "signal": 1, "battery_level": 0, "c02_level": 1382, "timestamp" :1475454385498 }
-{"device_id": 76, "device_type": "sensor-ipad", "ip": "218.248.255.30", "cca3": "IND", "cn": "India", "temp": 97, "signal": 0, "battery_level": 0, "c02_level": 1384, "timestamp" :1475454387501 }
-{"device_id": 77, "device_type": "sensor-igauge", "ip": "222.234.0.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 98, "signal": 15, "battery_level": 0, "c02_level": 1386, "timestamp" :1475454389504 }
-{"device_id": 78, "device_type": "sensor-ipad", "ip": "219.158.12.62", "cca3": "CHN", "cn": "China", "temp": 99, "signal": 14, "battery_level": 0, "c02_level": 1388, "timestamp" :1475454391508 }
-{"device_id": 79, "device_type": "sensor-igauge", "ip": "159.128.0.181", "cca3": "CAN", "cn": "Canada", "temp": 100, "signal": 13, "battery_level": 0, "c02_level": 1390, "timestamp" :1475454393510 }
-{"device_id": 80, "device_type": "sensor-ipad", "ip": "222.127.71.1", "cca3": "PHL", "cn": "Philippines", "temp": 101, "signal": 12, "battery_level": 1, "c02_level": 1392, "timestamp" :1475454395512 }
-{"device_id": 81, "device_type": "sensor-inest", "ip": "213.162.50.33", "cca3": "FRA", "cn": "France", "temp": 102, "signal": 11, "battery_level": 1, "c02_level": 1394, "timestamp" :1475454397516 }
-{"device_id": 82, "device_type": "sensor-ipad", "ip": "62.214.32.222", "cca3": "DEU", "cn": "Germany", "temp": 103, "signal": 10, "battery_level": 1, "c02_level": 1396, "timestamp" :1475454399520 }
-{"device_id": 83, "device_type": "sensor-igauge", "ip": "122.133.0.26", "cca3": "JPN", "cn": "Japan", "temp": 104, "signal": 9, "battery_level": 1, "c02_level": 1398, "timestamp" :1475454401524 }
-{"device_id": 84, "device_type": "sensor-ipad", "ip": "205.213.119.42", "cca3": "USA", "cn": "United States", "temp": 105, "signal": 8, "battery_level": 1, "c02_level": 1400, "timestamp" :1475454403526 }
-{"device_id": 85, "device_type": "sensor-istick", "ip": "202.55.169.189", "cca3": "IDN", "cn": "Indonesia", "temp": 106, "signal": 7, "battery_level": 1, "c02_level": 1402, "timestamp" :1475454405527 }
-{"device_id": 86, "device_type": "sensor-ipad", "ip": "204.16.48.130", "cca3": "USA", "cn": "United States", "temp": 107, "signal": 6, "battery_level": 0, "c02_level": 1404, "timestamp" :1475454407528 }
-{"device_id": 87, "device_type": "sensor-inest", "ip": "85.218.127.93", "cca3": "CHE", "cn": "Switzerland", "temp": 108, "signal": 5, "battery_level": 1, "c02_level": 1406, "timestamp" :1475454409532 }
-{"device_id": 88, "device_type": "sensor-ipad", "ip": "217.160.140.235", "cca3": "DEU", "cn": "Germany", "temp": 109, "signal": 4, "battery_level": 0, "c02_level": 1408, "timestamp" :1475454411535 }
-{"device_id": 89, "device_type": "sensor-igauge", "ip": "213.214.12.66", "cca3": "DEU", "cn": "Germany", "temp": 110, "signal": 3, "battery_level": 1, "c02_level": 1410, "timestamp" :1475454413541 }
-{"device_id": 90, "device_type": "sensor-ipad", "ip": "62.20.110.1", "cca3": "SWE", "cn": "Sweden", "temp": 110, "signal": 2, "battery_level": 0, "c02_level": 1412, "timestamp" :1475454415543 }
-{"device_id": 91, "device_type": "sensor-igauge", "ip": "211.195.95.61", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 1, "battery_level": 0, "c02_level": 1414, "timestamp" :1475454417544 }
-{"device_id": 92, "device_type": "sensor-ipad", "ip": "195.19.194.77", "cca3": "RUS", "cn": "Russia", "temp": 110, "signal": 0, "battery_level": 1, "c02_level": 1416, "timestamp" :1475454419545 }
-{"device_id": 93, "device_type": "sensor-inest", "ip": "24.32.26.1", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 14, "battery_level": 1, "c02_level": 1418, "timestamp" :1475454421550 }
-{"device_id": 94, "device_type": "sensor-ipad", "ip": "200.25.144.102", "cca3": "ECU", "cn": "Ecuador", "temp": 110, "signal": 13, "battery_level": 0, "c02_level": 1420, "timestamp" :1475454423551 }
-{"device_id": 95, "device_type": "sensor-istick", "ip": "84.32.38.1", "cca3": "LTU", "cn": "Republic of Lithuania", "temp": 110, "signal": 12, "battery_level": 1, "c02_level": 1422, "timestamp" :1475454425552 }
-{"device_id": 96, "device_type": "sensor-ipad", "ip": "124.32.46.1", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 11, "battery_level": 1, "c02_level": 1424, "timestamp" :1475454427552 }
-{"device_id": 97, "device_type": "sensor-igauge", "ip": "12.116.241.94", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 10, "battery_level": 0, "c02_level": 1426, "timestamp" :1475454429552 }
-{"device_id": 98, "device_type": "sensor-ipad", "ip": "146.82.204.36", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 9, "battery_level": 0, "c02_level": 1428, "timestamp" :1475454431558 }
-{"device_id": 99, "device_type": "sensor-inest", "ip": "217.113.83.247", "cca3": "BEL", "cn": "Belgium", "temp": 110, "signal": 8, "battery_level": 0, "c02_level": 1430, "timestamp" :1475454433560 }
-{"device_id": 100, "device_type": "sensor-ipad", "ip": "66.83.105.10", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 7, "battery_level": 0, "c02_level": 1432, "timestamp" :1475454435561 }
-{"device_id": 101, "device_type": "sensor-igauge", "ip": "130.94.149.242", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 6, "battery_level": 1, "c02_level": 1434, "timestamp" :1475454437562 }
-{"device_id": 102, "device_type": "sensor-ipad", "ip": "211.169.211.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 5, "battery_level": 1, "c02_level": 1436, "timestamp" :1475454439562 }
-{"device_id": 103, "device_type": "sensor-igauge", "ip": "208.49.44.2", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 4, "battery_level": 0, "c02_level": 1438, "timestamp" :1475454441562 }
-{"device_id": 104, "device_type": "sensor-ipad", "ip": "64.65.104.235", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 3, "battery_level": 0, "c02_level": 1440, "timestamp" :1475454443563 }
-{"device_id": 105, "device_type": "sensor-inest", "ip": "150.99.186.37", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 2, "battery_level": 1, "c02_level": 1442, "timestamp" :1475454445568 }
-{"device_id": 106, "device_type": "sensor-ipad", "ip": "163.139.227.70", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 1, "battery_level": 1, "c02_level": 1444, "timestamp" :1475454447572 }
-{"device_id": 107, "device_type": "sensor-igauge", "ip": "208.35.184.254", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 0, "battery_level": 1, "c02_level": 1446, "timestamp" :1475454449576 }
-{"device_id": 108, "device_type": "sensor-ipad", "ip": "24.29.148.73", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 16, "battery_level": 6, "c02_level": 1448, "timestamp" :1475454451580 }
-{"device_id": 109, "device_type": "sensor-igauge", "ip": "152.66.14.3", "cca3": "HUN", "cn": "Hungary", "temp": 110, "signal": 15, "battery_level": 0, "c02_level": 1450, "timestamp" :1475454453583 }
-{"device_id": 110, "device_type": "sensor-ipad", "ip": "203.123.94.193", "cca3": "AUS", "cn": "Australia", "temp": 110, "signal": 14, "battery_level": 0, "c02_level": 1452, "timestamp" :1475454455587 }
-{"device_id": 111, "device_type": "sensor-inest", "ip": "200.47.106.254", "cca3": "VEN", "cn": "Venezuela", "temp": 110, "signal": 13, "battery_level": 1, "c02_level": 1454, "timestamp" :1475454457588 }
-{"device_id": 112, "device_type": "sensor-ipad", "ip": "210.193.58.1", "cca3": "SGP", "cn": "Singapore", "temp": 110, "signal": 12, "battery_level": 0, "c02_level": 1456, "timestamp" :1475454459588 }
-{"device_id": 113, "device_type": "sensor-igauge", "ip": "160.193.48.1", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 11, "battery_level": 1, "c02_level": 1458, "timestamp" :1475454461592 }
-{"device_id": 114, "device_type": "sensor-ipad", "ip": "217.198.117.2", "cca3": "CZE", "cn": "Czech Republic", "temp": 110, "signal": 10, "battery_level": 0, "c02_level": 1460, "timestamp" :1475454463592 }
-{"device_id": 115, "device_type": "sensor-istick", "ip": "65.40.86.249", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 9, "battery_level": 1, "c02_level": 1462, "timestamp" :1475454465593 }
-{"device_id": 116, "device_type": "sensor-ipad", "ip": "211.137.250.166", "cca3": "CHN", "cn": "China", "temp": 110, "signal": 8, "battery_level": 0, "c02_level": 1464, "timestamp" :1475454467598 }
-{"device_id": 117, "device_type": "sensor-inest", "ip": "24.215.34.53", "cca3": "CAN", "cn": "Canada", "temp": 110, "signal": 7, "battery_level": 0, "c02_level": 1466, "timestamp" :1475454469600 }
-{"device_id": 118, "device_type": "sensor-ipad", "ip": "210.86.129.1", "cca3": "THA", "cn": "Thailand", "temp": 110, "signal": 6, "battery_level": 0, "c02_level": 1468, "timestamp" :1475454471600 }
-{"device_id": 119, "device_type": "sensor-igauge", "ip": "95.86.106.1", "cca3": "ISR", "cn": "Israel", "temp": 110, "signal": 5, "battery_level": 0, "c02_level": 1470, "timestamp" :1475454473600 }
-{"device_id": 120, "device_type": "sensor-ipad", "ip": "68.85.158.77", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 4, "battery_level": 1, "c02_level": 1472, "timestamp" :1475454475605 }
-{"device_id": 121, "device_type": "sensor-igauge", "ip": "81.21.148.38", "cca3": "IRL", "cn": "Ireland", "temp": 110, "signal": 3, "battery_level": 1, "c02_level": 1474, "timestamp" :1475454477609 }
-{"device_id": 122, "device_type": "sensor-ipad", "ip": "208.250.26.135", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 2, "battery_level": 1, "c02_level": 1476, "timestamp" :1475454479614 }
-{"device_id": 123, "device_type": "sensor-inest", "ip": "72.34.37.168", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 1, "battery_level": 0, "c02_level": 1478, "timestamp" :1475454481614 }
-{"device_id": 124, "device_type": "sensor-ipad", "ip": "82.116.1.82", "cca3": "RUS", "cn": "Russia", "temp": 110, "signal": 0, "battery_level": 0, "c02_level": 1480, "timestamp" :1475454483616 }
-{"device_id": 125, "device_type": "sensor-istick", "ip": "222.98.55.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 16, "battery_level": 7, "c02_level": 1482, "timestamp" :1475454485619 }
-{"device_id": 126, "device_type": "sensor-ipad", "ip": "219.103.112.2", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 15, "battery_level": 1, "c02_level": 1484, "timestamp" :1475454487624 }
-{"device_id": 127, "device_type": "sensor-igauge", "ip": "217.180.15.171", "cca3": "GBR", "cn": "United Kingdom", "temp": 110, "signal": 14, "battery_level": 0, "c02_level": 1486, "timestamp" :1475454489624 }
-{"device_id": 128, "device_type": "sensor-ipad", "ip": "202.162.38.90", "cca3": "IDN", "cn": "Indonesia", "temp": 110, "signal": 13, "battery_level": 1, "c02_level": 1488, "timestamp" :1475454491624 }
-{"device_id": 129, "device_type": "sensor-inest", "ip": "63.218.164.50", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 12, "battery_level": 0, "c02_level": 1490, "timestamp" :1475454493626 }
-{"device_id": 130, "device_type": "sensor-ipad", "ip": "207.165.237.193", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 11, "battery_level": 1, "c02_level": 1492, "timestamp" :1475454495631 }
-{"device_id": 131, "device_type": "sensor-igauge", "ip": "194.126.113.134", "cca3": "EST", "cn": "Estonia", "temp": 110, "signal": 10, "battery_level": 1, "c02_level": 1494, "timestamp" :1475454497633 }
-{"device_id": 132, "device_type": "sensor-ipad", "ip": "109.235.180.1", "cca3": "CZE", "cn": "Czech Republic", "temp": 110, "signal": 9, "battery_level": 0, "c02_level": 1496, "timestamp" :1475454499633 }
-{"device_id": 133, "device_type": "sensor-igauge", "ip": "65.103.30.102", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 8, "battery_level": 0, "c02_level": 1498, "timestamp" :1475454501633 }
-{"device_id": 134, "device_type": "sensor-ipad", "ip": "195.66.190.222", "cca3": "MNE", "cn": "Montenegro", "temp": 110, "signal": 7, "battery_level": 0, "c02_level": 1500, "timestamp" :1475454503638 }
-{"device_id": 135, "device_type": "sensor-inest", "ip": "211.161.47.10", "cca3": "CHN", "cn": "China", "temp": 110, "signal": 6, "battery_level": 1, "c02_level": 1502, "timestamp" :1475454505642 }
-{"device_id": 136, "device_type": "sensor-ipad", "ip": "203.188.192.169", "cca3": "TWN", "cn": "Taiwan", "temp": 110, "signal": 5, "battery_level": 0, "c02_level": 1504, "timestamp" :1475454507646 }
-{"device_id": 137, "device_type": "sensor-igauge", "ip": "81.247.98.1", "cca3": "BEL", "cn": "Belgium", "temp": 110, "signal": 4, "battery_level": 1, "c02_level": 1506, "timestamp" :1475454509651 }
-{"device_id": 138, "device_type": "sensor-ipad", "ip": "61.247.94.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 3, "battery_level": 0, "c02_level": 1508, "timestamp" :1475454511652 }
-{"device_id": 139, "device_type": "sensor-igauge", "ip": "213.252.182.2", "cca3": "DEU", "cn": "Germany", "temp": 110, "signal": 2, "battery_level": 1, "c02_level": 1510, "timestamp" :1475454513656 }
-{"device_id": 140, "device_type": "sensor-ipad", "ip": "211.247.124.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 1, "battery_level": 0, "c02_level": 1512, "timestamp" :1475454515660 }
-{"device_id": 141, "device_type": "sensor-inest", "ip": "221.247.126.1", "cca3": "JPN", "cn": "Japan", "temp": 110, "signal": 0, "battery_level": 1, "c02_level": 1514, "timestamp" :1475454517660 }
-{"device_id": 142, "device_type": "sensor-ipad", "ip": "209.161.21.60", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 25, "battery_level": 8, "c02_level": 1516, "timestamp" :1475454519665 }
-{"device_id": 143, "device_type": "sensor-igauge", "ip": "212.242.41.50", "cca3": "DNK", "cn": "Denmark", "temp": 110, "signal": 24, "battery_level": 4, "c02_level": 1518, "timestamp" :1475454521668 }
-{"device_id": 144, "device_type": "sensor-ipad", "ip": "212.187.201.89", "cca3": "GBR", "cn": "United Kingdom", "temp": 110, "signal": 23, "battery_level": 4, "c02_level": 1520, "timestamp" :1475454523673 }
-{"device_id": 145, "device_type": "sensor-istick", "ip": "169.130.96.205", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 22, "battery_level": 6, "c02_level": 1522, "timestamp" :1475454525677 }
-{"device_id": 146, "device_type": "sensor-ipad", "ip": "63.145.223.2", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 21, "battery_level": 6, "c02_level": 1524, "timestamp" :1475454527681 }
-{"device_id": 147, "device_type": "sensor-inest", "ip": "221.140.197.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 110, "signal": 20, "battery_level": 8, "c02_level": 1526, "timestamp" :1475454529683 }
-{"device_id": 148, "device_type": "sensor-ipad", "ip": "68.87.185.194", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 19, "battery_level": 6, "c02_level": 1528, "timestamp" :1475454531687 }
-{"device_id": 149, "device_type": "sensor-igauge", "ip": "12.169.60.2", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 18, "battery_level": 5, "c02_level": 1530, "timestamp" :1475454533688 }
+{"device_id": 0, "device_type": "sensor-ipad", "ip": "68.161.225.1", "cca3": "USA", "cn": "United States", "temp": 24, "signal": 22, "battery_level": 3, "c02_level": 1428, "timestamp" :1475603917 }
+{"device_id": 1, "device_type": "sensor-igauge", "ip": "213.161.254.1", "cca3": "NOR", "cn": "Norway", "temp": 25, "signal": 21, "battery_level": 5, "c02_level": 1430, "timestamp" :1475603919 }
+{"device_id": 2, "device_type": "sensor-ipad", "ip": "88.36.5.1", "cca3": "ITA", "cn": "Italy", "temp": 26, "signal": 20, "battery_level": 9, "c02_level": 1432, "timestamp" :1475603921 }
+{"device_id": 3, "device_type": "sensor-inest", "ip": "66.39.173.154", "cca3": "USA", "cn": "United States", "temp": 27, "signal": 19, "battery_level": 9, "c02_level": 1434, "timestamp" :1475603923 }
+{"device_id": 4, "device_type": "sensor-ipad", "ip": "203.82.41.9", "cca3": "PHL", "cn": "Philippines", "temp": 28, "signal": 18, "battery_level": 6, "c02_level": 1436, "timestamp" :1475603925 }
+{"device_id": 5, "device_type": "sensor-istick", "ip": "204.116.105.67", "cca3": "USA", "cn": "United States", "temp": 29, "signal": 17, "battery_level": 6, "c02_level": 1438, "timestamp" :1475603927 }
+{"device_id": 6, "device_type": "sensor-ipad", "ip": "220.173.179.1", "cca3": "CHN", "cn": "China", "temp": 30, "signal": 16, "battery_level": 4, "c02_level": 1440, "timestamp" :1475603929 }
+{"device_id": 7, "device_type": "sensor-igauge", "ip": "210.173.177.1", "cca3": "JPN", "cn": "Japan", "temp": 31, "signal": 15, "battery_level": 0, "c02_level": 1442, "timestamp" :1475603931 }
+{"device_id": 8, "device_type": "sensor-ipad", "ip": "118.23.68.227", "cca3": "JPN", "cn": "Japan", "temp": 32, "signal": 14, "battery_level": 1, "c02_level": 1444, "timestamp" :1475603933 }
+{"device_id": 9, "device_type": "sensor-inest", "ip": "208.109.163.218", "cca3": "USA", "cn": "United States", "temp": 33, "signal": 13, "battery_level": 1, "c02_level": 1446, "timestamp" :1475603935 }
+{"device_id": 10, "device_type": "sensor-ipad", "ip": "88.213.191.34", "cca3": "ITA", "cn": "Italy", "temp": 34, "signal": 12, "battery_level": 1, "c02_level": 1448, "timestamp" :1475603937 }
+{"device_id": 11, "device_type": "sensor-igauge", "ip": "68.28.91.22", "cca3": "USA", "cn": "United States", "temp": 35, "signal": 11, "battery_level": 1, "c02_level": 1450, "timestamp" :1475603939 }
+{"device_id": 12, "device_type": "sensor-ipad", "ip": "59.144.114.250", "cca3": "IND", "cn": "India", "temp": 36, "signal": 10, "battery_level": 0, "c02_level": 1452, "timestamp" :1475603941 }
+{"device_id": 13, "device_type": "sensor-igauge", "ip": "193.156.90.200", "cca3": "NOR", "cn": "Norway", "temp": 37, "signal": 9, "battery_level": 0, "c02_level": 1454, "timestamp" :1475603943 }
+{"device_id": 14, "device_type": "sensor-ipad", "ip": "67.185.72.1", "cca3": "USA", "cn": "United States", "temp": 38, "signal": 8, "battery_level": 1, "c02_level": 1456, "timestamp" :1475603945 }
+{"device_id": 15, "device_type": "sensor-inest", "ip": "68.85.85.106", "cca3": "USA", "cn": "United States", "temp": 39, "signal": 7, "battery_level": 0, "c02_level": 1458, "timestamp" :1475603947 }
+{"device_id": 16, "device_type": "sensor-ipad", "ip": "161.188.212.254", "cca3": "USA", "cn": "United States", "temp": 40, "signal": 6, "battery_level": 0, "c02_level": 1460, "timestamp" :1475603949 }
+{"device_id": 17, "device_type": "sensor-igauge", "ip": "221.3.128.242", "cca3": "CHN", "cn": "China", "temp": 41, "signal": 5, "battery_level": 0, "c02_level": 1462, "timestamp" :1475603951 }
+{"device_id": 18, "device_type": "sensor-ipad", "ip": "64.124.180.215", "cca3": "USA", "cn": "United States", "temp": 42, "signal": 4, "battery_level": 0, "c02_level": 1464, "timestamp" :1475603953 }
+{"device_id": 19, "device_type": "sensor-igauge", "ip": "66.153.162.66", "cca3": "USA", "cn": "United States", "temp": 43, "signal": 3, "battery_level": 0, "c02_level": 1466, "timestamp" :1475603955 }
+{"device_id": 20, "device_type": "sensor-ipad", "ip": "193.200.142.254", "cca3": "AUT", "cn": "Austria", "temp": 44, "signal": 2, "battery_level": 0, "c02_level": 1468, "timestamp" :1475603957 }
+{"device_id": 21, "device_type": "sensor-inest", "ip": "221.113.129.83", "cca3": "JPN", "cn": "Japan", "temp": 45, "signal": 1, "battery_level": 1, "c02_level": 1470, "timestamp" :1475603959 }
+{"device_id": 22, "device_type": "sensor-ipad", "ip": "59.90.65.1", "cca3": "IND", "cn": "India", "temp": 46, "signal": 0, "battery_level": 0, "c02_level": 1472, "timestamp" :1475603961 }
+{"device_id": 23, "device_type": "sensor-igauge", "ip": "69.90.67.1", "cca3": "CAN", "cn": "Canada", "temp": 47, "signal": 22, "battery_level": 8, "c02_level": 1474, "timestamp" :1475603963 }
+{"device_id": 24, "device_type": "sensor-ipad", "ip": "24.154.45.90", "cca3": "USA", "cn": "United States", "temp": 48, "signal": 21, "battery_level": 5, "c02_level": 1476, "timestamp" :1475603965 }
+{"device_id": 25, "device_type": "sensor-istick", "ip": "210.158.147.11", "cca3": "JPN", "cn": "Japan", "temp": 49, "signal": 20, "battery_level": 9, "c02_level": 1478, "timestamp" :1475603967 }
+{"device_id": 26, "device_type": "sensor-ipad", "ip": "218.239.168.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 50, "signal": 19, "battery_level": 4, "c02_level": 1480, "timestamp" :1475603969 }
+{"device_id": 27, "device_type": "sensor-inest", "ip": "211.238.224.77", "cca3": "KOR", "cn": "Republic of Korea", "temp": 51, "signal": 18, "battery_level": 4, "c02_level": 1482, "timestamp" :1475603971 }
+{"device_id": 28, "device_type": "sensor-ipad", "ip": "83.98.224.49", "cca3": "NLD", "cn": "Netherlands", "temp": 52, "signal": 17, "battery_level": 3, "c02_level": 1484, "timestamp" :1475603973 }
+{"device_id": 29, "device_type": "sensor-igauge", "ip": "66.225.253.47", "cca3": "USA", "cn": "United States", "temp": 53, "signal": 16, "battery_level": 3, "c02_level": 1486, "timestamp" :1475603975 }
+{"device_id": 30, "device_type": "sensor-ipad", "ip": "80.251.64.1", "cca3": "ESP", "cn": "Spain", "temp": 54, "signal": 15, "battery_level": 0, "c02_level": 1488, "timestamp" :1475603977 }
+{"device_id": 31, "device_type": "sensor-igauge", "ip": "128.83.9.146", "cca3": "USA", "cn": "United States", "temp": 55, "signal": 14, "battery_level": 0, "c02_level": 1490, "timestamp" :1475603979 }
+{"device_id": 32, "device_type": "sensor-ipad", "ip": "178.23.147.134", "cca3": "RUS", "cn": "Russia", "temp": 56, "signal": 13, "battery_level": 1, "c02_level": 1492, "timestamp" :1475603981 }
+{"device_id": 33, "device_type": "sensor-inest", "ip": "80.255.179.78", "cca3": "RUS", "cn": "Russia", "temp": 57, "signal": 12, "battery_level": 0, "c02_level": 1494, "timestamp" :1475603983 }
+{"device_id": 34, "device_type": "sensor-ipad", "ip": "124.164.2.186", "cca3": "CHN", "cn": "China", "temp": 58, "signal": 11, "battery_level": 1, "c02_level": 1496, "timestamp" :1475603985 }
+{"device_id": 35, "device_type": "sensor-istick", "ip": "213.7.14.1", "cca3": "CYP", "cn": "Cyprus", "temp": 59, "signal": 10, "battery_level": 0, "c02_level": 1498, "timestamp" :1475603987 }
+{"device_id": 36, "device_type": "sensor-ipad", "ip": "211.128.96.230", "cca3": "JPN", "cn": "Japan", "temp": 60, "signal": 9, "battery_level": 0, "c02_level": 1500, "timestamp" :1475603989 }
+{"device_id": 37, "device_type": "sensor-igauge", "ip": "193.51.189.61", "cca3": "FRA", "cn": "France", "temp": 61, "signal": 8, "battery_level": 1, "c02_level": 1502, "timestamp" :1475603991 }
+{"device_id": 38, "device_type": "sensor-ipad", "ip": "218.7.15.1", "cca3": "CHN", "cn": "China", "temp": 62, "signal": 7, "battery_level": 0, "c02_level": 1504, "timestamp" :1475603993 }
+{"device_id": 39, "device_type": "sensor-inest", "ip": "188.7.9.1", "cca3": "FRA", "cn": "France", "temp": 63, "signal": 6, "battery_level": 1, "c02_level": 1506, "timestamp" :1475603995 }
+{"device_id": 40, "device_type": "sensor-ipad", "ip": "212.103.205.250", "cca3": "ITA", "cn": "Italy", "temp": 64, "signal": 5, "battery_level": 1, "c02_level": 1508, "timestamp" :1475603997 }
+{"device_id": 41, "device_type": "sensor-igauge", "ip": "62.82.3.66", "cca3": "ESP", "cn": "Spain", "temp": 65, "signal": 4, "battery_level": 1, "c02_level": 1510, "timestamp" :1475603999 }
+{"device_id": 42, "device_type": "sensor-ipad", "ip": "80.81.64.142", "cca3": "ESP", "cn": "Spain", "temp": 66, "signal": 3, "battery_level": 1, "c02_level": 1512, "timestamp" :1475604001 }
+{"device_id": 43, "device_type": "sensor-igauge", "ip": "62.128.16.74", "cca3": "DEU", "cn": "Germany", "temp": 67, "signal": 2, "battery_level": 0, "c02_level": 1514, "timestamp" :1475604003 }
+{"device_id": 44, "device_type": "sensor-ipad", "ip": "213.140.20.230", "cca3": "ITA", "cn": "Italy", "temp": 68, "signal": 1, "battery_level": 0, "c02_level": 1516, "timestamp" :1475604005 }
+{"device_id": 45, "device_type": "sensor-inest", "ip": "65.5.48.253", "cca3": "USA", "cn": "United States", "temp": 69, "signal": 0, "battery_level": 0, "c02_level": 1518, "timestamp" :1475604007 }
+{"device_id": 46, "device_type": "sensor-ipad", "ip": "195.178.145.209", "cca3": "UKR", "cn": "Ukraine", "temp": 70, "signal": 26, "battery_level": 8, "c02_level": 1520, "timestamp" :1475604009 }
+{"device_id": 47, "device_type": "sensor-igauge", "ip": "90.37.208.1", "cca3": "FRA", "cn": "France", "temp": 71, "signal": 25, "battery_level": 8, "c02_level": 1522, "timestamp" :1475604011 }
+{"device_id": 48, "device_type": "sensor-ipad", "ip": "170.37.224.1", "cca3": "USA", "cn": "United States", "temp": 72, "signal": 24, "battery_level": 4, "c02_level": 1524, "timestamp" :1475604013 }
+{"device_id": 49, "device_type": "sensor-igauge", "ip": "62.153.177.73", "cca3": "DEU", "cn": "Germany", "temp": 73, "signal": 23, "battery_level": 7, "c02_level": 1526, "timestamp" :1475604015 }
+{"device_id": 50, "device_type": "sensor-ipad", "ip": "146.97.40.113", "cca3": "GBR", "cn": "United Kingdom", "temp": 74, "signal": 22, "battery_level": 5, "c02_level": 1528, "timestamp" :1475604017 }
+{"device_id": 51, "device_type": "sensor-inest", "ip": "72.49.128.1", "cca3": "USA", "cn": "United States", "temp": 75, "signal": 21, "battery_level": 6, "c02_level": 1530, "timestamp" :1475604019 }
+{"device_id": 52, "device_type": "sensor-ipad", "ip": "80.89.168.34", "cca3": "SWE", "cn": "Sweden", "temp": 76, "signal": 20, "battery_level": 3, "c02_level": 1532, "timestamp" :1475604021 }
+{"device_id": 53, "device_type": "sensor-igauge", "ip": "204.15.64.249", "cca3": "USA", "cn": "United States", "temp": 77, "signal": 19, "battery_level": 6, "c02_level": 1534, "timestamp" :1475604023 }
+{"device_id": 54, "device_type": "sensor-ipad", "ip": "124.160.81.22", "cca3": "CHN", "cn": "China", "temp": 78, "signal": 18, "battery_level": 6, "c02_level": 1536, "timestamp" :1475604025 }
+{"device_id": 55, "device_type": "sensor-istick", "ip": "203.130.148.41", "cca3": "THA", "cn": "Thailand", "temp": 79, "signal": 17, "battery_level": 8, "c02_level": 1538, "timestamp" :1475604027 }
+{"device_id": 56, "device_type": "sensor-ipad", "ip": "64.246.146.13", "cca3": "USA", "cn": "United States", "temp": 80, "signal": 16, "battery_level": 3, "c02_level": 1540, "timestamp" :1475604029 }
+{"device_id": 57, "device_type": "sensor-inest", "ip": "200.76.250.4", "cca3": "MEX", "cn": "Mexico", "temp": 81, "signal": 15, "battery_level": 0, "c02_level": 1542, "timestamp" :1475604031 }
+{"device_id": 58, "device_type": "sensor-ipad", "ip": "86.189.54.129", "cca3": "GBR", "cn": "United Kingdom", "temp": 82, "signal": 14, "battery_level": 0, "c02_level": 1544, "timestamp" :1475604033 }
+{"device_id": 59, "device_type": "sensor-igauge", "ip": "134.61.64.1", "cca3": "DEU", "cn": "Germany", "temp": 83, "signal": 13, "battery_level": 1, "c02_level": 1546, "timestamp" :1475604035 }
+{"device_id": 60, "device_type": "sensor-ipad", "ip": "86.198.202.1", "cca3": "FRA", "cn": "France", "temp": 84, "signal": 12, "battery_level": 1, "c02_level": 1548, "timestamp" :1475604037 }
+{"device_id": 61, "device_type": "sensor-igauge", "ip": "151.198.215.1", "cca3": "USA", "cn": "United States", "temp": 85, "signal": 11, "battery_level": 0, "c02_level": 1550, "timestamp" :1475604039 }
+{"device_id": 62, "device_type": "sensor-ipad", "ip": "66.198.198.1", "cca3": "USA", "cn": "United States", "temp": 86, "signal": 10, "battery_level": 0, "c02_level": 1552, "timestamp" :1475604041 }
+{"device_id": 63, "device_type": "sensor-inest", "ip": "38.99.198.186", "cca3": "USA", "cn": "United States", "temp": 87, "signal": 9, "battery_level": 1, "c02_level": 1554, "timestamp" :1475604043 }
+{"device_id": 64, "device_type": "sensor-ipad", "ip": "64.76.146.154", "cca3": "CHL", "cn": "Chile", "temp": 88, "signal": 8, "battery_level": 0, "c02_level": 1556, "timestamp" :1475604045 }
+{"device_id": 65, "device_type": "sensor-istick", "ip": "213.210.151.1", "cca3": "CZE", "cn": "Czech Republic", "temp": 89, "signal": 7, "battery_level": 1, "c02_level": 1558, "timestamp" :1475604047 }
+{"device_id": 66, "device_type": "sensor-ipad", "ip": "78.110.188.6", "cca3": "ITA", "cn": "Italy", "temp": 90, "signal": 6, "battery_level": 0, "c02_level": 1560, "timestamp" :1475604049 }
+{"device_id": 67, "device_type": "sensor-igauge", "ip": "216.83.68.103", "cca3": "USA", "cn": "United States", "temp": 91, "signal": 5, "battery_level": 1, "c02_level": 1562, "timestamp" :1475604051 }
+{"device_id": 68, "device_type": "sensor-ipad", "ip": "194.146.109.12", "cca3": "HRV", "cn": "Croatia", "temp": 92, "signal": 4, "battery_level": 1, "c02_level": 1564, "timestamp" :1475604053 }
+{"device_id": 69, "device_type": "sensor-inest", "ip": "137.164.46.143", "cca3": "USA", "cn": "United States", "temp": 93, "signal": 3, "battery_level": 1, "c02_level": 1566, "timestamp" :1475604055 }
+{"device_id": 70, "device_type": "sensor-ipad", "ip": "195.222.71.1", "cca3": "BLR", "cn": "Belarus", "temp": 94, "signal": 2, "battery_level": 0, "c02_level": 1568, "timestamp" :1475604057 }
+{"device_id": 71, "device_type": "sensor-igauge", "ip": "80.222.48.1", "cca3": "FIN", "cn": "Finland", "temp": 95, "signal": 1, "battery_level": 0, "c02_level": 1570, "timestamp" :1475604059 }
+{"device_id": 72, "device_type": "sensor-ipad", "ip": "209.251.80.58", "cca3": "USA", "cn": "United States", "temp": 96, "signal": 0, "battery_level": 1, "c02_level": 1572, "timestamp" :1475604061 }
+{"device_id": 73, "device_type": "sensor-igauge", "ip": "121.33.241.193", "cca3": "CHN", "cn": "China", "temp": 97, "signal": 23, "battery_level": 4, "c02_level": 1574, "timestamp" :1475604063 }
+{"device_id": 74, "device_type": "sensor-ipad", "ip": "143.161.246.65", "cca3": "AUT", "cn": "Austria", "temp": 98, "signal": 22, "battery_level": 7, "c02_level": 1576, "timestamp" :1475604065 }
+{"device_id": 75, "device_type": "sensor-inest", "ip": "208.103.221.1", "cca3": "USA", "cn": "United States", "temp": 99, "signal": 21, "battery_level": 8, "c02_level": 1578, "timestamp" :1475604067 }
+{"device_id": 76, "device_type": "sensor-ipad", "ip": "218.248.255.30", "cca3": "IND", "cn": "India", "temp": 100, "signal": 20, "battery_level": 4, "c02_level": 1580, "timestamp" :1475604069 }
+{"device_id": 77, "device_type": "sensor-igauge", "ip": "222.234.0.1", "cca3": "KOR", "cn": "Republic of Korea", "temp": 101, "signal": 19, "battery_level": 9, "c02_level": 1582, "timestamp" :1475604071 }
+{"device_id": 78, "device_type": "sensor-ipad", "ip": "219.158.12.62", "cca3": "CHN", "cn": "China", "temp": 102, "signal": 18, "battery_level": 5, "c02_level": 1584, "timestamp" :1475604073 }
+{"device_id": 79, "device_type": "sensor-igauge", "ip": "159.128.0.181", "cca3": "CAN", "cn": "Canada", "temp": 103, "signal": 17, "battery_level": 8, "c02_level": 1586, "timestamp" :1475604075 }
+{"device_id": 80, "device_type": "sensor-ipad", "ip": "222.127.71.1", "cca3": "PHL", "cn": "Philippines", "temp": 104, "signal": 16, "battery_level": 7, "c02_level": 1588, "timestamp" :1475604077 }
+{"device_id": 81, "device_type": "sensor-inest", "ip": "213.162.50.33", "cca3": "FRA", "cn": "France", "temp": 105, "signal": 15, "battery_level": 1, "c02_level": 1590, "timestamp" :1475604079 }
+{"device_id": 82, "device_type": "sensor-ipad", "ip": "62.214.32.222", "cca3": "DEU", "cn": "Germany", "temp": 106, "signal": 14, "battery_level": 0, "c02_level": 1592, "timestamp" :1475604081 }
+{"device_id": 83, "device_type": "sensor-igauge", "ip": "122.133.0.26", "cca3": "JPN", "cn": "Japan", "temp": 107, "signal": 13, "battery_level": 0, "c02_level": 1594, "timestamp" :1475604083 }
+{"device_id": 84, "device_type": "sensor-ipad", "ip": "205.213.119.42", "cca3": "USA", "cn": "United States", "temp": 108, "signal": 12, "battery_level": 0, "c02_level": 1596, "timestamp" :1475604085 }
+{"device_id": 85, "device_type": "sensor-istick", "ip": "202.55.169.189", "cca3": "IDN", "cn": "Indonesia", "temp": 109, "signal": 11, "battery_level": 0, "c02_level": 1598, "timestamp" :1475604087 }
+{"device_id": 86, "device_type": "sensor-ipad", "ip": "204.16.48.130", "cca3": "USA", "cn": "United States", "temp": 110, "signal": 10, "battery_level": 1, "c02_level": 1600, "timestamp" :1475604089 }
+{"device_id": 87, "device_type": "sensor-inest", "ip": "85.218.127.93", "cca3": "CHE", "cn": "Switzerland", "temp": 50, "signal": 9, "battery_level": 0, "c02_level": 1602, "timestamp" :1475604091 }
+{"device_id": 88, "device_type": "sensor-ipad", "ip": "217.160.140.235", "cca3": "DEU", "cn": "Germany", "temp": 51, "signal": 8, "battery_level": 0, "c02_level": 1604, "timestamp" :1475604093 }
+{"device_id": 89, "device_type": "sensor-igauge", "ip": "213.214.12.66", "cca3": "DEU", "cn": "Germany", "temp": 52, "signal": 7, "battery_level": 0, "c02_level": 1606, "timestamp" :1475604095 }
+{"device_id": 90, "device_type": "sensor-ipad", "ip": "62.20.110.1", "cca3": "SWE", "cn": "Sweden", "temp": 53, "signal": 6, "battery_level": 0, "c02_level": 1608, "timestamp" :1475604097 }
+{"device_id": 91, "device_type": "sensor-igauge", "ip": "211.195.95.61", "cca3": "KOR", "cn": "Republic of Korea", "temp": 54, "signal": 5, "battery_level": 0, "c02_level": 1610, "timestamp" :1475604099 }
+{"device_id": 92, "device_type": "sensor-ipad", "ip": "195.19.194.77", "cca3": "RUS", "cn": "Russia", "temp": 55, "signal": 4, "battery_level": 1, "c02_level": 1612, "timestamp" :1475604101 }
+{"device_id": 93, "device_type": "sensor-inest", "ip": "24.32.26.1", "cca3": "USA", "cn": "United States", "temp": 56, "signal": 3, "battery_level": 0, "c02_level": 1614, "timestamp" :1475604103 }
+{"device_id": 94, "device_type": "sensor-ipad", "ip": "200.25.144.102", "cca3": "ECU", "cn": "Ecuador", "temp": 57, "signal": 2, "battery_level": 0, "c02_level": 1616, "timestamp" :1475604105 }
+{"device_id": 95, "device_type": "sensor-istick", "ip": "84.32.38.1", "cca3": "LTU", "cn": "Republic of Lithuania", "temp": 58, "signal": 1, "battery_level": 1, "c02_level": 1618, "timestamp" :1475604107 }
+{"device_id": 96, "device_type": "sensor-ipad", "ip": "124.32.46.1", "cca3": "JPN", "cn": "Japan", "temp": 59, "signal": 0, "battery_level": 0, "c02_level": 1620, "timestamp" :1475604109 }
+{"device_id": 97, "device_type": "sensor-igauge", "ip": "12.116.241.94", "cca3": "USA", "cn": "United States", "temp": 60, "signal": 15, "battery_level": 1, "c02_level": 1622, "timestamp" :1475604111 }
+{"device_id": 98, "device_type": "sensor-ipad", "ip": "146.82.204.36", "cca3": "USA", "cn": "United States", "temp": 61, "signal": 14, "battery_level": 0, "c02_level": 1624, "timestamp" :1475604113 }
+{"device_id": 99, "device_type": "sensor-inest", "ip": "217.113.83.247", "cca3": "BEL", "cn": "Belgium", "temp": 62, "signal": 13, "battery_level": 0, "c02_level": 1626, "timestamp" :1475604115 }

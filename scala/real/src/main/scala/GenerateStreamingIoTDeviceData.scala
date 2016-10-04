@@ -91,7 +91,7 @@ object GenerateStreamingIoTDeviceData {
           temperature = 50
         }
         lastTrendValues("temp") = temperature
-        val timestamp: Long = System.currentTimeMillis
+        val timestamp: Long = (System.currentTimeMillis / 1000.0).toLong + 60
 
         djson = "{\"device_id\": %d, " +
             "\"device_type\": \"%s\", " +

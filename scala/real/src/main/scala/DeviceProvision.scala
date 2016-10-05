@@ -178,7 +178,7 @@ object DeviceProvision {
 		val xcoor = getX();
 		val ycoor = getY();
 		val ip = getIP()
-		val timestamp: Long = System.currentTimeMillis + 15000
+		val timestamp: Long = (System.currentTimeMillis / 1000.0).toLong + 120
 		dmap.put("device_name", dev)
 		dmap.put("device_id", id.toString)
 		dmap.put("timestamp", timestamp.toString)

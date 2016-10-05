@@ -24,8 +24,7 @@ import scala.util.control.Breaks
   *
   * For visualization and analyses, I use generated datasets from this Scala program in a Databricks Scala Notebooks.\
   * To run this program:
-  * scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData /Users/jules/examples/py/ips/data/country_codes.txt /Users/jules/examples/py/ips/data/ips_info.txt destination_dir number_of_files
-  * number_devices_per_file
+  *  scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData <path_to_country_codes.txt> <path_to_ips_info.txt> <output_directory> <number_of_files> <number_of_devices_per_file> <trend_every_nth_file>
   */
   */
 object GenerateStreamingIoTDeviceData {

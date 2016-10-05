@@ -16,14 +16,17 @@ All dependencies stipulated in the *build.sbt* will be pulled from its appropria
 All you need is to build the library, as show above an then issue the following command, along with the desired command line arguments. 
 
 1. `sbt clean package`
-2. `scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData <git_dir>/py/ips/data/country_codes.txt <git_dir>py/ips/data/ips_info.txt <output_directory> number_of_files number_of_device_entries_per_file trend_every_nth_file`
+2. `scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData <git_dir>/py/ips/data/country_codes.txt <git_dir>py/ips/data/ips_info.txt <output_directory> <number_of_files> <number_of_device_entries_per_file> <trend_every_nth_file>`
 
 ###  Command Line Arguments
 _<output_directory>_ is the destination where these files will be created. 
+
 _number_of_files>_ is the number of files to be created, normally anywhere from 100-200 files is sufficient for a large dataset
-_number_of_devices_per_file>_ is the total number of devices JSON entry per file. While themaxium is maximum is 198164 (the number of uniquie IP addresses in the ips_info.txt), for community edition
-you want to keep this number small, perhaps 250-300 devices
-_trend_every_nth_file>_is the number you want some trending for sensor readings such as temperature, signal, and c02_levels trend, an in upward fashion.
+
+_number_of_devices_per_file>_ is the total number of devices JSON entry per file. While themaxium is maximum is 198164 (the number of uniquie IP addresses in the ips_info.txt), 
+for community edition you want to keep this number small, perhaps 250-300 devices
+
+_<trend_every_nth_file>_is the number you want some trending for sensor readings such as temperature, signal, and c02_levels trend, an in upward fashion.
 
 The timestamp is in seconds, and each device entry is 2 seconds apart.
 

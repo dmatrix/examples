@@ -1,6 +1,6 @@
 ### Building a Spark IoT Application.
 
-A directory with simple Scala singleton and utility classes, I use the library in my Databricks Scala notebooks. Additionally, I use a collection
+As directory containing simple Scala singleton and utility classes, I use the library in my Databricks Scala notebooks. Additionally, I use a collection
 of classes and companion objects to generate IoT device data for the Databricks Community Edition Scala Notebooks.
 
 To build the target library, simply type in:

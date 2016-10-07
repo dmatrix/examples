@@ -24,7 +24,12 @@ import scala.util.control.Breaks
   *
   * For visualization and analyses, I use generated datasets from this Scala program in a Databricks Scala Notebooks.\
   * To run this program:
-  *  scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData <path_to_country_codes.txt> <path_to_ips_info.txt> <output_directory> <number_of_files> <number_of_devices_per_file> <trend_every_nth_file>
+  *  scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData --ccode <path_to_country_codes.txt>
+  *                                                                                                    --ips <path_to_ips_info.txt>
+  *                                                                                                    --dir <output_directory>
+  *                                                                                                    --nfiles <number_of_files>
+  *                                                                                                    --ndevices <number_of_devices_per_file>
+  *                                                                                                    --ntrends <trend_every_nth_file>
   */
   */
 object GenerateStreamingIoTDeviceData {
@@ -32,6 +37,7 @@ object GenerateStreamingIoTDeviceData {
 
     val ccodes = Map[String, String]()
     val lastTrendValues = Map[String, Int]()
+    val cmdLineArgs = Map[String, String] ()
 
     def getDeviceType(id: Int): String = {
       val deviceType = if (id % 2 == 0) {
@@ -106,16 +112,47 @@ object GenerateStreamingIoTDeviceData {
         djson
     }
 
-    def main(args: Array[String]): Unit = {
+    def usage(): Unit = {
+      println( " scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData \n" +
+                  "--ccodes <path_to_country_codes.txt>\n" +
+                  "--ips <path_to_ips_info.txt>\n" +
+                  "--dir <output_directory>\n" +
+                  "--nfiles <number_of_files>\n" +
+                  "--ndevices <number_of_devices_per_file>\n" +
+                  "--ntrends <trend_every_nth_file>\n")
+    }
 
-      if (args.length != 6) {
-        println("""Need four arguments: <path_to_country_codes.txt> <path_to_ips_info.txt> <output_directory> number_of_files number_of_devices_per_file trend_every_nth_file""")
+    def parseCommandLineArgs(args: Array[String]) = {
+      for (index <- 0 to args.length-1) {
+        args(index) match  {
+          case "--ccodes" => cmdLineArgs(args(index)) = args(index+1)
+          case "--ips"    =>  cmdLineArgs(args(index)) = args(index+1)
+          case "--dir"    =>  cmdLineArgs(args(index)) = args(index+1)
+          case "--nfiles"  =>  cmdLineArgs(args(index)) = args(index+1)
+          case "--ndevices" => cmdLineArgs(args(index)) = args(index+1)
+          case "--ntrends" =>  cmdLineArgs(args(index)) = args(index+1)
+          case _ =>
+        }
+      }
+    }
+
+  def main(args: Array[String]): Unit = {
+
+      if (args.length != 12) {
+        usage()
         System.exit(2)
       }
-
-      val numOfFiles: Int = args(3).toInt
-      val numOfDevicesPerFile: Int = args(4).toInt
-      val numTrend = args(5).toInt
+      parseCommandLineArgs(args)
+    //check if we got all the command line args
+      val keysOptions = cmdLineArgs.keys.toSet
+      val keysToCompare = Set("--ccodes", "--ips", "--dir", "--nfiles", "--ndevices", "--ntrends")
+      if (! (keysOptions == keysToCompare)) {
+        usage()
+        System.exit(2)
+      }
+      val numOfFiles = cmdLineArgs("--nfiles").toInt
+      val numOfDevicesPerFile = cmdLineArgs("--ndevices").toInt
+      val numTrend = cmdLineArgs("--ntrends").toInt
       val deviceFileNames: String = "devices"
       val deviceFileNameSuffix: String = ".json"
       // set some initail values for trending data
@@ -127,7 +164,8 @@ object GenerateStreamingIoTDeviceData {
         * Build the ISO-31661-1 2 letter country code to three letter country codes cca2->caa3 mapping.
         * For example, NO -> NOR, PH -> PHL etc
         */
-      for (cline <- Source.fromFile(args(0)).getLines()) {
+      val ccodesFile = cmdLineArgs("--ccodes")
+      for (cline <- Source.fromFile(ccodesFile).getLines()) {
         val tokens = cline.split(" ")
         if (tokens.length == 2)
           ccodes(tokens(0)) = tokens(1)
@@ -137,17 +175,18 @@ object GenerateStreamingIoTDeviceData {
         * info needed. For example, IP, cca2, country, latitude and longitude etc
         */
       val inner = new Breaks
-
+      val destDir = cmdLineArgs("--dir")
+      val ipsFile = cmdLineArgs("--ips")
       var w: PrintWriter = null
       //iterate through number of files to generate
       for (i <-1 to numOfFiles) {
-        val fn: String = args(2) + "/" + deviceFileNames + "-" + i + deviceFileNameSuffix
+        val fn: String = destDir + "/" + deviceFileNames + "-" + i + deviceFileNameSuffix
         try {
           w = new PrintWriter(new File(fn))
           var id = 0
           inner.breakable {
               //for each ip address read from the source generate a ddvice IoT data information
-              for (ipline <- Source.fromFile(args(1)).getLines()) {
+              for (ipline <- Source.fromFile(ipsFile).getLines()) {
                 //generate an increasing/decreassing treand every nth file, specified by the input command line argument
                 val json = toJSonDeviceData(ipline, id, i % numTrend)
                 if (json.length > 0) {

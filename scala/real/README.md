@@ -19,7 +19,7 @@ All you need is to build the library, as show above an then issue the following 
 2. `scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData --ccodes <git_dir>/py/ips/data/country_codes.txt --ips <git_dir>py/ips/data/ips_info.txt --dir <output_directory> --nfiles <number_of_files> --ndevices <number_of_device_entries_per_file> --ntrends <trend_every_nth_file>`
 
 ###  Command Line Arguments
---codeds _path_to_country_codes_file_
+--ccodes _path_to_country_codes_file_
 --ips    _path_to_ips_file_
 --dir _output_directory_ is the destination where these files will be created. Each file will be labelled as _device_N.json_ 
 

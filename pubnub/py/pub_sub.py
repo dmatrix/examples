@@ -59,10 +59,11 @@ if __name__ == "__main__":
 	#
 	# get keys from the environment variable
 	#
-	pub_key=os.environ['PUB_KEY']
-	sub_key=os.environ['SUB_KEY']
+	pub_key=os.environ['PUB_KEY'].strip()
+	sub_key=os.environ['SUB_KEY'].strip()
+
 	#
-	# initate the Pubnub instance
+	# initiate the Pubnub instance
 	# subsistute your publish_key and subscribe_key here, if you want more security. But demo should wor
 	pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
 	#

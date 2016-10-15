@@ -38,7 +38,6 @@ object GenerateStreamingIoTDeviceData {
 
     val ccodes = Map[String, String]()
     val lastTrendValues = Map[String, Int]()
-    val cmdLineArgs = Map[String, String] ()
 
     def getDeviceType(id: Int): String = {
       val deviceType = if (id % 2 == 0) {
@@ -123,19 +122,46 @@ object GenerateStreamingIoTDeviceData {
                   "--ntrends <trend_every_nth_file>\n")
     }
 
-    def parseCommandLineArgs(args: Array[String]) = {
-      for (index <- 0 to args.length-1) {
-        args(index) match  {
-          case "--ccodes" => cmdLineArgs(args(index)) = args(index+1)
-          case "--ips"    =>  cmdLineArgs(args(index)) = args(index+1)
-          case "--dir"    =>  cmdLineArgs(args(index)) = args(index+1)
-          case "--nfiles"  =>  cmdLineArgs(args(index)) = args(index+1)
-          case "--ndevices" => cmdLineArgs(args(index)) = args(index+1)
-          case "--ntrends" =>  cmdLineArgs(args(index)) = args(index+1)
-          case _ =>
+    def parseArgs(inputArgs: List[String]): scala.collection.mutable.Map[String, String] = {
+
+      var args = inputArgs
+      val cmdLineArgsMap = Map[String, String] ()
+
+      while (!args.isEmpty) {
+        args match {
+          case "--ccodes" :: value :: tail => {
+            cmdLineArgsMap("--ccodes") = value
+            args = tail
+          }
+          case "--ips" :: value :: tail => {
+            cmdLineArgsMap("--ips") = value
+            args = tail
+          }
+          case "--dir" :: value :: tail => {
+            cmdLineArgsMap("--dir") = value
+            args = tail
+          }
+          case "--nfiles" :: value :: tail => {
+            cmdLineArgsMap("--nfiles") = value
+            args = tail
+          }
+          case "--ndevices" :: value :: tail => {
+            cmdLineArgsMap("--ndevices") = value
+            args = tail
+          }
+          case "--ntrends" :: value :: tail => {
+            cmdLineArgsMap("--ntrends") = value
+            args = tail
+          }
+          case Nil =>
+
+          case _  =>
+            args = args.tail
         }
       }
+      cmdLineArgsMap
     }
+
 
   def main(args: Array[String]): Unit = {
 
@@ -143,11 +169,14 @@ object GenerateStreamingIoTDeviceData {
         usage()
         System.exit(2)
       }
-      parseCommandLineArgs(args)
+      val cmdLineArgs = parseArgs(args.toList)
       //check if we got all the command line args
       val keysOptions = cmdLineArgs.keys.toSet
       val keysToCompare = Set("--ccodes", "--ips", "--dir", "--nfiles", "--ndevices", "--ntrends")
       if (! (keysOptions == keysToCompare)) {
+        println("keysToCompare=" + keysToCompare)
+        println("keysFromMap="+ keysOptions)
+        println(cmdLineArgs)
         usage()
         System.exit(2)
       }

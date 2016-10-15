@@ -33,14 +33,13 @@ following format:
  {"device_id": 97,
   "ip": "191.35.83.75",
   "timestamp", 1447886791
-  "lat": 22, 
-  "long": 82, 
   "scale: 
   "Celius", 
   "temp": 22, 
-  "device_name": "sensor-mac-id<random_string>",
+  "device_name": "sensor-i<type>",
   "humidity": 15,
-  "zipcode:" 95498
+  "radiation": 204,
+  "c02Level": 1240,
  }
 
  To run this program to create json files in the destination directory for Spark Streaming consumption:
@@ -125,13 +124,13 @@ def create_json(id):
   ip = get_ip_addr()
 
   if id % 2 == 0:
-    d = "sensor-pad-" + str(id) + get_random_word()
+    d = "sensor-ipad"
   elif id % 3 == 0:
-    d = "device-mac-" + str(id) + get_random_word()
+    d = "sensor-iguage="
   elif id % 5 == 0:
-    d = "therm-stick-" + str(id) + get_random_word()
+    d = "sensor-istick"
   else:
-    d = "meter-gauge-" + str(id) + get_random_word()
+    d = "sensor-igauge"
     
   zipcode = random.randrange(94538,97107)
   humidity = random.randrange(25, 100)

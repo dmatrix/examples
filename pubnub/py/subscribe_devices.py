@@ -85,7 +85,7 @@ def create_influxdb_point(jdoc, measurement):
 
 def insert_into_dbs(dbs, jdoc):
 
-  ##TODO Convert this into a Singleton class so that we don't call this each time a message is recieved.
+  ##TODO Convert this into a Singleton class so that we don't call this each time a message is received.
   client = InfluxDBClient("localhost", 8086, 'jules', 'influxdb', 'pubnub_devices')
   print ("Recieved JSON for insertion in DB: %s %s" % (dbs, json.dumps(jdoc, sort_keys="True")))
   for measurement in ["temperature", "humidity"]:
@@ -120,8 +120,8 @@ def main(channel="devices", host="localhost", port=8086):
   pubnub = Pubnub(publish_key=pub_key, subscribe_key=sub_key)
   signal.signal(signal.SIGINT, signal_handler)
   
-	# subscribe to a channel and invoke the appropriate callback when a message arrives on that 
-	# channel
+	#
+    # subscribe to a channel and invoke the appropriate callback when a message arrives on that channel
 	#
   print("Subscribing from PubNub Channel '%s'" % (channel))
   pubnub.subscribe(channels=channel, callback=receive, error=on_error)

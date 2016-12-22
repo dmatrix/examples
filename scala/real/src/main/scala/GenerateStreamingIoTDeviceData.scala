@@ -25,12 +25,12 @@ import scala.util.control.Breaks
   * For visualization and analyses, I use generated datasets from this Scala program in a Databricks Scala Notebooks.\
   * To run this program:
   *  scala -cp target/scala-2.10/src-main-scala_2.10-1.0.jar main.scala.GenerateStreamingIoTDeviceData
-  *            --ccodes <path_to_country_codes.txt>
-  *            --ips <path_to_ips_info.txt>
-  *            --dir <output_directory>
-  *            --nfiles <number_of_files>
+  *            --ccodes   <path_to_country_codes.txt>
+  *            --ips      <path_to_ips_info.txt>
+  *            --dir      <output_directory>
+  *            --nfiles   <number_of_files>
   *            --ndevices <number_of_devices_per_file>
-  *            --ntrends <trend_every_nth_file>
+  *            --ntrends  <trend_every_nth_file>
   */
   */
 object GenerateStreamingIoTDeviceData {
@@ -217,7 +217,7 @@ object GenerateStreamingIoTDeviceData {
           inner.breakable {
               //for each ip address read from the source generate a ddvice IoT data information
               for (ipline <- Source.fromFile(ipsFile).getLines()) {
-                //generate an increasing/decreassing treand every nth file, specified by the input command line argument
+                //generate an increasing/decreassing trend every nth file, specified by the input command line argument
                 val json = toJSonDeviceData(ipline, id, i % numTrend)
                 if (json.length > 0) {
                   w.write(json)

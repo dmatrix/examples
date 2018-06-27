@@ -101,9 +101,9 @@ if __name__ == '__main__':
         mlflow.log_param("output", args.output)
         mlflow.log_param("train_batch_size", args.train_batch_size)
         mlflow.log_param("epochs", args.epochs)
+        mlflow.log_param("loss", results[0])
+        mlflow.log_param("acc", results[1])
 
-        #mlflow.sklearn.log_model(model, "model")
-        
     end_time: float = time()
     
     print("Run time = %d" % (end_time-start_time))

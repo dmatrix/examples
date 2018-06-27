@@ -1,0 +1,13 @@
+artifact_uri: /Users/jules/examples/keras/mlruns/0/f0bfd0ab1c774157a69e0112e792ba14/artifacts
+end_time: 1530055440904
+entry_point_name: ''
+experiment_id: 0
+name: Run 2
+run_uuid: f0bfd0ab1c774157a69e0112e792ba14
+source_name: /Users/jules/examples/keras/keras_test.py
+source_type: 4
+source_version: cf69a55a9ddf895c5dac94214f8c34f0d0d1ebc0
+start_time: 1530055439966
+status: 3
+tags: []
+user_id: jules

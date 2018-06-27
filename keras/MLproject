@@ -1,0 +1,15 @@
+name: keras_test
+
+conda_env: conda.yaml
+
+entry_points:
+  keras_test:
+    parameters:
+
+      drop_rate: {type: float, default: 0.5}
+      input_dim: {type: int, default:20}
+      bs: {type: int, default: 1000}
+      output: {type: int, default:64}
+      train_batch_size: {type: int, default:128}
+      epochs: {type: int, default:20}
+      command: "python test_keras.py [--drop_rate=value] [--input_dim=value] [--bs=value] [--output=value] [--train_batch_size=value] [--epochs=value]"

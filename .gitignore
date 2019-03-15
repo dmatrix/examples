@@ -7,6 +7,8 @@ PyDmatrix/
 .classpath
 .project
 .gitignore
+.DS_Store
+
 
 # IDE Support
 # IntelliJ specific files/directories
@@ -18,3 +20,4 @@ PyDmatrix/
 target/
 derby.log
 metastore_db/
+mlruns/

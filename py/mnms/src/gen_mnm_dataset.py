@@ -23,6 +23,4 @@ if __name__ == "__main__":
         dataset_writer.writerow(fieldnames)
         for i in range(1, entries):
             dataset_writer.writerow([get_random_choice(states), get_random_choice(colors), random.randint(10, 100)])
-            #print("%s, %s, %d" % (get_random_choice(states), get_random_choice(colors), random.randint(10, 100)))
-
     print("Wrote %d lines in %s file" % (entries, dataset_fn))
